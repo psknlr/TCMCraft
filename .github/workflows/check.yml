@@ -1,0 +1,53 @@
+name: TCMCraft × ClinicalCraft
+
+# The content pack is checked against the engine it is written for: ClinicalCraft at the revision pinned in
+# tools/clinicalcraft.rev (a commit), never "whatever main is today". tools/check.sh runs the generator check, the
+# offline pack checks, then ClinicalCraft's own validation, verification and offline demonstration.
+on:
+  push:
+    branches: [main, "claude/**"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: TCMCraft
+          sparse-checkout: |
+            .clinicalcraft
+            content
+            tools
+      - name: Pinned ClinicalCraft revision
+        id: pin
+        run: echo "rev=$(grep -Eo '^[0-9a-f]{40}' TCMCraft/tools/clinicalcraft.rev | head -1)" >> "$GITHUB_OUTPUT"
+      - name: Check the pin is a full commit id
+        run: test -n "${{ steps.pin.outputs.rev }}"
+      - uses: actions/checkout@v5
+        with:
+          repository: psknlr/ClinicalCraft
+          ref: ${{ steps.pin.outputs.rev }}
+          path: ClinicalCraft
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ClinicalCraft/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ClinicalCraft
+        working-directory: ClinicalCraft
+        run: npm ci
+      - name: tools/check.sh
+        run: TCMCraft/tools/check.sh ClinicalCraft

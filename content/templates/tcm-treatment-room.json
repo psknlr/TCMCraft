@@ -1,0 +1,237 @@
+{
+  "schema": "clinicalcraft/room-template@1",
+  "id": "tcm-treatment-room",
+  "name": {
+    "zh-CN": "针灸推拿治疗室",
+    "en": "Acupuncture and tuina room"
+  },
+  "description": {
+    "zh-CN": "两张带面孔的针灸推拿床，以隔帘分隔；针灸治疗车、TDP灯、锐器盒、针数登记板、手套和洗手池。",
+    "en": "Two acupuncture and tuina couches with face holes, separated by a curtain; an acupuncture cart, TDP lamps, a sharps bin, a needle-count board, gloves and a sink."
+  },
+  "kind": "rehabilitation",
+  "size": {
+    "w": 10,
+    "d": 8
+  },
+  "floor": "floor",
+  "partitions": [
+    {
+      "side": "n"
+    },
+    {
+      "side": "w"
+    },
+    {
+      "side": "e"
+    },
+    {
+      "side": "s",
+      "openings": [
+        {
+          "kind": "door",
+          "width": 1.8,
+          "height": 2.6,
+          "offset": 0
+        }
+      ]
+    }
+  ],
+  "sign": {
+    "text": {
+      "zh-CN": "针灸推拿治疗室",
+      "en": "Acupuncture & tuina"
+    },
+    "side": "n",
+    "color": "#8b2e2e"
+  },
+  "lights": [
+    {
+      "x": -2.8,
+      "z": -2
+    },
+    {
+      "x": 1.2,
+      "z": -2
+    },
+    {
+      "x": 0,
+      "z": 2
+    }
+  ],
+  "placements": [
+    {
+      "id": "couch-1",
+      "type": "tcm-acupuncture-couch",
+      "x": -2.8,
+      "z": -2.4,
+      "label": {
+        "zh-CN": "治疗床 1",
+        "en": "Couch 1"
+      }
+    },
+    {
+      "id": "couch-2",
+      "type": "tcm-acupuncture-couch",
+      "x": 1.2,
+      "z": -2.4,
+      "label": {
+        "zh-CN": "治疗床 2",
+        "en": "Couch 2"
+      }
+    },
+    {
+      "id": "curtain",
+      "type": "privacy-curtain",
+      "x": -0.8,
+      "z": -2.6,
+      "rot": 90
+    },
+    {
+      "id": "cart",
+      "type": "tcm-acupuncture-cart",
+      "x": -1.7,
+      "z": -1.0,
+      "label": {
+        "zh-CN": "针灸治疗车",
+        "en": "Acupuncture cart"
+      }
+    },
+    {
+      "id": "lamp-1",
+      "type": "tcm-tdp-lamp",
+      "x": -4.2,
+      "z": -2.4,
+      "rot": 90
+    },
+    {
+      "id": "lamp-2",
+      "type": "tcm-tdp-lamp",
+      "x": 2.3,
+      "z": -2.4,
+      "rot": 270
+    },
+    {
+      "id": "sharps",
+      "type": "sharps-bin",
+      "x": -1.7,
+      "z": -3.4,
+      "label": {
+        "zh-CN": "锐器盒",
+        "en": "Sharps bin"
+      }
+    },
+    {
+      "id": "stool-1",
+      "type": "stool",
+      "x": -1.9,
+      "z": -2.0
+    },
+    {
+      "id": "stool-2",
+      "type": "stool",
+      "x": 2.1,
+      "z": -1.4
+    },
+    {
+      "id": "gloves",
+      "type": "glove-dispenser",
+      "x": 0.0,
+      "z": -3.765
+    },
+    {
+      "id": "linen",
+      "type": "cabinet",
+      "x": 4.4,
+      "z": -3.0,
+      "rot": 270,
+      "label": {
+        "zh-CN": "床单柜",
+        "en": "Linen cabinet"
+      }
+    },
+    {
+      "id": "count-board",
+      "type": "whiteboard",
+      "x": 4.765,
+      "z": 1.0,
+      "rot": 270,
+      "label": {
+        "zh-CN": "针数登记板",
+        "en": "Needle-count board"
+      }
+    },
+    {
+      "id": "chart",
+      "type": "tcm-acupoint-chart",
+      "x": -4.785,
+      "z": 1.5,
+      "rot": 90,
+      "label": {
+        "zh-CN": "经络穴位挂图",
+        "en": "Acupoint chart"
+      }
+    },
+    {
+      "id": "sanitizer",
+      "type": "hand-sanitizer",
+      "x": -4.5,
+      "z": 3.4
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "x": 3.8,
+      "z": 3.55,
+      "rot": 180
+    }
+  ],
+  "patientSlots": [
+    {
+      "id": "slot-1",
+      "x": -2.8,
+      "z": -2.4,
+      "rot": 0,
+      "posture": "lying",
+      "bed": "couch-1",
+      "accepts": [
+        "outpatient"
+      ]
+    },
+    {
+      "id": "slot-2",
+      "x": 1.2,
+      "z": -2.4,
+      "rot": 0,
+      "posture": "lying",
+      "bed": "couch-2",
+      "accepts": [
+        "outpatient"
+      ]
+    }
+  ],
+  "staff": [
+    {
+      "id": "assistant",
+      "role": "nurse",
+      "name": {
+        "zh-CN": "Siti（诊所助理）",
+        "en": "Siti (clinic assistant)"
+      },
+      "x": 0.0,
+      "z": 0.6,
+      "rot": 180,
+      "greeting": {
+        "zh-CN": "治疗床和治疗车都准备好了。需要帮忙让病人躺好吗？",
+        "en": "The couches and the cart are ready. Shall I help the patient settle on the couch?"
+      }
+    }
+  ],
+  "capabilities": [],
+  "tags": [
+    "tcm",
+    "acupuncture",
+    "tuina",
+    "treatment"
+  ]
+}

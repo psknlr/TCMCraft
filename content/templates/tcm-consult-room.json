@@ -1,0 +1,181 @@
+{
+  "schema": "clinicalcraft/room-template@1",
+  "id": "tcm-consult-room",
+  "name": {
+    "zh-CN": "中医诊室",
+    "en": "TCM consulting room"
+  },
+  "description": {
+    "zh-CN": "中医诊室：医生诊桌与脉枕、患者座椅、舌象采集仪、诊查床、病历终端、病例讨论板和洗手池。",
+    "en": "A TCM consulting room: the physician's desk with a pulse pillow, the patient's chair, a tongue-imaging station, an examination couch, a records terminal, a case board and a sink."
+  },
+  "kind": "consult",
+  "size": {
+    "w": 6,
+    "d": 8
+  },
+  "floor": "floor",
+  "partitions": [
+    {
+      "side": "n"
+    },
+    {
+      "side": "w"
+    },
+    {
+      "side": "e"
+    },
+    {
+      "side": "s",
+      "openings": [
+        {
+          "kind": "door",
+          "width": 1.6,
+          "height": 2.6,
+          "offset": 1.6
+        }
+      ]
+    }
+  ],
+  "sign": {
+    "text": {
+      "zh-CN": "中医诊室",
+      "en": "TCM consulting room"
+    },
+    "side": "n",
+    "color": "#8b2e2e"
+  },
+  "lights": [
+    {
+      "x": 0,
+      "z": -1.5
+    },
+    {
+      "x": 0,
+      "z": 2
+    }
+  ],
+  "placements": [
+    {
+      "id": "desk",
+      "type": "desk",
+      "x": 2.475,
+      "z": -1.5,
+      "rot": 270,
+      "label": {
+        "zh-CN": "医生诊桌",
+        "en": "Physician's desk"
+      }
+    },
+    {
+      "id": "doctor-chair",
+      "type": "office-chair",
+      "x": 1.4,
+      "z": -1.5,
+      "rot": 90
+    },
+    {
+      "id": "patient-chair",
+      "type": "chair",
+      "x": 2.45,
+      "z": -0.25,
+      "rot": 180,
+      "label": {
+        "zh-CN": "患者座椅",
+        "en": "Patient's chair"
+      }
+    },
+    {
+      "id": "pulse-pillow",
+      "type": "tcm-pulse-pillow",
+      "x": 2.45,
+      "z": -0.95,
+      "label": {
+        "zh-CN": "脉枕",
+        "en": "Pulse pillow"
+      },
+      "y": 0.76
+    },
+    {
+      "id": "tongue-station",
+      "type": "tcm-tongue-imaging-station",
+      "x": -2.4,
+      "z": -3.3,
+      "label": {
+        "zh-CN": "舌象采集仪",
+        "en": "Tongue-imaging station"
+      }
+    },
+    {
+      "id": "couch",
+      "type": "treatment-plinth",
+      "x": -2.45,
+      "z": -1.6,
+      "label": {
+        "zh-CN": "诊查床",
+        "en": "Examination couch"
+      }
+    },
+    {
+      "id": "records",
+      "type": "records-terminal",
+      "x": 2.525,
+      "z": 1.3,
+      "rot": 270,
+      "label": {
+        "zh-CN": "病历终端",
+        "en": "Records terminal"
+      }
+    },
+    {
+      "id": "chart",
+      "type": "tcm-acupoint-chart",
+      "x": 0.4,
+      "z": -3.785,
+      "label": {
+        "zh-CN": "经络穴位挂图",
+        "en": "Acupoint chart"
+      }
+    },
+    {
+      "id": "board",
+      "type": "evidence-board",
+      "x": -2.525,
+      "z": 1.9,
+      "rot": 90,
+      "label": {
+        "zh-CN": "病例讨论板",
+        "en": "Case board"
+      }
+    },
+    {
+      "id": "sink",
+      "type": "sink",
+      "x": -1.2,
+      "z": 3.55,
+      "rot": 180
+    }
+  ],
+  "patientSlots": [
+    {
+      "id": "slot",
+      "x": 2.45,
+      "z": -0.25,
+      "rot": 180,
+      "posture": "sitting",
+      "bed": "patient-chair",
+      "accepts": [
+        "outpatient"
+      ]
+    }
+  ],
+  "capabilities": [
+    "records",
+    "evidence-board"
+  ],
+  "tags": [
+    "tcm",
+    "outpatient",
+    "consult"
+  ]
+}
