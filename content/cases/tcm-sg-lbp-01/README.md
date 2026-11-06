@@ -47,7 +47,7 @@ Static clock (`clock.mode: "static"`); the phases stand for time.
 
 | Phase | Opens | Where | What happens |
 |---|---|---|---|
-| `consult` — first visit: history and four examinations | at start | Consulting room 1 (patient's chair) | History, four examinations, the kiosk photo, the polyclinic printout, the tongue recapture, three assessment decisions |
+| `consult` — first visit: history and four examinations | at start | Consulting room 1 (seated on the examination couch) | History, four examinations, the kiosk photo, the polyclinic printout, the tongue recapture, three assessment decisions |
 | `treatment` — first visit: prescription, review and acupuncture | automatically once `d-disease` and `d-pattern` are answered correctly | Consulting room, dispensary; the patient moves to the treatment room when positioned for needling | Consent, prescription v1 → dispensary query (a record that exists only after v1 is submitted) → v2 → supply → counselling → acupuncture → documentation → booking |
 | `followup` — review one week later | automatically once the medicine was validly supplied, the needles validly withdrawn and counted, and the review booked | Consulting room | Status, adherence, adverse effects, danger signs, the dispensing and session records, the sachet count, the review decision and plan |
 
@@ -191,7 +191,7 @@ Intercepted attempts cost no points by design. The interception is the system wo
 
 - **Grounding.** Everything the patient and staff say comes from the case. Unrecorded facts (his blood results, the product manufacturer, long-term outcome) are `unknowns`, and his last blood tests are a `disclosure: "unknown"` item.
 - **Where things happen.**
-  - He starts in the patient's chair of consulting room 1.
+  - He starts seated on the examination couch of consulting room 1.
   - `acu-position` moves him onto a couch in the acupuncture and tuina room (`destination: {"roomKind": "rehabilitation"}`, `posture: "lying"`).
   - The follow-up phase brings him back to a consulting room (`location: {"roomKind": "consult"}`).
 - **Kit.** Records (`records`) are read at a records terminal: every consulting room has one, and the dispensary has the review terminal. Supply (`medications`) is at the herbal dispensary: the herb cabinets and the granule dispenser. The case requires only canonical ClinicalCraft capabilities. The acupuncture cart, tongue-imaging station and TDP lamps are drawn and tagged, but they do not yet gate the acts, because the capability vocabulary has no TCM entries ([docs/ENGINE_EXTENSIONS.md §1](../../../docs/ENGINE_EXTENSIONS.md)).
@@ -213,7 +213,7 @@ Intercepted attempts cost no points by design. The interception is the system wo
 - Follow-up items are phase twins. `h-fu-status` supersedes `h-presenting`, `h-severity` and `h-character`; `h-fu-redflags` supersedes `h-redflag-neuro` and `h-redflag-ce`; `h-fu-adverse` supersedes `h-bruising`. Twins carry only "now"-phrasings, so first-visit questions are never answered by follow-up items.
 - `h-meds` excludes aspirin, blood-thinner, herb and granule words, so those questions reach `h-antithrombotic`, `h-herbs-supplements` or `h-fu-adherence`.
 - `h-urine-stool` (TCM 二便 inquiry) and `h-redflag-ce` (control and saddle) exclude each other's words.
-- The corpus has 43 utterances in both languages, with every required item paraphrased. It was checked with the matcher port in `tools/pack_check.py`, which agrees with ClinicalCraft on all 1,579 utterances of the built-in cases. Run `cases verify` to confirm against the engine itself.
+- The corpus has 43 utterances in both languages, with every required item paraphrased. `cases verify` passes all 43; the matcher port in `tools/pack_check.py`, which agrees with ClinicalCraft on all 1,579 utterances of the built-in cases, checks them offline.
 
 ## References
 
@@ -254,7 +254,9 @@ python3 tools/pack_check.py --paths
 tools/check.sh ../ClinicalCraft
 ```
 
-`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline in-world demonstration against the pinned ClinicalCraft revision.
+`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline demonstration against the pinned ClinicalCraft revision.
+
+Last engine run (ClinicalCraft `4569808`, CI): `cases validate --strict` 0 errors and 0 warnings; `cases verify` 90 steps, objectives 6/6, decisions 5/5, utterances 43/43, 33/33 (100 %); offline demonstration finished and completed at 100 %.
 
 ## 中文摘要
 

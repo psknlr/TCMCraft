@@ -10,7 +10,7 @@ Engine revision written and checked against: ClinicalCraft `4569808889ca` (`tool
 
 | Phase (DESIGN §10) | Status | What exists |
 |---|---|---|
-| **1. A single longitudinal encounter** | **Built; awaiting the engine run and clinical review** | Case `tcm-sg-lbp-01` (three phases, 38 history items, 17 examinations, 7 investigations and records, 23 interventions, 5 decisions, 17 rubric items, 5 safety gates, a 90-step reference path, a 43-utterance matcher corpus); the fictional clinic `tcm-sg-clinic` (3 room templates, 10 equipment types); offline checks and CI against the pinned engine |
+| **1. A single longitudinal encounter** | **Built and passing on the engine; awaiting the in-world walk-through and clinical review** | Case `tcm-sg-lbp-01` (three phases, 38 history items, 17 examinations, 7 investigations and records, 23 interventions, 5 decisions, 17 rubric items, 5 safety gates, a 90-step reference path, a 43-utterance matcher corpus); the fictional clinic `tcm-sg-clinic` (3 room templates, 10 equipment types); offline checks and CI against the pinned engine |
 | 2. 12-case prototype | Not started | Candidate sources: [CMCR_CORPUS.md](CMCR_CORPUS.md) |
 | 3. 60-case engineering pilot | Not started | — |
 | 4. Formal benchmark | Not started | — |
@@ -25,9 +25,15 @@ state". What has been shown and what has not:
   as the README tables say.
   - Port fidelity: it reproduces upstream's 100 % on all 20 built-in CMCR cases, and its matcher agrees with
     ClinicalCraft on all 1,579 built-in test utterances.
-- **Not yet shown.** The real engine has not run this case: `cases validate --strict`, `cases verify`,
-  `facilities validate`, and the in-world walk-through in the web client. `tools/check.sh` and the CI workflow
-  `.github/workflows/check.yml` do this against the pinned revision.
+- **Shown on the engine.** ClinicalCraft at the pinned revision ran in CI (`tools/check.sh` from
+  `.github/workflows/check.yml`):
+  - `cases validate --strict`: 0 errors, 0 warnings.
+  - `cases verify`: the 90-step path, objectives 6/6, decisions 5/5, utterances 43/43, 33/33 (100 %).
+  - The offline demonstration (`exec --autopilot`): finished and completed at 100 %.
+  - `facilities validate --all`: every file valid. The warnings left say that built-in outpatient cases needing labs
+    or imaging cannot be completed in this TCM clinic, and that this case cannot be completed in `clinic-v4`. Both
+    are expected: the web does not offer a facility that cannot complete a case.
+- **Not yet shown.** The in-world walk-through in the web client, and a model-driven (non-offline) run.
 
 ## Design element → implementation
 
@@ -57,9 +63,8 @@ state". What has been shown and what has not:
 
 ## Open items for phase 1
 
-1. Run `tools/check.sh` (or let CI run it) and fix whatever ClinicalCraft reports that the offline port did not.
-2. Walk the case in in-world mode (`npm run cc -- serve --cwd ../TCMCraft`) and check that the patient moves to
+1. Walk the case in in-world mode (`npm run cc -- serve --cwd ../TCMCraft`) and check that the patient moves to
    the treatment couch and back, and that the dispensary zone and staff behave.
-3. Clinical review by a registered TCM physician and a family physician, then set `provenance.review` honestly.
+2. Clinical review by a registered TCM physician and a family physician, then set `provenance.review` honestly.
    The case README lists what is "to verify" (doses, edition and page details, Asarum and granule regulatory status).
-4. Images: tongue photos (kiosk vs. standard) with clear licences, local-only if they come from patients.
+3. Images: tongue photos (kiosk vs. standard) with clear licences, local-only if they come from patients.

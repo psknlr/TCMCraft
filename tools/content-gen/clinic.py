@@ -375,7 +375,7 @@ def consult_room() -> dict:
             P("sink", "sink", -1.2, 3.55, 180),
         ],
         "patientSlots": [
-            {"id": "slot", "x": 2.45, "z": -0.25, "rot": 180, "posture": "sitting", "bed": "patient-chair", "accepts": ["outpatient"]},
+            {"id": "slot", "x": -2.3, "z": -1.6, "rot": 90, "posture": "sitting", "bed": "couch", "accepts": ["outpatient"]},
         ],
         "capabilities": ["records", "evidence-board"],
         "tags": ["tcm", "outpatient", "consult"],

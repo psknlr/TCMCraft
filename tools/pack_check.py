@@ -1271,6 +1271,8 @@ def check_facility(fac: dict, templates: dict, catalogs: dict, cases: list[dict]
     for s in slots:
         if s.get("bed") and s["bed"] not in pl_by:
             err(w, f'slot {s["id"]}: unknown bed "{s["bed"]}"')
+        elif s.get("bed") and types.get(pl_by[s["bed"]]["type"], {}).get("interaction", {}).get("kind") != "bed":
+            warn(w, f'slot {s["id"]}: placement "{s["bed"]}" is not a bed (interaction kind is not "bed")')
         if s["room"] not in room_by:
             err(w, f'slot {s["id"]}: unknown room "{s["room"]}"')
     for s in staff:

@@ -159,11 +159,11 @@
   "patientSlots": [
     {
       "id": "slot",
-      "x": 2.45,
-      "z": -0.25,
-      "rot": 180,
+      "x": -2.3,
+      "z": -1.6,
+      "rot": 90,
       "posture": "sitting",
-      "bed": "patient-chair",
+      "bed": "couch",
       "accepts": [
         "outpatient"
       ]
