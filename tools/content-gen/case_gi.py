@@ -813,7 +813,7 @@ def build() -> dict:
             "persona": {
                 "personality": L("老实、客气的退休巴士车长，有点担心但不爱多讲。", "A straightforward, polite retired bus captain, a little worried but not one for many words."),
                 "speechStyle": L("以华语为主，夹杂福建话与英语；句子简短。", "Mostly Mandarin with some Hokkien and English; short sentences."),
-                "healthLiteracy": "moderate",
+                "healthLiteracy": "medium",
                 "affect": "anxious",
                 "openingLine": L("医生你好，我这两个月吃一点就胀，胃口也不好，想看看中药能不能调理一下。",
                                  "Hello, doctor. For two months a little food makes me bloated and my appetite's poor. I'd like to see whether herbs can help."),

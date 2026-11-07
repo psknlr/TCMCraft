@@ -493,6 +493,11 @@ ENUMS = {
     "domain": {"history", "examination", "investigations", "diagnosis", "management", "safety", "communication", "efficiency"},
     "role": {"nurse", "radiologist", "pathologist", "lab-tech", "attending", "pharmacist", "consultant", "receptionist", "paramedic"},
     "affect": {"calm", "anxious", "distressed", "in-pain", "drowsy", "irritable", "frightened", "breathless", "confused"},
+    "healthLiteracy": {"low", "medium", "high"},
+    "hairStyle": {"short", "long", "bald", "bun", "ponytail", "curly"},
+    "build": {"slim", "average", "heavy"},
+    "stature": {"infant", "child", "teen", "adult"},
+    "accessory": {"none", "glasses", "mask", "nasal-cannula", "oxygen-mask", "sling", "cap"},
     "roomKind": {"entrance", "reception", "waiting", "consult", "triage", "resus", "emergency", "ward", "icu", "operating-room", "imaging", "laboratory", "pathology", "pharmacy",
                  "nurse-station", "conference", "office", "corridor", "storage", "restroom", "garden", "build-zone", "rehabilitation", "teaching", "elevator", "stairwell"},
 }
@@ -551,6 +556,9 @@ def check_shape(c: dict, w: str) -> None:
     for key in ("personality", "speechStyle", "openingLine", "fallbackUnknown", "actingNotes"):
         check_text(p["persona"].get(key), locs, f"{w} patient.persona.{key}")
     check_enum(p["persona"].get("affect"), "affect", f"{w} patient.persona.affect")
+    check_enum(p["persona"].get("healthLiteracy"), "healthLiteracy", f"{w} patient.persona.healthLiteracy")
+    for key in ("hairStyle", "build", "stature", "accessory"):
+        check_enum(p.get("appearance", {}).get(key), key, f"{w} patient.appearance.{key}")
     collections = {"phases": ("label",), "history": ("question", "answer"), "exam": ("maneuver", "finding"), "investigations": ("name",), "interventions": ("name",),
                    "objectives": ("title", "hint"), "decisions": ("prompt", "need"), "rubric": ("text",)}
     for coll, fields in collections.items():
