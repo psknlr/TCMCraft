@@ -1170,7 +1170,11 @@ def check_expectation(path: dict, pct: float, missed: list[str], gates: list, fi
 
 
 def check_families(cases: list[dict]) -> None:
-    """Cases of one family (extensions.tcmcraft.caseFamily) share a split and every shared first-visit fact."""
+    """Cases of one family (extensions.tcmcraft.caseFamily) share a split and every shared first-visit fact.
+
+    A case's review is its last phase: items limited to that phase, and records' results for it, may differ between
+    the family's cases; everything else is the shared first visit and must be identical.
+    """
     families: dict[str, list[dict]] = {}
     for c in cases:
         fam = c.get("extensions", {}).get("tcmcraft", {}).get("caseFamily")
@@ -1181,12 +1185,12 @@ def check_families(cases: list[dict]) -> None:
         splits = {m["extensions"]["tcmcraft"].get("split") for m in members}
         if len(splits) != 1 or None in splits:
             err(w, f"cases disagree on the split: {sorted(map(str, splits))}")
-        first = {"history": lambda x: not x["id"].startswith("h-fu-"), "exam": lambda x: not x["id"].startswith("e-fu-")}
-        for coll, keep in first.items():
+        for coll in ("history", "exam"):
             seen: dict[str, tuple[str, str]] = {}
             for m in members:
+                review = m["phases"][-1]["id"]
                 for item in m[coll]:
-                    if not keep(item):
+                    if item.get("phases") and set(item["phases"]) <= {review}:
                         continue
                     key = json.dumps({k: item.get(k) for k in ("question", "answer", "maneuver", "finding", "phases")}, ensure_ascii=False, sort_keys=True)
                     if item["id"] in seen and seen[item["id"]][1] != key:
@@ -1194,8 +1198,9 @@ def check_families(cases: list[dict]) -> None:
                     seen.setdefault(item["id"], (m["id"], key))
         shared_records: dict[str, tuple[str, str]] = {}
         for m in members:
+            review = m["phases"][-1]["id"]
             for inv in m["investigations"]:
-                early = {ph: r for ph, r in inv["results"].items() if ph != "followup"}
+                early = {ph: r for ph, r in inv["results"].items() if ph != review}
                 if not early:
                     continue
                 key = json.dumps(early, ensure_ascii=False, sort_keys=True)
