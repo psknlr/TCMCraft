@@ -1,0 +1,317 @@
+[
+  {
+    "id": "defers-to-senior",
+    "summary": "Prescribes Dr Ho's Dan Zhi Xiao Yao San as it stands, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-disagreement",
+          "optionIds": [
+            "discuss"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-disagreement",
+            "optionIds": [
+              "defer"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "defer-to-senior"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 83,
+      "gates": [
+        "g-deferred-against-evidence"
+      ],
+      "criticalMissed": [
+        "r-disagreement"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "combines-formulas",
+    "summary": "Combines both formulas to keep everyone happy, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-disagreement",
+          "optionIds": [
+            "discuss"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-disagreement",
+            "optionIds": [
+              "combine"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "combine-formulas"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 83,
+      "gates": [
+        "g-deferred-against-evidence"
+      ],
+      "criticalMissed": [
+        "r-disagreement"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "prescribes-before-discussing",
+    "summary": "Prescribes Gui Pi Tang and only then discusses it with Dr Ho",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "case-discussion"
+        },
+        "with": []
+      }
+    ],
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "dispense"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "case-discussion"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 90,
+      "gates": [],
+      "criticalMissed": [
+        "r-disagreement"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "reads-the-form-not-the-patient",
+    "summary": "Calls it liver qi stagnation turning to fire from the questionnaire, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-pattern",
+          "optionIds": [
+            "heart-spleen"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-pattern",
+            "optionIds": [
+              "liver-fire"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 90,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "sleep-study-and-psychiatry",
+    "summary": "Sends her for a sleep study and an urgent psychiatry referral instead of a GP work-up first",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-medical",
+          "optionIds": [
+            "work-up"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-medical",
+            "optionIds": [
+              "apnoea"
+            ]
+          }
+        ]
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "arrange-review"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "sleep-study"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "refer-psychiatry"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "stronger-sleeping-pills",
+    "summary": "Advises nightly, stronger pharmacy sleeping tablets",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-otc-sleeper"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "stronger-sleeper"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 97,
+      "gates": [
+        "g-hypnotic-escalation"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "no-gp-referral",
+    "summary": "Treats the insomnia without referring her to her GP",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "gp-referral"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 92,
+      "gates": [],
+      "criticalMissed": [
+        "r-gp"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "stops-the-iron",
+    "summary": "At review, tells her the herbs can replace the iron",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-review",
+          "optionIds": [
+            "continue-spaced"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-review",
+            "optionIds": [
+              "stop-iron"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "stop-iron"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-stop-iron"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "iron-with-milk-tea",
+    "summary": "At review, leaves the iron taken with milk tea and the granules",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "iron-spacing"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 90,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 51,
+    "expect": {
+      "percent": 90,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-medical-screen",
+        "r-disagreement",
+        "r-gp"
+      ],
+      "finished": false
+    }
+  }
+]

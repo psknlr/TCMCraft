@@ -1,0 +1,195 @@
+[
+  {
+    "id": "reads-it-as-staining",
+    "summary": "Dismisses the yellow coating as staining again, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "heat"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-followup",
+            "optionIds": [
+              "staining"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-revise"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "calls-it-infection",
+    "summary": "Reads it as a spinal infection first, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "heat"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-followup",
+            "optionIds": [
+              "infection"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-revise"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "adds-aconite",
+    "summary": "Adds aconite to push the warming",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "heat"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "add-fuzi"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-aconite-into-heat"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "keeps-the-formula",
+    "summary": "Keeps version 2 and the course unchanged before revising",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "heat"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "continue-course"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 96,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "keeps-the-heat-patches",
+    "summary": "Revises the formula but never stops the heat patches (the review objective stays open)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-heat"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 96,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "heat-formula-at-first-visit",
+    "summary": "Tries the heat-clearing formula at the first visit (intercepted)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "rx-draft"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v3-damp-heat"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-revision-intercepted"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 69,
+    "expect": {
+      "percent": 70,
+      "gates": [],
+      "criticalMissed": [
+        "r-revise"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-redflags",
+        "r-rx-version",
+        "r-revise"
+      ],
+      "finished": false
+    }
+  }
+]

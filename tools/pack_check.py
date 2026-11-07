@@ -493,6 +493,12 @@ ENUMS = {
     "domain": {"history", "examination", "investigations", "diagnosis", "management", "safety", "communication", "efficiency"},
     "role": {"nurse", "radiologist", "pathologist", "lab-tech", "attending", "pharmacist", "consultant", "receptionist", "paramedic"},
     "affect": {"calm", "anxious", "distressed", "in-pain", "drowsy", "irritable", "frightened", "breathless", "confused"},
+    "healthLiteracy": {"low", "medium", "high"},
+    "safetyFinding": {"unknown", "negative", "positive"},
+    "hairStyle": {"short", "long", "bald", "bun", "ponytail", "curly"},
+    "build": {"slim", "average", "heavy"},
+    "stature": {"infant", "child", "teen", "adult"},
+    "accessory": {"none", "glasses", "mask", "nasal-cannula", "oxygen-mask", "sling", "cap"},
     "roomKind": {"entrance", "reception", "waiting", "consult", "triage", "resus", "emergency", "ward", "icu", "operating-room", "imaging", "laboratory", "pathology", "pharmacy",
                  "nurse-station", "conference", "office", "corridor", "storage", "restroom", "garden", "build-zone", "rehabilitation", "teaching", "elevator", "stairwell"},
 }
@@ -551,6 +557,11 @@ def check_shape(c: dict, w: str) -> None:
     for key in ("personality", "speechStyle", "openingLine", "fallbackUnknown", "actingNotes"):
         check_text(p["persona"].get(key), locs, f"{w} patient.persona.{key}")
     check_enum(p["persona"].get("affect"), "affect", f"{w} patient.persona.affect")
+    check_enum(p["persona"].get("healthLiteracy"), "healthLiteracy", f"{w} patient.persona.healthLiteracy")
+    for key in ("hairStyle", "build", "stature", "accessory"):
+        check_enum(p.get("appearance", {}).get(key), key, f"{w} patient.appearance.{key}")
+    for i, h in enumerate(c.get("history", [])):
+        check_enum((h.get("safety") or {}).get("finding"), "safetyFinding", f"{w} history.{i}.safety.finding")
     collections = {"phases": ("label",), "history": ("question", "answer"), "exam": ("maneuver", "finding"), "investigations": ("name",), "interventions": ("name",),
                    "objectives": ("title", "hint"), "decisions": ("prompt", "need"), "rubric": ("text",)}
     for coll, fields in collections.items():
@@ -1170,7 +1181,11 @@ def check_expectation(path: dict, pct: float, missed: list[str], gates: list, fi
 
 
 def check_families(cases: list[dict]) -> None:
-    """Cases of one family (extensions.tcmcraft.caseFamily) share a split and every shared first-visit fact."""
+    """Cases of one family (extensions.tcmcraft.caseFamily) share a split and every shared first-visit fact.
+
+    A case's review is its last phase: items limited to that phase, and records' results for it, may differ between
+    the family's cases; everything else is the shared first visit and must be identical.
+    """
     families: dict[str, list[dict]] = {}
     for c in cases:
         fam = c.get("extensions", {}).get("tcmcraft", {}).get("caseFamily")
@@ -1181,12 +1196,12 @@ def check_families(cases: list[dict]) -> None:
         splits = {m["extensions"]["tcmcraft"].get("split") for m in members}
         if len(splits) != 1 or None in splits:
             err(w, f"cases disagree on the split: {sorted(map(str, splits))}")
-        first = {"history": lambda x: not x["id"].startswith("h-fu-"), "exam": lambda x: not x["id"].startswith("e-fu-")}
-        for coll, keep in first.items():
+        for coll in ("history", "exam"):
             seen: dict[str, tuple[str, str]] = {}
             for m in members:
+                review = m["phases"][-1]["id"]
                 for item in m[coll]:
-                    if not keep(item):
+                    if item.get("phases") and set(item["phases"]) <= {review}:
                         continue
                     key = json.dumps({k: item.get(k) for k in ("question", "answer", "maneuver", "finding", "phases")}, ensure_ascii=False, sort_keys=True)
                     if item["id"] in seen and seen[item["id"]][1] != key:
@@ -1194,8 +1209,9 @@ def check_families(cases: list[dict]) -> None:
                     seen.setdefault(item["id"], (m["id"], key))
         shared_records: dict[str, tuple[str, str]] = {}
         for m in members:
+            review = m["phases"][-1]["id"]
             for inv in m["investigations"]:
-                early = {ph: r for ph, r in inv["results"].items() if ph != "followup"}
+                early = {ph: r for ph, r in inv["results"].items() if ph != review}
                 if not early:
                     continue
                 key = json.dumps(early, ensure_ascii=False, sort_keys=True)
