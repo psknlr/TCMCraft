@@ -1,5 +1,136 @@
-# TCMCraft
+# TCMCraft — Singapore Edition
+
+**An interactive environment for longitudinal, collaborative Traditional Chinese Medicine care.** A learner or
+an AI agent works a whole encounter, and every step is recorded as state that can be checked:
+
+**Assessment → the four examinations → disease and pattern assessment → treatment planning → execution →
+follow-up and revision.**
+
+TCMCraft is a [ClinicalCraft](https://github.com/psknlr/ClinicalCraft) **content pack**, as
+[SurgeryCraft](https://github.com/psknlr/SurgeryCraft) is: plain JSON that ClinicalCraft loads through its
+`contentDirs` setting. The design is in [docs/DESIGN.md](docs/DESIGN.md), what is built so far in
+[docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md), and the engine work it still needs from ClinicalCraft in
+[docs/ENGINE_EXTENSIONS.md](docs/ENGINE_EXTENSIONS.md).
+
+## Phase 1: one complete Singapore outpatient episode
+
+### `tcm-sg-lbp-01` · 腰痛反复发作 · Recurrent low back pain · 52-year-old man
+
+The case is fictional, set in a community TCM clinic in Singapore, and runs in Mandarin or English. It has three
+phases: the first visit, the treatment, and a review a week later. Facilitator guide:
+[content/cases/tcm-sg-lbp-01/README.md](content/cases/tcm-sg-lbp-01/README.md) (spoilers).
+
+- **Inquiry and the four examinations.**
+  - Danger-sign screen.
+  - Inspection: spirit, complexion, build and tongue.
+  - Listening and smelling.
+  - Palpation: pulse and lumbar.
+  - The lower-limb neurological examination.
+- **Evidence quality.** The waiting-room kiosk's tongue photo was taken under warm light, without a colour card and
+  after a coffee. Using it uncritically leads to the wrong pattern.
+- **Disease and pattern assessment.** Biomedical danger signs come first; then the TCM pattern, with the evidence
+  for and against it.
+- **Prescription as executable state.** Version 1 goes to the dispensary. The dispensary queries it (a herb out of
+  stock and a different herb offered; an incomplete medication list). The prescriber issues version 2 — two
+  acceptable forms — and only the current version can be dispensed. The patient's aspirin is found, recorded and
+  coordinated with his doctor.
+- **Acupuncture with explicit prerequisites.** Consent → clean-needle preparation → a lying position (he has fainted
+  with needles before) → needling → withdrawal with the needles counted in and out → documentation.
+- **Longitudinal review.** The dispensing record, the session record, a sachet count, adherence, adverse effects and
+  danger signs separate incomplete adherence from a wrong assessment.
+
+Scoring:
+
+- A rubric of 17 items: 15 deterministic and 2 examiner-judged.
+- Five safety gates. Unsafe acts cap the score. Intercepted attempts are recorded separately from the final outcome.
+- The reference path scores 100 %, both acceptable prescription pathways score 100 %, and doing nothing scores 0 %.
+
+The review status is **unreviewed** (AI-assisted authoring). It needs review by a registered TCM physician and a
+family physician before teaching use.
+
+### `tcm-sg-clinic` · TCMCraft Community TCM Clinic (fictional)
+
+A single-storey clinic built from three room templates:
+
+- a waiting hall with registration and the intake kiosk;
+- three TCM consulting rooms, each with a pulse pillow, a tongue-imaging station, a records terminal and a case board;
+- an acupuncture and tuina room with two face-hole couches, an acupuncture cart, TDP lamps, a sharps bin and a
+  needle-count board;
+- an herbal dispensary: herb drawer cabinets (百子柜), a granule dispenser, decoction machines, a collection counter
+  and a restricted dispensing area;
+- a store.
+
+A bus stop is outside. There are ten new equipment types, drawn as voxel parts.
+
+## Layout
+
+```
+.clinicalcraft/settings.json          contentDirs → ../content (open this folder as a ClinicalCraft project)
+content/
+  cases/tcm-sg-lbp-01/                case.json · README.md (facilitator guide)
+  catalogs/tcmcraft-clinic.json       10 TCM equipment types, 10 materials (bilingual)
+  templates/tcm-*.json                consulting room, acupuncture and tuina room, herbal dispensary
+  facilities/tcm-sg-clinic.json       the clinic
+tools/
+  content-gen/                        Python generator that writes content/ (build.py; case_lbp.py, clinic.py)
+  pack_check.py                       offline checks: schema, integrity, lints, reference-path replay, matcher corpus, facility
+  paths/tcm-sg-lbp-01.json            alternative paths for the score table (pack_check.py --paths)
+  check.sh                            the above, then ClinicalCraft's own validate/verify/demonstration
+  clinicalcraft.rev                   the ClinicalCraft commit the pack is checked against
+  cmcr_index.py                       writes docs/CMCR_CORPUS.md from the case archive's manifests
+docs/                                 DESIGN · IMPLEMENTATION · ENGINE_EXTENSIONS · CMCR_CORPUS
+CMCR中医案例80篇/                       80 CMCR TCM case reports (ZIP; source material for later phases)
+.github/workflows/check.yml           CI: tools/check.sh against the pinned ClinicalCraft
+```
+
+## Use it with ClinicalCraft
+
+From a ClinicalCraft checkout next to this repository, at the commit in `tools/clinicalcraft.rev` or a later one:
+
+```bash
+npm run cc -- trust --cwd ../TCMCraft
+```
+
+```bash
+npm run cc -- play tcm-sg-lbp-01 --provider offline --cwd ../TCMCraft
+```
+
+```bash
+npm run cc -- serve --cwd ../TCMCraft
+```
+
+`serve` offers the clinic and the case to the web world.
+
+## Check and regenerate
+
+```bash
+python3 tools/content-gen/build.py
+```
+
+```bash
+python3 tools/pack_check.py --paths
+```
+
+```bash
+tools/check.sh ../ClinicalCraft
+```
+
+- `build.py` rewrites `content/`; `--check` only verifies that it is up to date.
+- `pack_check.py` needs no Node.js. Point `CLINICALCRAFT_DIR` at a checkout to include the built-in catalogs.
+- `check.sh` runs both, then ClinicalCraft's `facilities validate --all`, `cases validate --strict`, `cases verify`
+  and the offline demonstration (`exec --autopilot`).
+
+`pack_check.py` ports the parts of ClinicalCraft's checks that decide pass or fail. Its replay reproduces 100 % on
+ClinicalCraft's 20 built-in CMCR cases, and its matcher agrees with ClinicalCraft on all 1,579 built-in test
+utterances. ClinicalCraft itself remains the authority.
 
 ## CMCR 中医案例（80 篇）
 
-[查看压缩包与分包清单](CMCR中医案例80篇/)
+[查看压缩包与分包清单](CMCR中医案例80篇/) — 80 published TCM and integrative-care case reports in 29 ZIP files. The
+author-facing index, mapped to TCMCraft modules with the data-quality and permission notes, is
+[docs/CMCR_CORPUS.md](docs/CMCR_CORPUS.md).
+
+## Disclaimer
+
+Fictional teaching content — not medical advice. Herbs, doses and points in the cases are not for self-treatment.
+Scores measure completion of a teaching pathway, not clinical competence.

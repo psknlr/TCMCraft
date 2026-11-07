@@ -1,0 +1,2486 @@
+{
+  "schema": "clinicalcraft/equipment-catalog@1",
+  "id": "tcmcraft-clinic",
+  "name": {
+    "zh-CN": "TCMCraft 中医诊所设备",
+    "en": "TCMCraft TCM clinic equipment"
+  },
+  "materials": [
+    {
+      "id": "tcm-rosewood",
+      "color": "#6b3424",
+      "pattern": "plank",
+      "variance": 0.08
+    },
+    {
+      "id": "tcm-drawer",
+      "color": "#a0623a",
+      "pattern": "plank",
+      "variance": 0.06
+    },
+    {
+      "id": "tcm-brass",
+      "color": "#c8a24a",
+      "pattern": "flat",
+      "variance": 0.04,
+      "metalness": 0.4,
+      "roughness": 0.45
+    },
+    {
+      "id": "tcm-leather",
+      "color": "#9c6b4a",
+      "pattern": "noise",
+      "variance": 0.05,
+      "roughness": 0.7
+    },
+    {
+      "id": "tcm-chart-paper",
+      "color": "#efe2c4",
+      "pattern": "noise",
+      "variance": 0.04
+    },
+    {
+      "id": "tcm-meridian",
+      "color": "#b83a2e",
+      "pattern": "flat",
+      "variance": 0.02
+    },
+    {
+      "id": "tcm-jade",
+      "color": "#5f9e86",
+      "pattern": "flat",
+      "variance": 0.04
+    },
+    {
+      "id": "tcm-warm-lamp",
+      "color": "#f2c98a",
+      "pattern": "flat",
+      "variance": 0.02,
+      "emissive": "#ffb35c",
+      "emissiveIntensity": 0.6
+    },
+    {
+      "id": "tcm-ring-light",
+      "color": "#f4f7fb",
+      "pattern": "flat",
+      "variance": 0.01,
+      "emissive": "#ffffff",
+      "emissiveIntensity": 0.8
+    },
+    {
+      "id": "tcm-tdp-plate",
+      "color": "#c4552b",
+      "pattern": "flat",
+      "variance": 0.03,
+      "emissive": "#ff6a2a",
+      "emissiveIntensity": 0.4
+    }
+  ],
+  "equipment": [
+    {
+      "id": "tcm-herb-cabinet",
+      "name": {
+        "zh-CN": "百子柜（中药饮片斗柜）",
+        "en": "Herb drawer cabinet (百子柜)"
+      },
+      "category": "storage",
+      "description": {
+        "zh-CN": "传统中药斗柜：每个抽屉存放一味饮片或配方颗粒，抽屉面写药名，外观或名称相近的药材分开放置。",
+        "en": "A traditional herb drawer cabinet: each drawer holds one medicinal (cut crude herb or granules), labelled with its name; look-alike and sound-alike herbs are kept apart."
+      },
+      "usage": {
+        "zh-CN": "按处方的现行版本逐味取药称量，核对药名、规格与剂量；不得自行替换。",
+        "en": "Weigh out each medicinal against the current version of the prescription, checking name, form and dose; never substitute on your own."
+      },
+      "capabilities": [
+        "medications"
+      ],
+      "footprint": {
+        "w": 2.0,
+        "d": 0.55,
+        "h": 2.2
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "device",
+        "prompt": {
+          "zh-CN": "E · 取药",
+          "en": "E · Take medicinals"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "dispensary",
+        "herbs",
+        "storage"
+      ],
+      "parts": [
+        {
+          "m": "darkwood",
+          "p": [
+            0,
+            0.05,
+            0
+          ],
+          "s": [
+            2.0,
+            0.1,
+            0.55
+          ]
+        },
+        {
+          "m": "tcm-rosewood",
+          "p": [
+            0,
+            1.1,
+            -0.02
+          ],
+          "s": [
+            2.0,
+            2.0,
+            0.5
+          ]
+        },
+        {
+          "m": "darkwood",
+          "p": [
+            0,
+            2.15,
+            0
+          ],
+          "s": [
+            2.0,
+            0.1,
+            0.55
+          ]
+        },
+        {
+          "m": "tcm-meridian",
+          "p": [
+            0,
+            2.0,
+            0.24
+          ],
+          "s": [
+            0.8,
+            0.12,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.8,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.8,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.48,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.48,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.16,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.16,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.16,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.16,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.48,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.48,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.8,
+            0.35,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.8,
+            0.35,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.8,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.8,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.48,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.48,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.16,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.16,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.16,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.16,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.48,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.48,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.8,
+            0.67,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.8,
+            0.67,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.8,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.8,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.48,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.48,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.16,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.16,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.16,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.16,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.48,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.48,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.8,
+            0.99,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.8,
+            0.99,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.8,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.8,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.48,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.48,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.16,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.16,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.16,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.16,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.48,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.48,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.8,
+            1.31,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.8,
+            1.31,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.8,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.8,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.48,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.48,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            -0.16,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            -0.16,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.16,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.16,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.48,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.48,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-drawer",
+          "p": [
+            0.8,
+            1.63,
+            0.24
+          ],
+          "s": [
+            0.29,
+            0.29,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-brass",
+          "p": [
+            0.8,
+            1.63,
+            0.255
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.02
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-granule-dispenser",
+      "name": {
+        "zh-CN": "配方颗粒自动调剂机",
+        "en": "Automated granule dispenser"
+      },
+      "category": "therapy",
+      "description": {
+        "zh-CN": "按处方逐味称取单味配方颗粒、混合并分装成药包的调剂设备，记录批号与称量结果。",
+        "en": "Weighs single-herb concentrated granules for each item on the prescription, mixes them and seals them into sachets, recording batch numbers and weights."
+      },
+      "usage": {
+        "zh-CN": "扫描现行版本处方后调剂；设备拒绝已作废或待处理的版本。核对药包数量与标签后发药。",
+        "en": "Scan the current version of the prescription to start; the machine refuses a cancelled or pending version. Check the sachet count and label before supply."
+      },
+      "capabilities": [
+        "medications"
+      ],
+      "footprint": {
+        "w": 1.4,
+        "d": 0.8,
+        "h": 2.0
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "device",
+        "prompt": {
+          "zh-CN": "E · 调剂颗粒",
+          "en": "E · Dispense granules"
+        }
+      },
+      "screen": "text",
+      "tags": [
+        "tcm",
+        "dispensary",
+        "granules"
+      ],
+      "parts": [
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.05,
+            0
+          ],
+          "s": [
+            1.4,
+            0.1,
+            0.8
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            0,
+            1.05,
+            -0.02
+          ],
+          "s": [
+            1.36,
+            1.9,
+            0.74
+          ]
+        },
+        {
+          "m": "glass",
+          "p": [
+            0,
+            1.45,
+            0.36
+          ],
+          "s": [
+            1.1,
+            0.7,
+            0.02
+          ]
+        },
+        {
+          "m": "black",
+          "p": [
+            -0.35,
+            0.95,
+            0.36
+          ],
+          "s": [
+            0.36,
+            0.26,
+            0.02
+          ]
+        },
+        {
+          "m": "screen-dark",
+          "p": [
+            -0.35,
+            0.95,
+            0.372
+          ],
+          "s": [
+            0.32,
+            0.22,
+            0.004
+          ],
+          "name": "screen"
+        },
+        {
+          "m": "steel",
+          "p": [
+            0.3,
+            0.75,
+            0.33
+          ],
+          "s": [
+            0.5,
+            0.06,
+            0.1
+          ]
+        },
+        {
+          "m": "coal",
+          "p": [
+            0.3,
+            0.95,
+            0.36
+          ],
+          "s": [
+            0.4,
+            0.06,
+            0.02
+          ]
+        },
+        {
+          "m": "led-green",
+          "p": [
+            0.55,
+            1.88,
+            0.36
+          ],
+          "s": [
+            0.06,
+            0.06,
+            0.02
+          ],
+          "anim": "blink"
+        },
+        {
+          "m": "tcm-jade",
+          "p": [
+            -0.45,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        },
+        {
+          "m": "beige",
+          "p": [
+            -0.27,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        },
+        {
+          "m": "tcm-jade",
+          "p": [
+            -0.09,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        },
+        {
+          "m": "beige",
+          "p": [
+            0.09,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        },
+        {
+          "m": "tcm-jade",
+          "p": [
+            0.27,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        },
+        {
+          "m": "beige",
+          "p": [
+            0.45,
+            1.45,
+            0.33
+          ],
+          "s": [
+            0.12,
+            0.5,
+            0.04
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-decoction-machine",
+      "name": {
+        "zh-CN": "煎药机",
+        "en": "Herbal decoction machine"
+      },
+      "category": "therapy",
+      "description": {
+        "zh-CN": "密闭煎煮并自动包装汤剂的煎药机，用于饮片处方的代煎。",
+        "en": "Decocts crude-herb prescriptions in a sealed pot and packs the decoction into pouches."
+      },
+      "usage": {
+        "zh-CN": "按处方的先煎、后下要求设定程序；记录煎煮时间与包数。",
+        "en": "Set the programme for any herbs to be decocted first or added late; record the time and the number of pouches."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.6,
+        "d": 0.6,
+        "h": 1.3
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "none",
+        "prompt": {
+          "zh-CN": "E · 查看煎药机",
+          "en": "E · Check the decoction machine"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "dispensary",
+        "decoction"
+      ],
+      "parts": [
+        {
+          "m": "steel",
+          "p": [
+            0,
+            0.2,
+            0
+          ],
+          "s": [
+            0.55,
+            0.4,
+            0.55
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0,
+            0.75,
+            0
+          ],
+          "s": [
+            0.5,
+            0.7,
+            0.5
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            1.15,
+            0
+          ],
+          "s": [
+            0.52,
+            0.1,
+            0.52
+          ]
+        },
+        {
+          "m": "coal",
+          "p": [
+            0,
+            1.25,
+            0
+          ],
+          "s": [
+            0.1,
+            0.1,
+            0.1
+          ]
+        },
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.6,
+            0.27
+          ],
+          "s": [
+            0.3,
+            0.2,
+            0.02
+          ]
+        },
+        {
+          "m": "led-red",
+          "p": [
+            0.1,
+            0.6,
+            0.285
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.01
+          ],
+          "anim": "blink"
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0.2,
+            0.3,
+            0.27
+          ],
+          "s": [
+            0.06,
+            0.06,
+            0.04
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-tongue-imaging-station",
+      "name": {
+        "zh-CN": "舌象采集仪",
+        "en": "Tongue-imaging station"
+      },
+      "category": "imaging",
+      "description": {
+        "zh-CN": "带下颌托、标准环形光源和色卡的舌象采集仪，记录拍摄时间与质量校验结果。",
+        "en": "A tongue-imaging station with a chin rest, a standard ring light and a colour reference card; it records the capture time and a quality check."
+      },
+      "usage": {
+        "zh-CN": "请患者漱口、休息片刻，下颌放在托上自然伸舌；色卡入画、光源开启后拍摄，质量校验不通过即重拍。",
+        "en": "Have the patient rinse and settle, rest the chin and put the tongue out naturally; capture with the colour card in frame and the ring light on, and repeat if the quality check fails."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.7,
+        "d": 0.6,
+        "h": 1.5
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "none",
+        "prompt": {
+          "zh-CN": "E · 舌象采集仪",
+          "en": "E · Tongue-imaging station"
+        }
+      },
+      "screen": "text",
+      "tags": [
+        "tcm",
+        "inspection",
+        "tongue",
+        "imaging"
+      ],
+      "parts": [
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.03,
+            0
+          ],
+          "s": [
+            0.6,
+            0.06,
+            0.5
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            0.6,
+            -0.15
+          ],
+          "s": [
+            0.08,
+            1.1,
+            0.08
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            0,
+            1.25,
+            -0.1
+          ],
+          "s": [
+            0.5,
+            0.4,
+            0.3
+          ]
+        },
+        {
+          "m": "tcm-ring-light",
+          "p": [
+            0,
+            1.25,
+            0.06
+          ],
+          "s": [
+            0.3,
+            0.3,
+            0.02
+          ]
+        },
+        {
+          "m": "black",
+          "p": [
+            0,
+            1.25,
+            0.075
+          ],
+          "s": [
+            0.1,
+            0.1,
+            0.01
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            1.02,
+            0.08
+          ],
+          "s": [
+            0.04,
+            0.04,
+            0.12
+          ]
+        },
+        {
+          "m": "plastic",
+          "p": [
+            0,
+            1.0,
+            0.2
+          ],
+          "s": [
+            0.3,
+            0.04,
+            0.15
+          ]
+        },
+        {
+          "m": "paper",
+          "p": [
+            -0.2,
+            1.08,
+            0.18
+          ],
+          "s": [
+            0.09,
+            0.06,
+            0.005
+          ]
+        },
+        {
+          "m": "red",
+          "p": [
+            -0.23,
+            1.08,
+            0.184
+          ],
+          "s": [
+            0.02,
+            0.04,
+            0.002
+          ]
+        },
+        {
+          "m": "green",
+          "p": [
+            -0.2,
+            1.08,
+            0.184
+          ],
+          "s": [
+            0.02,
+            0.04,
+            0.002
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            -0.17,
+            1.08,
+            0.184
+          ],
+          "s": [
+            0.02,
+            0.04,
+            0.002
+          ]
+        },
+        {
+          "m": "black",
+          "p": [
+            0.3,
+            1.2,
+            -0.1
+          ],
+          "s": [
+            0.08,
+            0.3,
+            0.25
+          ]
+        },
+        {
+          "m": "screen-dark",
+          "p": [
+            0.343,
+            1.2,
+            -0.1
+          ],
+          "s": [
+            0.004,
+            0.26,
+            0.21
+          ],
+          "name": "screen"
+        }
+      ]
+    },
+    {
+      "id": "tcm-intake-kiosk",
+      "name": {
+        "zh-CN": "自助问诊机（含舌象拍照）",
+        "en": "Self-service intake kiosk (with tongue photo)"
+      },
+      "category": "computing",
+      "description": {
+        "zh-CN": "候诊区的自助问诊机：填写问卷并用顶部摄像头自拍舌象。照明为环境暖光，没有固定色卡。",
+        "en": "A waiting-area kiosk: patients fill in a questionnaire and photograph their own tongue with the camera on top. It relies on the room's warm lighting and has no fixed colour card."
+      },
+      "usage": {
+        "zh-CN": "自助机照片只作参考；颜色校验未通过时提示重拍，临床判断以诊室内的望舌或标准采集为准。",
+        "en": "Kiosk photos are for reference only; it flags a failed colour check, and clinical judgement rests on inspection in the consulting room or a standard capture."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.6,
+        "d": 0.5,
+        "h": 1.6
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "none",
+        "prompt": {
+          "zh-CN": "E · 自助问诊机",
+          "en": "E · Intake kiosk"
+        }
+      },
+      "screen": "text",
+      "tags": [
+        "tcm",
+        "intake",
+        "kiosk",
+        "waiting"
+      ],
+      "parts": [
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.03,
+            0
+          ],
+          "s": [
+            0.5,
+            0.06,
+            0.4
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            0,
+            0.6,
+            0
+          ],
+          "s": [
+            0.12,
+            1.1,
+            0.12
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            0,
+            1.35,
+            0
+          ],
+          "s": [
+            0.55,
+            0.5,
+            0.12
+          ]
+        },
+        {
+          "m": "black",
+          "p": [
+            0,
+            1.33,
+            0.065
+          ],
+          "s": [
+            0.48,
+            0.36,
+            0.01
+          ]
+        },
+        {
+          "m": "screen-dark",
+          "p": [
+            0,
+            1.33,
+            0.072
+          ],
+          "s": [
+            0.44,
+            0.32,
+            0.004
+          ],
+          "name": "screen"
+        },
+        {
+          "m": "tcm-warm-lamp",
+          "p": [
+            0,
+            1.56,
+            0.065
+          ],
+          "s": [
+            0.16,
+            0.04,
+            0.01
+          ]
+        },
+        {
+          "m": "black",
+          "p": [
+            0,
+            1.56,
+            0.071
+          ],
+          "s": [
+            0.03,
+            0.03,
+            0.004
+          ]
+        },
+        {
+          "m": "teal",
+          "p": [
+            0,
+            0.9,
+            0.065
+          ],
+          "s": [
+            0.12,
+            0.2,
+            0.01
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-acupuncture-cart",
+      "name": {
+        "zh-CN": "针灸治疗车",
+        "en": "Acupuncture cart"
+      },
+      "category": "therapy",
+      "description": {
+        "zh-CN": "针灸治疗车：一次性无菌针（多种规格）、酒精棉片、无菌棉球、弯盘、手消毒液和锐器盒。",
+        "en": "Acupuncture cart: single-use sterile needles in several sizes, alcohol swabs, sterile cotton balls, a kidney dish, hand rub and a sharps bin."
+      },
+      "usage": {
+        "zh-CN": "推到治疗床旁；手卫生后取针，进针前核对针数，出针后把每一支针投入锐器盒并与进针数核对。",
+        "en": "Wheel it to the couch; take needles after hand hygiene, note the number inserted, and on withdrawal drop every needle into the sharps bin and check the count against what went in."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.7,
+        "d": 0.5,
+        "h": 1.1
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "storage",
+        "prompt": {
+          "zh-CN": "E · 取针具",
+          "en": "E · Take needles"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "acupuncture",
+        "sharps",
+        "bedside"
+      ],
+      "portable": "cart",
+      "parts": [
+        {
+          "m": "rubber",
+          "p": [
+            -0.27,
+            0.04,
+            -0.18
+          ],
+          "s": [
+            0.08,
+            0.08,
+            0.08
+          ]
+        },
+        {
+          "m": "rubber",
+          "p": [
+            -0.27,
+            0.04,
+            0.18
+          ],
+          "s": [
+            0.08,
+            0.08,
+            0.08
+          ]
+        },
+        {
+          "m": "rubber",
+          "p": [
+            0.27,
+            0.04,
+            -0.18
+          ],
+          "s": [
+            0.08,
+            0.08,
+            0.08
+          ]
+        },
+        {
+          "m": "rubber",
+          "p": [
+            0.27,
+            0.04,
+            0.18
+          ],
+          "s": [
+            0.08,
+            0.08,
+            0.08
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            -0.3,
+            0.5,
+            -0.2
+          ],
+          "s": [
+            0.03,
+            0.8,
+            0.03
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            -0.3,
+            0.5,
+            0.2
+          ],
+          "s": [
+            0.03,
+            0.8,
+            0.03
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0.3,
+            0.5,
+            -0.2
+          ],
+          "s": [
+            0.03,
+            0.8,
+            0.03
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0.3,
+            0.5,
+            0.2
+          ],
+          "s": [
+            0.03,
+            0.8,
+            0.03
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            0.2,
+            0
+          ],
+          "s": [
+            0.62,
+            0.03,
+            0.42
+          ]
+        },
+        {
+          "m": "mint",
+          "p": [
+            0,
+            0.26,
+            0
+          ],
+          "s": [
+            0.4,
+            0.08,
+            0.3
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            0.55,
+            0
+          ],
+          "s": [
+            0.62,
+            0.03,
+            0.42
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            0.88,
+            0
+          ],
+          "s": [
+            0.66,
+            0.04,
+            0.46
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            -0.18,
+            0.93,
+            -0.1
+          ],
+          "s": [
+            0.16,
+            0.06,
+            0.1
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            0.0,
+            0.93,
+            -0.1
+          ],
+          "s": [
+            0.16,
+            0.06,
+            0.1
+          ]
+        },
+        {
+          "m": "lead-glass",
+          "p": [
+            0.15,
+            0.95,
+            0.1
+          ],
+          "s": [
+            0.1,
+            0.1,
+            0.1
+          ]
+        },
+        {
+          "m": "paper",
+          "p": [
+            0.0,
+            0.94,
+            0.12
+          ],
+          "s": [
+            0.1,
+            0.08,
+            0.1
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            -0.17,
+            0.91,
+            0.12
+          ],
+          "s": [
+            0.2,
+            0.02,
+            0.1
+          ]
+        },
+        {
+          "m": "yellow",
+          "p": [
+            0.22,
+            0.98,
+            -0.1
+          ],
+          "s": [
+            0.14,
+            0.16,
+            0.14
+          ]
+        },
+        {
+          "m": "biohazard",
+          "p": [
+            0.22,
+            1.075,
+            -0.1
+          ],
+          "s": [
+            0.15,
+            0.03,
+            0.15
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0.34,
+            0.8,
+            0
+          ],
+          "s": [
+            0.02,
+            0.03,
+            0.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-acupuncture-couch",
+      "name": {
+        "zh-CN": "针灸推拿床（带面孔）",
+        "en": "Acupuncture and tuina couch (with face hole)"
+      },
+      "category": "furniture",
+      "description": {
+        "zh-CN": "木架皮面治疗床，头端有面孔，便于俯卧针刺与推拿；铺一次性床单。",
+        "en": "A wooden-framed, leather-topped treatment couch with a face hole at the head end for prone needling and tuina, covered with a disposable sheet."
+      },
+      "usage": {
+        "zh-CN": "有晕针史或紧张的患者取卧位；俯卧时腹下垫枕，面部放入面孔。",
+        "en": "Lie down patients who are anxious or have fainted with needles before; when prone, put a pillow under the abdomen and the face in the face hole."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.75,
+        "d": 1.95,
+        "h": 0.75
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "bed",
+        "prompt": {
+          "zh-CN": "E · 治疗床",
+          "en": "E · Treatment couch"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "acupuncture",
+        "tuina",
+        "bed",
+        "patient-support"
+      ],
+      "parts": [
+        {
+          "m": "wood",
+          "p": [
+            -0.3,
+            0.3,
+            -0.85
+          ],
+          "s": [
+            0.07,
+            0.6,
+            0.07
+          ]
+        },
+        {
+          "m": "wood",
+          "p": [
+            -0.3,
+            0.3,
+            0.85
+          ],
+          "s": [
+            0.07,
+            0.6,
+            0.07
+          ]
+        },
+        {
+          "m": "wood",
+          "p": [
+            0.3,
+            0.3,
+            -0.85
+          ],
+          "s": [
+            0.07,
+            0.6,
+            0.07
+          ]
+        },
+        {
+          "m": "wood",
+          "p": [
+            0.3,
+            0.3,
+            0.85
+          ],
+          "s": [
+            0.07,
+            0.6,
+            0.07
+          ]
+        },
+        {
+          "m": "darkwood",
+          "p": [
+            0,
+            0.15,
+            0
+          ],
+          "s": [
+            0.6,
+            0.03,
+            1.6
+          ]
+        },
+        {
+          "m": "mint",
+          "p": [
+            0,
+            0.2,
+            0.5
+          ],
+          "s": [
+            0.4,
+            0.06,
+            0.3
+          ]
+        },
+        {
+          "m": "wood",
+          "p": [
+            0,
+            0.62,
+            0
+          ],
+          "s": [
+            0.72,
+            0.06,
+            1.9
+          ]
+        },
+        {
+          "m": "tcm-leather",
+          "p": [
+            0,
+            0.69,
+            0
+          ],
+          "s": [
+            0.72,
+            0.08,
+            1.9
+          ],
+          "name": "mattress"
+        },
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.732,
+            -0.78
+          ],
+          "s": [
+            0.14,
+            0.004,
+            0.1
+          ]
+        },
+        {
+          "m": "paper",
+          "p": [
+            0,
+            0.733,
+            0.1
+          ],
+          "s": [
+            0.5,
+            0.004,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-tdp-lamp",
+      "name": {
+        "zh-CN": "TDP治疗灯（神灯）",
+        "en": "TDP heat lamp"
+      },
+      "category": "therapy",
+      "description": {
+        "zh-CN": "落地式TDP治疗灯，用于针刺或推拿时局部温热。",
+        "en": "A floor-standing TDP heat lamp for local warmth during needling or tuina."
+      },
+      "usage": {
+        "zh-CN": "灯头距皮肤约30–40 cm，询问患者感觉，避免烫伤；感觉减退者慎用。",
+        "en": "Keep the head about 30–40 cm from the skin and ask how it feels to avoid burns; take care where sensation is reduced."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.6,
+        "d": 0.6,
+        "h": 1.7
+      },
+      "solid": true,
+      "interaction": {
+        "kind": "none",
+        "prompt": {
+          "zh-CN": "E · TDP灯",
+          "en": "E · TDP lamp"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "heat",
+        "therapy"
+      ],
+      "parts": [
+        {
+          "m": "coal",
+          "p": [
+            0,
+            0.04,
+            0
+          ],
+          "s": [
+            0.55,
+            0.08,
+            0.55
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0,
+            0.7,
+            -0.15
+          ],
+          "s": [
+            0.05,
+            1.25,
+            0.05
+          ]
+        },
+        {
+          "m": "chrome",
+          "p": [
+            0,
+            1.35,
+            -0.02
+          ],
+          "s": [
+            0.05,
+            0.05,
+            0.3
+          ]
+        },
+        {
+          "m": "steel",
+          "p": [
+            0,
+            1.45,
+            0.15
+          ],
+          "s": [
+            0.3,
+            0.15,
+            0.3
+          ]
+        },
+        {
+          "m": "tcm-tdp-plate",
+          "p": [
+            0,
+            1.37,
+            0.15
+          ],
+          "s": [
+            0.26,
+            0.02,
+            0.26
+          ]
+        },
+        {
+          "m": "plastic",
+          "p": [
+            0,
+            0.9,
+            -0.1
+          ],
+          "s": [
+            0.12,
+            0.12,
+            0.06
+          ]
+        },
+        {
+          "m": "led-amber",
+          "p": [
+            0,
+            0.93,
+            -0.068
+          ],
+          "s": [
+            0.03,
+            0.03,
+            0.004
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-acupoint-chart",
+      "name": {
+        "zh-CN": "经络穴位挂图",
+        "en": "Meridian and acupoint chart"
+      },
+      "category": "teaching",
+      "description": {
+        "zh-CN": "壁挂的人体经络穴位图（背面观），标出足太阳膀胱经与常用腰背部穴位。",
+        "en": "A wall chart of the channels and acupoints (posterior view), showing the bladder channel and the common points of the lower back."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 1.0,
+        "d": 0.08,
+        "h": 2.0
+      },
+      "solid": false,
+      "interaction": {
+        "kind": "none",
+        "prompt": {
+          "zh-CN": "E · 查看穴位图",
+          "en": "E · Read the acupoint chart"
+        }
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "wall",
+        "teaching"
+      ],
+      "parts": [
+        {
+          "m": "darkwood",
+          "p": [
+            0,
+            1.45,
+            -0.03
+          ],
+          "s": [
+            0.9,
+            1.1,
+            0.02
+          ]
+        },
+        {
+          "m": "tcm-chart-paper",
+          "p": [
+            0,
+            1.45,
+            -0.018
+          ],
+          "s": [
+            0.84,
+            1.04,
+            0.004
+          ]
+        },
+        {
+          "m": "skin",
+          "p": [
+            0,
+            1.45,
+            -0.014
+          ],
+          "s": [
+            0.18,
+            0.8,
+            0.004
+          ]
+        },
+        {
+          "m": "skin",
+          "p": [
+            0,
+            1.88,
+            -0.014
+          ],
+          "s": [
+            0.1,
+            0.1,
+            0.004
+          ]
+        },
+        {
+          "m": "tcm-meridian",
+          "p": [
+            -0.03,
+            1.4,
+            -0.011
+          ],
+          "s": [
+            0.008,
+            0.7,
+            0.002
+          ]
+        },
+        {
+          "m": "tcm-meridian",
+          "p": [
+            0.03,
+            1.4,
+            -0.011
+          ],
+          "s": [
+            0.008,
+            0.7,
+            0.002
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            -0.03,
+            1.25,
+            -0.009
+          ],
+          "s": [
+            0.02,
+            0.02,
+            0.002
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            0.03,
+            1.25,
+            -0.009
+          ],
+          "s": [
+            0.02,
+            0.02,
+            0.002
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            -0.03,
+            1.15,
+            -0.009
+          ],
+          "s": [
+            0.02,
+            0.02,
+            0.002
+          ]
+        },
+        {
+          "m": "blue",
+          "p": [
+            0.03,
+            1.15,
+            -0.009
+          ],
+          "s": [
+            0.02,
+            0.02,
+            0.002
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tcm-pulse-pillow",
+      "name": {
+        "zh-CN": "脉枕",
+        "en": "Pulse pillow"
+      },
+      "category": "decor",
+      "description": {
+        "zh-CN": "切脉时垫在患者腕下的小枕。",
+        "en": "A small cushion placed under the patient's wrist for pulse taking."
+      },
+      "usage": {
+        "zh-CN": "让患者手臂平放、掌心向上，腕下垫脉枕，静坐片刻后再切脉。",
+        "en": "Lay the arm flat, palm up, with the pillow under the wrist, and let the patient settle for a moment before taking the pulse."
+      },
+      "capabilities": [],
+      "footprint": {
+        "w": 0.22,
+        "d": 0.12,
+        "h": 0.08
+      },
+      "solid": false,
+      "interaction": {
+        "kind": "none"
+      },
+      "screen": "none",
+      "tags": [
+        "tcm",
+        "palpation",
+        "pulse"
+      ],
+      "portable": "handheld",
+      "parts": [
+        {
+          "m": "navy",
+          "p": [
+            0,
+            0.035,
+            0
+          ],
+          "s": [
+            0.2,
+            0.07,
+            0.1
+          ]
+        },
+        {
+          "m": "white",
+          "p": [
+            0,
+            0.072,
+            0
+          ],
+          "s": [
+            0.18,
+            0.004,
+            0.08
+          ]
+        }
+      ]
+    }
+  ]
+}

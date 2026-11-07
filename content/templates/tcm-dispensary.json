@@ -1,0 +1,222 @@
+{
+  "schema": "clinicalcraft/room-template@1",
+  "id": "tcm-dispensary",
+  "name": {
+    "zh-CN": "中药房",
+    "en": "Herbal dispensary"
+  },
+  "description": {
+    "zh-CN": "中药房：前部为发药窗口与中成药货架（公众区），柜台后为调剂区（仅限药房人员与护士）——百子柜、配方颗粒调剂机、煎药机、调剂台和审方终端。",
+    "en": "The herbal dispensary: a collection counter and a shelf of Chinese proprietary medicines at the front (public area); behind the counter the dispensing area (dispensary staff and nurses only) with herb drawer cabinets, the granule dispenser, decoction machines, a dispensing bench and the prescription-review terminal."
+  },
+  "kind": "pharmacy",
+  "size": {
+    "w": 10,
+    "d": 8
+  },
+  "floor": "tile-white",
+  "partitions": [
+    {
+      "side": "n"
+    },
+    {
+      "side": "w"
+    },
+    {
+      "side": "e"
+    },
+    {
+      "side": "s",
+      "openings": [
+        {
+          "kind": "door",
+          "width": 1.6,
+          "height": 2.6,
+          "offset": -1.5
+        }
+      ]
+    }
+  ],
+  "sign": {
+    "text": {
+      "zh-CN": "中药房 · 取药",
+      "en": "Herbal dispensary · Collection"
+    },
+    "side": "n",
+    "color": "#5f9e6e"
+  },
+  "lights": [
+    {
+      "x": -2,
+      "z": -2
+    },
+    {
+      "x": 2,
+      "z": -2
+    },
+    {
+      "x": 0,
+      "z": 2.5
+    }
+  ],
+  "placements": [
+    {
+      "id": "cabinet-1",
+      "type": "tcm-herb-cabinet",
+      "x": -3.0,
+      "z": -3.55,
+      "label": {
+        "zh-CN": "百子柜 1",
+        "en": "Herb cabinet 1"
+      }
+    },
+    {
+      "id": "cabinet-2",
+      "type": "tcm-herb-cabinet",
+      "x": -0.8,
+      "z": -3.55,
+      "label": {
+        "zh-CN": "百子柜 2",
+        "en": "Herb cabinet 2"
+      }
+    },
+    {
+      "id": "cabinet-3",
+      "type": "tcm-herb-cabinet",
+      "x": 1.4,
+      "z": -3.55,
+      "label": {
+        "zh-CN": "百子柜 3",
+        "en": "Herb cabinet 3"
+      }
+    },
+    {
+      "id": "granules",
+      "type": "tcm-granule-dispenser",
+      "x": 3.9,
+      "z": -3.425,
+      "label": {
+        "zh-CN": "配方颗粒调剂机",
+        "en": "Granule dispenser"
+      }
+    },
+    {
+      "id": "decoction-1",
+      "type": "tcm-decoction-machine",
+      "x": 4.5,
+      "z": -1.6,
+      "rot": 270,
+      "label": {
+        "zh-CN": "煎药机 1",
+        "en": "Decoction machine 1"
+      }
+    },
+    {
+      "id": "decoction-2",
+      "type": "tcm-decoction-machine",
+      "x": 4.5,
+      "z": -0.8,
+      "rot": 270,
+      "label": {
+        "zh-CN": "煎药机 2",
+        "en": "Decoction machine 2"
+      }
+    },
+    {
+      "id": "bench",
+      "type": "desk",
+      "x": 0.0,
+      "z": -1.6,
+      "label": {
+        "zh-CN": "调剂台",
+        "en": "Dispensing bench"
+      }
+    },
+    {
+      "id": "review-terminal",
+      "type": "records-terminal",
+      "x": -4.4,
+      "z": -1.0,
+      "rot": 90,
+      "label": {
+        "zh-CN": "审方终端",
+        "en": "Prescription-review terminal"
+      }
+    },
+    {
+      "id": "counter",
+      "type": "reception-desk",
+      "x": -1.5,
+      "z": 1.0,
+      "rot": 180,
+      "label": {
+        "zh-CN": "发药窗口",
+        "en": "Collection counter"
+      }
+    },
+    {
+      "id": "cpm-shelf",
+      "type": "pharmacy-shelves",
+      "x": -4.575,
+      "z": 2.5,
+      "rot": 90,
+      "label": {
+        "zh-CN": "中成药货架",
+        "en": "Chinese proprietary medicines"
+      }
+    },
+    {
+      "id": "waiting",
+      "type": "waiting-chairs",
+      "x": 2.5,
+      "z": 3.4,
+      "rot": 180
+    }
+  ],
+  "staff": [
+    {
+      "id": "dispenser",
+      "role": "pharmacist",
+      "name": {
+        "zh-CN": "林先生（中药调剂）",
+        "en": "Mr Lim (TCM dispensing)"
+      },
+      "x": -1.5,
+      "z": -0.2,
+      "rot": 0,
+      "greeting": {
+        "zh-CN": "处方开好了吗？我按现行版本审方和调剂，有问题会马上告诉你。",
+        "en": "Prescription ready? I review and fill the current version, and I'll tell you straight away if anything needs sorting."
+      }
+    }
+  ],
+  "zones": [
+    {
+      "id": "dispensing",
+      "name": {
+        "zh-CN": "中药调剂区",
+        "en": "Dispensing area"
+      },
+      "rect": {
+        "x": 0,
+        "z": -1.75,
+        "w": 10,
+        "d": 4.5
+      },
+      "roles": [
+        "pharmacist",
+        "nurse"
+      ]
+    }
+  ],
+  "capabilities": [
+    "medications",
+    "records"
+  ],
+  "tags": [
+    "tcm",
+    "dispensary",
+    "pharmacy",
+    "restricted"
+  ]
+}

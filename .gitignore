@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.clinicalcraft/settings.local.json
+assets/local/

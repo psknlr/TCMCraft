@@ -1,0 +1,632 @@
+{
+  "schema": "clinicalcraft/facility@1",
+  "id": "tcm-sg-clinic",
+  "name": {
+    "zh-CN": "TCMCraft 社区中医诊所（虚构，新加坡）",
+    "en": "TCMCraft Community TCM Clinic (fictional, Singapore)"
+  },
+  "description": {
+    "zh-CN": "虚构的新加坡社区中医诊所，一层：入口候诊大厅（挂号台、自助问诊机）、三间中医诊室（含一间复诊与远程会诊室）、针灸推拿治疗室、中药房（发药窗口与限制进入的调剂区）和物品库房。附近有巴士站。",
+    "en": "A fictional single-storey community TCM clinic in Singapore: an entrance waiting hall (registration and an intake kiosk), three TCM consulting rooms (one used for reviews and teleconsultation), an acupuncture and tuina room, the herbal dispensary (a collection counter and a restricted dispensing area) and a store. A bus stop is close by."
+  },
+  "bounds": {
+    "minX": -30,
+    "maxX": 30,
+    "minZ": -20,
+    "maxZ": 28
+  },
+  "spawn": {
+    "x": -5,
+    "z": 20,
+    "yaw": 0
+  },
+  "environment": {
+    "sky": "#9fc9d9",
+    "fog": {
+      "color": "#c3d8d6",
+      "near": 40,
+      "far": 90
+    },
+    "sunIntensity": 3.2
+  },
+  "catalogs": [
+    "materials",
+    "core-furniture",
+    "core-clinical",
+    "core-diagnostics",
+    "tcmcraft-clinic"
+  ],
+  "terrain": {
+    "ground": "grass",
+    "paths": [
+      {
+        "x": -5,
+        "z": 13,
+        "w": 10,
+        "d": 6,
+        "material": "stone"
+      },
+      {
+        "x": -5,
+        "z": 21,
+        "w": 3,
+        "d": 10,
+        "material": "path"
+      },
+      {
+        "x": 0,
+        "z": 25,
+        "w": 50,
+        "d": 3,
+        "material": "asphalt"
+      }
+    ],
+    "trees": [
+      {
+        "x": -22,
+        "z": -14,
+        "h": 7
+      },
+      {
+        "x": -10,
+        "z": -15,
+        "h": 6
+      },
+      {
+        "x": 4,
+        "z": -15,
+        "h": 7
+      },
+      {
+        "x": 18,
+        "z": -14,
+        "h": 6
+      },
+      {
+        "x": -22,
+        "z": 4,
+        "h": 8
+      },
+      {
+        "x": 22,
+        "z": 2,
+        "h": 7
+      },
+      {
+        "x": -16,
+        "z": 16,
+        "h": 6
+      },
+      {
+        "x": 8,
+        "z": 16,
+        "h": 7
+      },
+      {
+        "x": 20,
+        "z": 14,
+        "h": 8
+      },
+      {
+        "x": -26,
+        "z": 20,
+        "h": 6
+      }
+    ],
+    "flowers": {
+      "count": 40,
+      "seed": 6502,
+      "exclude": [
+        {
+          "x": 0,
+          "z": 0,
+          "w": 34,
+          "d": 22
+        },
+        {
+          "x": -5,
+          "z": 17,
+          "w": 10,
+          "d": 14
+        },
+        {
+          "x": 0,
+          "z": 25,
+          "w": 52,
+          "d": 4
+        }
+      ]
+    },
+    "horizon": {
+      "count": 36,
+      "radius": 52
+    },
+    "clouds": 16
+  },
+  "buildings": [
+    {
+      "id": "clinic",
+      "name": {
+        "zh-CN": "TCMCraft 社区中医诊所",
+        "en": "TCMCraft Community TCM Clinic"
+      },
+      "rect": {
+        "x": 0,
+        "z": 0,
+        "w": 32,
+        "d": 20
+      },
+      "floor": "floor",
+      "walls": {
+        "height": 4.5,
+        "base": "teal",
+        "body": "cream",
+        "top": "wood",
+        "thickness": 0.35
+      },
+      "openings": [
+        {
+          "side": "s",
+          "offset": -5,
+          "width": 3,
+          "height": 3,
+          "kind": "double-door"
+        },
+        {
+          "side": "s",
+          "offset": -12,
+          "width": 3,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "s",
+          "offset": 1,
+          "width": 3,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "n",
+          "offset": -13,
+          "width": 2,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "n",
+          "offset": -7,
+          "width": 2,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "n",
+          "offset": 1,
+          "width": 3,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "n",
+          "offset": 9,
+          "width": 2,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        },
+        {
+          "side": "w",
+          "offset": 6,
+          "width": 3,
+          "height": 1.6,
+          "sill": 1.0,
+          "kind": "window"
+        }
+      ],
+      "roof": {
+        "material": "roof"
+      },
+      "sign": {
+        "text": {
+          "zh-CN": "TCMCraft 社区中医诊所",
+          "en": "TCMCraft Community TCM Clinic"
+        },
+        "side": "s",
+        "color": "#8b2e2e"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "corridor",
+      "name": {
+        "zh-CN": "诊所走廊",
+        "en": "Clinic corridor"
+      },
+      "kind": "corridor",
+      "building": "clinic",
+      "rect": {
+        "x": 0,
+        "z": 0,
+        "w": 32,
+        "d": 4
+      },
+      "floor": "lino",
+      "lights": [
+        {
+          "x": -12,
+          "z": 0
+        },
+        {
+          "x": -4,
+          "z": 0
+        },
+        {
+          "x": 4,
+          "z": 0
+        },
+        {
+          "x": 12,
+          "z": 0
+        }
+      ]
+    },
+    {
+      "id": "lobby",
+      "name": {
+        "zh-CN": "候诊大厅",
+        "en": "Waiting hall"
+      },
+      "kind": "reception",
+      "building": "clinic",
+      "rect": {
+        "x": -5,
+        "z": 6,
+        "w": 22,
+        "d": 8
+      },
+      "floor": "stone",
+      "sign": {
+        "text": {
+          "zh-CN": "挂号 · 候诊",
+          "en": "Registration · Waiting"
+        },
+        "side": "n",
+        "color": "#8b2e2e"
+      },
+      "lights": [
+        {
+          "x": -12,
+          "z": 6
+        },
+        {
+          "x": -5,
+          "z": 6
+        },
+        {
+          "x": 2,
+          "z": 6
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "name": {
+        "zh-CN": "物品库房",
+        "en": "Store"
+      },
+      "kind": "storage",
+      "building": "clinic",
+      "rect": {
+        "x": 14,
+        "z": -6,
+        "w": 4,
+        "d": 8
+      },
+      "floor": "lino",
+      "partitions": [
+        {
+          "side": "s",
+          "openings": [
+            {
+              "kind": "door",
+              "width": 1.4,
+              "height": 2.6,
+              "offset": 0
+            }
+          ]
+        }
+      ],
+      "lights": [
+        {
+          "x": 14,
+          "z": -6
+        }
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "reception-desk",
+      "type": "reception-desk",
+      "x": -12,
+      "z": 6.0,
+      "label": {
+        "zh-CN": "挂号台",
+        "en": "Registration"
+      },
+      "room": "lobby"
+    },
+    {
+      "id": "kiosk",
+      "type": "tcm-intake-kiosk",
+      "x": 2.5,
+      "z": 3.0,
+      "label": {
+        "zh-CN": "自助问诊机（舌象拍照）",
+        "en": "Intake kiosk (tongue photo)"
+      },
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-1",
+      "type": "waiting-chairs",
+      "x": -9.6,
+      "z": 5.2,
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-2",
+      "type": "waiting-chairs",
+      "x": -7.6,
+      "z": 5.2,
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-3",
+      "type": "waiting-chairs",
+      "x": -2.4,
+      "z": 5.2,
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-4",
+      "type": "waiting-chairs",
+      "x": -0.4,
+      "z": 5.2,
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-5",
+      "type": "waiting-chairs",
+      "x": -2.4,
+      "z": 7.0,
+      "room": "lobby"
+    },
+    {
+      "id": "waiting-6",
+      "type": "waiting-chairs",
+      "x": -0.4,
+      "z": 7.0,
+      "room": "lobby"
+    },
+    {
+      "id": "water",
+      "type": "water-dispenser",
+      "x": 4.5,
+      "z": 8.8,
+      "room": "lobby"
+    },
+    {
+      "id": "plant-1",
+      "type": "potted-plant",
+      "x": -15.2,
+      "z": 9.2,
+      "room": "lobby"
+    },
+    {
+      "id": "plant-2",
+      "type": "potted-plant",
+      "x": 5.2,
+      "z": 9.2,
+      "room": "lobby"
+    },
+    {
+      "id": "sanitizer",
+      "type": "hand-sanitizer",
+      "x": -3.2,
+      "z": 9.4,
+      "room": "lobby"
+    },
+    {
+      "id": "store-cabinet-1",
+      "type": "cabinet",
+      "x": 15.4,
+      "z": -8.5,
+      "rot": 270,
+      "room": "store"
+    },
+    {
+      "id": "store-cabinet-2",
+      "type": "cabinet",
+      "x": 15.4,
+      "z": -7.2,
+      "rot": 270,
+      "room": "store"
+    },
+    {
+      "id": "store-locker",
+      "type": "locker",
+      "x": 15.4,
+      "z": -5.6,
+      "rot": 270,
+      "room": "store"
+    },
+    {
+      "id": "store-bin",
+      "type": "trash-bin",
+      "x": 12.8,
+      "z": -9.2,
+      "room": "store"
+    },
+    {
+      "id": "bus-stop",
+      "type": "bus-stop",
+      "x": 8,
+      "z": 22.5
+    },
+    {
+      "id": "bench",
+      "type": "garden-bench",
+      "x": -12,
+      "z": 15
+    },
+    {
+      "id": "lamp-1",
+      "type": "lamp-post",
+      "x": -8,
+      "z": 12
+    },
+    {
+      "id": "lamp-2",
+      "type": "lamp-post",
+      "x": -2,
+      "z": 12
+    }
+  ],
+  "patientSlots": [],
+  "staff": [
+    {
+      "id": "receptionist",
+      "role": "receptionist",
+      "name": {
+        "zh-CN": "前台",
+        "en": "Reception"
+      },
+      "room": "lobby",
+      "x": -12,
+      "z": 4.9,
+      "rot": 180,
+      "greeting": {
+        "zh-CN": "您好！请先在自助机填问卷、拍舌象，然后在这里挂号。华语、英语都可以。",
+        "en": "Hello! Please fill in the questionnaire and take the tongue photo at the kiosk, then register here. Mandarin or English is fine."
+      }
+    },
+    {
+      "id": "senior-physician",
+      "role": "attending",
+      "name": {
+        "zh-CN": "何医生（资深中医师）",
+        "en": "Dr Ho (senior TCM physician)"
+      },
+      "room": "consult-3",
+      "x": 8.0,
+      "z": -4.5,
+      "rot": 180,
+      "greeting": {
+        "zh-CN": "有病例想讨论？先说说你掌握了哪些证据，各自可靠到什么程度。",
+        "en": "Want to talk a case through? Start with the evidence you have and how far each piece can be trusted."
+      }
+    }
+  ],
+  "signs": [
+    {
+      "text": {
+        "zh-CN": "中医诊所 · 入口",
+        "en": "TCM clinic · Entrance"
+      },
+      "x": -7.5,
+      "y": 2.4,
+      "z": 14.5,
+      "rot": 0,
+      "width": 2.6,
+      "color": "#8b2e2e",
+      "post": true
+    }
+  ],
+  "outdoorRegion": {
+    "zh-CN": "诊所外",
+    "en": "Outside the clinic"
+  },
+  "instances": [
+    {
+      "id": "consult-1",
+      "template": "tcm-consult-room",
+      "x": -13,
+      "z": -6,
+      "overrides": {
+        "name": {
+          "zh-CN": "中医诊室 1",
+          "en": "TCM consulting room 1"
+        },
+        "sign": {
+          "text": {
+            "zh-CN": "诊室 1",
+            "en": "Room 1"
+          },
+          "side": "n",
+          "color": "#8b2e2e"
+        }
+      }
+    },
+    {
+      "id": "consult-2",
+      "template": "tcm-consult-room",
+      "x": -7,
+      "z": -6,
+      "overrides": {
+        "name": {
+          "zh-CN": "中医诊室 2",
+          "en": "TCM consulting room 2"
+        },
+        "sign": {
+          "text": {
+            "zh-CN": "诊室 2",
+            "en": "Room 2"
+          },
+          "side": "n",
+          "color": "#8b2e2e"
+        }
+      }
+    },
+    {
+      "id": "treatment",
+      "template": "tcm-treatment-room",
+      "x": 1,
+      "z": -6
+    },
+    {
+      "id": "consult-3",
+      "template": "tcm-consult-room",
+      "x": 9,
+      "z": -6,
+      "overrides": {
+        "name": {
+          "zh-CN": "复诊与远程会诊室",
+          "en": "Review and teleconsultation room"
+        },
+        "sign": {
+          "text": {
+            "zh-CN": "复诊 · 远程会诊",
+            "en": "Review · Teleconsultation"
+          },
+          "side": "n",
+          "color": "#8b2e2e"
+        }
+      }
+    },
+    {
+      "id": "dispensary",
+      "template": "tcm-dispensary",
+      "x": 11,
+      "z": 6,
+      "rot": 180
+    }
+  ]
+}
