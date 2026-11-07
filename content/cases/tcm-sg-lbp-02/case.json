@@ -1,0 +1,6364 @@
+{
+  "schema": "clinicalcraft/case@1",
+  "id": "tcm-sg-lbp-02",
+  "version": "0.1.0",
+  "title": {
+    "zh-CN": "腰痛反复发作 · 52岁男性 · 复诊B",
+    "en": "Recurrent low back pain · 52-year-old man · review B"
+  },
+  "summary": {
+    "zh-CN": "一位五十多岁的上班族来到新加坡的社区中医诊所，腰痛反复发作。完成评估与治疗，并在一周后复诊。",
+    "en": "A working man in his fifties comes to a community TCM clinic in Singapore with back pain that keeps coming back. Assess and treat him, then see him again a week later."
+  },
+  "specialty": [
+    "traditional-chinese-medicine",
+    "acupuncture",
+    "musculoskeletal"
+  ],
+  "difficulty": 3,
+  "setting": "outpatient",
+  "facility": "tcm-sg-clinic",
+  "locales": [
+    "zh-CN",
+    "en"
+  ],
+  "estimatedMinutes": 45,
+  "learningOutcomes": [
+    {
+      "zh-CN": "筛查复发性腰痛的危险信号与神经根受累体征，并有理据地判断目前无需影像或转诊（NICE NG59）。",
+      "en": "Screen recurrent low back pain for danger signs and nerve-root involvement, and decide with reasons that imaging and referral are not needed now (NICE NG59)."
+    },
+    {
+      "zh-CN": "评估多模态证据的质量：识别染苔或光线不良的舌象照片，在辨证前取得可靠舌象。",
+      "en": "Judge the quality of multimodal evidence: recognise a stained or poorly lit tongue photo and obtain a reliable view before using it for pattern differentiation."
+    },
+    {
+      "zh-CN": "综合四诊，将寒湿痹阻兼肝肾不足与湿热、瘀血腰痛相鉴别，并说明支持与反对证据。",
+      "en": "Differentiate cold-damp obstruction with liver–kidney insufficiency from damp-heat and blood-stasis lumbago using all four examinations, stating the evidence for and against."
+    },
+    {
+      "zh-CN": "把药房的审方意见作为版本化的处方变更来处理，并在调剂前核实并处理同时服用的抗血小板药，与主诊医生沟通。",
+      "en": "Resolve a dispensary query as a versioned prescription change, and reconcile a concurrent antiplatelet medicine before supply, keeping the patient's doctor informed."
+    },
+    {
+      "zh-CN": "按知情同意、洁净针刺、防晕针体位与进出针核对的顺序安全完成一次针灸（WHO针灸实践基准）。",
+      "en": "Deliver an acupuncture session with consent, clean needle technique, a position that guards against fainting, and needles counted in and out (WHO acupuncture benchmarks)."
+    },
+    {
+      "zh-CN": "复诊时识别疑似马尾综合征的新征象，停止中医治疗并立即安排急诊转诊，附完整的书面交接（包括抗血小板药、止痛药及其最后剂量）。",
+      "en": "At review, recognise new signs of suspected cauda equina syndrome, stop TCM treatment and arrange immediate emergency transfer with a complete written handover (including antiplatelet and analgesic medicines and their last doses)."
+    }
+  ],
+  "tags": [
+    "tcmcraft",
+    "singapore",
+    "synthetic",
+    "four-examinations",
+    "herbal-prescribing",
+    "acupuncture",
+    "longitudinal"
+  ],
+  "provenance": {
+    "kind": "synthetic",
+    "authors": [
+      "TCMCraft contributors"
+    ],
+    "license": "CC BY 4.0 (case text); see the repository for the software licence",
+    "notes": {
+      "zh-CN": "虚构教学病例，不基于任何真实患者；人物为化名，诊所、价格与产品均为虚构。新加坡执业背景（中医管理委员会、卫生科学局分类）仅作为情境设定，不构成法规意见。",
+      "en": "A fictional teaching case, not based on any real patient; the person is a pseudonym and the clinic, prices and products are fictional. The Singapore practice setting (TCM Practitioners Board, Health Sciences Authority classes) is context only, not regulatory advice."
+    },
+    "review": {
+      "status": "unreviewed",
+      "reviewedAt": "2026-11-06",
+      "reviewers": [],
+      "guidelines": [
+        "NICE NG59 (2016, updated 2020)",
+        "ACP 2017 low back pain",
+        "WHO benchmarks for the practice of acupuncture (2020)",
+        "WHO international standard terminologies on TCM (2022)",
+        "Chinese Pharmacopoeia 2020 ed. Vol I"
+      ],
+      "notes": {
+        "zh-CN": "人工智能辅助编写，对照所引指南撰写，但尚未经编辑审核或执业医师审核；用于教学前请由注册中医师和家庭医生审核。",
+        "en": "AI-assisted authoring written against the cited guidance, but not yet editorially reviewed or reviewed by a licensed clinician — have a registered TCM physician and a family physician review it before teaching use."
+      }
+    }
+  },
+  "disclaimer": {
+    "zh-CN": "虚构教学病例，不构成医疗建议；方中药物与剂量不得用于自行用药。",
+    "en": "Fictional teaching case — not medical advice; the herbs and doses are not for self-medication."
+  },
+  "patient": {
+    "displayName": {
+      "zh-CN": "陈伟良（化名）",
+      "en": "Mr Tan Wee Liang (pseudonym)"
+    },
+    "age": 52,
+    "sex": "male",
+    "weightKg": 78,
+    "heightCm": 170,
+    "chiefComplaint": {
+      "zh-CN": "腰痛反复3年，此次加重3周",
+      "en": "Recurrent low back pain for 3 years, worse for 3 weeks"
+    },
+    "triageNote": {
+      "zh-CN": "52岁男性，10:20挂号，自行步入。已在候诊区完成自助问诊问卷和舌象拍照。习惯说华语，英语也可以。带来一张综合诊所的用药清单。",
+      "en": "52-year-old man, registered at 10:20, walked in unaided. Completed the intake questionnaire and the kiosk tongue photo in the waiting area. Prefers Mandarin, comfortable in English. Brought a printout from his polyclinic."
+    },
+    "tags": [
+      {
+        "zh-CN": "腰痛",
+        "en": "Low back pain"
+      },
+      {
+        "zh-CN": "反复发作",
+        "en": "Recurrent"
+      },
+      {
+        "zh-CN": "社区中医",
+        "en": "Community TCM"
+      }
+    ],
+    "persona": {
+      "personality": {
+        "zh-CN": "务实、讲道理的中年主管，工作忙，有点担心但愿意配合；不喜欢多吃西药。",
+        "en": "A practical, reasonable supervisor in his fifties — busy, a little worried, willing to cooperate; would rather not take more Western pills."
+      },
+      "speechStyle": {
+        "zh-CN": "华语为主，偶尔夹一两个英文词或新加坡口语，句子短，直来直去。",
+        "en": "Mostly Mandarin with the odd English word or Singapore turn of phrase; short, direct sentences. In English he speaks plain Singapore English."
+      },
+      "healthLiteracy": "medium",
+      "affect": "in-pain",
+      "openingLine": {
+        "zh-CN": "医生你好。我腰又痛了，这次三个星期还没好，想看看中医有没有办法。",
+        "en": "Hello, doctor. My back's playing up again — three weeks now and it's not settling, so I thought I'd see what TCM can do."
+      },
+      "fallbackUnknown": {
+        "zh-CN": "这个我不太清楚，医生。",
+        "en": "I'm not sure about that, doctor."
+      },
+      "concerns": [
+        {
+          "zh-CN": "是不是椎间盘突出？会不会要开刀？",
+          "en": "Is it a slipped disc? Will I need an operation?"
+        },
+        {
+          "zh-CN": "中药会不会跟我的心脏药冲突？",
+          "en": "Will the herbs clash with my heart medicine?"
+        },
+        {
+          "zh-CN": "要来几次？我还要上班的。",
+          "en": "How many times must I come? I still have to work."
+        }
+      ],
+      "actingNotes": {
+        "zh-CN": "腰部僵硬，坐下站起都慢，动作谨慎。被问到用药时只说血压药和胆固醇药，直到被具体问到阿司匹林或“血稀”的药才想起来。对再次针灸有点紧张，主动提出要躺着扎。只陈述病例中有的内容。",
+        "en": "Stiff in the back, slow and careful getting up and sitting down. Asked about medicines, he names only the blood-pressure and cholesterol pills until asked specifically about aspirin or blood thinners. A little nervous about acupuncture after last time, and asks to lie down for it. States only what the case contains."
+      }
+    },
+    "appearance": {
+      "skin": "#d9b38c",
+      "hair": "#2b2622",
+      "hairStyle": "short",
+      "shirt": "#5b7fa3",
+      "pants": "#3a3f4a",
+      "build": "heavy",
+      "stature": "adult",
+      "gown": false,
+      "accessory": "glasses"
+    },
+    "posture": "sitting"
+  },
+  "phases": [
+    {
+      "id": "consult",
+      "label": {
+        "zh-CN": "初诊：问诊与四诊",
+        "en": "First visit: history and the four examinations"
+      },
+      "description": {
+        "zh-CN": "社区中医诊所的初诊：问诊、四诊合参与安全筛查。",
+        "en": "First visit at the community TCM clinic: history, the four examinations and the safety screen."
+      },
+      "learnerSwitchable": true
+    },
+    {
+      "id": "treatment",
+      "label": {
+        "zh-CN": "初诊：处方、审方与针灸",
+        "en": "First visit: prescription, review and acupuncture"
+      },
+      "description": {
+        "zh-CN": "开方并处理药房的审方意见，完成首次针灸。",
+        "en": "Prescribe, resolve the dispensary's query and give the first acupuncture session."
+      },
+      "learnerSwitchable": false,
+      "enterWhen": {
+        "all": [
+          {
+            "decided": "d-disease"
+          },
+          {
+            "decided": "d-pattern"
+          }
+        ]
+      }
+    },
+    {
+      "id": "followup",
+      "label": {
+        "zh-CN": "一周后复诊",
+        "en": "Review one week later"
+      },
+      "description": {
+        "zh-CN": "一周后回到诊室：疗效、执行情况与不良反应。",
+        "en": "Back in the consulting room a week later: response, what was actually done, and adverse effects."
+      },
+      "learnerSwitchable": false,
+      "enterWhen": {
+        "all": [
+          {
+            "intervened": "dispense",
+            "valid": true
+          },
+          {
+            "intervened": "acu-remove",
+            "valid": true
+          },
+          {
+            "intervened": "arrange-followup"
+          }
+        ]
+      },
+      "location": {
+        "roomKind": "consult"
+      }
+    }
+  ],
+  "initialPhase": "consult",
+  "clock": {
+    "mode": "static",
+    "realtimeScale": 0
+  },
+  "history": [
+    {
+      "id": "h-presenting",
+      "topic": "presenting-complaint",
+      "question": {
+        "zh-CN": "今天哪里不舒服，怎么来看了？",
+        "en": "What brings you in today?"
+      },
+      "answer": {
+        "zh-CN": "腰又痛起来了，这次差不多三个星期，比以前几次都难受，所以想来看看中医。",
+        "en": "My lower back's aching again — about three weeks this time, and worse than the other times, so I thought I'd try TCM."
+      },
+      "keywords": {
+        "zh-CN": [
+          "哪里不舒服",
+          "来看什么",
+          "怎么来看",
+          "主要问题",
+          "什么问题",
+          "这次多久",
+          "痛了多久",
+          "今天来"
+        ],
+        "en": [
+          "whatbringsyou",
+          "main problem",
+          "the trouble",
+          "how long this time",
+          "whatsthematter",
+          "trouble today",
+          "reason for visit"
+        ]
+      },
+      "disclosure": "volunteer",
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-onset",
+      "topic": "hpi",
+      "question": {
+        "zh-CN": "这次是怎么开始的？以前也这样痛过吗？",
+        "en": "How did this episode start, and has it happened before?"
+      },
+      "answer": {
+        "zh-CN": "三个星期前帮我妈妈搬一个柜子，第二天早上就开始痛。其实三年前第一次痛，之后一年发两三次，每次贴膏药两到四个星期就好。",
+        "en": "Three weeks ago I helped my mum shift a cupboard, and the next morning it started. The first time was three years ago — since then it comes two or three times a year, and each time it settles in two to four weeks with plasters."
+      },
+      "keywords": {
+        "zh-CN": [
+          "怎么开始",
+          "什么诱因",
+          "以前痛过",
+          "第一次痛",
+          "发作过",
+          "反复发作",
+          "搬重物",
+          "扭到"
+        ],
+        "en": [
+          "whendiditstart",
+          "howdiditstart",
+          "began",
+          "previous episodes",
+          "happened before",
+          "first time",
+          "trigger",
+          "lifting",
+          "howitstarted"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-site",
+      "topic": "pain",
+      "question": {
+        "zh-CN": "具体痛在哪里？会不会往别的地方放射？",
+        "en": "Where exactly is the pain, and does it spread anywhere?"
+      },
+      "answer": {
+        "zh-CN": "就是腰下面这一圈，两边都痛，右边更明显。有时候会窜到右边屁股，但不会过膝盖。",
+        "en": "Right across the low back, both sides, more on the right. Sometimes it goes into my right buttock, but never past the knee."
+      },
+      "keywords": {
+        "zh-CN": [
+          "痛在哪",
+          "哪个位置",
+          "具体位置",
+          "放射",
+          "窜到",
+          "往下走",
+          "哪一边",
+          "臀部"
+        ],
+        "en": [
+          "whereisthepain",
+          "wheredoesithurt",
+          "spread",
+          "radiate",
+          "radiation",
+          "buttock",
+          "leg pain",
+          "which side"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-character",
+      "topic": "pain",
+      "question": {
+        "zh-CN": "是什么样的痛？早上起来会不会僵？",
+        "en": "What does the pain feel like, and are you stiff in the mornings?"
+      },
+      "answer": {
+        "zh-CN": "是一种沉沉的酸痛，像背着一包湿沙一样。早上起床腰很僵，要活动半个钟头左右才松开。",
+        "en": "A heavy, dull ache — like carrying a bag of wet sand. In the morning my back is stiff, and it takes about half an hour of moving around to loosen up."
+      },
+      "keywords": {
+        "zh-CN": [
+          "什么样的痛",
+          "怎么个痛法",
+          "痛的性质",
+          "酸痛",
+          "刺痛",
+          "胀痛",
+          "晨僵",
+          "早上僵"
+        ],
+        "en": [
+          "itfeellike",
+          "kind of pain",
+          "describe the pain",
+          "sharp",
+          "dull",
+          "stiff",
+          "morning stiffness",
+          "character"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-modifiers",
+      "topic": "pain",
+      "question": {
+        "zh-CN": "什么情况下会加重，什么能让它好一点？",
+        "en": "What makes it worse, and what eases it?"
+      },
+      "answer": {
+        "zh-CN": "在公司冷气房里坐久了最惨，下雨天也比较痛。洗个热水澡、起来走一走、贴个暖贴就舒服一点。",
+        "en": "Sitting for a long time in the freezing air-con at work is the worst, and rainy days are worse too. A hot shower, walking around or a heat patch makes it better."
+      },
+      "keywords": {
+        "zh-CN": [
+          "加重",
+          "什么时候更痛",
+          "缓解",
+          "舒服些",
+          "减轻",
+          "天气",
+          "热敷",
+          "吹冷气"
+        ],
+        "en": [
+          "worse",
+          "better",
+          "eases",
+          "relieve",
+          "aggravate",
+          "weather",
+          "heat",
+          "rainy days",
+          "air con"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-severity",
+      "topic": "pain",
+      "question": {
+        "zh-CN": "如果0分是不痛、10分是最痛，现在大概几分？",
+        "en": "If 0 is no pain and 10 the worst imaginable, how bad is it now?"
+      },
+      "answer": {
+        "zh-CN": "平时大概六分。晚上翻身的时候会痛醒。",
+        "en": "About a six most of the day. Turning over in bed wakes me up."
+      },
+      "keywords": {
+        "zh-CN": [
+          "几分",
+          "多痛",
+          "疼痛评分",
+          "严重程度",
+          "痛得厉害吗",
+          "零到十"
+        ],
+        "en": [
+          "how bad",
+          "severity",
+          "pain score",
+          "outoften",
+          "outof10",
+          "rate the pain"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-redflag-neuro",
+      "topic": "ros",
+      "question": {
+        "zh-CN": "腿脚有没有麻木、刺痛或者没力气？",
+        "en": "Any numbness, tingling or weakness in your legs or feet?"
+      },
+      "answer": {
+        "zh-CN": "没有，腿脚都不麻，也没有没力气，走路、上楼梯都正常。",
+        "en": "No — no numbness or pins and needles, no weakness. Walking and stairs are fine."
+      },
+      "keywords": {
+        "zh-CN": [
+          "麻木",
+          "发麻",
+          "刺痛感",
+          "没力气",
+          "无力",
+          "脚麻",
+          "针刺感",
+          "下肢感觉"
+        ],
+        "en": [
+          "numb",
+          "numbness",
+          "tingling",
+          "pins and needles",
+          "weakness",
+          "weak legs",
+          "foot drop",
+          "sensation"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-redflag-ce",
+      "topic": "ros",
+      "question": {
+        "zh-CN": "小便、大便控制得住吗？两腿之间、肛门周围有没有发麻？",
+        "en": "Any trouble controlling your bladder or bowels, or numbness between your legs or around the back passage?"
+      },
+      "answer": {
+        "zh-CN": "没有，大小便都控制得住，也没有解不出来，下面也没有麻的感觉。",
+        "en": "No — I've no trouble holding my water or my bowels, no trouble going, and no numbness down there."
+      },
+      "keywords": {
+        "zh-CN": [
+          "大小便能控制",
+          "控制大小便",
+          "大小便失禁",
+          "控制不住",
+          "控制得住",
+          "会阴",
+          "马鞍区",
+          "肛门周围",
+          "尿不出",
+          "排尿困难"
+        ],
+        "en": [
+          "bladder",
+          "incontinence",
+          "saddle",
+          "perineum",
+          "retention",
+          "back passage",
+          "control your bowels",
+          "bowel control"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "颜色",
+          "夜尿",
+          "起夜",
+          "大便稀",
+          "成形"
+        ],
+        "en": [
+          "colour",
+          "nocturia",
+          "loose",
+          "consistency",
+          "formed"
+        ]
+      },
+      "safety": {
+        "datum": "cauda-equina",
+        "finding": "negative"
+      },
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-redflag-systemic",
+      "topic": "ros",
+      "question": {
+        "zh-CN": "最近有没有发烧、体重莫名下降、晚上躺着休息也痛？以前得过癌症吗？",
+        "en": "Any fever, unexplained weight loss or pain at night that rest doesn't ease? Have you ever had cancer?"
+      },
+      "answer": {
+        "zh-CN": "没有发烧，体重也没掉。躺下休息会好一点，只是翻身的时候会痛醒。从来没得过癌症，也没长期吃过类固醇。",
+        "en": "No fever, no weight loss. Lying down rests it — it's only turning over that wakes me. Never had cancer, and I've never been on steroids for long."
+      },
+      "keywords": {
+        "zh-CN": [
+          "发烧",
+          "发热",
+          "体重下降",
+          "消瘦",
+          "夜间痛",
+          "癌症",
+          "肿瘤",
+          "类固醇",
+          "盗汗"
+        ],
+        "en": [
+          "fever",
+          "weight loss",
+          "cancer",
+          "tumour",
+          "night pain",
+          "steroids",
+          "red flags",
+          "redflags",
+          "night sweats"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-trauma",
+      "topic": "hpi",
+      "question": {
+        "zh-CN": "有没有摔倒或者受过外伤？",
+        "en": "Have you had a fall or any injury to your back?"
+      },
+      "answer": {
+        "zh-CN": "没有摔，也没撞到，就是那次搬柜子。",
+        "en": "No fall, no knocks — just that cupboard."
+      },
+      "keywords": {
+        "zh-CN": [
+          "摔倒",
+          "跌倒",
+          "外伤",
+          "受伤",
+          "撞到",
+          "车祸"
+        ],
+        "en": [
+          "fall",
+          "fell",
+          "injury",
+          "injured",
+          "trauma",
+          "accident"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-coldheat",
+      "topic": "associated-symptoms",
+      "question": {
+        "zh-CN": "平时怕冷还是怕热？喜欢喝冷的还是热的？",
+        "en": "Do you feel the cold or the heat more, and do you prefer hot or cold drinks?"
+      },
+      "answer": {
+        "zh-CN": "我比较怕冷，尤其腰和膝盖，冷气一吹就不舒服。喜欢喝热的，冰的我不太敢喝。不会觉得身上发热。",
+        "en": "I feel the cold more, especially in my back and knees — the air-con really gets to me. I like hot drinks; I steer clear of iced ones. I don't feel hot or feverish."
+      },
+      "keywords": {
+        "zh-CN": [
+          "怕冷",
+          "怕热",
+          "寒热",
+          "冷热",
+          "喜热饮",
+          "喜冷饮",
+          "手脚冰凉",
+          "畏寒"
+        ],
+        "en": [
+          "feel the cold",
+          "feelthecold",
+          "feel hot",
+          "hot or cold",
+          "chilly",
+          "hot drinks",
+          "iced drinks",
+          "prefer warm"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "发烧",
+          "来之前"
+        ],
+        "en": [
+          "fever",
+          "just before"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-knees-fatigue",
+      "topic": "associated-symptoms",
+      "question": {
+        "zh-CN": "膝盖有没有酸软？平时容易累吗？",
+        "en": "Do your knees feel sore and weak, and do you tire easily?"
+      },
+      "answer": {
+        "zh-CN": "膝盖站久了会酸酸软软的。下午三四点就觉得很累。",
+        "en": "My knees go sore and wobbly if I stand for long. By mid-afternoon I'm worn out."
+      },
+      "keywords": {
+        "zh-CN": [
+          "腰膝酸软",
+          "膝盖酸",
+          "膝盖软",
+          "容易累",
+          "疲劳",
+          "乏力",
+          "没精神"
+        ],
+        "en": [
+          "knees",
+          "sore knees",
+          "tired",
+          "tire easily",
+          "fatigue",
+          "energy",
+          "worn out"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "麻木",
+          "麻"
+        ],
+        "en": [
+          "numb",
+          "tingling"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-urine-stool",
+      "topic": "associated-symptoms",
+      "question": {
+        "zh-CN": "小便颜色怎么样，晚上要起夜吗？大便成形吗？",
+        "en": "What is your urine like, do you get up at night to pass water, and are your stools formed?"
+      },
+      "answer": {
+        "zh-CN": "小便清清的，晚上起来一次。大便偏软，喝了冰的东西有时候会拉稀。",
+        "en": "Urine's clear; I get up once at night. Stools are on the soft side, sometimes loose after iced drinks."
+      },
+      "keywords": {
+        "zh-CN": [
+          "小便颜色",
+          "尿色",
+          "夜尿",
+          "起夜",
+          "大便怎么样",
+          "大便稀",
+          "大便成形",
+          "二便"
+        ],
+        "en": [
+          "urine colour",
+          "nocturia",
+          "getupatnight",
+          "stools",
+          "loose",
+          "consistency",
+          "bowel habit",
+          "pass water"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "失禁",
+          "控制",
+          "会阴",
+          "麻"
+        ],
+        "en": [
+          "incontinen",
+          "control",
+          "saddle",
+          "numb"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-sleep",
+      "topic": "associated-symptoms",
+      "question": {
+        "zh-CN": "睡眠怎么样？",
+        "en": "How are you sleeping?"
+      },
+      "answer": {
+        "zh-CN": "大概睡六个钟头，翻身的时候腰痛会醒。",
+        "en": "About six hours. The pain wakes me when I turn over."
+      },
+      "keywords": {
+        "zh-CN": [
+          "睡眠",
+          "睡得好",
+          "睡觉",
+          "失眠",
+          "睡不着",
+          "睡几个钟头"
+        ],
+        "en": [
+          "sleep",
+          "sleeping",
+          "insomnia",
+          "wakeupatnight"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-appetite",
+      "topic": "associated-symptoms",
+      "question": {
+        "zh-CN": "胃口怎么样，会口渴吗？",
+        "en": "How is your appetite, and are you thirsty?"
+      },
+      "answer": {
+        "zh-CN": "胃口还可以，不怎么口渴。",
+        "en": "Appetite's fine, and I'm not particularly thirsty."
+      },
+      "keywords": {
+        "zh-CN": [
+          "胃口",
+          "食欲",
+          "口渴",
+          "口干",
+          "饭量"
+        ],
+        "en": [
+          "appetite",
+          "thirst",
+          "thirsty",
+          "dry mouth",
+          "eating well"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-food-before",
+      "topic": "other",
+      "question": {
+        "zh-CN": "来之前吃过或喝过什么吗？",
+        "en": "Did you eat or drink anything just before you came in?"
+      },
+      "answer": {
+        "zh-CN": "在楼下咖啡店喝了一杯咖啡，加炼奶的，还吃了两片咖椰吐司，大概二十分钟前。",
+        "en": "A kopi — with condensed milk — and two slices of kaya toast at the coffee shop downstairs, maybe twenty minutes ago."
+      },
+      "keywords": {
+        "zh-CN": [
+          "来之前",
+          "吃过什么",
+          "喝过什么",
+          "喝了什么",
+          "刚刚吃",
+          "咖啡",
+          "喝茶",
+          "吃早餐"
+        ],
+        "en": [
+          "just before",
+          "before you came",
+          "eat",
+          "eaten",
+          "breakfast",
+          "coffee",
+          "tea",
+          "drinkanything"
+        ]
+      },
+      "disclosure": "specific",
+      "excludeKeywords": {
+        "zh-CN": [
+          "酒",
+          "冷的",
+          "热的"
+        ],
+        "en": [
+          "alcohol",
+          "beer",
+          "iced",
+          "hot drinks"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-pmh",
+      "topic": "pmh",
+      "question": {
+        "zh-CN": "以前有什么病吗？有没有住过院、做过手术？",
+        "en": "What medical problems have you had in the past — any hospital stays or operations?"
+      },
+      "answer": {
+        "zh-CN": "有高血压六年，胆固醇也高。四年前胸口痛，心脏放了一个支架，之后都还好，每年回心脏专科复诊一次。没做过别的手术。",
+        "en": "Blood pressure for six years, and high cholesterol. Four years ago I had chest pain and they put a stent in my heart; I've been fine since and see the heart specialist once a year. No other operations."
+      },
+      "keywords": {
+        "zh-CN": [
+          "以前有什么病",
+          "既往病史",
+          "慢性病",
+          "高血压",
+          "心脏病",
+          "住过院",
+          "做过手术",
+          "身体有什么病"
+        ],
+        "en": [
+          "past medical",
+          "medical history",
+          "medicalhistory",
+          "conditions",
+          "illnesses",
+          "operations",
+          "surgery",
+          "heart problems"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "家里",
+          "家族",
+          "爸爸",
+          "妈妈"
+        ],
+        "en": [
+          "family",
+          "father",
+          "mother",
+          "parents"
+        ]
+      },
+      "required": true,
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-meds",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "现在在吃什么药？",
+        "en": "What medicines are you taking at the moment?"
+      },
+      "answer": {
+        "zh-CN": "早上一粒降血压的，氨氯地平5毫克；晚上一粒降胆固醇的，阿托伐他汀20毫克。腰痛就去药房买膏药贴。",
+        "en": "A blood-pressure pill in the morning — amlodipine 5 mg — and a cholesterol one at night, atorvastatin 20 mg. For the back I buy medicated plasters from the pharmacy."
+      },
+      "keywords": {
+        "zh-CN": [
+          "吃什么药",
+          "哪些药",
+          "在吃的药",
+          "吃的药",
+          "用药",
+          "药物",
+          "长期吃药",
+          "西药"
+        ],
+        "en": [
+          "medicines",
+          "medications",
+          "tablets",
+          "pills",
+          "prescriptions",
+          "regular meds"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "过敏",
+          "阿司匹林",
+          "抗凝",
+          "抗血小板",
+          "血稀",
+          "中药",
+          "草药",
+          "保健品",
+          "补品",
+          "颗粒",
+          "冲剂",
+          "药包"
+        ],
+        "en": [
+          "allerg",
+          "aspirin",
+          "thinner",
+          "thinning",
+          "anticoag",
+          "antiplatelet",
+          "herbal",
+          "supplement",
+          "tonic",
+          "sachet",
+          "granule"
+        ]
+      },
+      "required": true,
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-antithrombotic",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "有没有吃阿司匹林或者其他抗血小板、抗凝的药？",
+        "en": "Do you take aspirin or any other blood-thinning medicine?"
+      },
+      "answer": {
+        "zh-CN": "啊，对，有一粒小小的阿司匹林，100毫克，每天早上吃，放支架以后就一直吃。我刚才忘了说，以为那算是心脏的一部分。",
+        "en": "Oh — yes, the small aspirin, 100 milligrams every morning, ever since the stent. Sorry, I forgot; I think of it as part of the heart thing."
+      },
+      "keywords": {
+        "zh-CN": [
+          "阿司匹林",
+          "抗凝",
+          "抗血小板",
+          "血稀",
+          "稀血",
+          "华法林",
+          "氯吡格雷",
+          "血液稀释"
+        ],
+        "en": [
+          "aspirin",
+          "blood thinner",
+          "bloodthinner",
+          "blood thinning",
+          "anticoagulant",
+          "antiplatelet",
+          "warfarin",
+          "clopidogrel"
+        ]
+      },
+      "disclosure": "specific",
+      "safety": {
+        "datum": "antithrombotic",
+        "finding": "positive"
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-herbs-supplements",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "最近有没有吃中药、保健品或者补品？",
+        "en": "Are you taking any herbal remedies, supplements or tonics?"
+      },
+      "answer": {
+        "zh-CN": "现在没有。以前偶尔吃鱼油，这几个月都没吃了。",
+        "en": "Not at the moment. I used to take fish oil now and then, but not for months."
+      },
+      "keywords": {
+        "zh-CN": [
+          "中药",
+          "草药",
+          "保健品",
+          "补品",
+          "鱼油",
+          "凉茶",
+          "维他命"
+        ],
+        "en": [
+          "herbal",
+          "herbs",
+          "supplements",
+          "tonic",
+          "vitamins",
+          "fish oil",
+          "traditional medicine"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-allergies",
+      "topic": "allergies",
+      "question": {
+        "zh-CN": "对什么药物或者食物过敏吗？",
+        "en": "Are you allergic to any medicines or foods?"
+      },
+      "answer": {
+        "zh-CN": "没有，西药没有过敏，以前吃中药也没有出过问题。",
+        "en": "No — no allergies to any medicine, and herbs have never given me trouble."
+      },
+      "keywords": {
+        "zh-CN": [
+          "过敏",
+          "过敏史",
+          "药物过敏",
+          "起疹子"
+        ],
+        "en": [
+          "allergy",
+          "allergies",
+          "allergic",
+          "reaction to medicine"
+        ]
+      },
+      "disclosure": "on-ask",
+      "safety": {
+        "datum": "allergy",
+        "finding": "negative"
+      },
+      "required": true,
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-prior-acu",
+      "topic": "other",
+      "question": {
+        "zh-CN": "以前针灸过吗？当时有没有不舒服？",
+        "en": "Have you had acupuncture before, and did anything go wrong?"
+      },
+      "answer": {
+        "zh-CN": "两年前在别的诊所扎过一次，坐着扎的。扎到一半我头晕、出冷汗，差点晕过去，他们马上拔针让我躺下，过一会就好了。那天我没吃早餐。",
+        "en": "Once, two years ago, at another clinic — sitting up. Halfway through I went giddy and broke into a cold sweat, nearly fainted; they took the needles out and laid me down, and I was fine after a while. I hadn't had breakfast that day."
+      },
+      "keywords": {
+        "zh-CN": [
+          "针灸过",
+          "扎过针",
+          "以前针灸",
+          "晕针",
+          "针灸的经验",
+          "拔罐",
+          "刮痧"
+        ],
+        "en": [
+          "acupuncture before",
+          "needles before",
+          "previous acupuncture",
+          "fainted",
+          "fainting",
+          "cupping",
+          "tried acupuncture"
+        ]
+      },
+      "disclosure": "specific",
+      "safety": {
+        "datum": "needle-syncope",
+        "finding": "positive"
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-occupation",
+      "topic": "social",
+      "question": {
+        "zh-CN": "你做什么工作？",
+        "en": "What do you do for work?"
+      },
+      "answer": {
+        "zh-CN": "我在物流公司当运营主管，大部分时间坐在控制室看屏幕，冷气很强；有时候也要搬东西。每个星期大概上两个夜班。",
+        "en": "I'm an operations supervisor at a logistics company — mostly sitting in the control room watching screens, with very strong air-con, and sometimes I lift things. About two night shifts a week."
+      },
+      "keywords": {
+        "zh-CN": [
+          "做什么工作",
+          "职业",
+          "做什么的",
+          "上班",
+          "夜班",
+          "工作环境"
+        ],
+        "en": [
+          "job",
+          "occupation",
+          "foraliving",
+          "shifts",
+          "employer",
+          "work as"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "影响",
+          "还能"
+        ],
+        "en": [
+          "affect",
+          "manage"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-living",
+      "topic": "social",
+      "question": {
+        "zh-CN": "家里跟谁住？",
+        "en": "Who do you live with at home?"
+      },
+      "answer": {
+        "zh-CN": "跟太太和两个孩子住组屋，有电梯。我妈妈住在附近。",
+        "en": "With my wife and our two teenagers in an HDB flat — there's a lift. My mum lives nearby."
+      },
+      "keywords": {
+        "zh-CN": [
+          "跟谁住",
+          "住在哪",
+          "家里几个人",
+          "组屋",
+          "住的地方"
+        ],
+        "en": [
+          "livewith",
+          "livingwith",
+          "household",
+          "whoisathome",
+          "housing"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-smoking-alcohol",
+      "topic": "social",
+      "question": {
+        "zh-CN": "抽烟喝酒吗？",
+        "en": "Do you smoke or drink alcohol?"
+      },
+      "answer": {
+        "zh-CN": "放支架以后就戒烟了。周末偶尔喝一两罐啤酒。",
+        "en": "I stopped smoking after the stent. A can or two of beer at weekends, sometimes."
+      },
+      "keywords": {
+        "zh-CN": [
+          "抽烟",
+          "吸烟",
+          "喝酒",
+          "饮酒",
+          "啤酒",
+          "烟酒"
+        ],
+        "en": [
+          "smoke",
+          "smoking",
+          "cigarettes",
+          "alcohol",
+          "beer"
+        ]
+      },
+      "disclosure": "on-ask",
+      "excludeKeywords": {
+        "zh-CN": [
+          "咖啡",
+          "来之前"
+        ],
+        "en": [
+          "coffee",
+          "just before"
+        ]
+      },
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-exercise",
+      "topic": "functional",
+      "question": {
+        "zh-CN": "平时有运动吗？",
+        "en": "Do you exercise regularly?"
+      },
+      "answer": {
+        "zh-CN": "没有固定运动。以前会跑步，这几年没跑了，周末偶尔散散步。",
+        "en": "Nothing regular. I used to jog, but not for years; I go for a walk at weekends sometimes."
+      },
+      "keywords": {
+        "zh-CN": [
+          "运动",
+          "锻炼",
+          "跑步",
+          "散步",
+          "健身"
+        ],
+        "en": [
+          "exercise",
+          "sport",
+          "jogging",
+          "gym",
+          "physical activity"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-function",
+      "topic": "functional",
+      "question": {
+        "zh-CN": "腰痛对日常生活和工作影响有多大？",
+        "en": "How much is the back affecting your daily life and work?"
+      },
+      "answer": {
+        "zh-CN": "工作还能做，但不敢搬重的。早上穿袜子很辛苦。走路半个钟头没问题。",
+        "en": "I can still work, but I don't dare lift anything heavy. Putting on socks in the morning is a struggle. I can walk half an hour fine."
+      },
+      "keywords": {
+        "zh-CN": [
+          "影响",
+          "日常生活",
+          "生活自理",
+          "穿袜子",
+          "还能上班",
+          "能走多久"
+        ],
+        "en": [
+          "daily life",
+          "affecting",
+          "function",
+          "daytoday",
+          "cope",
+          "manage at work"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-family",
+      "topic": "family",
+      "question": {
+        "zh-CN": "家里人有什么病吗？",
+        "en": "Does anything run in your family?"
+      },
+      "answer": {
+        "zh-CN": "我爸爸老了以后腰也不好。其他的我不太清楚。",
+        "en": "My father had a bad back when he got older. Nothing else I know of."
+      },
+      "keywords": {
+        "zh-CN": [
+          "家族史",
+          "家里人",
+          "父母",
+          "遗传",
+          "家人有什么病"
+        ],
+        "en": [
+          "family history",
+          "familyhistory",
+          "run in the family",
+          "parents",
+          "inherited"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-ice",
+      "topic": "ice",
+      "question": {
+        "zh-CN": "你自己担心是什么问题？希望这次看诊能帮到什么？",
+        "en": "What are you worried this might be, and what are you hoping for from today?"
+      },
+      "answer": {
+        "zh-CN": "我怕是椎间盘突出，要开刀。我希望能继续上班，西药能少吃就少吃。还有，中药会不会跟我的心脏药冲突？",
+        "en": "I'm scared it's a slipped disc and I'll need an operation. I want to keep working, and I'd rather not take more Western pills. And — will herbs clash with my heart medicines?"
+      },
+      "keywords": {
+        "zh-CN": [
+          "担心",
+          "顾虑",
+          "希望",
+          "期望",
+          "最怕",
+          "有什么想法",
+          "想达到"
+        ],
+        "en": [
+          "worried",
+          "worry",
+          "concerns",
+          "hoping",
+          "expectations",
+          "ideas",
+          "afraid"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-language",
+      "topic": "other",
+      "question": {
+        "zh-CN": "你习惯用华语还是英语沟通？药袋上的说明看得懂吗？",
+        "en": "Which language do you prefer, Mandarin or English, and can you read the medicine labels?"
+      },
+      "answer": {
+        "zh-CN": "华语英语都可以，华语比较自在。中文英文的标签我都看得懂。",
+        "en": "Either is fine; Mandarin is more comfortable. I can read labels in English and Chinese."
+      },
+      "keywords": {
+        "zh-CN": [
+          "华语",
+          "英语",
+          "语言",
+          "翻译",
+          "看得懂",
+          "中文"
+        ],
+        "en": [
+          "language",
+          "mandarin",
+          "english",
+          "interpreter",
+          "translate",
+          "read labels"
+        ]
+      },
+      "disclosure": "on-ask",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-blood-tests",
+      "topic": "pmh",
+      "question": {
+        "zh-CN": "最近有没有验过血，肝肾功能怎么样？",
+        "en": "Have you had any recent blood tests — kidney or liver function?"
+      },
+      "answer": {
+        "zh-CN": "去年综合诊所有抽血，结果我不清楚，他们没跟我说什么。",
+        "en": "The polyclinic took blood last year, but I don't know the results — they didn't tell me anything about them."
+      },
+      "keywords": {
+        "zh-CN": [
+          "验血",
+          "抽血",
+          "血液检查",
+          "肝功能",
+          "肾功能",
+          "化验"
+        ],
+        "en": [
+          "blood test",
+          "bloods",
+          "kidney function",
+          "liver function",
+          "lab tests"
+        ]
+      },
+      "disclosure": "unknown",
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-bruising",
+      "topic": "pmh",
+      "question": {
+        "zh-CN": "平时容易瘀青或出血吗？",
+        "en": "Do you bruise or bleed easily?"
+      },
+      "answer": {
+        "zh-CN": "不算吧，这几年好像比较容易瘀青一点。没有流血，大便也没有黑的。",
+        "en": "Not really — maybe I bruise a little more easily these few years. No bleeding, and no black stools."
+      },
+      "keywords": {
+        "zh-CN": [
+          "瘀青",
+          "淤青",
+          "容易出血",
+          "流血",
+          "黑便",
+          "牙龈出血"
+        ],
+        "en": [
+          "bruise",
+          "bruising",
+          "bleed easily",
+          "bleeding",
+          "black stools",
+          "gums"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-status",
+      "topic": "hpi",
+      "question": {
+        "zh-CN": "这一个星期腰怎么样了？",
+        "en": "How has your back been this past week?"
+      },
+      "answer": {
+        "zh-CN": "针灸完那几天好了一些。可是前天上班搬一箱货，腰里像有什么东西“啪”一下，之后痛就往两条腿下面窜，左边更厉害，一直到脚底。现在痛到八分。",
+        "en": "It was better for a few days after the needles. But the day before yesterday I lifted a carton at work and felt something go in my back — since then the pain shoots down both legs, worse on the left, right down to the sole of my foot. It's an eight now."
+      },
+      "keywords": {
+        "zh-CN": [
+          "这个星期",
+          "这一周",
+          "这周",
+          "好点了吗",
+          "有没有好转",
+          "上次以后",
+          "上周以后"
+        ],
+        "en": [
+          "this week",
+          "past week",
+          "any better",
+          "progress",
+          "since last time",
+          "since last week"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "supersedes": [
+        "h-presenting",
+        "h-severity",
+        "h-character"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-onset-time",
+      "topic": "hpi",
+      "question": {
+        "zh-CN": "下面发麻和小便困难具体是什么时候开始的？",
+        "en": "When exactly did the numbness down below and the trouble passing urine start?"
+      },
+      "answer": {
+        "zh-CN": "下面发麻是昨天下午四点多发现的；小便难是今天早上开始的。",
+        "en": "I noticed the numbness yesterday at about four in the afternoon; the trouble passing water started this morning."
+      },
+      "keywords": {
+        "zh-CN": [
+          "什么时候开始",
+          "几点开始",
+          "开始的时间",
+          "什么时候发现",
+          "具体时间"
+        ],
+        "en": [
+          "exactly when",
+          "what time",
+          "since when",
+          "when exactly"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-redflags",
+      "topic": "ros",
+      "question": {
+        "zh-CN": "现在腿脚有没有麻木无力？大小便正常吗？",
+        "en": "Any numbness or weakness in your legs now, and are your bladder and bowels normal?"
+      },
+      "answer": {
+        "zh-CN": "两只脚都麻，左脚有点没力，走路会拖。昨天开始，上完厕所擦的时候下面麻麻的，像隔着一层棉花。今天早上小便要用力才出得来，尿得很细。没有尿裤子。",
+        "en": "Both feet are numb, and my left foot is weak — it drags when I walk. Since yesterday, when I wipe after the toilet it feels numb down there, like through cotton wool. This morning I had to strain to pass water, and the stream was thin. I haven't wet myself."
+      },
+      "keywords": {
+        "zh-CN": [
+          "现在腿",
+          "现在大小便",
+          "现在有没有麻",
+          "新的麻木"
+        ],
+        "en": [
+          "new weakness",
+          "new numbness",
+          "newnumbness",
+          "anything new in your legs"
+        ]
+      },
+      "disclosure": "on-ask",
+      "safety": {
+        "datum": "cauda-equina-review",
+        "finding": "positive"
+      },
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "supersedes": [
+        "h-redflag-neuro",
+        "h-redflag-ce"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-bowel",
+      "topic": "ros",
+      "question": {
+        "zh-CN": "上一次大便是什么时候？有没有控制不住或者没感觉？",
+        "en": "When did you last open your bowels, and can you feel and control them normally?"
+      },
+      "answer": {
+        "zh-CN": "昨天早上大过一次，之后就没有了。没有控制不住。",
+        "en": "Yesterday morning, not since. No accidents."
+      },
+      "keywords": {
+        "zh-CN": [
+          "上一次大便",
+          "排便",
+          "大便最后",
+          "大便有没有"
+        ],
+        "en": [
+          "open your bowels",
+          "last bowel",
+          "bowels opened"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-meds-last",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "这两天吃了哪些药？阿司匹林最后一次是什么时候吃的？",
+        "en": "What medicines have you taken in the last two days, and when was your last aspirin?"
+      },
+      "answer": {
+        "zh-CN": "阿司匹林今天早上七点吃了，颗粒今天早上也吃了。昨晚痛得受不了，在药房买了布洛芬，吃了两粒，一粒200毫克。",
+        "en": "Aspirin at seven this morning, and the granules this morning too. Last night the pain was too much, so I bought ibuprofen at the pharmacy and took two — 200 milligrams each."
+      },
+      "keywords": {
+        "zh-CN": [
+          "最后一次吃",
+          "上一次吃药",
+          "这两天吃了",
+          "止痛药",
+          "布洛芬"
+        ],
+        "en": [
+          "last dose",
+          "last took",
+          "painkillers",
+          "ibuprofen",
+          "taken since"
+        ]
+      },
+      "disclosure": "on-ask",
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "supersedes": [
+        "h-meds",
+        "h-antithrombotic"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-adherence",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "颗粒冲剂有没有按时吃？",
+        "en": "Have you been taking the granules as we agreed?"
+      },
+      "answer": {
+        "zh-CN": "早晚各一包，每天都有吃，前天开始痛得厉害也还是照吃。",
+        "en": "One in the morning and one in the evening, every day — even since the pain got bad."
+      },
+      "keywords": {
+        "zh-CN": [
+          "按时吃",
+          "颗粒",
+          "冲剂",
+          "漏吃",
+          "吃了几包"
+        ],
+        "en": [
+          "granules",
+          "sachets",
+          "missed doses",
+          "taking the herbs"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "h-fu-adverse",
+      "topic": "other",
+      "question": {
+        "zh-CN": "治疗以后有没有什么不舒服或者副作用？",
+        "en": "Any side effects or problems since the treatment?"
+      },
+      "answer": {
+        "zh-CN": "膝盖后面那个小瘀青已经淡了。胃没有不舒服，没有出血。",
+        "en": "That little bruise behind my knee has faded. No stomach upset, no bleeding."
+      },
+      "keywords": {
+        "zh-CN": [
+          "副作用",
+          "不良反应",
+          "治疗以后",
+          "胃不舒服"
+        ],
+        "en": [
+          "side effects",
+          "sideeffects",
+          "problems since",
+          "upset stomach"
+        ]
+      },
+      "disclosure": "on-ask",
+      "phases": [
+        "followup"
+      ],
+      "supersedes": [
+        "h-bruising"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    }
+  ],
+  "exam": [
+    {
+      "id": "e-general",
+      "system": "general",
+      "maneuver": {
+        "zh-CN": "望神色形态：观察精神、面色、体型与步态",
+        "en": "Inspect spirit, complexion, build and gait"
+      },
+      "keywords": {
+        "zh-CN": [
+          "望诊",
+          "望神",
+          "面色",
+          "步态",
+          "体型",
+          "一般情况"
+        ],
+        "en": [
+          "inspect",
+          "inspection",
+          "general appearance",
+          "gait",
+          "complexion",
+          "lookathim"
+        ]
+      },
+      "finding": {
+        "zh-CN": "神清，精神可；面色略淡少华；体型偏胖；行走时腰部略僵，弯腰谨慎，坐下时用手撑扶椅子。",
+        "en": "Alert and engaged; complexion slightly pale and lustreless; heavy-set; walks with a slightly stiff lower back, bends cautiously and pushes on the chair arms to sit."
+      },
+      "abnormal": true,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-vitals",
+      "system": "vitals",
+      "maneuver": {
+        "zh-CN": "测量血压、脉率、体温和体重",
+        "en": "Measure blood pressure, pulse rate, temperature and weight"
+      },
+      "keywords": {
+        "zh-CN": [
+          "生命体征",
+          "血压",
+          "体温",
+          "体重",
+          "测量"
+        ],
+        "en": [
+          "vital signs",
+          "vitals",
+          "blood pressure",
+          "temperature",
+          "weight",
+          "bmi"
+        ]
+      },
+      "finding": {
+        "zh-CN": "血压136/84 mmHg，脉率72次/分、齐，体温36.6℃，呼吸14次/分；体重78 kg，身高170 cm（BMI 27.0）。",
+        "en": "Blood pressure 136/84 mmHg, pulse 72/min and regular, temperature 36.6 °C, respiratory rate 14/min; weight 78 kg, height 170 cm (BMI 27.0)."
+      },
+      "abnormal": false,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-voice-odour",
+      "system": "general",
+      "maneuver": {
+        "zh-CN": "闻诊：听声音与呼吸，嗅气味",
+        "en": "Listening and smelling: voice, breathing and odour"
+      },
+      "keywords": {
+        "zh-CN": [
+          "闻诊",
+          "听声音",
+          "嗅气味",
+          "气味",
+          "口气",
+          "呼吸声"
+        ],
+        "en": [
+          "listen",
+          "listening",
+          "smell",
+          "odour",
+          "voice",
+          "breath"
+        ]
+      },
+      "finding": {
+        "zh-CN": "语声清晰，音量正常；呼吸平顺，无咳嗽；口中有咖啡味，无特殊体味。",
+        "en": "Voice clear and of normal strength; breathing quiet and even, no cough; coffee on his breath, no unusual body odour."
+      },
+      "abnormal": false,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-tongue",
+      "system": "heent",
+      "maneuver": {
+        "zh-CN": "望舌：请患者漱口后，在自然光下直接观察舌质与舌苔",
+        "en": "Inspect the tongue directly in daylight after he rinses his mouth"
+      },
+      "keywords": {
+        "zh-CN": [
+          "舌",
+          "舌象",
+          "舌苔",
+          "舌质",
+          "看舌头",
+          "伸舌头",
+          "望舌"
+        ],
+        "en": [
+          "tongue",
+          "coating",
+          "inspect the tongue",
+          "stick out"
+        ]
+      },
+      "finding": {
+        "zh-CN": "舌质淡，舌体稍胖大，边有齿痕；苔薄白腻，润；漱口后舌面无染色；舌下络脉无明显迂曲。",
+        "en": "Tongue body pale and slightly enlarged with tooth marks along the edges; coating thin, white and greasy, moist; no staining once rinsed; sublingual veins not distended."
+      },
+      "abnormal": true,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-pulse",
+      "system": "cardiovascular",
+      "maneuver": {
+        "zh-CN": "切脉：寸关尺三部，浮中沉取",
+        "en": "Take the radial pulse at cun, guan and chi with light, medium and deep pressure"
+      },
+      "keywords": {
+        "zh-CN": [
+          "切脉",
+          "把脉",
+          "号脉",
+          "脉象",
+          "摸脉",
+          "诊脉"
+        ],
+        "en": [
+          "pulse",
+          "radial pulse",
+          "pulse diagnosis",
+          "feel the pulse",
+          "take the pulse"
+        ]
+      },
+      "finding": {
+        "zh-CN": "脉沉细，两尺脉弱；脉率约72次/分，节律齐。",
+        "en": "Pulse deep and thready, weakest at both chi positions; rate about 72/min, regular."
+      },
+      "abnormal": true,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-lumbar-palp",
+      "system": "musculoskeletal",
+      "maneuver": {
+        "zh-CN": "腰部望诊与触诊：棘突、椎旁肌与皮温",
+        "en": "Inspect and palpate the lumbar spine, paraspinal muscles and skin temperature"
+      },
+      "keywords": {
+        "zh-CN": [
+          "触诊腰部",
+          "按压腰",
+          "腰部压痛",
+          "摸腰",
+          "按诊",
+          "叩击痛"
+        ],
+        "en": [
+          "palpate",
+          "palpation",
+          "tenderness",
+          "press on",
+          "spinal tenderness",
+          "lumbar exam"
+        ]
+      },
+      "finding": {
+        "zh-CN": "L3–S1两侧椎旁肌紧张、压痛，右侧明显；棘突无压痛、无叩击痛；腰部皮温偏凉，无红肿。",
+        "en": "Paravertebral muscles tense and tender on both sides from L3 to S1, right more than left; no spinous-process tenderness or percussion pain; skin of the lower back cool to touch, no swelling or redness."
+      },
+      "abnormal": true,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-lumbar-rom",
+      "system": "musculoskeletal",
+      "maneuver": {
+        "zh-CN": "检查腰椎活动度",
+        "en": "Check lumbar range of movement"
+      },
+      "keywords": {
+        "zh-CN": [
+          "活动度",
+          "弯腰",
+          "前屈",
+          "后伸",
+          "侧弯",
+          "转腰"
+        ],
+        "en": [
+          "range of movement",
+          "range of motion",
+          "bend forward",
+          "flexion",
+          "extension"
+        ]
+      },
+      "finding": {
+        "zh-CN": "前屈受限，指尖仅达小腿中段并诱发酸痛；后伸轻度痛；右侧屈稍受限。",
+        "en": "Forward flexion limited — fingertips to mid-shin, reproducing the ache; extension mildly painful; side flexion to the right slightly reduced."
+      },
+      "abnormal": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-slr",
+      "system": "neurological",
+      "maneuver": {
+        "zh-CN": "直腿抬高试验与坐位屈颈（slump）试验",
+        "en": "Straight-leg raise and slump test"
+      },
+      "keywords": {
+        "zh-CN": [
+          "直腿抬高",
+          "抬腿试验",
+          "神经牵拉",
+          "坐位屈颈"
+        ],
+        "en": [
+          "straight leg raise",
+          "straightlegraise",
+          "slr",
+          "slump",
+          "nerve tension",
+          "lasegue"
+        ]
+      },
+      "finding": {
+        "zh-CN": "直腿抬高试验双侧均达80°，仅在终末有腰部牵拉感，无下肢放射痛；slump试验阴性。",
+        "en": "Straight-leg raise to 80° on both sides with only a pulling feeling in the low back at the end of range, no leg pain; slump test negative."
+      },
+      "abnormal": false,
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-neuro",
+      "system": "neurological",
+      "maneuver": {
+        "zh-CN": "双下肢神经系统检查",
+        "en": "Neurological examination of the lower limbs"
+      },
+      "keywords": {
+        "zh-CN": [
+          "神经系统",
+          "肌力",
+          "反射",
+          "感觉检查",
+          "下肢神经",
+          "腱反射"
+        ],
+        "en": [
+          "neuro",
+          "neurological",
+          "power",
+          "reflexes",
+          "sensation",
+          "myotomes",
+          "dermatomes"
+        ]
+      },
+      "finding": {
+        "zh-CN": "双下肢肌力5级（包括踝背屈与拇背伸）；膝、踝反射对称存在；轻触觉正常，包括会阴区（询问及检查所及）；足跟、足尖行走正常。",
+        "en": "Lower-limb power 5/5 including ankle dorsiflexion and great-toe extension; knee and ankle reflexes present and symmetrical; light touch normal, including the saddle area as tested; heel and toe walking normal."
+      },
+      "abnormal": false,
+      "requires": [
+        "reflex-hammer"
+      ],
+      "required": true,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-hips",
+      "system": "musculoskeletal",
+      "maneuver": {
+        "zh-CN": "检查双髋关节",
+        "en": "Examine both hips"
+      },
+      "keywords": {
+        "zh-CN": [
+          "髋关节",
+          "髋部",
+          "转髋",
+          "4字试验"
+        ],
+        "en": [
+          "hip",
+          "hips",
+          "hip rotation",
+          "faber"
+        ]
+      },
+      "finding": {
+        "zh-CN": "双髋屈曲及内外旋活动完全，无痛。",
+        "en": "Hip flexion and rotation full and painless on both sides."
+      },
+      "abnormal": false,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-abdomen",
+      "system": "abdomen",
+      "maneuver": {
+        "zh-CN": "腹部触诊",
+        "en": "Palpate the abdomen"
+      },
+      "keywords": {
+        "zh-CN": [
+          "腹部",
+          "摸肚子",
+          "腹部触诊",
+          "肚子"
+        ],
+        "en": [
+          "abdomen",
+          "abdominal",
+          "tummy",
+          "belly"
+        ]
+      },
+      "finding": {
+        "zh-CN": "腹软，无压痛，未触及搏动性包块。",
+        "en": "Soft and non-tender; no pulsatile mass."
+      },
+      "abnormal": false,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-skin-back",
+      "system": "skin",
+      "maneuver": {
+        "zh-CN": "检查腰背部皮肤及拟针刺部位",
+        "en": "Inspect the skin over the back and the planned needling sites"
+      },
+      "keywords": {
+        "zh-CN": [
+          "皮肤",
+          "背部皮肤",
+          "皮疹",
+          "针刺部位"
+        ],
+        "en": [
+          "skin",
+          "rash",
+          "skin of the back",
+          "needling sites"
+        ]
+      },
+      "finding": {
+        "zh-CN": "腰背部皮肤完整，无皮疹、破损、感染或水疱；左侧腰部有一处陈旧小色素斑。",
+        "en": "Skin over the back intact — no rash, broken skin, infection or blisters; a small old pigmented spot on the left flank."
+      },
+      "abnormal": false,
+      "phases": [
+        "consult",
+        "treatment"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-general",
+      "system": "general",
+      "maneuver": {
+        "zh-CN": "观察神色、坐姿与步态",
+        "en": "Observe his distress, how he sits and how he walks"
+      },
+      "keywords": {
+        "zh-CN": [
+          "望诊",
+          "步态",
+          "坐姿",
+          "一般情况"
+        ],
+        "en": [
+          "general appearance",
+          "gait",
+          "walking",
+          "inspection"
+        ]
+      },
+      "finding": {
+        "zh-CN": "表情痛苦，坐时身体向右侧倾；行走缓慢跛行，左足落地时轻度拍地。",
+        "en": "In obvious pain, sitting tilted to the right; walks slowly with a limp, the left foot slapping slightly as it lands."
+      },
+      "abnormal": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-neuro",
+      "system": "neurological",
+      "maneuver": {
+        "zh-CN": "复查双下肢神经系统（肌力、反射、感觉，包括鞍区）",
+        "en": "Repeat the lower-limb neurological examination (power, reflexes, sensation including the saddle area)"
+      },
+      "keywords": {
+        "zh-CN": [
+          "神经系统",
+          "肌力",
+          "反射",
+          "感觉检查",
+          "鞍区",
+          "腱反射"
+        ],
+        "en": [
+          "neuro",
+          "neurological",
+          "power",
+          "reflexes",
+          "sensation",
+          "saddle"
+        ]
+      },
+      "finding": {
+        "zh-CN": "左踝背屈、拇背伸肌力4级，右侧5级；左踝反射消失，右踝反射减弱，双膝反射存在。左足外侧及双足底轻触觉减退；患者诉肛周及会阴发麻，双侧臀内侧轻触觉较大腿减退。肛门指检与膀胱残余尿评估需在急诊进行。",
+        "en": "Left ankle dorsiflexion and great-toe extension 4/5, right 5/5; left ankle reflex absent, right reduced, knee reflexes present. Light touch reduced over the outer left foot and both soles; he reports numbness around the back passage and between the legs, and light touch over both inner buttocks is reduced compared with the thighs. A rectal examination and a bladder residual-volume check are for the Emergency Department."
+      },
+      "abnormal": true,
+      "requires": [
+        "reflex-hammer"
+      ],
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-slr",
+      "system": "neurological",
+      "maneuver": {
+        "zh-CN": "复查直腿抬高试验",
+        "en": "Repeat the straight-leg raise"
+      },
+      "keywords": {
+        "zh-CN": [
+          "直腿抬高",
+          "抬腿试验"
+        ],
+        "en": [
+          "straight leg raise",
+          "straightlegraise",
+          "slr"
+        ]
+      },
+      "finding": {
+        "zh-CN": "直腿抬高左侧35°、右侧50°，均诱发膝以下放射痛。",
+        "en": "Straight-leg raise 35° on the left and 50° on the right, both reproducing pain below the knee."
+      },
+      "abnormal": true,
+      "required": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-abdomen",
+      "system": "abdomen",
+      "maneuver": {
+        "zh-CN": "检查下腹部（膀胱区）",
+        "en": "Examine the lower abdomen (bladder)"
+      },
+      "keywords": {
+        "zh-CN": [
+          "下腹",
+          "膀胱区",
+          "耻骨上",
+          "腹部"
+        ],
+        "en": [
+          "lower abdomen",
+          "bladder",
+          "suprapubic",
+          "abdomen"
+        ]
+      },
+      "finding": {
+        "zh-CN": "下腹软，耻骨上未见明显膨隆、无压痛。本诊所没有膀胱扫描仪，无法测量膀胱容量。",
+        "en": "Lower abdomen soft; no obvious suprapubic swelling or tenderness. This clinic has no bladder scanner, so the bladder volume cannot be measured here."
+      },
+      "abnormal": false,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-lumbar",
+      "system": "musculoskeletal",
+      "maneuver": {
+        "zh-CN": "复查腰部",
+        "en": "Re-examine the lower back"
+      },
+      "keywords": {
+        "zh-CN": [
+          "腰部",
+          "压痛",
+          "活动度",
+          "触诊腰部"
+        ],
+        "en": [
+          "lower back",
+          "tenderness",
+          "range of movement",
+          "palpate"
+        ]
+      },
+      "finding": {
+        "zh-CN": "腰部广泛压痛，椎旁肌痉挛；因疼痛无法完成活动度检查。",
+        "en": "Diffuse lumbar tenderness with paraspinal spasm; movement too painful to test."
+      },
+      "abnormal": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-tongue",
+      "system": "heent",
+      "maneuver": {
+        "zh-CN": "复查舌象（漱口后、自然光下）",
+        "en": "Re-inspect the tongue (rinsed, in daylight)"
+      },
+      "keywords": {
+        "zh-CN": [
+          "舌",
+          "舌象",
+          "舌苔",
+          "望舌"
+        ],
+        "en": [
+          "tongue",
+          "coating",
+          "inspect the tongue"
+        ]
+      },
+      "finding": {
+        "zh-CN": "舌淡，边有齿痕；苔薄白腻。",
+        "en": "Pale with tooth marks; coating thin, white and greasy."
+      },
+      "abnormal": false,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
+      "id": "e-fu-pulse",
+      "system": "cardiovascular",
+      "maneuver": {
+        "zh-CN": "复诊切脉",
+        "en": "Retake the pulse"
+      },
+      "keywords": {
+        "zh-CN": [
+          "切脉",
+          "把脉",
+          "脉象",
+          "号脉"
+        ],
+        "en": [
+          "pulse",
+          "radial pulse",
+          "take the pulse"
+        ]
+      },
+      "finding": {
+        "zh-CN": "脉弦数，96次/分，节律齐。",
+        "en": "Wiry and rapid, 96/min, regular."
+      },
+      "abnormal": true,
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    }
+  ],
+  "examNotRecorded": {
+    "zh-CN": "本病例中没有这项检查的结果。",
+    "en": "This examination has no result in this case."
+  },
+  "investigations": [
+    {
+      "id": "intake-tongue-photo",
+      "name": {
+        "zh-CN": "自助问诊机舌象照片（候诊区）",
+        "en": "Intake kiosk tongue photo (waiting area)"
+      },
+      "category": "record",
+      "aliases": {
+        "zh-CN": [
+          "舌象照片",
+          "舌照",
+          "自助机",
+          "候诊区照片",
+          "舌象记录"
+        ],
+        "en": [
+          "kiosk",
+          "intake photo",
+          "tongue photo",
+          "kiosk photo",
+          "intake questionnaire"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "risk": "none",
+      "performedAt": "records",
+      "value": "useful",
+      "availability": {
+        "historical": false
+      },
+      "results": {
+        "consult": {
+          "date": {
+            "zh-CN": "今日挂号时（10:24）",
+            "en": "Today at registration (10:24)"
+          },
+          "text": {
+            "zh-CN": "自助问诊机在候诊区拍摄的舌象照片：暖色灯光下舌质偏暗红，舌中、舌根部舌苔厚，呈黄褐色。采集信息：环境为暖白光；画面内未检测到色卡；轻度运动模糊。机器质量提示：“颜色校验未通过——请在标准光源下重拍”。",
+            "en": "Tongue photo taken by the self-service intake kiosk in the waiting area: under warm lighting the tongue body looks dull red, with a thick, yellow-brown coating over the centre and root. Capture data: warm-white ambient light; colour reference card not detected in frame; slight motion blur. Kiosk quality flag: \"Colour check failed — repeat under standard lighting\"."
+          },
+          "note": {
+            "zh-CN": "自助机照片是候诊时由患者自行拍摄的，未经临床人员核对。",
+            "en": "The kiosk photo was taken by the patient himself while waiting and has not been checked by clinical staff."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    },
+    {
+      "id": "tongue-recapture",
+      "name": {
+        "zh-CN": "标准光源下重新采集舌象（漱口后）",
+        "en": "Repeat tongue image under standard lighting (after rinsing)"
+      },
+      "category": "bedside",
+      "aliases": {
+        "zh-CN": [
+          "重新拍舌",
+          "重拍舌象",
+          "标准光源",
+          "舌象采集仪",
+          "再拍一次舌"
+        ],
+        "en": [
+          "repeat tongue",
+          "recapture",
+          "retake tongue",
+          "standard light",
+          "tongue camera"
+        ]
+      },
+      "risk": "none",
+      "performedAt": "bedside",
+      "value": "useful",
+      "results": {
+        "consult": {
+          "date": {
+            "zh-CN": "今日10:52",
+            "en": "Today, 10:52"
+          },
+          "text": {
+            "zh-CN": "漱口后在舌象采集仪标准环形光源下拍摄，色卡在画面内，质量校验通过：舌质淡，舌体稍胖大，边有齿痕；苔薄白腻，润；无黄苔；舌下络脉无明显迂曲。",
+            "en": "Taken after he rinsed with water, under the tongue-imaging station's standard ring light with the colour card in frame; quality check passed: tongue body pale, slightly enlarged, with tooth marks at the edges; coating thin, white and greasy, moist; no yellow coating; sublingual veins not distended."
+          },
+          "note": {
+            "zh-CN": "与自助机照片相比，黄褐色已消失。",
+            "en": "Compared with the kiosk photo, the yellow-brown colour has gone."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    },
+    {
+      "id": "prior-records",
+      "name": {
+        "zh-CN": "患者自带的综合诊所用药清单及既往腰椎X线报告",
+        "en": "Patient-held polyclinic medication list and previous lumbar X-ray report"
+      },
+      "category": "record",
+      "aliases": {
+        "zh-CN": [
+          "用药清单",
+          "药物清单",
+          "既往记录",
+          "综合诊所",
+          "旧报告",
+          "X光报告",
+          "以前的片子"
+        ],
+        "en": [
+          "medication list",
+          "polyclinic",
+          "previous records",
+          "old x-ray",
+          "x-ray report",
+          "prior records",
+          "printout"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "risk": "none",
+      "performedAt": "records",
+      "value": "essential",
+      "availability": {
+        "historical": true
+      },
+      "results": {
+        "consult": {
+          "text": {
+            "zh-CN": "患者自带的综合诊所用药清单（两个月前打印）：氨氯地平5 mg 每日一次（早）；阿托伐他汀20 mg 每日一次（晚）；阿司匹林100 mg 每日一次（早），备注“冠脉支架术后，长期服用”。药物过敏：无已知药物过敏。\n既往腰椎X线报告（两年前，综合诊所转介）：L4/5椎间隙轻度变窄，椎体前缘小骨赘；生理曲度与序列正常；未见骨折或骨质破坏。报告备注：此类退行性改变在该年龄段常见。",
+            "en": "Patient-held polyclinic medication list (printed two months ago): amlodipine 5 mg once daily (morning); atorvastatin 20 mg once daily (night); aspirin 100 mg once daily (morning), annotated \"long-term, after coronary stent\". Allergies: no known drug allergy.\nPrevious lumbar spine X-ray report (two years ago, polyclinic referral): mild disc-space narrowing at L4/5 with small anterior osteophytes; normal alignment; no fracture or destructive lesion. Comment: degenerative changes of this kind are common at this age."
+          },
+          "note": {
+            "zh-CN": "这是患者自带的打印件，不是本诊所的记录；以患者口述核对。",
+            "en": "A printout the patient brought, not this clinic's record; confirm it with him."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        },
+        "treatment": {
+          "text": {
+            "zh-CN": "患者自带的综合诊所用药清单（两个月前打印）：氨氯地平5 mg 每日一次（早）；阿托伐他汀20 mg 每日一次（晚）；阿司匹林100 mg 每日一次（早），备注“冠脉支架术后，长期服用”。药物过敏：无已知药物过敏。\n既往腰椎X线报告（两年前，综合诊所转介）：L4/5椎间隙轻度变窄，椎体前缘小骨赘；生理曲度与序列正常；未见骨折或骨质破坏。报告备注：此类退行性改变在该年龄段常见。",
+            "en": "Patient-held polyclinic medication list (printed two months ago): amlodipine 5 mg once daily (morning); atorvastatin 20 mg once daily (night); aspirin 100 mg once daily (morning), annotated \"long-term, after coronary stent\". Allergies: no known drug allergy.\nPrevious lumbar spine X-ray report (two years ago, polyclinic referral): mild disc-space narrowing at L4/5 with small anterior osteophytes; normal alignment; no fracture or destructive lesion. Comment: degenerative changes of this kind are common at this age."
+          },
+          "note": {
+            "zh-CN": "这是患者自带的打印件，不是本诊所的记录；以患者口述核对。",
+            "en": "A printout the patient brought, not this clinic's record; confirm it with him."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        },
+        "followup": {
+          "text": {
+            "zh-CN": "患者自带的综合诊所用药清单（两个月前打印）：氨氯地平5 mg 每日一次（早）；阿托伐他汀20 mg 每日一次（晚）；阿司匹林100 mg 每日一次（早），备注“冠脉支架术后，长期服用”。药物过敏：无已知药物过敏。\n既往腰椎X线报告（两年前，综合诊所转介）：L4/5椎间隙轻度变窄，椎体前缘小骨赘；生理曲度与序列正常；未见骨折或骨质破坏。报告备注：此类退行性改变在该年龄段常见。",
+            "en": "Patient-held polyclinic medication list (printed two months ago): amlodipine 5 mg once daily (morning); atorvastatin 20 mg once daily (night); aspirin 100 mg once daily (morning), annotated \"long-term, after coronary stent\". Allergies: no known drug allergy.\nPrevious lumbar spine X-ray report (two years ago, polyclinic referral): mild disc-space narrowing at L4/5 with small anterior osteophytes; normal alignment; no fracture or destructive lesion. Comment: degenerative changes of this kind are common at this age."
+          },
+          "note": {
+            "zh-CN": "这是患者自带的打印件，不是本诊所的记录；以患者口述核对。",
+            "en": "A printout the patient brought, not this clinic's record; confirm it with him."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    },
+    {
+      "id": "dispensary-query",
+      "name": {
+        "zh-CN": "药房对处方第1版的审方意见",
+        "en": "Dispensary query on prescription version 1"
+      },
+      "category": "record",
+      "aliases": {
+        "zh-CN": [
+          "审方",
+          "药房意见",
+          "药房查询",
+          "药房反馈",
+          "处方审核"
+        ],
+        "en": [
+          "dispensary query",
+          "pharmacy query",
+          "prescription review",
+          "dispensary",
+          "review comments"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "risk": "none",
+      "performedAt": "records",
+      "value": "essential",
+      "availability": {
+        "earliestPhase": "treatment",
+        "when": {
+          "intervened": "rx-draft"
+        },
+        "historical": false
+      },
+      "results": {
+        "treatment": {
+          "date": {
+            "zh-CN": "今日11:15",
+            "en": "Today, 11:15"
+          },
+          "text": {
+            "zh-CN": "审方人：林先生（中药调剂）。处方第1版暂缓调剂，待处方医师处理以下两点：\n1. 库存：桑寄生配方颗粒缺货，预计周四（两天后）到货。供应商可提供槲寄生配方颗粒——这是另一味药材，在药典中单列；药房不能自行替换，需处方医师开具新版本处方。\n2. 用药史不完整：处方“现用药物”栏只列有氨氯地平和阿托伐他汀。方中有当归、川芎（活血药）。请向患者确认是否服用抗血小板或抗凝药物，并记录在案。",
+            "en": "Reviewer: Mr Lim (TCM dispensing). Prescription version 1 is on hold until the prescriber resolves two points:\n1. Stock: Taxilli Herba (桑寄生) granules are out of stock until Thursday (two days). The supplier can provide Visci Herba (槲寄生) granules — a different medicinal with its own Pharmacopoeia monograph. The dispensary cannot substitute on its own; it needs a new prescription version from the prescriber.\n2. Medication history incomplete: the prescription's current-medicines field lists amlodipine and atorvastatin only. The formula contains 当归 and 川芎 (blood-activating herbs). Please confirm with the patient whether he takes any antiplatelet or anticoagulant medicine, and record it."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    },
+    {
+      "id": "dispensing-record",
+      "name": {
+        "zh-CN": "调剂与发药记录",
+        "en": "Dispensing record"
+      },
+      "category": "record",
+      "aliases": {
+        "zh-CN": [
+          "发药记录",
+          "调剂记录",
+          "配药记录"
+        ],
+        "en": [
+          "dispensing record",
+          "supply record",
+          "what was dispensed"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "risk": "none",
+      "performedAt": "records",
+      "value": "useful",
+      "availability": {
+        "historical": false
+      },
+      "results": {
+        "followup": {
+          "date": {
+            "zh-CN": "上周初诊当日",
+            "en": "Last week, on the day of the first visit"
+          },
+          "text": {
+            "zh-CN": "按处方医师签署的第2版处方调剂（第1版作废，未调剂）：配方颗粒14包，每次1包、每日2次、饭后温水冲服，共7天；中英文标签；批号已记录；发药时已作用药交代。用药记录已更新：加入阿司匹林100 mg 每日一次。",
+            "en": "Filled from prescription version 2 as signed by the prescriber (version 1 cancelled, never filled): 14 sachets of concentrated granules, 1 sachet twice daily after meals dissolved in warm water, for 7 days; bilingual label; batch numbers recorded; counselling given at supply. Medication record updated: aspirin 100 mg once daily added."
+          },
+          "note": {
+            "zh-CN": "产品的监管分类（中成药或中药材制品）按实际产品核定；本病例中的产品为虚构。",
+            "en": "Each product's regulatory class (Chinese proprietary medicine or traditional medicinal material) is set by the actual product; the products in this case are fictional."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    },
+    {
+      "id": "acupuncture-record",
+      "name": {
+        "zh-CN": "第1次针灸治疗记录",
+        "en": "Acupuncture session 1 record"
+      },
+      "category": "record",
+      "aliases": {
+        "zh-CN": [
+          "针灸记录",
+          "治疗记录",
+          "上次针灸"
+        ],
+        "en": [
+          "acupuncture record",
+          "session record",
+          "treatment record"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "risk": "none",
+      "performedAt": "records",
+      "value": "useful",
+      "availability": {
+        "historical": false
+      },
+      "results": {
+        "followup": {
+          "date": {
+            "zh-CN": "上周初诊当日",
+            "en": "Last week, on the day of the first visit"
+          },
+          "text": {
+            "zh-CN": "俯卧位，枕垫支撑；洁净针刺操作，一次性无菌针。取穴：双侧肾俞、大肠俞、委中，右侧环跳，局部阿是穴3处——进针10支，留针20分钟，出针10支，核对无误。患者诉针下酸胀，无头晕、出汗。右委中出针时少量渗血，按压1分钟止。",
+            "en": "Prone with pillow support; clean needle technique, single-use sterile needles. Points: BL23 (Shenshu), BL25 (Dachangshu) and BL40 (Weizhong) bilaterally, GB30 (Huantiao) on the right, 3 local Ashi points — 10 needles in, retained 20 minutes, 10 needles out, count checked. Reported an aching, distending sensation at the needles; no giddiness or sweating. A small bleed at right BL40 on withdrawal, stopped with 1 minute of pressure."
+          },
+          "source": {
+            "zh-CN": "虚构教学病例：由编者撰写。",
+            "en": "Fictional teaching case: authored."
+          }
+        }
+      }
+    }
+  ],
+  "orderMatching": {
+    "rules": [
+      {
+        "ifMatches": "(repeat|recapture|retake|again|standard|重新|重拍|再拍|标准)",
+        "remove": [
+          "intake-tongue-photo"
+        ]
+      },
+      {
+        "ifMatches": "(kiosk|intake|自助|候诊)",
+        "remove": [
+          "tongue-recapture"
+        ]
+      }
+    ]
+  },
+  "interventions": [
+    {
+      "id": "explain-consent",
+      "name": {
+        "zh-CN": "说明诊断与治疗方案（含替代方案、获益与风险），取得并记录知情同意",
+        "en": "Explain the assessment and plan (with alternatives, benefits and risks) and record his consent"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "知情同意",
+          "解释病情",
+          "说明治疗",
+          "签同意书",
+          "征得同意"
+        ],
+        "en": [
+          "consent",
+          "informed consent",
+          "explain the plan",
+          "explain treatment",
+          "agree to treatment"
+        ]
+      },
+      "dose": {
+        "zh-CN": "用患者偏好的语言（华语）说明：腰痛性质与预后、针灸与中药方案、其他选择（单纯自我管理与运动、看家庭医生），可能的风险（针刺处疼痛、瘀青、晕针，中药的胃肠不适及与现用药的相互作用），并如实说明疗效证据有限、各国指南意见不一；确认理解后记录同意。",
+        "en": "In his preferred language (Mandarin): what the back pain is and its outlook, the acupuncture and herbal plan, the alternatives (self-management and exercise alone, seeing his family doctor), and the risks (needle pain, bruising, fainting; stomach upset from herbs and interactions with his medicines), saying honestly that the evidence of benefit is limited and that guidelines disagree; check understanding, then record consent."
+      },
+      "scope": "medical",
+      "risk": "none",
+      "setFlags": [
+        "consent-recorded"
+      ],
+      "indicatedWhen": {
+        "decided": "d-pattern"
+      },
+      "response": {
+        "zh-CN": "陈先生点头：“这样讲我明白了。针灸可以，但这次我要躺着扎。”同意已记录。",
+        "en": "Mr Tan nods: \"That's clear. Acupuncture is fine — but lying down this time.\" Consent is recorded."
+      }
+    },
+    {
+      "id": "self-management",
+      "name": {
+        "zh-CN": "自我管理建议：保持活动、循序渐进运动、腰部保暖，工作时定时起身",
+        "en": "Self-management advice: stay active, graded exercise, keep the back warm, regular breaks from sitting"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "保持活动",
+          "运动建议",
+          "自我管理",
+          "保暖",
+          "伸展",
+          "坐姿"
+        ],
+        "en": [
+          "stay active",
+          "self-management",
+          "exercise advice",
+          "keep warm",
+          "stretches",
+          "sitting breaks"
+        ]
+      },
+      "dose": {
+        "zh-CN": "每天短时多次的腰背伸展与步行；每坐30–45分钟起身活动；控制室加穿外套、避免冷气直吹；可局部热敷。说明哪些症状需要立即就医（安全网）。",
+        "en": "Short, frequent back stretches and walking every day; get up and move every 30–45 minutes of sitting; wear a jacket in the control room and keep out of the air-con's direct draught; local heat is fine. Tell him which symptoms need urgent care (safety-netting)."
+      },
+      "risk": "none",
+      "setFlags": [
+        "self-management-advised"
+      ],
+      "indicatedWhen": {
+        "decided": "d-disease"
+      },
+      "response": {
+        "zh-CN": "他把伸展动作拍了照片，说回去试试。",
+        "en": "He takes a photo of the stretches and says he'll try them."
+      }
+    },
+    {
+      "id": "refer-imaging",
+      "name": {
+        "zh-CN": "转介做腰椎MRI",
+        "en": "Refer for a lumbar spine MRI"
+      },
+      "kind": "consult",
+      "aliases": {
+        "zh-CN": [
+          "核磁共振",
+          "MRI",
+          "腰椎MRI",
+          "影像检查",
+          "拍片"
+        ],
+        "en": [
+          "mri",
+          "lumbar mri",
+          "imaging",
+          "scan",
+          "x-ray"
+        ]
+      },
+      "risk": "none",
+      "contraindicatedWhen": {
+        "phase": "followup"
+      },
+      "harm": {
+        "zh-CN": "太慢了：疑似马尾综合征需要经急诊在数小时内完成急诊MRI，而不是常规预约。",
+        "en": "Too slow: suspected cauda equina syndrome needs an emergency MRI within hours through the Emergency Department, not a routine appointment."
+      },
+      "response": {
+        "zh-CN": "常规的腰椎MRI转介信已写好，综合诊所会另行通知预约时间。",
+        "en": "A routine referral for a lumbar MRI is written; the polyclinic will send an appointment."
+      }
+    },
+    {
+      "id": "refer-ed",
+      "name": {
+        "zh-CN": "立即转往急诊",
+        "en": "Refer to the Emergency Department now"
+      },
+      "kind": "disposition",
+      "aliases": {
+        "zh-CN": [
+          "急诊",
+          "转急诊",
+          "送医院",
+          "紧急转诊",
+          "叫救护车",
+          "995"
+        ],
+        "en": [
+          "emergency department",
+          "aande",
+          "urgent referral",
+          "send to hospital",
+          "ambulance",
+          "995"
+        ]
+      },
+      "dose": {
+        "zh-CN": "致电急诊说明情况；他走路困难、疼痛剧烈时由诊所拨打995叫救护车；不要让他自己开车。",
+        "en": "Phone the Emergency Department and tell them what you found; if he cannot walk safely or is in severe pain, the clinic calls 995 for an ambulance; he must not drive himself."
+      },
+      "scope": "medical",
+      "risk": "none",
+      "checklist": true,
+      "setFlags": [
+        "ed-transfer"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "any": [
+            {
+              "asked": "h-fu-redflags"
+            },
+            {
+              "asked": "h-fu-status"
+            },
+            {
+              "examined": "e-fu-neuro"
+            }
+          ]
+        }
+      },
+      "harm": {
+        "zh-CN": "目前没有需要急诊处理的表现：没有危险信号或神经根受累体征。只有出现马尾综合征征象、进行性无力、发热或明显外伤等情况，才需要紧急转诊。",
+        "en": "Nothing in his presentation needs emergency care now: there are no danger signs or signs of nerve-root involvement. Urgent referral is for signs such as cauda equina symptoms, progressive weakness, fever or significant trauma."
+      },
+      "indicatedWhen": {
+        "asked": "h-fu-redflags"
+      },
+      "response": {
+        "zh-CN": "急诊接诊医生同意接收，请诊所附上书面交接。因他行走困难、疼痛剧烈，诊所拨打995叫了救护车。",
+        "en": "The Emergency Department doctor accepts him and asks for a written handover. Because he can barely walk and is in severe pain, the clinic calls 995 for an ambulance."
+      }
+    },
+    {
+      "id": "rx-draft",
+      "name": {
+        "zh-CN": "提交中药处方第1版",
+        "en": "Submit herbal prescription version 1"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "开方",
+          "开中药",
+          "中药处方",
+          "独活寄生汤",
+          "处方第1版"
+        ],
+        "en": [
+          "prescribe herbs",
+          "herbal prescription",
+          "du huo ji sheng tang",
+          "prescription version 1",
+          "write the prescription"
+        ]
+      },
+      "dose": {
+        "zh-CN": "独活寄生汤加减（去细辛）配方颗粒，以饮片当量计（克/日）：独活9、桑寄生15、杜仲10、牛膝10、秦艽9、防风9、桂枝6、茯苓15、当归9、川芎6、白芍12、熟地黄12、党参12、炙甘草6。每日1剂分2包，每次1包，每日2次，饭后温水冲服，共7天（14包）。",
+        "en": "Modified Du Huo Ji Sheng Tang (独活寄生汤, Asarum omitted) as concentrated granules, in crude-herb equivalents (g/day): 独活 Angelicae Pubescentis Radix 9, 桑寄生 Taxilli Herba 15, 杜仲 Eucommiae Cortex 10, 牛膝 Achyranthis Bidentatae Radix 10, 秦艽 Gentianae Macrophyllae Radix 9, 防风 Saposhnikoviae Radix 9, 桂枝 Cinnamomi Ramulus 6, 茯苓 Poria 15, 当归 Angelicae Sinensis Radix 9, 川芎 Chuanxiong Rhizoma 6, 白芍 Paeoniae Radix Alba 12, 熟地黄 Rehmanniae Radix Praeparata 12, 党参 Codonopsis Radix 12, 炙甘草 Glycyrrhizae Radix Praeparata 6. One day's dose in 2 sachets: 1 sachet twice daily after meals in warm water, for 7 days (14 sachets)."
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "low",
+      "maxDoses": 1,
+      "setFlags": [
+        "rx-v1-submitted"
+      ],
+      "indicatedWhen": {
+        "decided": "d-pattern"
+      },
+      "response": {
+        "zh-CN": "处方第1版已提交药房审核。",
+        "en": "Prescription version 1 has gone to the dispensary for review."
+      }
+    },
+    {
+      "id": "rx-verbal-swap",
+      "name": {
+        "zh-CN": "口头同意药房用槲寄生替换桑寄生，处方不改",
+        "en": "Tell the dispensary verbally to swap 槲寄生 for 桑寄生 without changing the prescription"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "口头同意替换",
+          "直接换",
+          "照换",
+          "电话同意"
+        ],
+        "en": [
+          "verbal swap",
+          "justswapit",
+          "go ahead and substitute",
+          "okbyphone"
+        ]
+      },
+      "risk": "moderate",
+      "setFlags": [
+        "unauthorised-substitution"
+      ],
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "发出的药与签署的处方不一致：槲寄生与桑寄生是两味药，替换属于处方变更，必须由处方医师开具新版本处方，否则调剂记录、标签与病历对不上，出了问题也无从追溯。",
+        "en": "What is supplied would no longer match the signed prescription: 槲寄生 and 桑寄生 are two different medicinals, so a swap is a change of prescription and needs a new version from the prescriber — otherwise the dispensing record, the label and the notes disagree and nothing can be traced if something goes wrong."
+      },
+      "response": {
+        "zh-CN": "药房记录了这通电话，但仍然按处方第1版标注“待处理”。",
+        "en": "The dispensary notes the call, but version 1 is still marked \"pending\"."
+      }
+    },
+    {
+      "id": "rx-v2-substitute",
+      "name": {
+        "zh-CN": "开具处方第2版：以槲寄生替换桑寄生（处方医师签名）",
+        "en": "Issue prescription version 2 replacing 桑寄生 with 槲寄生 (signed by the prescriber)"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "处方第2版",
+          "改用槲寄生",
+          "新版本处方",
+          "修改处方"
+        ],
+        "en": [
+          "prescription version 2",
+          "use visci herba",
+          "new version",
+          "revise the prescription",
+          "amend prescription"
+        ]
+      },
+      "dose": {
+        "zh-CN": "第2版：槲寄生15 g（饮片当量）替换桑寄生，其余同第1版；在处方上注明替换理由（桑寄生缺货）；用药记录加入阿司匹林100 mg 每日一次；第1版作废。",
+        "en": "Version 2: Visci Herba (槲寄生) 15 g crude-herb equivalent in place of Taxilli Herba (桑寄生), otherwise as version 1; the reason (桑寄生 out of stock) written on the prescription; aspirin 100 mg once daily added to the medication record; version 1 cancelled."
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "rx-v2"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "read": "dispensary-query"
+        }
+      },
+      "harm": {
+        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
+        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+      },
+      "response": {
+        "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
+        "en": "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled."
+      }
+    },
+    {
+      "id": "rx-v2-omit",
+      "name": {
+        "zh-CN": "开具处方第2版：去掉桑寄生，其余不变（处方医师签名）",
+        "en": "Issue prescription version 2 leaving out 桑寄生, otherwise unchanged (signed by the prescriber)"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "去掉桑寄生",
+          "删去桑寄生",
+          "不用桑寄生",
+          "处方第2版"
+        ],
+        "en": [
+          "omit taxilli",
+          "leave out",
+          "remove the herb",
+          "prescription version 2"
+        ]
+      },
+      "dose": {
+        "zh-CN": "第2版：去掉桑寄生，其余同第1版（杜仲、牛膝仍补肝肾、强筋骨）；复诊时再评估；用药记录加入阿司匹林100 mg 每日一次；第1版作废。",
+        "en": "Version 2: Taxilli Herba (桑寄生) left out, otherwise as version 1 (杜仲 and 牛膝 still tonify the liver and kidney and strengthen sinew and bone); reassess at review; aspirin 100 mg once daily added to the medication record; version 1 cancelled."
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "rx-v2"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "read": "dispensary-query"
+        }
+      },
+      "harm": {
+        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
+        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+      },
+      "response": {
+        "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
+        "en": "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled."
+      }
+    },
+    {
+      "id": "dispense",
+      "name": {
+        "zh-CN": "将现行版本处方交药房调剂并发药",
+        "en": "Release the current prescription version for dispensing and supply"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "发药",
+          "调剂",
+          "配药",
+          "取药",
+          "交药房"
+        ],
+        "en": [
+          "dispense",
+          "supply",
+          "release to dispensary",
+          "fill the prescription",
+          "collect medicine"
+        ]
+      },
+      "requires": [
+        "medications"
+      ],
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "dispensed"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "any": [
+            {
+              "intervened": "rx-v2-substitute",
+              "valid": true
+            },
+            {
+              "intervened": "rx-v2-omit",
+              "valid": true
+            }
+          ]
+        }
+      },
+      "harm": {
+        "zh-CN": "版本核对未通过：处方第1版仍有未解决的审方意见，药房不会按过期版本发药。先由处方医师开具新版本处方。",
+        "en": "Version check failed: prescription version 1 still has an open query, and the dispensary will not supply an outdated version. The prescriber must issue a new version first."
+      },
+      "response": {
+        "zh-CN": "药房按第2版调剂了14包配方颗粒，贴好中英文标签。",
+        "en": "The dispensary fills 14 sachets of granules from version 2 and applies a bilingual label."
+      }
+    },
+    {
+      "id": "counsel-herbs",
+      "name": {
+        "zh-CN": "中药用法与注意事项交代",
+        "en": "Counsel him on taking the granules and what to watch for"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "用药交代",
+          "怎么吃",
+          "服用方法",
+          "注意事项",
+          "用药指导"
+        ],
+        "en": [
+          "counsel",
+          "howtotake",
+          "instructions",
+          "medicine advice",
+          "whattowatchfor"
+        ]
+      },
+      "dose": {
+        "zh-CN": "每次1包，温水约150 mL冲服，每日2次，饭后；照常服用心脏和血压药，不要自行停阿司匹林；出现皮疹、明显胃部不适、异常瘀青或出血、黑便时停药并联系诊所。",
+        "en": "1 sachet in about 150 mL of warm water, twice daily after meals; keep taking his heart and blood-pressure medicines and do not stop the aspirin himself; stop and call the clinic for a rash, marked stomach upset, unusual bruising or bleeding, or black stools."
+      },
+      "risk": "none",
+      "setFlags": [
+        "counselled"
+      ],
+      "indicatedWhen": {
+        "intervened": "dispense",
+        "valid": true
+      },
+      "response": {
+        "zh-CN": "他复述了一遍用法，问能不能晚上那包睡前吃。",
+        "en": "He repeats the instructions back and asks whether the evening sachet can go at bedtime."
+      }
+    },
+    {
+      "id": "gp-letter",
+      "name": {
+        "zh-CN": "致函其综合诊所／心脏专科医生：告知中药与针灸方案及阿司匹林的处理",
+        "en": "Write to his polyclinic and heart-clinic doctors: the herbal and acupuncture plan and how aspirin was handled"
+      },
+      "kind": "consult",
+      "aliases": {
+        "zh-CN": [
+          "写信给医生",
+          "告知家庭医生",
+          "转介信",
+          "通知主诊医生",
+          "沟通信"
+        ],
+        "en": [
+          "gp letter",
+          "informhisdoctor",
+          "referral letter",
+          "polyclinic letter",
+          "share the plan"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "none",
+      "setFlags": [
+        "coordinated"
+      ],
+      "response": {
+        "zh-CN": "信件已由患者带回，副本存档。",
+        "en": "The letter goes with him; a copy is filed."
+      }
+    },
+    {
+      "id": "acu-prep",
+      "name": {
+        "zh-CN": "针刺前准备：手卫生、一次性无菌针、皮肤消毒、锐器盒就位",
+        "en": "Prepare for needling: hand hygiene, single-use sterile needles, skin preparation, sharps bin to hand"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "手卫生",
+          "洗手",
+          "消毒",
+          "无菌针",
+          "准备针具",
+          "锐器盒"
+        ],
+        "en": [
+          "hand hygiene",
+          "clean needle technique",
+          "sterile needles",
+          "skin prep",
+          "sharps bin",
+          "prepare needles"
+        ]
+      },
+      "risk": "none",
+      "setFlags": [
+        "clean-technique"
+      ],
+      "response": {
+        "zh-CN": "治疗车已推到床旁，针具、酒精棉和锐器盒齐备。",
+        "en": "The acupuncture cart is at the couch with needles, swabs and a sharps bin."
+      }
+    },
+    {
+      "id": "acu-position",
+      "name": {
+        "zh-CN": "安排俯卧位并以枕垫支撑（不在坐位下针刺）",
+        "en": "Position him lying prone with pillow support (not seated) for needling"
+      },
+      "kind": "positioning",
+      "aliases": {
+        "zh-CN": [
+          "俯卧",
+          "躺下",
+          "卧位",
+          "上治疗床",
+          "趴着"
+        ],
+        "en": [
+          "prone",
+          "lie down",
+          "lying",
+          "onthecouch",
+          "positioning"
+        ]
+      },
+      "posture": "lying",
+      "destination": {
+        "roomKind": "rehabilitation"
+      },
+      "risk": "none",
+      "setFlags": [
+        "positioned-lying"
+      ],
+      "mitigates": [
+        "needle-syncope"
+      ],
+      "response": {
+        "zh-CN": "陈先生俯卧在治疗床上，腹下垫枕，面部从床洞露出，说这样很舒服。",
+        "en": "Mr Tan lies prone on the couch with a pillow under his abdomen and his face in the face-hole, and says it's comfortable."
+      }
+    },
+    {
+      "id": "acu-insert",
+      "name": {
+        "zh-CN": "针刺：进针并留针20分钟",
+        "en": "Acupuncture: insert the needles and retain them for 20 minutes"
+      },
+      "kind": "procedure",
+      "aliases": {
+        "zh-CN": [
+          "针刺",
+          "扎针",
+          "进针",
+          "下针",
+          "开始针灸"
+        ],
+        "en": [
+          "needle",
+          "insert needles",
+          "start acupuncture",
+          "needling",
+          "acupuncture now"
+        ]
+      },
+      "dose": {
+        "zh-CN": "取穴：双侧肾俞（BL23）、大肠俞（BL25）、委中（BL40），右侧环跳（GB30），局部阿是穴3处，共10针；平补平泻，得气后留针20分钟；留针期间观察面色、出汗与主诉。",
+        "en": "Points: BL23 (Shenshu), BL25 (Dachangshu) and BL40 (Weizhong) on both sides, GB30 (Huantiao) on the right and 3 local Ashi points — 10 needles; even technique, retained 20 minutes after deqi; watch his colour, sweating and what he says throughout."
+      },
+      "scope": "medical",
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "needles-in"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "all": [
+            {
+              "intervened": "explain-consent"
+            },
+            {
+              "intervened": "acu-prep"
+            },
+            {
+              "intervened": "acu-position"
+            }
+          ]
+        }
+      },
+      "harm": {
+        "zh-CN": "前置条件未满足：进针前需要已记录的知情同意、洁净针刺准备，以及卧位（他有晕针史）。本次进针未执行。",
+        "en": "Prerequisites not met: needling needs recorded consent, clean-needle preparation and a lying position (he has fainted with needles before). The needles were not inserted."
+      },
+      "response": {
+        "zh-CN": "10针已进针。他说针下酸胀、腰部发热，没有头晕。",
+        "en": "Ten needles are in. He reports an aching, distending feeling and warmth in the back, and no giddiness."
+      }
+    },
+    {
+      "id": "acu-remove",
+      "name": {
+        "zh-CN": "出针并核对针数（进10支、出10支），弃入锐器盒，检查针孔",
+        "en": "Withdraw the needles, count them against those inserted (10 in, 10 out), discard into the sharps bin and check the sites"
+      },
+      "kind": "procedure",
+      "aliases": {
+        "zh-CN": [
+          "出针",
+          "拔针",
+          "起针",
+          "数针",
+          "核对针数",
+          "清点针"
+        ],
+        "en": [
+          "remove needles",
+          "withdraw",
+          "needle count",
+          "count the needles",
+          "take out the needles"
+        ]
+      },
+      "scope": "medical",
+      "risk": "none",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "needles-out"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "intervened": "acu-insert",
+          "valid": true
+        }
+      },
+      "harm": {
+        "zh-CN": "尚未进针，没有可取出或清点的针。",
+        "en": "No needles have been inserted, so there is nothing to withdraw or count."
+      },
+      "response": {
+        "zh-CN": "出针10支，与进针数一致，全部弃入锐器盒。右委中少量渗血，按压1分钟止。",
+        "en": "Ten needles out, matching the ten in, all into the sharps bin. A small bleed at right BL40 stops with a minute's pressure."
+      }
+    },
+    {
+      "id": "acu-document",
+      "name": {
+        "zh-CN": "记录本次治疗：穴位、进出针数、留针时间、患者反应与不良事件",
+        "en": "Document the session: points, needles in and out, retention time, his response and any adverse event"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "记录治疗",
+          "写治疗记录",
+          "治疗记录",
+          "记录针灸"
+        ],
+        "en": [
+          "document the session",
+          "writeitup",
+          "record the treatment",
+          "treatment note"
+        ]
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "none",
+      "setFlags": [
+        "session-documented"
+      ],
+      "indicatedWhen": {
+        "intervened": "acu-remove",
+        "valid": true
+      },
+      "response": {
+        "zh-CN": "治疗记录已保存。",
+        "en": "The session record is saved."
+      }
+    },
+    {
+      "id": "tuina",
+      "name": {
+        "zh-CN": "推拿：腰部椎旁肌放松手法15分钟",
+        "en": "Tuina: 15 minutes of relaxing techniques to the lumbar paraspinal muscles"
+      },
+      "kind": "procedure",
+      "aliases": {
+        "zh-CN": [
+          "推拿",
+          "按摩",
+          "揉法",
+          "滚法"
+        ],
+        "en": [
+          "tuina",
+          "massage",
+          "soft tissue",
+          "manual therapy"
+        ]
+      },
+      "dose": {
+        "zh-CN": "以滚法、揉法放松腰部椎旁肌，力度以患者可耐受为度，随时询问感受。",
+        "en": "Rolling and kneading techniques to relax the lumbar paraspinal muscles, at a pressure he finds tolerable, checking in with him throughout."
+      },
+      "scope": "medical",
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "contraindicatedWhen": {
+        "any": [
+          {
+            "not": {
+              "intervened": "explain-consent"
+            }
+          },
+          {
+            "phase": "followup"
+          }
+        ]
+      },
+      "harm": {
+        "zh-CN": "未取得知情同意时先说明手法并征得同意。复诊时出现新的神经系统危险信号，任何手法治疗都要等急诊评估之后。",
+        "en": "Without recorded consent, explain the technique and obtain his agreement first. At the review, with new neurological danger signs, any manual therapy waits until he has been assessed in the Emergency Department."
+      },
+      "response": {
+        "zh-CN": "推拿后他说腰部松了一些。",
+        "en": "After the tuina he says his back feels a little looser."
+      }
+    },
+    {
+      "id": "arrange-followup",
+      "name": {
+        "zh-CN": "预约一周后复诊，明确复诊目标（疼痛、功能、服药情况、不良反应）",
+        "en": "Book a review in one week with stated goals (pain, function, adherence, adverse effects)"
+      },
+      "kind": "disposition",
+      "aliases": {
+        "zh-CN": [
+          "预约复诊",
+          "复诊",
+          "下次来",
+          "一周后复诊",
+          "随访"
+        ],
+        "en": [
+          "follow up",
+          "follow-up",
+          "review in a week",
+          "book a review",
+          "next appointment"
+        ]
+      },
+      "risk": "none",
+      "setFlags": [
+        "followup-booked"
+      ],
+      "indicatedWhen": {
+        "intervened": "dispense",
+        "valid": true
+      },
+      "response": {
+        "zh-CN": "前台预约了下周同一时间，并请他带回剩余药包和服药记录。",
+        "en": "Reception books the same time next week and asks him to bring back any sachets left and his dose diary."
+      }
+    },
+    {
+      "id": "stop-aspirin",
+      "name": {
+        "zh-CN": "建议患者服中药期间停用阿司匹林",
+        "en": "Advise him to stop aspirin while he takes the herbs"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "停阿司匹林",
+          "停用阿司匹林",
+          "暂停阿司匹林",
+          "停掉血稀药"
+        ],
+        "en": [
+          "stop aspirin",
+          "hold the aspirin",
+          "stop the blood thinner",
+          "pause aspirin"
+        ]
+      },
+      "scope": "medical",
+      "risk": "high",
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "冠脉支架术后的长期抗血小板治疗不能由中医诊所停用：停药会增加支架血栓和心肌梗死风险。相互作用的处理是调整中药、观察与告知其心脏科医生，而不是停阿司匹林。",
+        "en": "Long-term antiplatelet therapy after a coronary stent is not for a TCM clinic to stop: stopping it raises the risk of stent thrombosis and heart attack. The interaction is managed by adjusting the herbs, monitoring and telling his cardiologist — not by stopping aspirin."
+      },
+      "response": {
+        "zh-CN": "陈先生迟疑地说：“心脏科医生说过这粒不能停……”",
+        "en": "Mr Tan hesitates: \"The heart doctor said never to stop that one…\""
+      }
+    },
+    {
+      "id": "handover-letter",
+      "name": {
+        "zh-CN": "书面交接给急诊：新症状及出现时间、检查所见、用药（含最后剂量）与已做的中医治疗",
+        "en": "Written handover to the Emergency Department: new symptoms and when each began, examination findings, medicines with last doses, and the TCM treatment given"
+      },
+      "kind": "consult",
+      "aliases": {
+        "zh-CN": [
+          "交接",
+          "交接单",
+          "转诊信",
+          "写给急诊"
+        ],
+        "en": [
+          "handover",
+          "referral letter",
+          "letter to the ed",
+          "written handover"
+        ]
+      },
+      "dose": {
+        "zh-CN": "包括：前天搬重物后双下肢放射痛；昨天约16:00起鞍区麻木、今晨起排尿费力（无尿失禁）；左踝背屈4级、左踝反射消失、鞍区感觉减退；阿司匹林100 mg（今晨7:00）、布洛芬400 mg（昨晚）、氨氯地平、阿托伐他汀；一周来服独活寄生汤加减配方颗粒（第2版处方，附药物组成，今晨最后一次）；一周前针刺10针（已全部取出）。",
+        "en": "Include: radiating pain down both legs since lifting two days ago; saddle numbness since about 16:00 yesterday and straining to pass urine since this morning (no incontinence); left ankle dorsiflexion 4/5, absent left ankle reflex, reduced saddle sensation; aspirin 100 mg (07:00 today), ibuprofen 400 mg (last night), amlodipine, atorvastatin; a week of modified Du Huo Ji Sheng Tang granules (prescription version 2, composition attached, last dose this morning); acupuncture a week ago, 10 needles, all removed."
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "none",
+      "checklist": true,
+      "setFlags": [
+        "handover-written"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "phase": "followup"
+        }
+      },
+      "harm": {
+        "zh-CN": "这一次就诊没有需要交接给急诊的内容。",
+        "en": "There is nothing to hand over to emergency care at this visit."
+      },
+      "response": {
+        "zh-CN": "交接单已随他交给救护人员，副本存档。",
+        "en": "The handover goes with him to the ambulance crew; a copy is filed."
+      }
+    },
+    {
+      "id": "stop-tcm",
+      "name": {
+        "zh-CN": "暂停中药颗粒和后续针灸，待急诊评估后再定",
+        "en": "Stop the herbal granules and further acupuncture until he has been assessed"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "停中药",
+          "暂停治疗",
+          "停止针灸",
+          "停颗粒"
+        ],
+        "en": [
+          "stop the herbs",
+          "pause treatment",
+          "stop acupuncture",
+          "hold the granules"
+        ]
+      },
+      "scope": "medical",
+      "risk": "none",
+      "checklist": true,
+      "setFlags": [
+        "tcm-paused"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "phase": "followup"
+        }
+      },
+      "harm": {
+        "zh-CN": "还没有开始治疗，没有需要暂停的。",
+        "en": "Nothing has been started yet, so there is nothing to stop."
+      },
+      "indicatedWhen": {
+        "asked": "h-fu-redflags"
+      },
+      "response": {
+        "zh-CN": "他点头，把剩下的药包交给你保管。",
+        "en": "He nods and hands you the remaining sachets to keep."
+      }
+    },
+    {
+      "id": "acu-review-session",
+      "name": {
+        "zh-CN": "今天针刺缓解腿痛",
+        "en": "Acupuncture today for the leg pain"
+      },
+      "kind": "procedure",
+      "aliases": {
+        "zh-CN": [
+          "今天针灸",
+          "再针一次",
+          "针刺止痛",
+          "扎针止痛"
+        ],
+        "en": [
+          "acupuncture today",
+          "needle again",
+          "needling for pain",
+          "second session"
+        ]
+      },
+      "scope": "medical",
+      "risk": "moderate",
+      "checklist": true,
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "新出现的双下肢放射痛、鞍区麻木和排尿困难提示疑似马尾综合征：针刺会拖延急诊评估与急诊MRI，而结局取决于在尿潴留出现之前及时减压。",
+        "en": "New pain down both legs, saddle numbness and difficulty passing urine point to suspected cauda equina syndrome: needling delays emergency assessment and MRI, and the outcome depends on decompression before urinary retention sets in."
+      },
+      "response": {
+        "zh-CN": "针具已准备。",
+        "en": "The needles are ready."
+      }
+    },
+    {
+      "id": "continue-course",
+      "name": {
+        "zh-CN": "继续既定针灸疗程与中药，两周后复诊",
+        "en": "Continue the planned acupuncture course and the herbs, and review in two weeks"
+      },
+      "kind": "disposition",
+      "aliases": {
+        "zh-CN": [
+          "继续治疗",
+          "继续疗程",
+          "两周后复诊",
+          "维持方案"
+        ],
+        "en": [
+          "continue treatment",
+          "continue the course",
+          "carry on",
+          "review in two weeks"
+        ]
+      },
+      "risk": "moderate",
+      "checklist": true,
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "按原计划继续意味着把疑似马尾综合征留到两周后：今天就需要急诊评估和急诊MRI。",
+        "en": "Carrying on as planned leaves suspected cauda equina syndrome for two weeks: he needs emergency assessment and an emergency MRI today."
+      },
+      "response": {
+        "zh-CN": "下次预约已排好。",
+        "en": "The next appointments are booked."
+      }
+    },
+    {
+      "id": "wait-and-see",
+      "name": {
+        "zh-CN": "回家卧床休息，三天后复诊，如完全解不出小便再来",
+        "en": "Send him home to rest, review in three days, and come back if he cannot pass urine at all"
+      },
+      "kind": "disposition",
+      "aliases": {
+        "zh-CN": [
+          "回家休息",
+          "卧床休息",
+          "三天后复诊",
+          "观察几天"
+        ],
+        "en": [
+          "rest at home",
+          "bed rest",
+          "review in three days",
+          "wait and see"
+        ]
+      },
+      "risk": "high",
+      "checklist": true,
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "等到完全尿潴留，就是在等结局更差的阶段。疑似马尾综合征不观察，今天就转急诊。",
+        "en": "Waiting for complete retention means waiting for the stage with the worse outcome. Suspected cauda equina syndrome is not watched: he goes to the Emergency Department today."
+      },
+      "response": {
+        "zh-CN": "他慢慢走出诊室。",
+        "en": "He shuffles out of the room."
+      }
+    },
+    {
+      "id": "herbs-stasis",
+      "name": {
+        "zh-CN": "改用更强的活血化瘀方治疗刺痛",
+        "en": "Switch to a stronger blood-activating formula for the stabbing pain"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "活血化瘀",
+          "改方",
+          "身痛逐瘀汤",
+          "加强活血"
+        ],
+        "en": [
+          "blood-activating formula",
+          "switch formula",
+          "stronger formula",
+          "move the blood"
+        ]
+      },
+      "scope": "medical",
+      "risk": "moderate",
+      "checklist": true,
+      "contraindicatedWhen": {
+        "always": true
+      },
+      "harm": {
+        "zh-CN": "先处理危险信号：证候也许变了，但现在需要的是急诊评估。他同时服阿司匹林、昨晚又吃了布洛芬，可能还要手术，此时加强活血更增加出血风险。",
+        "en": "Danger signs come first: the pattern may well have changed, but what he needs now is emergency assessment. With aspirin, last night's ibuprofen and possible surgery ahead, stronger blood-activating herbs add bleeding risk."
+      },
+      "response": {
+        "zh-CN": "新处方已写好。",
+        "en": "The new prescription is written."
+      }
+    }
+  ],
+  "objectives": [
+    {
+      "id": "o-inquiry",
+      "title": {
+        "zh-CN": "问诊并筛查危险信号",
+        "en": "Take the history and screen for danger signs"
+      },
+      "short": {
+        "zh-CN": "问诊",
+        "en": "History"
+      },
+      "hint": {
+        "zh-CN": "先听他讲这次的经过，再系统问：部位与放射、加重缓解、下肢神经与大小便、全身症状，以及既往史、用药与过敏。",
+        "en": "Let him tell the story, then ask systematically: site and spread, what worsens and eases it, leg nerves and bladder or bowel, systemic symptoms, then past history, medicines and allergies."
+      },
+      "guidance": {
+        "zh-CN": "在诊室与陈先生面谈。",
+        "en": "Talk with Mr Tan in the consulting room."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "asked": "h-presenting"
+          },
+          {
+            "asked": "h-site"
+          },
+          {
+            "asked": "h-modifiers"
+          },
+          {
+            "asked": "h-redflag-neuro"
+          },
+          {
+            "asked": "h-redflag-ce"
+          },
+          {
+            "asked": "h-redflag-systemic"
+          },
+          {
+            "asked": "h-pmh"
+          },
+          {
+            "asked": "h-meds"
+          },
+          {
+            "asked": "h-allergies"
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "target": "patient"
+        }
+      ]
+    },
+    {
+      "id": "o-four-exam",
+      "title": {
+        "zh-CN": "完成四诊与体格检查",
+        "en": "Complete the four examinations and the physical screen"
+      },
+      "short": {
+        "zh-CN": "四诊",
+        "en": "Four examinations"
+      },
+      "hint": {
+        "zh-CN": "望（神色形态、舌）、闻（声音、气味）、切（脉、腰部），再加下肢神经系统与直腿抬高检查。",
+        "en": "Inspection (spirit, complexion, build, tongue), listening and smelling (voice, odour), palpation (pulse, lower back), plus the lower-limb neurological check and straight-leg raise."
+      },
+      "guidance": {
+        "zh-CN": "在诊室内为他检查。",
+        "en": "Examine him in the consulting room."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "examined": "e-general"
+          },
+          {
+            "examined": "e-voice-odour"
+          },
+          {
+            "examined": "e-tongue"
+          },
+          {
+            "examined": "e-pulse"
+          },
+          {
+            "examined": "e-lumbar-palp"
+          },
+          {
+            "examined": "e-slr"
+          },
+          {
+            "examined": "e-neuro"
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "target": "patient"
+        }
+      ]
+    },
+    {
+      "id": "o-assess",
+      "title": {
+        "zh-CN": "权衡证据，作出诊断与辨证",
+        "en": "Weigh the evidence and make the diagnosis and pattern assessment"
+      },
+      "short": {
+        "zh-CN": "评估",
+        "en": "Assessment"
+      },
+      "hint": {
+        "zh-CN": "先看候诊区的自助机舌象照片，想一想它的拍摄条件是否可信；再结合全部四诊判断疾病与证候。",
+        "en": "Look at the kiosk tongue photo from the waiting area and ask how far its capture conditions can be trusted; then judge the disease and the pattern from all four examinations."
+      },
+      "guidance": {
+        "zh-CN": "在病历终端调阅记录，在病例板上作答。",
+        "en": "Open the records at a terminal and answer on the case board."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "decided": "d-evidence"
+          },
+          {
+            "decided": "d-disease"
+          },
+          {
+            "decided": "d-pattern"
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "unless": {
+            "read": "intake-tongue-photo"
+          },
+          "target": "records"
+        },
+        {
+          "target": "board"
+        }
+      ]
+    },
+    {
+      "id": "o-prescribe",
+      "title": {
+        "zh-CN": "开方、处理审方意见并发药",
+        "en": "Prescribe, resolve the dispensary's query and supply the medicine"
+      },
+      "short": {
+        "zh-CN": "处方",
+        "en": "Prescription"
+      },
+      "hint": {
+        "zh-CN": "提交处方后到病历终端查看药房的审方意见；处方的任何改变都要留下可追溯的记录，再交药房调剂并做用药交代。",
+        "en": "After submitting the prescription, read the dispensary's response at a records terminal; any change to a prescription must leave a traceable record before it is filled and explained to him."
+      },
+      "guidance": {
+        "zh-CN": "处方在病历终端提交；发药在中药房。",
+        "en": "Prescriptions are submitted at a records terminal; supply happens at the herbal dispensary."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "decided": "d-rx-review"
+          },
+          {
+            "intervened": "dispense",
+            "valid": true
+          },
+          {
+            "intervened": "counsel-herbs"
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "unless": {
+            "intervened": "rx-draft"
+          },
+          "target": "records"
+        },
+        {
+          "unless": {
+            "read": "dispensary-query"
+          },
+          "target": "records"
+        },
+        {
+          "target": "medications"
+        }
+      ]
+    },
+    {
+      "id": "o-acupuncture",
+      "title": {
+        "zh-CN": "安全完成首次针灸并安排复诊",
+        "en": "Give the first acupuncture session safely and book the review"
+      },
+      "short": {
+        "zh-CN": "针灸",
+        "en": "Acupuncture"
+      },
+      "hint": {
+        "zh-CN": "进针前确认同意、准备与体位都已到位；出针时与进针数核对；记录本次治疗，再预约复诊。",
+        "en": "Before needling, make sure consent, preparation and position are in place; on withdrawal, check the count against what went in; document the session, then book the review."
+      },
+      "guidance": {
+        "zh-CN": "在针灸推拿治疗室。",
+        "en": "In the acupuncture and tuina treatment room."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "intervened": "acu-remove",
+            "valid": true
+          },
+          {
+            "intervened": "acu-document"
+          },
+          {
+            "intervened": "arrange-followup"
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "target": "patient"
+        }
+      ]
+    },
+    {
+      "id": "o-followup",
+      "title": {
+        "zh-CN": "一周复诊：重新评估，并对变化作出处理",
+        "en": "One-week review: reassess and act on what has changed"
+      },
+      "short": {
+        "zh-CN": "复诊",
+        "en": "Review"
+      },
+      "hint": {
+        "zh-CN": "先问这一周有什么变化，再把危险信号重新问一遍、复查神经系统，然后按你的发现处理。",
+        "en": "Ask what has changed this week, go through the danger signs again and repeat the neurological examination, then act on what you find."
+      },
+      "guidance": {
+        "zh-CN": "在诊室与陈先生复诊。",
+        "en": "Review Mr Tan in the consulting room."
+      },
+      "completeWhen": {
+        "all": [
+          {
+            "decided": "d-followup"
+          },
+          {
+            "intervened": "refer-ed",
+            "valid": true
+          },
+          {
+            "intervened": "handover-letter",
+            "valid": true
+          }
+        ]
+      },
+      "waypoints": [
+        {
+          "target": "patient"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "d-evidence",
+      "kind": "single",
+      "prompt": {
+        "zh-CN": "自助机舌象照片显示似乎是黄褐色厚苔。在用它辨证之前，你怎么处理这条证据？",
+        "en": "The kiosk photo shows what looks like a thick yellow-brown coating. Before you use it for pattern differentiation, how do you handle this piece of evidence?"
+      },
+      "requires": {
+        "read": "intake-tongue-photo",
+        "phase": "consult"
+      },
+      "need": {
+        "zh-CN": "先调阅候诊区自助机拍摄的舌象照片。",
+        "en": "First open the tongue photo the kiosk took in the waiting area."
+      },
+      "options": [
+        {
+          "id": "recheck",
+          "text": {
+            "zh-CN": "视为不可靠证据（暖光、无色卡、可能染苔）：询问来诊前饮食，漱口后在自然光或标准光源下重新望舌或采集，再用于辨证",
+            "en": "Treat it as unreliable (warm light, no colour card, possible staining): ask what he ate or drank, then re-inspect or recapture the tongue after rinsing, in daylight or under standard light, before using it"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。暖色光会让舌色偏红、苔色偏黄；画面中没有色卡就无法校色；咖啡、茶、咖椰等饮食可染苔。证据有来源、时间和质量，先补足可靠证据再辨证。",
+            "en": "Correct. Warm light makes the tongue look redder and the coating yellower; without a colour card in frame the colour cannot be checked; coffee, tea and kaya can stain the coating. Evidence has a source, a time and a quality — obtain reliable evidence before you reason on it."
+          }
+        },
+        {
+          "id": "trust-machine",
+          "text": {
+            "zh-CN": "机器拍的比肉眼客观，直接按黄厚苔向湿热方向辨证",
+            "en": "A machine photo is more objective than the eye — take the thick yellow coating at face value and work towards damp-heat"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。照片只是在特定条件下的一次采集，机器本身已提示颜色校验未通过。以染苔辨为湿热，是典型的证据质量错误。",
+            "en": "No. A photo is one capture under particular conditions, and the kiosk itself flagged the colour check as failed. Calling damp-heat from a stained coating is a classic evidence-quality error."
+          }
+        },
+        {
+          "id": "drop-tongue",
+          "text": {
+            "zh-CN": "既然照片不可靠，就完全放弃舌诊，只凭脉象和问诊辨证",
+            "en": "Since the photo is unreliable, drop tongue diagnosis altogether and rely on the pulse and the history"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。问题出在这次采集，而不是舌诊本身。重新望舌很容易，丢掉一整个诊察维度会削弱辨证。",
+            "en": "No. The problem is this capture, not tongue diagnosis itself. Re-inspecting is easy; discarding a whole channel of the four examinations weakens the assessment."
+          }
+        },
+        {
+          "id": "scrape",
+          "text": {
+            "zh-CN": "请他把舌苔刮掉后再拍一张",
+            "en": "Ask him to scrape his tongue clean and photograph it again"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。刮舌会去掉舌苔本身，破坏要观察的对象。漱口即可去除饮食染色。",
+            "en": "No. Scraping removes the coating itself — the very thing you want to see. A rinse is enough to clear food staining."
+          }
+        }
+      ]
+    },
+    {
+      "id": "d-disease",
+      "kind": "single",
+      "prompt": {
+        "zh-CN": "结合病史与体格检查，西医层面应如何判断？现在需要影像检查或转诊吗？",
+        "en": "From the history and examination, what is the biomedical assessment, and does he need imaging or referral now?"
+      },
+      "requires": {
+        "all": [
+          {
+            "asked": "h-redflag-neuro"
+          },
+          {
+            "asked": "h-redflag-ce"
+          },
+          {
+            "asked": "h-redflag-systemic"
+          },
+          {
+            "examined": "e-neuro"
+          },
+          {
+            "examined": "e-slr"
+          }
+        ]
+      },
+      "need": {
+        "zh-CN": "先完成危险信号问诊、下肢神经系统检查与直腿抬高试验。",
+        "en": "First complete the danger-sign questions, the lower-limb neurological examination and the straight-leg raise."
+      },
+      "options": [
+        {
+          "id": "nslbp",
+          "text": {
+            "zh-CN": "复发性非特异性（机械性）腰痛，伴非根性的臀部牵涉痛；无红旗征、无神经根受累——目前不需要影像或转诊，并给予安全网建议",
+            "en": "Recurrent non-specific (mechanical) low back pain with non-radicular referral to the buttock; no red flags and no nerve-root involvement — no imaging or referral now, with clear safety-netting"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。疼痛不过膝、无麻木无力、直腿抬高阴性、神经系统检查正常，也没有大小便、全身或外伤方面的红旗征。NICE NG59：非特异性腰痛在非专科场所不常规做影像检查。",
+            "en": "Correct. The pain stops above the knee, there is no numbness or weakness, the straight-leg raise is negative and the neurological examination normal, with no bladder, bowel, systemic or trauma red flags. NICE NG59: do not routinely offer imaging for non-specific low back pain in a non-specialist setting."
+          }
+        },
+        {
+          "id": "disc",
+          "text": {
+            "zh-CN": "腰椎间盘突出伴坐骨神经痛，应尽快安排腰椎MRI",
+            "en": "Lumbar disc herniation with sciatica — arrange a lumbar MRI soon"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。坐骨神经痛表现为放射至膝以下的腿痛，常伴神经根体征；他的疼痛不过膝、直腿抬高阴性、神经系统检查正常。MRI不会改变处理。",
+            "en": "No. Sciatica is leg pain radiating below the knee, often with nerve-root signs; his pain stays above the knee, the straight-leg raise is negative and the neurological examination is normal. An MRI would not change management."
+          }
+        },
+        {
+          "id": "degenerative",
+          "text": {
+            "zh-CN": "腰椎退行性病变所致，应拍腰椎X线确认",
+            "en": "Degenerative spine disease is the cause — order a lumbar X-ray to confirm it"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。退行性改变在这个年龄很常见，与症状关联很弱；X线不会改变非特异性腰痛的处理，还会带来不必要的辐射和担忧。",
+            "en": "No. Degenerative changes are very common at his age and correlate poorly with symptoms; an X-ray would not change the management of non-specific low back pain and adds radiation and worry."
+          }
+        },
+        {
+          "id": "cauda",
+          "text": {
+            "zh-CN": "可能是马尾综合征，需要立即送急诊",
+            "en": "Possible cauda equina syndrome — send him to the Emergency Department now"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。他没有大小便功能障碍、鞍区麻木或下肢神经缺损。这些征象一旦出现才需要紧急转诊——这正是安全网建议要告诉他的内容。",
+            "en": "No. He has no bladder or bowel disturbance, no saddle numbness and no neurological deficit. Emergency referral is for when those appear — which is exactly what the safety-netting advice tells him."
+          }
+        }
+      ]
+    },
+    {
+      "id": "d-pattern",
+      "kind": "single",
+      "prompt": {
+        "zh-CN": "综合四诊，本次腰痛最能被证据支持的证候是？",
+        "en": "Bringing the four examinations together, which pattern is best supported by the evidence?"
+      },
+      "requires": {
+        "all": [
+          {
+            "decided": "d-evidence"
+          },
+          {
+            "any": [
+              {
+                "examined": "e-tongue"
+              },
+              {
+                "read": "tongue-recapture"
+              }
+            ]
+          },
+          {
+            "examined": "e-pulse"
+          },
+          {
+            "asked": "h-modifiers"
+          },
+          {
+            "asked": "h-coldheat"
+          }
+        ]
+      },
+      "need": {
+        "zh-CN": "先处理舌象证据的质量问题，并完成望舌、切脉以及寒热、加重缓解因素的问诊。",
+        "en": "First deal with the quality of the tongue evidence, and complete the tongue and pulse examinations and the questions on cold and heat and on what worsens and eases the pain."
+      },
+      "options": [
+        {
+          "id": "cold-damp",
+          "text": {
+            "zh-CN": "寒湿痹阻，兼肝肾不足",
+            "en": "Cold-damp obstruction with underlying liver–kidney insufficiency"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。腰部冷重酸痛、遇寒湿加重、得温则减、畏寒喜热饮、腰部皮温偏凉，属寒湿痹阻；反复三年、腰膝酸软、尺脉弱、舌淡胖有齿痕，提示肝肾不足（兼脾虚湿盛）。支持证据与反对证据都应写入评估。",
+            "en": "Correct. A cold, heavy ache worse in cold and damp and better with warmth, cold intolerance with a liking for hot drinks, and a cool lower back point to cold-damp obstruction; three years of recurrence, sore weak knees, weak chi pulses and a pale, swollen, tooth-marked tongue point to underlying liver–kidney insufficiency (with spleen deficiency and damp). Record the evidence for and against."
+          }
+        },
+        {
+          "id": "damp-heat",
+          "text": {
+            "zh-CN": "湿热蕴结",
+            "en": "Damp-heat accumulation"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。湿热腰痛多见热痛、遇热加重、口苦、小便黄赤、苔黄腻、脉滑数。唯一的“黄苔”来自染色和暖光下的照片，重新采集后为白腻苔。",
+            "en": "No. Damp-heat lumbago brings hot pain worse with heat, a bitter taste, dark urine, a yellow greasy coating and a slippery, rapid pulse. The only \"yellow coating\" came from a stained photo under warm light; recaptured, it is white and greasy."
+          }
+        },
+        {
+          "id": "stasis",
+          "text": {
+            "zh-CN": "瘀血阻络",
+            "en": "Blood stasis obstructing the collaterals"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。瘀血腰痛多为刺痛、痛处固定拒按、夜间加重，舌紫暗或有瘀斑、舌下络脉迂曲。他的疼痛是沉重酸痛，舌下络脉不迂曲。急性扭伤可兼瘀，但不是主证。",
+            "en": "No. Blood-stasis lumbago is stabbing, fixed and worse when pressed and at night, with a purple tongue or spots and distended sublingual veins. His pain is a heavy ache and his sublingual veins are normal. A strain can add some stasis, but it is not the main pattern."
+          }
+        },
+        {
+          "id": "kidney-yang",
+          "text": {
+            "zh-CN": "单纯肾阳虚衰，无外邪",
+            "en": "Kidney-yang decline alone, with no external pathogen"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不完全对。本虚确实存在，但遇冷湿明显加重、腰部冷重、苔白腻，说明寒湿之邪仍在。只补不祛，标证难除。",
+            "en": "Not quite. The underlying deficiency is real, but clear worsening in cold and damp, a cold heavy back and a white greasy coating show that cold-damp is still present. Tonifying alone, without dispelling it, leaves the presenting problem untreated."
+          }
+        }
+      ]
+    },
+    {
+      "id": "d-rx-review",
+      "kind": "multiple",
+      "prompt": {
+        "zh-CN": "药房暂缓了处方第1版，并提出两点意见。你接下来怎么做？（选出所有正确做法）",
+        "en": "The dispensary has put prescription version 1 on hold with two queries. What do you do next? (Select all that apply.)"
+      },
+      "requires": {
+        "all": [
+          {
+            "read": "dispensary-query",
+            "phase": "treatment"
+          },
+          {
+            "any": [
+              {
+                "asked": "h-antithrombotic"
+              },
+              {
+                "read": "prior-records"
+              }
+            ]
+          }
+        ]
+      },
+      "need": {
+        "zh-CN": "先调阅药房的审方意见，并补全他的用药史。",
+        "en": "First read the dispensary's query and complete his medication history."
+      },
+      "options": [
+        {
+          "id": "new-version",
+          "text": {
+            "zh-CN": "不由药房自行替换：由处方医师开具签名的新版本处方（写明换用槲寄生，或去掉桑寄生），第1版作废",
+            "en": "Do not let the dispensary swap on its own: the prescriber issues a new signed prescription version (naming 槲寄生 as the replacement, or leaving 桑寄生 out) and version 1 is cancelled"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。两种改法都可以接受，关键是改动由处方医师决定、形成新版本并留下记录，药房只按现行版本调剂。",
+            "en": "Correct. Either change is acceptable; what matters is that the prescriber decides, a new version records it, and the dispensary fills only the current version."
+          }
+        },
+        {
+          "id": "aspirin-managed",
+          "text": {
+            "zh-CN": "把阿司匹林100 mg补入用药记录；当归、川芎保持常规剂量或去掉，告诉他留意瘀青、出血与黑便，并告知他的主诊医生",
+            "en": "Add aspirin 100 mg to his medication record; keep 当归 and 川芎 at usual doses or leave them out, tell him to watch for bruising, bleeding and black stools, and let his own doctor know"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。活血药与阿司匹林合用增加出血风险的证据多为理论推断或个案，但足以要求记录、观察与告知。两种用药调整都可辩护。",
+            "en": "Correct. Evidence that blood-activating herbs add to aspirin's bleeding risk is mostly theoretical or from case reports, but it is enough to require recording, monitoring and telling his doctor. Either dosing choice is defensible."
+          }
+        },
+        {
+          "id": "phone-ok",
+          "text": {
+            "zh-CN": "电话里同意替换，处方保持第1版不改，事后再补记录",
+            "en": "Agree the swap by phone, leave version 1 as the record and annotate it later"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。这样发出的药与签署的处方不一致，调剂记录、标签和病历都对不上，正是版本控制要防止的执行差错。",
+            "en": "No. What is supplied would then differ from the signed prescription, and the dispensing record, label and notes would disagree — exactly the execution error version control exists to prevent."
+          }
+        },
+        {
+          "id": "stop-aspirin",
+          "text": {
+            "zh-CN": "建议他服中药期间先停阿司匹林",
+            "en": "Advise him to stop aspirin while he takes the herbs"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。他放过冠脉支架，长期抗血小板治疗不能由中医诊所停用，停药会增加支架血栓风险。调整的是中药，不是阿司匹林。",
+            "en": "No. He has a coronary stent; long-term antiplatelet therapy is not a TCM clinic's to stop, and stopping it raises the risk of stent thrombosis. Adjust the herbs, not the aspirin."
+          }
+        },
+        {
+          "id": "same-herb",
+          "text": {
+            "zh-CN": "桑寄生和槲寄生名字相近，可视为同一味药直接互换",
+            "en": "桑寄生 and 槲寄生 have similar names, so treat them as the same herb and swap freely"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。两者来源不同（桑寄生为桑寄生科钝果寄生属植物，槲寄生为槲寄生属植物），药典分列；功效相近不等于同一药材。名称相近正是调剂差错的高风险点。",
+            "en": "No. They come from different plants (Taxillus versus Viscum) and have separate Pharmacopoeia monographs; similar actions do not make them the same medicinal. Look-alike names are precisely where dispensing errors happen."
+          }
+        }
+      ]
+    },
+    {
+      "id": "d-followup",
+      "kind": "single",
+      "prompt": {
+        "zh-CN": "复诊时出现了新的症状与体征。你现在怎么处理？",
+        "en": "New symptoms and signs have appeared since last week. What do you do now?"
+      },
+      "requires": {
+        "all": [
+          {
+            "asked": "h-fu-status"
+          },
+          {
+            "asked": "h-fu-redflags"
+          },
+          {
+            "examined": "e-fu-neuro"
+          }
+        ]
+      },
+      "need": {
+        "zh-CN": "先问清楚这一周的变化和危险信号，并复查下肢神经系统。",
+        "en": "First ask what has changed this week and about the danger signs, and repeat the lower-limb neurological examination."
+      },
+      "options": [
+        {
+          "id": "transfer",
+          "text": {
+            "zh-CN": "疑似马尾综合征：今天停止中医治疗，立即转往急诊（当天评估与急诊MRI），并附书面交接",
+            "en": "Suspected cauda equina syndrome: stop TCM treatment today and transfer him at once to an Emergency Department for same-day assessment and an emergency MRI, with a written handover"
+          },
+          "correct": true,
+          "feedback": {
+            "zh-CN": "正确。双下肢坐骨神经痛伴鞍区麻木和新出现的排尿费力，在急诊MRI排除之前都按疑似马尾综合征处理。结局取决于在尿潴留出现前减压，每一小时都重要；膀胱扫描、肛门指检和MRI由急诊完成，不在诊所。",
+            "en": "Correct. Bilateral sciatica with saddle numbness and new difficulty passing urine is suspected cauda equina syndrome until an emergency MRI says otherwise. The outcome depends on decompression before retention sets in, so every hour counts; the bladder scan, rectal examination and MRI are done in the Emergency Department, not the clinic."
+          }
+        },
+        {
+          "id": "needle-review",
+          "text": {
+            "zh-CN": "坐骨神经痛发作：今天针刺止痛，三天后复诊",
+            "en": "A flare of sciatica: needle today for pain relief and review in three days"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。鞍区麻木和排尿费力不是普通的坐骨神经痛。针刺和等待三天会错过减压的时间窗。",
+            "en": "No. Saddle numbness and difficulty passing urine are not ordinary sciatica. Needling and waiting three days lose the window for decompression."
+          }
+        },
+        {
+          "id": "routine-mri",
+          "text": {
+            "zh-CN": "转介综合诊所做MRI，期间继续服中药",
+            "en": "Refer to the polyclinic for an MRI and continue the herbs meanwhile"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。常规转介要几周；疑似马尾综合征需要经急诊在数小时内完成急诊MRI。",
+            "en": "No. A routine referral takes weeks; suspected cauda equina syndrome needs an emergency MRI within hours through the Emergency Department."
+          }
+        },
+        {
+          "id": "stasis",
+          "text": {
+            "zh-CN": "新出现的刺痛属瘀血，改用更强的活血化瘀方，下周复诊",
+            "en": "The new stabbing pain is blood stasis: switch to a stronger blood-activating formula and review next week"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。证候也许变了，但危险信号优先于辨证。他服阿司匹林、又吃了布洛芬，可能还要手术，此时加强活血更增加出血风险。",
+            "en": "No. The pattern may have changed, but danger signs outrank the pattern. With aspirin, ibuprofen and possible surgery ahead, stronger blood-activating herbs add bleeding risk."
+          }
+        },
+        {
+          "id": "wait-retention",
+          "text": {
+            "zh-CN": "嘱卧床休息，如完全解不出小便再来",
+            "en": "Advise bed rest and to come back if he cannot pass urine at all"
+          },
+          "correct": false,
+          "feedback": {
+            "zh-CN": "不对。等到完全尿潴留，就是在等结局更差的阶段（伴尿潴留的马尾综合征）。",
+            "en": "No. Waiting for complete retention means waiting for the stage with the worse outcome (cauda equina syndrome with retention)."
+          }
+        }
+      ]
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-redflags",
+      "domain": "history",
+      "weight": 3,
+      "critical": true,
+      "text": {
+        "zh-CN": "系统筛查腰痛危险信号（神经、大小便与鞍区、全身症状）并完成下肢神经系统检查",
+        "en": "Screened for danger signs (neurological, bladder, bowel and saddle, systemic) and examined the lower-limb nerves"
+      },
+      "met": {
+        "all": [
+          {
+            "asked": "h-redflag-neuro"
+          },
+          {
+            "asked": "h-redflag-ce"
+          },
+          {
+            "asked": "h-redflag-systemic"
+          },
+          {
+            "examined": "e-neuro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-inquiry",
+      "domain": "history",
+      "weight": 2,
+      "text": {
+        "zh-CN": "问诊覆盖部位与放射、加重缓解、寒热、腰膝症状、既往史与用药",
+        "en": "Inquiry covered site and spread, aggravating and easing factors, cold and heat, back and knee symptoms, past history and medicines"
+      },
+      "met": {
+        "all": [
+          {
+            "asked": "h-site"
+          },
+          {
+            "asked": "h-modifiers"
+          },
+          {
+            "asked": "h-coldheat"
+          },
+          {
+            "asked": "h-knees-fatigue"
+          },
+          {
+            "asked": "h-pmh"
+          },
+          {
+            "asked": "h-meds"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-antithrombotic",
+      "domain": "safety",
+      "weight": 2,
+      "text": {
+        "zh-CN": "发现并核实他在服阿司匹林（追问或调阅自带用药清单）",
+        "en": "Found and confirmed his aspirin (by asking specifically or reading the medication list he brought)"
+      },
+      "met": {
+        "any": [
+          {
+            "asked": "h-antithrombotic"
+          },
+          {
+            "read": "prior-records"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-four-exam",
+      "domain": "examination",
+      "weight": 2,
+      "text": {
+        "zh-CN": "完成望、闻、切诊（神色形态、舌、声音气味、脉、腰部触诊）",
+        "en": "Completed inspection, listening and smelling, and palpation (spirit and build, tongue, voice and odour, pulse, lumbar palpation)"
+      },
+      "met": {
+        "all": [
+          {
+            "examined": "e-general"
+          },
+          {
+            "examined": "e-tongue"
+          },
+          {
+            "examined": "e-voice-odour"
+          },
+          {
+            "examined": "e-pulse"
+          },
+          {
+            "examined": "e-lumbar-palp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-evidence",
+      "domain": "investigations",
+      "weight": 2,
+      "text": {
+        "zh-CN": "识别自助机舌象照片的质量问题并取得可靠舌象",
+        "en": "Recognised the kiosk tongue photo's quality problem and obtained a reliable view of the tongue"
+      },
+      "met": {
+        "all": [
+          {
+            "decidedFirstTry": "d-evidence"
+          },
+          {
+            "any": [
+              {
+                "examined": "e-tongue"
+              },
+              {
+                "read": "tongue-recapture"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-disease",
+      "domain": "diagnosis",
+      "weight": 2,
+      "text": {
+        "zh-CN": "首次即正确判断为无红旗征的非特异性腰痛，不需影像",
+        "en": "Judged non-specific low back pain without red flags and no need for imaging, first time"
+      },
+      "met": {
+        "decidedFirstTry": "d-disease"
+      }
+    },
+    {
+      "id": "r-pattern",
+      "domain": "diagnosis",
+      "weight": 3,
+      "text": {
+        "zh-CN": "首次即作出有证据支持的证候判断",
+        "en": "Reached the evidence-supported pattern assessment first time"
+      },
+      "met": {
+        "decidedFirstTry": "d-pattern"
+      }
+    },
+    {
+      "id": "r-rx-review",
+      "domain": "management",
+      "weight": 2,
+      "text": {
+        "zh-CN": "首次即正确处理药房的两点审方意见",
+        "en": "Handled both dispensary queries correctly first time"
+      },
+      "met": {
+        "decidedFirstTry": "d-rx-review"
+      }
+    },
+    {
+      "id": "r-rx-version",
+      "domain": "safety",
+      "weight": 3,
+      "critical": true,
+      "text": {
+        "zh-CN": "只有在处方医师签发新版本后才发药（版本核对通过）",
+        "en": "Medicine supplied only after the prescriber issued a new version (the version check passed)"
+      },
+      "met": {
+        "all": [
+          {
+            "intervened": "dispense",
+            "valid": true
+          },
+          {
+            "not": {
+              "intervened": "rx-verbal-swap"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-acu-sequence",
+      "domain": "safety",
+      "weight": 3,
+      "text": {
+        "zh-CN": "按顺序完成针灸流程：同意 → 准备 → 卧位 → 进针 → 出针核对",
+        "en": "Followed the acupuncture sequence: consent → preparation → lying position → needling → withdrawal and count"
+      },
+      "met": {
+        "inOrder": [
+          "explain-consent",
+          "acu-prep",
+          "acu-position",
+          "acu-insert",
+          "acu-remove"
+        ]
+      }
+    },
+    {
+      "id": "r-needle-count",
+      "domain": "safety",
+      "weight": 3,
+      "critical": true,
+      "text": {
+        "zh-CN": "出针时核对针数，没有针遗留",
+        "en": "Counted the needles out against those in, leaving none behind"
+      },
+      "met": {
+        "intervened": "acu-remove",
+        "valid": true
+      },
+      "scoredWhen": {
+        "intervened": "acu-insert",
+        "valid": true
+      }
+    },
+    {
+      "id": "r-self-management",
+      "domain": "management",
+      "weight": 1,
+      "text": {
+        "zh-CN": "给予保持活动、运动与工作姿势方面的自我管理建议",
+        "en": "Gave self-management advice on staying active, exercise and posture at work"
+      },
+      "met": {
+        "intervened": "self-management"
+      }
+    },
+    {
+      "id": "r-no-imaging",
+      "domain": "efficiency",
+      "weight": 1,
+      "text": {
+        "zh-CN": "没有做不必要的影像转介",
+        "en": "Avoided an unnecessary imaging referral"
+      },
+      "met": {
+        "not": {
+          "intervened": "refer-imaging"
+        }
+      },
+      "scoredWhen": {
+        "any": [
+          {
+            "attempted": "d-disease"
+          },
+          {
+            "intervened": "refer-imaging"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-coordination",
+      "domain": "management",
+      "weight": 1,
+      "text": {
+        "zh-CN": "把中药、针灸与阿司匹林的处理告知他的主诊医生",
+        "en": "Told his own doctors about the herbs, the acupuncture and how aspirin was handled"
+      },
+      "met": {
+        "intervened": "gp-letter"
+      }
+    },
+    {
+      "id": "r-comm-consent",
+      "domain": "communication",
+      "weight": 2,
+      "text": {
+        "zh-CN": "用他偏好的语言解释病情与方案，回应他的担忧并取得知情同意",
+        "en": "Explained the condition and plan in his preferred language, answered his concerns and obtained informed consent"
+      },
+      "judgeGuidance": {
+        "zh-CN": "学员是否用通俗的华语（或他选择的语言）说明这是常见的非特异性腰痛、不需要开刀；回应他对椎间盘突出和中西药冲突的担忧；说明针灸与中药的获益、风险和其他选择；因既往晕针安排卧位；并确认他理解后再取得同意？",
+        "en": "Did the learner explain in plain Mandarin (or his chosen language) that this is common non-specific back pain that does not need surgery; address his fears about a slipped disc and herb–medicine clashes; set out the benefits, risks and alternatives of acupuncture and herbs; plan a lying position because of his previous faint; and check understanding before taking consent?"
+      }
+    },
+    {
+      "id": "r-review-assessment",
+      "domain": "history",
+      "weight": 3,
+      "text": {
+        "zh-CN": "复诊时重新筛查危险信号，问清起病时间与用药，并复查神经系统与直腿抬高",
+        "en": "At review, re-screened for danger signs, established when they began and what he had taken, and repeated the neurological examination and straight-leg raise"
+      },
+      "met": {
+        "all": [
+          {
+            "asked": "h-fu-redflags"
+          },
+          {
+            "asked": "h-fu-onset-time"
+          },
+          {
+            "asked": "h-fu-meds-last"
+          },
+          {
+            "examined": "e-fu-neuro"
+          },
+          {
+            "examined": "e-fu-slr"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-recognise",
+      "domain": "diagnosis",
+      "weight": 3,
+      "critical": true,
+      "text": {
+        "zh-CN": "首次即识别疑似马尾综合征并选择立即转诊",
+        "en": "Recognised suspected cauda equina syndrome and chose immediate transfer, first time"
+      },
+      "met": {
+        "decidedFirstTry": "d-followup"
+      }
+    },
+    {
+      "id": "r-transfer",
+      "domain": "management",
+      "weight": 3,
+      "critical": true,
+      "text": {
+        "zh-CN": "复诊当天即转往急诊",
+        "en": "Transferred him to the Emergency Department the same day"
+      },
+      "met": {
+        "intervened": "refer-ed",
+        "valid": true
+      }
+    },
+    {
+      "id": "r-handover",
+      "domain": "management",
+      "weight": 2,
+      "text": {
+        "zh-CN": "书面交接：症状及时间、体征、用药（含阿司匹林与布洛芬最后剂量）、已做的中医治疗",
+        "en": "Wrote a handover: symptoms and their times, signs, medicines (with the last doses of aspirin and ibuprofen) and the TCM treatment given"
+      },
+      "met": {
+        "intervened": "handover-letter",
+        "valid": true
+      }
+    },
+    {
+      "id": "r-stop-tcm",
+      "domain": "safety",
+      "weight": 2,
+      "text": {
+        "zh-CN": "暂停中药和针灸，等待急诊评估",
+        "en": "Paused the herbs and acupuncture pending emergency assessment"
+      },
+      "met": {
+        "intervened": "stop-tcm",
+        "valid": true
+      }
+    },
+    {
+      "id": "r-no-delay",
+      "domain": "safety",
+      "weight": 3,
+      "text": {
+        "zh-CN": "没有用针刺、推拿、继续疗程、观察等待或改方来拖延急诊处理",
+        "en": "Did not delay emergency care with needling, a continued course, watchful waiting, a new formula or a routine referral"
+      },
+      "met": {
+        "not": {
+          "any": [
+            {
+              "intervened": "acu-review-session"
+            },
+            {
+              "intervened": "continue-course"
+            },
+            {
+              "intervened": "wait-and-see"
+            },
+            {
+              "intervened": "herbs-stasis"
+            },
+            {
+              "intervened": "refer-imaging",
+              "valid": false
+            }
+          ]
+        }
+      },
+      "scoredWhen": {
+        "any": [
+          {
+            "phase": "followup"
+          },
+          {
+            "intervened": "acu-review-session"
+          },
+          {
+            "intervened": "continue-course"
+          },
+          {
+            "intervened": "wait-and-see"
+          },
+          {
+            "intervened": "herbs-stasis"
+          },
+          {
+            "intervened": "refer-imaging"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r-comm-escalation",
+      "domain": "communication",
+      "weight": 1,
+      "text": {
+        "zh-CN": "清楚而不惊吓地说明为什么必须马上去急诊",
+        "en": "Explained clearly, without alarming him, why he must go to the Emergency Department now"
+      },
+      "judgeGuidance": {
+        "zh-CN": "学员是否用通俗的语言说明这些新症状可能是神经受压、为什么今天就要做检查、到急诊后大概会发生什么；确认他如何安全到达（救护车）、是否通知家人，并交代路上如有加重怎么办？",
+        "en": "Did the learner explain in plain words that the new symptoms may mean pressure on the nerves, why tests are needed today and roughly what will happen at the Emergency Department; check how he will get there safely (an ambulance) and whether his family is told; and say what to do if things get worse on the way?"
+      }
+    }
+  ],
+  "npcs": [
+    {
+      "role": "nurse",
+      "name": {
+        "zh-CN": "Siti（诊所助理）",
+        "en": "Siti (clinic assistant)"
+      },
+      "knowledge": {
+        "zh-CN": "负责挂号后的接待、自助问诊机的使用指导、治疗室准备（床单、枕垫、治疗车、锐器盒）和针数登记表。知道自助机舌象照片需要色卡和标准光，候诊时刚吃喝过的患者照片常不可靠——只讲操作规范，不解读具体照片。可帮忙推治疗车、协助患者俯卧、联系药房和前台预约复诊。不作诊断、不开方、不进针或出针。",
+        "en": "Handles reception after registration, helps patients use the intake kiosk, prepares the treatment room (couch roll, pillows, acupuncture cart, sharps bin) and keeps the needle-count sheet. Knows kiosk tongue photos need the colour card and standard light, and that photos of patients who have just eaten or drunk are often unreliable — she explains the procedure, never reads a particular photo. Can bring the cart, help a patient lie prone, call the dispensary and book the review with reception. Does not diagnose, prescribe, insert or withdraw needles."
+      },
+      "interprets": []
+    },
+    {
+      "role": "pharmacist",
+      "name": {
+        "zh-CN": "林先生（中药调剂）",
+        "en": "Mr Lim (TCM dispensing)"
+      },
+      "knowledge": {
+        "zh-CN": "负责审方与调剂。原则：药房只按处方医师签署的现行版本调剂，任何替换或改动都要新版本处方；不接受口头改方。可解释：桑寄生与槲寄生来源不同、药典分列、功效相近但不是同一药材；配方颗粒按饮片当量开具；活血药（当归、川芎）与抗血小板药合用的出血风险证据多为理论推断或个案，处理方式是记录、观察和告知主诊医生；患者不应自行停用心脏科开的药。只就学员已得到的资料说明，不提供未记录的数据或诊断。",
+        "en": "Reviews and fills prescriptions. Principle: the dispensary fills only the current version signed by the prescriber; any substitution or change needs a new version, and verbal changes are not accepted. Can explain that 桑寄生 and 槲寄生 come from different plants with separate Pharmacopoeia monographs — similar actions, not the same medicinal; that granules are prescribed in crude-herb equivalents; that evidence for extra bleeding with blood-activating herbs (当归, 川芎) and antiplatelets is mostly theoretical or from case reports, managed by recording, monitoring and telling the patient's doctor; and that patients must not stop medicines their cardiologist prescribed. Explains only what the learner already has; no unrecorded data or diagnosis."
+      },
+      "interprets": [
+        "dispensary-query",
+        "dispensing-record",
+        "prior-records"
+      ],
+      "corrections": [
+        {
+          "id": "herb-identity",
+          "misconception": {
+            "zh-CN": "桑寄生和槲寄生是同一味药，可以直接互换",
+            "en": "桑寄生 and 槲寄生 are the same herb and can be swapped freely"
+          },
+          "match": [
+            [
+              "槲寄生",
+              "visci",
+              "viscum"
+            ],
+            [
+              "一样",
+              "相同",
+              "同一",
+              "直接换",
+              "互换",
+              "same",
+              "interchangeable",
+              "swap"
+            ]
+          ],
+          "say": {
+            "zh-CN": "纠正一下：槲寄生和桑寄生来源不同、药典分列，是两味药。换不换由处方医师决定，而且要开新版本处方，我们才能调剂。",
+            "en": "Correction: 槲寄生 and 桑寄生 come from different plants and have separate Pharmacopoeia monographs — they are two medicinals. Whether to swap is the prescriber's decision, and it needs a new prescription version before we can fill it."
+          },
+          "marks": [
+            "两味药",
+            "新版本",
+            "different medicinal",
+            "two medicinals",
+            "new prescription version",
+            "new version"
+          ]
+        },
+        {
+          "id": "stop-aspirin",
+          "misconception": {
+            "zh-CN": "服中药期间应该先停阿司匹林",
+            "en": "Aspirin should be stopped while herbs are taken"
+          },
+          "match": [
+            [
+              "停",
+              "stop",
+              "hold",
+              "pause"
+            ],
+            [
+              "阿司匹林",
+              "aspirin"
+            ]
+          ],
+          "say": {
+            "zh-CN": "纠正一下：他放过冠脉支架，阿司匹林不能由我们停。要调整的是中药，并且观察和告知他的心脏科医生。",
+            "en": "Correction: he has a coronary stent, and stopping his aspirin is not ours to do. We adjust the herbs, monitor him and tell his cardiologist."
+          },
+          "marks": [
+            "不能由我们停",
+            "不能停",
+            "not ours to",
+            "must not stop",
+            "do not stop",
+            "don't stop"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "attending",
+      "name": {
+        "zh-CN": "何医生（资深中医师）",
+        "en": "Dr Ho (senior TCM physician)"
+      },
+      "knowledge": {
+        "zh-CN": "带教的资深注册中医师，用提问引导：证据的来源、时间和质量是否可靠？支持与反对的证据各是什么？西医层面的危险信号筛查是否完整？处方改动是否留下版本记录？针灸前的同意、准备、体位是否到位？复诊时疗效不佳是辨证问题、执行问题、依从性问题，还是病情变化？不透露尚未获得的检查结果，不直接给出决策答案。",
+        "en": "A senior registered TCM physician who teaches by asking: is the evidence's source, timing and quality trustworthy? What supports and what argues against? Is the biomedical danger-sign screen complete? Does each prescription change leave a version record? Are consent, preparation and position in place before needling? At review, is a poor response an assessment problem, an execution problem, an adherence problem or a change in the condition? Does not reveal results the learner has not obtained or give decision answers directly."
+      },
+      "interprets": [
+        "intake-tongue-photo",
+        "tongue-recapture",
+        "prior-records",
+        "dispensary-query",
+        "dispensing-record",
+        "acupuncture-record"
+      ],
+      "corrections": [
+        {
+          "id": "photo-damp-heat",
+          "misconception": {
+            "zh-CN": "自助机照片上的黄苔说明是湿热",
+            "en": "The yellow coating on the kiosk photo means damp-heat"
+          },
+          "match": [
+            [
+              "黄苔",
+              "黄厚",
+              "yellow"
+            ],
+            [
+              "湿热",
+              "damp-heat",
+              "damp heat"
+            ]
+          ],
+          "say": {
+            "zh-CN": "纠正一下：那张照片是暖光下拍的、没有色卡，他来之前又喝过咖啡——染苔和光线都会让苔看起来发黄。先漱口、在标准光下重新看舌，再谈湿热。",
+            "en": "Correction: that photo was taken under warm light without a colour card, and he had just drunk coffee — staining and lighting both make a coating look yellow. Have him rinse and look again under standard light before you talk about damp-heat."
+          },
+          "marks": [
+            "染苔",
+            "光线",
+            "重新",
+            "stain",
+            "lighting",
+            "standard light",
+            "look again"
+          ]
+        },
+        {
+          "id": "aspirin-no-acupuncture",
+          "misconception": {
+            "zh-CN": "服阿司匹林的人不能针灸",
+            "en": "Patients on aspirin cannot have acupuncture"
+          },
+          "match": [
+            [
+              "阿司匹林",
+              "aspirin",
+              "抗血小板",
+              "antiplatelet"
+            ],
+            [
+              "不能针",
+              "不能扎",
+              "禁忌",
+              "不可以针",
+              "no acupuncture",
+              "cannot needle",
+              "contraindicat"
+            ]
+          ],
+          "say": {
+            "zh-CN": "纠正一下：单用阿司匹林不是针刺的绝对禁忌。用洁净针刺技术，避开有出血风险的深刺，出针时充分按压，并观察瘀青即可。",
+            "en": "Correction: aspirin alone is not an absolute contraindication to acupuncture. Use clean needle technique, avoid deep needling where bleeding is a concern, press well on withdrawal and watch for bruising."
+          },
+          "marks": [
+            "不是绝对禁忌",
+            "并非绝对禁忌",
+            "not an absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "consultant",
+      "name": {
+        "zh-CN": "黄医生（综合诊所家庭医生）",
+        "en": "Dr Wong (polyclinic family physician)"
+      },
+      "knowledge": {
+        "zh-CN": "患者在综合诊所的家庭医生，可电话或书面沟通。可就腰痛危险信号、何时需要转诊或影像检查、高血压与血脂管理提供意见；强调冠脉支架术后的长期阿司匹林不能停用，需要时由心脏科决定。欢迎中医诊所告知中药与针灸方案。不掌握本次中医四诊结果，除非学员告知。",
+        "en": "His family physician at the polyclinic, reachable by phone or letter. Can advise on back-pain danger signs, when referral or imaging is needed, and his blood pressure and lipids; stresses that long-term aspirin after a coronary stent must not be stopped, and any change is for the cardiologist. Welcomes being told about the herbal and acupuncture plan. Has none of today's TCM findings unless the learner shares them."
+      },
+      "interprets": [
+        "prior-records"
+      ],
+      "corrections": [
+        {
+          "id": "stop-aspirin-gp",
+          "misconception": {
+            "zh-CN": "中药期间可以暂停阿司匹林",
+            "en": "Aspirin can be paused during a herbal course"
+          },
+          "match": [
+            [
+              "停",
+              "暂停",
+              "stop",
+              "hold",
+              "pause"
+            ],
+            [
+              "阿司匹林",
+              "aspirin"
+            ]
+          ],
+          "say": {
+            "zh-CN": "纠正一下：支架术后的阿司匹林请不要停，停药会增加支架血栓的风险。需要调整的话由心脏科决定。",
+            "en": "Correction: please do not stop his aspirin after a stent — stopping it raises the risk of stent thrombosis. Any change is for his cardiologist to decide."
+          },
+          "marks": [
+            "不要停",
+            "do not stop",
+            "don't stop",
+            "must not stop"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "receptionist",
+      "name": {
+        "zh-CN": "前台",
+        "en": "Reception"
+      },
+      "knowledge": {
+        "zh-CN": "负责挂号、预约与收费（场景中的价格为虚构：初诊S$30，针灸每次S$45，配方颗粒按包计）。可提供华语、英语服务，必要时安排马来语或泰米尔语的口译。不讨论病情。",
+        "en": "Handles registration, appointments and fees (the scenario's prices are fictional: first consultation S$30, acupuncture S$45 per session, granules charged per sachet). Serves patients in Mandarin and English and can arrange Malay or Tamil interpretation if needed. Does not discuss clinical matters."
+      },
+      "interprets": []
+    }
+  ],
+  "debrief": {
+    "title": {
+      "zh-CN": "复盘：复发性腰痛——复诊时出现危险信号",
+      "en": "Debrief: recurrent low back pain — danger signs at the review"
+    },
+    "conclusion": {
+      "zh-CN": "初诊同 tcm-sg-lbp-01：非特异性腰痛，证属寒湿痹阻、兼肝肾不足，处方经审方修订后调剂，完成首次针灸。复诊时，他在搬重物后出现双下肢放射痛、鞍区麻木和排尿费力：疑似马尾综合征。正确的处理是今天停止中医治疗，立即转往急诊做急诊MRI，并附书面交接——症状及出现时间、体征、阿司匹林和布洛芬及其最后剂量、已用的中药和针灸。此时没有任何证候问题比这更重要。",
+      "en": "First visit as in tcm-sg-lbp-01: non-specific low back pain, cold-damp obstruction with liver–kidney insufficiency, a prescription revised after the dispensary's query, and a first acupuncture session. At the review, after lifting at work, he has pain down both legs, saddle numbness and difficulty passing urine: suspected cauda equina syndrome. The right care is to stop TCM treatment today and transfer him at once for an emergency MRI, with a written handover — the symptoms and when they began, the signs, his aspirin and ibuprofen with their last doses, and the herbs and acupuncture already given. No pattern question outranks that."
+    },
+    "keyReasoning": [
+      {
+        "zh-CN": "疾病与证候分两层：先用危险信号与神经系统检查回答“是否安全、是否需要转诊”，再用四诊合参回答“是什么证”。",
+        "en": "Disease and pattern are two layers: the danger-sign screen and neurological examination answer \"is it safe, does he need referral\"; the four examinations together answer \"which pattern\"."
+      },
+      {
+        "zh-CN": "证据有来源、时间和质量。染色、暖光、无色卡的照片不能和自然光下的直接望舌等量齐观。",
+        "en": "Evidence has a source, a time and a quality. A stained photo under warm light without a colour card does not weigh the same as direct inspection in daylight."
+      },
+      {
+        "zh-CN": "寒湿痹阻的依据：冷重酸痛、遇寒湿加重、得温则减、畏寒喜热饮、腰部皮温偏凉、苔白腻；肝肾不足的依据：反复发作、腰膝酸软、尺脉弱、舌淡胖有齿痕。",
+        "en": "Cold-damp obstruction: a cold, heavy ache, worse with cold and damp, better with warmth, cold intolerance, a liking for hot drinks, a cool lower back and a white greasy coating. Liver–kidney insufficiency: recurrence, sore weak knees, weak chi pulses, a pale swollen tooth-marked tongue."
+      },
+      {
+        "zh-CN": "处方是有版本的执行对象：提交、审核、修订、调剂、使用各留记录；药房只按现行版本发药。",
+        "en": "A prescription is an executable object with versions: submission, review, revision, dispensing and use each leave a record, and the dispensary supplies only the current version."
+      },
+      {
+        "zh-CN": "每次复诊都要重新筛查危险信号：随访分支可以改变问题本身。一旦出现危险信号，要决定的是照护转移，而不是证候。",
+        "en": "Re-screen the danger signs at every review: a follow-up branch can change the question itself. Once they appear, the decision is about a care transition, not the pattern."
+      }
+    ],
+    "boundaries": {
+      "zh-CN": "虚构教学病例。所给处方、取穴与疗程只是多种可辩护方案之一；其他经专家认可的方案（如以推拿或单纯运动为主）在本病例中同样不被视为错误。指南意见并不一致：美国医师协会（ACP 2017）把针灸列为慢性腰痛的非药物选择之一，而英国NICE NG59建议不提供针灸；中药治疗慢性腰痛的高质量证据有限。随访结果为编者设定，不是对真实疗效的预测。",
+      "en": "A fictional teaching case. The formula, points and course given are one defensible plan among several; other expert-endorsed plans (for example tuina or exercise-led care) are not treated as wrong here. Guidance disagrees: the American College of Physicians (2017) lists acupuncture among non-drug options for chronic low back pain, whereas NICE NG59 recommends not offering it; high-quality evidence for Chinese herbal medicine in chronic low back pain is limited. The follow-up course is authored, not a prediction of real outcomes."
+    },
+    "unknowns": [
+      {
+        "zh-CN": "他近期的肾功能、肝功能和血常规结果。",
+        "en": "His recent kidney, liver and blood-count results."
+      },
+      {
+        "zh-CN": "所用配方颗粒产品的具体厂家、批次与监管分类（本病例产品为虚构）。",
+        "en": "The manufacturer, batch and regulatory class of the granule products used (fictional in this case)."
+      },
+      {
+        "zh-CN": "两周疗程结束后的疗效与长期复发情况。",
+        "en": "His response after the two-week course and his long-term recurrence."
+      }
+    ],
+    "teachingPoints": [
+      {
+        "zh-CN": "非特异性腰痛：先筛查危险信号；无红旗征时不常规做影像检查，强调保持活动与运动（NICE NG59，2016/2020更新；ACP 2017）。针灸的推荐因指南而异（ACP列为选项，NICE不推荐），知情同意时应如实说明。",
+        "en": "Non-specific low back pain: screen for danger signs first; without red flags, do not routinely image, and emphasise staying active and exercise (NICE NG59, 2016, updated 2020; ACP 2017). Guidance on acupuncture differs (an option in ACP 2017, not recommended in NICE NG59) — say so when you take consent."
+      },
+      {
+        "zh-CN": "舌象采集需要标准光源与色卡；问清来诊前饮食，漱口后再看——染苔是常见的证据质量陷阱。证候术语参照世卫组织中医药国际标准术语（2022）。",
+        "en": "Tongue imaging needs standard light and a colour card; ask about recent food and drink and look again after a rinse — staining is a common evidence-quality trap. Pattern terms follow the WHO international standard terminologies on TCM (2022)."
+      },
+      {
+        "zh-CN": "中药替换与处方变更由处方医师决定并形成新版本；桑寄生与槲寄生在《中国药典》（2020年版）中分列。完整用药史（含抗血小板药）应在调剂前取得，并与患者的主诊医生沟通。",
+        "en": "Herb substitutions and other prescription changes are the prescriber's decision and create a new version; 桑寄生 and 槲寄生 are separate monographs in the Chinese Pharmacopoeia (2020). Obtain a complete medication history, antiplatelets included, before supply, and keep the patient's own doctors informed."
+      },
+      {
+        "zh-CN": "针刺安全：知情同意、洁净针刺技术、一次性无菌针、锐器即时处置；有晕针史者取卧位并确认已进食；进出针数核对（参见WHO针灸实践基准，2020）。",
+        "en": "Needling safety: informed consent, clean needle technique, single-use sterile needles, immediate sharps disposal; lie down a patient who has fainted before and make sure they have eaten; count needles in and out (see the WHO benchmarks for the practice of acupuncture, 2020)."
+      },
+      {
+        "zh-CN": "新加坡执业：遵循中医管理委员会的伦理守则（同意、记录、转介）；产品按卫生科学局对中成药与中药材的不同规定分类。",
+        "en": "Practising in Singapore: follow the TCM Practitioners Board's ethical code (consent, records, referral); classify products under the Health Sciences Authority's separate rules for Chinese proprietary medicines and traditional medicinal materials."
+      },
+      {
+        "zh-CN": "疑似马尾综合征（双侧坐骨神经痛、鞍区感觉减退、膀胱、肠道或性功能障碍）需立即转诊做急诊MRI；不要等到完全尿潴留（参见英国GIRFT全国疑似马尾综合征路径，2023）。",
+        "en": "Suspected cauda equina syndrome (bilateral sciatica, saddle sensory loss, bladder, bowel or sexual dysfunction) needs immediate referral for an emergency MRI; do not wait for complete retention (see the GIRFT national suspected cauda equina syndrome pathway, 2023)."
+      }
+    ],
+    "references": [
+      "National Institute for Health and Care Excellence. Low back pain and sciatica in over 16s: assessment and management (NICE guideline NG59). London: NICE; 2016 (updated 2020).",
+      "Qaseem A, Wilt TJ, McLean RM, Forciea MA; Clinical Guidelines Committee of the American College of Physicians. Noninvasive treatments for acute, subacute, and chronic low back pain: a clinical practice guideline from the American College of Physicians. Ann Intern Med. 2017;166(7):514-30.",
+      "Foster NE, Anema JR, Cherkin D, Chou R, Cohen SP, Gross DP, et al. Prevention and treatment of low back pain: evidence, challenges, and promising directions. Lancet. 2018;391(10137):2368-83.",
+      "World Health Organization. WHO benchmarks for the practice of acupuncture. Geneva: WHO; 2020.",
+      "World Health Organization. WHO international standard terminologies on traditional Chinese medicine. Geneva: WHO; 2022.",
+      "Chinese Pharmacopoeia Commission. Pharmacopoeia of the People's Republic of China, Volume I. 2020 ed. Beijing: China Medical Science Press; 2020.",
+      "Traditional Chinese Medicine Practitioners Board (Singapore). Ethical code and ethical guidelines for TCM practitioners. Singapore: TCMPB.",
+      "Health Sciences Authority (Singapore). Chinese proprietary medicines: overview. Singapore: HSA.",
+      "Getting It Right First Time (NHS England). National suspected cauda equina syndrome (CES) pathway. London: GIRFT; 2023."
+    ],
+    "notice": {
+      "zh-CN": "评分衡量完成本教学路径的程度，未经临床能力评价验证。",
+      "en": "Scores measure completion of this teaching pathway and are not validated measures of clinical competence."
+    }
+  },
+  "safetyGates": [
+    {
+      "id": "g-unauthorised-substitution",
+      "verdict": "safety-critical",
+      "capPercent": 40,
+      "label": {
+        "zh-CN": "未经新版本处方即口头同意替换药材",
+        "en": "A herb substitution agreed verbally without a new prescription version"
+      },
+      "when": {
+        "intervened": "rx-verbal-swap"
+      }
+    },
+    {
+      "id": "g-needles-unaccounted",
+      "verdict": "safety-critical",
+      "capPercent": 40,
+      "label": {
+        "zh-CN": "已进针但未出针核对针数",
+        "en": "Needles inserted but never withdrawn and counted"
+      },
+      "when": {
+        "all": [
+          {
+            "intervened": "acu-insert",
+            "valid": true
+          },
+          {
+            "not": {
+              "intervened": "acu-remove",
+              "valid": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "g-stop-antiplatelet",
+      "verdict": "safety-critical",
+      "capPercent": 40,
+      "label": {
+        "zh-CN": "建议冠脉支架术后患者停用阿司匹林",
+        "en": "Advised a patient with a coronary stent to stop aspirin"
+      },
+      "when": {
+        "intervened": "stop-aspirin"
+      }
+    },
+    {
+      "id": "g-outdated-version-intercepted",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "试图按未解决审方意见的处方版本发药（已被版本核对拦截）",
+        "en": "Supply attempted from a prescription version with an open query (intercepted by the version check)"
+      },
+      "when": {
+        "intervened": "dispense",
+        "valid": false
+      }
+    },
+    {
+      "id": "g-needling-refused",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "在前置条件未满足时尝试进针（已被拦截）",
+        "en": "Needling attempted before its prerequisites were met (intercepted)"
+      },
+      "when": {
+        "intervened": "acu-insert",
+        "valid": false
+      }
+    },
+    {
+      "id": "g-delayed-emergency-care",
+      "verdict": "safety-critical",
+      "capPercent": 40,
+      "label": {
+        "zh-CN": "出现疑似马尾综合征征象后仍以中医治疗或等待来拖延急诊处理",
+        "en": "Emergency care delayed with TCM treatment or waiting after signs of suspected cauda equina syndrome"
+      },
+      "when": {
+        "any": [
+          {
+            "intervened": "acu-review-session"
+          },
+          {
+            "intervened": "continue-course"
+          },
+          {
+            "intervened": "wait-and-see"
+          },
+          {
+            "intervened": "herbs-stasis"
+          },
+          {
+            "intervened": "refer-imaging",
+            "valid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "g-transfer-without-handover",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "转诊时没有书面交接",
+        "en": "Transferred without a written handover"
+      },
+      "when": {
+        "all": [
+          {
+            "intervened": "refer-ed",
+            "valid": true
+          },
+          {
+            "not": {
+              "intervened": "handover-letter",
+              "valid": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "unknowns": [
+    {
+      "zh-CN": "近期肝肾功能与血常规结果（综合诊所去年抽血，患者不知道结果）。",
+      "en": "Recent liver, kidney and blood-count results (the polyclinic took blood last year; he does not know the results)."
+    },
+    {
+      "zh-CN": "所用颗粒产品的厂家、批号与监管分类。",
+      "en": "Manufacturer, batch and regulatory class of the granule products."
+    },
+    {
+      "zh-CN": "两周疗程后的疗效与远期复发。",
+      "en": "His response after two more weeks and his long-term recurrence."
+    },
+    {
+      "zh-CN": "转诊后的MRI结果与急诊处理。",
+      "en": "The MRI result and the Emergency Department's management after transfer."
+    }
+  ],
+  "solution": [
+    {
+      "type": "start"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-presenting"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-onset"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-site"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-character"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-modifiers"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-severity"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-redflag-neuro"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-redflag-ce"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-redflag-systemic"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-trauma"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-coldheat"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-knees-fatigue"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-urine-stool"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-sleep"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-appetite"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-food-before"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-pmh"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-meds"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-antithrombotic"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-herbs-supplements"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-allergies"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-bruising"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-prior-acu"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-occupation"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-living"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-smoking-alcohol"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-exercise"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-function"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-family"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-language"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-ice"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-general"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-vitals"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-voice-odour"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-skin-back"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-lumbar-palp"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-lumbar-rom"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-slr"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-neuro"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-hips"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-abdomen"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-pulse"
+    },
+    {
+      "type": "order",
+      "investigationId": "intake-tongue-photo"
+    },
+    {
+      "type": "read",
+      "investigationId": "intake-tongue-photo",
+      "phase": "consult"
+    },
+    {
+      "type": "answer",
+      "decisionId": "d-evidence",
+      "optionIds": [
+        "recheck"
+      ]
+    },
+    {
+      "type": "examine",
+      "findingId": "e-tongue"
+    },
+    {
+      "type": "order",
+      "investigationId": "tongue-recapture"
+    },
+    {
+      "type": "read",
+      "investigationId": "tongue-recapture",
+      "phase": "consult"
+    },
+    {
+      "type": "order",
+      "investigationId": "prior-records"
+    },
+    {
+      "type": "read",
+      "investigationId": "prior-records",
+      "phase": "consult"
+    },
+    {
+      "type": "answer",
+      "decisionId": "d-disease",
+      "optionIds": [
+        "nslbp"
+      ]
+    },
+    {
+      "type": "answer",
+      "decisionId": "d-pattern",
+      "optionIds": [
+        "cold-damp"
+      ]
+    },
+    {
+      "type": "intervene",
+      "interventionId": "self-management"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "explain-consent"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "rx-draft"
+    },
+    {
+      "type": "order",
+      "investigationId": "dispensary-query"
+    },
+    {
+      "type": "read",
+      "investigationId": "dispensary-query",
+      "phase": "treatment"
+    },
+    {
+      "type": "answer",
+      "decisionId": "d-rx-review",
+      "optionIds": [
+        "new-version",
+        "aspirin-managed"
+      ]
+    },
+    {
+      "type": "intervene",
+      "interventionId": "rx-v2-substitute"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "dispense"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "counsel-herbs"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "gp-letter"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "acu-prep"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "acu-position"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "acu-insert"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "acu-remove"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "acu-document"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "arrange-followup"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-status"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-redflags"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-onset-time"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-bowel"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-meds-last"
+    },
+    {
+      "type": "ask",
+      "itemId": "h-fu-adverse"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-fu-general"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-fu-neuro"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-fu-slr"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-fu-abdomen"
+    },
+    {
+      "type": "examine",
+      "findingId": "e-fu-lumbar"
+    },
+    {
+      "type": "answer",
+      "decisionId": "d-followup",
+      "optionIds": [
+        "transfer"
+      ]
+    },
+    {
+      "type": "intervene",
+      "interventionId": "stop-tcm"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "refer-ed"
+    },
+    {
+      "type": "intervene",
+      "interventionId": "handover-letter"
+    },
+    {
+      "type": "finish"
+    }
+  ],
+  "extensions": {
+    "testUtterances": [
+      {
+        "text": "今天怎么了，哪里不舒服？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-presenting"
+        ]
+      },
+      {
+        "text": "so what's the main problem today?",
+        "locale": "en",
+        "expect": [
+          "h-presenting"
+        ]
+      },
+      {
+        "text": "腰痛之前有没有发作过？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-onset"
+        ]
+      },
+      {
+        "text": "has this happened before?",
+        "locale": "en",
+        "expect": [
+          "h-onset"
+        ]
+      },
+      {
+        "text": "痛的位置具体在哪？会放射吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-site"
+        ]
+      },
+      {
+        "text": "does the pain radiate down your leg?",
+        "locale": "en",
+        "expect": [
+          "h-site"
+        ]
+      },
+      {
+        "text": "是刺痛还是酸痛？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-character"
+        ]
+      },
+      {
+        "text": "what kind of pain is it?",
+        "locale": "en",
+        "expect": [
+          "h-character"
+        ]
+      },
+      {
+        "text": "什么会让它加重？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-modifiers"
+        ]
+      },
+      {
+        "text": "is it worse in rainy weather?",
+        "locale": "en",
+        "expect": [
+          "h-modifiers"
+        ]
+      },
+      {
+        "text": "痛得厉害吗，打几分？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-severity"
+        ]
+      },
+      {
+        "text": "how bad is the pain out of ten?",
+        "locale": "en",
+        "expect": [
+          "h-severity"
+        ]
+      },
+      {
+        "text": "脚有没有发麻？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-redflag-neuro"
+        ]
+      },
+      {
+        "text": "any pins and needles in your feet?",
+        "locale": "en",
+        "expect": [
+          "h-redflag-neuro"
+        ]
+      },
+      {
+        "text": "大小便能控制吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-redflag-ce"
+        ]
+      },
+      {
+        "text": "any problems with bladder control?",
+        "locale": "en",
+        "expect": [
+          "h-redflag-ce"
+        ]
+      },
+      {
+        "text": "最近有发烧或者体重下降吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-redflag-systemic"
+        ]
+      },
+      {
+        "text": "any history of cancer or weight loss?",
+        "locale": "en",
+        "expect": [
+          "h-redflag-systemic"
+        ]
+      },
+      {
+        "text": "你怕冷吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-coldheat"
+        ]
+      },
+      {
+        "text": "do you feel the cold easily?",
+        "locale": "en",
+        "expect": [
+          "h-coldheat"
+        ]
+      },
+      {
+        "text": "晚上要起夜吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-urine-stool"
+        ]
+      },
+      {
+        "text": "来看病之前喝过咖啡吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-food-before"
+        ]
+      },
+      {
+        "text": "did you have coffee or tea this morning?",
+        "locale": "en",
+        "expect": [
+          "h-food-before"
+        ]
+      },
+      {
+        "text": "你以前有什么慢性病？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-pmh"
+        ]
+      },
+      {
+        "text": "any past medical problems?",
+        "locale": "en",
+        "expect": [
+          "h-pmh"
+        ]
+      },
+      {
+        "text": "平时吃哪些药？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-meds"
+        ]
+      },
+      {
+        "text": "which tablets do you take every day?",
+        "locale": "en",
+        "expect": [
+          "h-meds"
+        ]
+      },
+      {
+        "text": "你有在吃阿司匹林吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-antithrombotic"
+        ]
+      },
+      {
+        "text": "are you on any blood thinners?",
+        "locale": "en",
+        "expect": [
+          "h-antithrombotic"
+        ]
+      },
+      {
+        "text": "有药物过敏吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-allergies"
+        ]
+      },
+      {
+        "text": "any drug allergies?",
+        "locale": "en",
+        "expect": [
+          "h-allergies"
+        ]
+      },
+      {
+        "text": "你以前扎过针吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-prior-acu"
+        ]
+      },
+      {
+        "text": "ever had acupuncture before?",
+        "locale": "en",
+        "expect": [
+          "h-prior-acu"
+        ]
+      },
+      {
+        "text": "你最担心的是什么？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-ice"
+        ]
+      },
+      {
+        "text": "what are you most worried about?",
+        "locale": "en",
+        "expect": [
+          "h-ice"
+        ]
+      },
+      {
+        "text": "家族里有人有类似的问题吗？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-family"
+        ]
+      },
+      {
+        "text": "这一周腰怎么样？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-status"
+        ]
+      },
+      {
+        "text": "how have things been since last week?",
+        "locale": "en",
+        "expect": [
+          "h-fu-status"
+        ]
+      },
+      {
+        "text": "现在腿有没有麻、没力气？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-redflags"
+        ]
+      },
+      {
+        "text": "any change in how your bladder feels?",
+        "locale": "en",
+        "expect": [
+          "h-fu-redflags"
+        ]
+      },
+      {
+        "text": "麻木是什么时候开始的？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-onset-time"
+        ],
+        "alsoOk": [
+          "h-fu-redflags"
+        ]
+      },
+      {
+        "text": "what time did the numbness come on?",
+        "locale": "en",
+        "expect": [
+          "h-fu-onset-time"
+        ],
+        "alsoOk": [
+          "h-fu-redflags"
+        ]
+      },
+      {
+        "text": "最后一次吃阿司匹林是几点？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-meds-last"
+        ]
+      },
+      {
+        "text": "have you taken any painkillers?",
+        "locale": "en",
+        "expect": [
+          "h-fu-meds-last"
+        ]
+      },
+      {
+        "text": "上一次大便是什么时候？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-bowel"
+        ]
+      },
+      {
+        "text": "when did you last open your bowels?",
+        "locale": "en",
+        "expect": [
+          "h-fu-bowel"
+        ]
+      }
+    ],
+    "tcmcraft": {
+      "edition": "singapore",
+      "caseFamily": "sg-lbp",
+      "variant": "review-b-escalation",
+      "split": "dev",
+      "modules": [
+        "four-examinations",
+        "pattern-differentiation",
+        "herbal-prescribing",
+        "acupuncture",
+        "care-coordination",
+        "longitudinal-follow-up"
+      ],
+      "patternFramework": "zang-fu and bi-syndrome (脏腑辨证 · 痹证辨证)",
+      "acceptablePathways": [
+        {
+          "id": "substitute",
+          "decisionPoint": "dispensary-query",
+          "interventions": [
+            "rx-v2-substitute",
+            "dispense"
+          ],
+          "rationale": "Prescriber names 槲寄生 in a new signed version."
+        },
+        {
+          "id": "omit",
+          "decisionPoint": "dispensary-query",
+          "interventions": [
+            "rx-v2-omit",
+            "dispense"
+          ],
+          "rationale": "Prescriber leaves 桑寄生 out in a new signed version; 杜仲 and 牛膝 remain."
+        },
+        {
+          "id": "tuina-adjunct",
+          "decisionPoint": "treatment",
+          "interventions": [
+            "tuina"
+          ],
+          "rationale": "Tuina as an adjunct after consent is acceptable and not required."
+        }
+      ],
+      "unacceptable": [
+        "rx-verbal-swap",
+        "stop-aspirin",
+        "acu-review-session",
+        "continue-course",
+        "wait-and-see",
+        "herbs-stasis",
+        "refer-imaging (at the review)",
+        "tuina (at the review)"
+      ],
+      "expertDisagreement": [
+        "Whether 当归 and 川芎 should be kept at usual doses or removed alongside aspirin (both accepted).",
+        "Whether the underlying deficiency is best framed as liver–kidney or spleen–kidney (both reasoned; the rubric scores the cold-damp primary pattern)."
+      ],
+      "evidence": {
+        "intake-tongue-photo": {
+          "source": "self-service kiosk",
+          "quality": "failed colour check",
+          "confounders": [
+            "warm light",
+            "no colour card",
+            "recent coffee"
+          ]
+        },
+        "tongue-recapture": {
+          "source": "tongue-imaging station",
+          "quality": "passed"
+        },
+        "e-tongue": {
+          "source": "direct inspection after rinsing, daylight"
+        },
+        "e-pulse": {
+          "source": "clinician palpation (authored description, no waveform)"
+        }
+      },
+      "followUpModel": "authored branch: new neurological danger signs at the review (not a calibrated outcome model)",
+      "variantOf": "tcm-sg-lbp-01"
+    }
+  }
+}

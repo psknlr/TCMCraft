@@ -11,7 +11,7 @@ Engine revision written and checked against: ClinicalCraft `4569808889ca` (`tool
 | Phase (DESIGN §10) | Status | What exists |
 |---|---|---|
 | **1. A single longitudinal encounter** | **Built and passing on the engine; awaiting the in-world walk-through and clinical review** | Case `tcm-sg-lbp-01` (three phases, 38 history items, 17 examinations, 7 investigations and records, 23 interventions, 5 decisions, 17 rubric items, 5 safety gates, a 90-step reference path, a 43-utterance matcher corpus); the fictional clinic `tcm-sg-clinic` (3 room templates, 10 equipment types); offline checks and CI against the pinned engine |
-| 2. 12-case prototype | Not started | Candidate sources: [CMCR_CORPUS.md](CMCR_CORPUS.md) |
+| 2. 12-case prototype | **In progress: 3 of 12** ([PHASE2.md](PHASE2.md)) | Family `sg-lbp` with three reviews of one first visit: `tcm-sg-lbp-01` (review A: adherence and exposure), `tcm-sg-lbp-02` (review B: suspected cauda equina syndrome → transfer), `tcm-sg-lbp-03` (review C: label ≠ prescription). The case-family builder, family consistency checks and failure conditions are machine-checked (`tools/paths/*.json` `expect`). |
 | 3. 60-case engineering pilot | Not started | — |
 | 4. Formal benchmark | Not started | — |
 | 5. Specialised capabilities | Not started | — |

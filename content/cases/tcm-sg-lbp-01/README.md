@@ -1,4 +1,4 @@
-# tcm-sg-lbp-01 — Recurrent low back pain · 52-year-old man
+# tcm-sg-lbp-01 — Recurrent low back pain · 52-year-old man · review A
 
 ## Case card
 
@@ -6,6 +6,7 @@
 |---|---|
 | Setting | Outpatient — a fictional Singapore community TCM clinic |
 | Facility | `tcm-sg-clinic` (this pack: `content/facilities/tcm-sg-clinic.json`) |
+| Family | `sg-lbp` (split **dev**): the base case, variant `review-a-adherence`. [`tcm-sg-lbp-02`](../tcm-sg-lbp-02/README.md) (review B) and [`tcm-sg-lbp-03`](../tcm-sg-lbp-03/README.md) (review C) share this first visit. |
 | Difficulty | ★★★ (3/5) |
 | Estimated time | 45 minutes |
 | Specialty | Traditional Chinese medicine, acupuncture, musculoskeletal |
@@ -117,7 +118,7 @@ ClinicalCraft has no prescription object yet ([docs/ENGINE_EXTENSIONS.md](../../
 
 ### How paths score
 
-Replayed with `python3 tools/pack_check.py --paths` (paths in `tools/paths/tcm-sg-lbp-01.json`):
+Replayed with `python3 tools/pack_check.py --paths` (paths in `tools/paths/tcm-sg-lbp-01.json`). Each path states its expected outcome, and the check fails if the replay differs:
 
 | Path | Score | Critical missed | Gates |
 |---|---|---|---|
@@ -238,6 +239,7 @@ No DOIs are given: none was verified with a lookup in this session.
 
 ## Changelog
 
+- **0.1.1 (2026-11-07).** Family metadata (`sg-lbp`, `review-a-adherence`, split dev) and the title suffix "· review A". The onset item's English keyword `start` became `whendiditstart` / `howdiditstart`, so that a review-time "when did the numbness start?" in the family's variants is not answered by the first-visit onset item. No scoring change.
 - **0.1.0 (2026-11-06).** First version: the phase 1 episode of docs/DESIGN.md.
 
 ## Validation

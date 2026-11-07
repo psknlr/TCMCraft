@@ -1,10 +1,10 @@
 {
   "schema": "clinicalcraft/case@1",
   "id": "tcm-sg-lbp-01",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": {
-    "zh-CN": "腰痛反复发作 · 52岁男性",
-    "en": "Recurrent low back pain · 52-year-old man"
+    "zh-CN": "腰痛反复发作 · 52岁男性 · 复诊A",
+    "en": "Recurrent low back pain · 52-year-old man · review A"
   },
   "summary": {
     "zh-CN": "一位五十多岁的上班族来到新加坡的社区中医诊所，腰痛反复发作。完成评估与治疗，并在一周后复诊。",
@@ -309,7 +309,8 @@
           "扭到"
         ],
         "en": [
-          "start",
+          "whendiditstart",
+          "howdiditstart",
           "began",
           "previous episodes",
           "happened before",
@@ -5949,6 +5950,9 @@
     ],
     "tcmcraft": {
       "edition": "singapore",
+      "caseFamily": "sg-lbp",
+      "variant": "review-a-adherence",
+      "split": "dev",
       "modules": [
         "four-examinations",
         "pattern-differentiation",

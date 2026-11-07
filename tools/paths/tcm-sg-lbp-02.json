@@ -1,0 +1,190 @@
+[
+  {
+    "id": "needles-at-review",
+    "summary": "Gives acupuncture for the leg pain before deciding",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "transfer"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "acu-review-session"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-delayed-emergency-care"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "routine-mri-at-review",
+    "summary": "Writes a routine MRI referral at the review (then transfers)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-tcm"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "refer-imaging"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-delayed-emergency-care"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "waits-for-retention",
+    "summary": "Sends him home to wait for complete retention (then corrects)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-tcm"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "wait-and-see"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-delayed-emergency-care"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "calls-it-sciatica-first",
+    "summary": "First reads it as a sciatica flare, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "transfer"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-followup",
+            "optionIds": [
+              "needle-review"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-recognise"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "no-handover",
+    "summary": "Transfers him without a written handover (the review objective stays open)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "handover-letter"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 96,
+      "gates": [
+        "g-transfer-without-handover"
+      ],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "ed-at-first-visit",
+    "summary": "Tries to send him to the ED at the first visit (intercepted: no danger signs then)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "self-management"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "refer-ed"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 69,
+    "expect": {
+      "percent": 72,
+      "gates": [],
+      "criticalMissed": [
+        "r-recognise",
+        "r-transfer"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-redflags",
+        "r-rx-version",
+        "r-recognise",
+        "r-transfer"
+      ],
+      "finished": false
+    }
+  }
+]

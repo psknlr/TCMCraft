@@ -1142,7 +1142,67 @@ def replay_paths(c: dict, w: str) -> None:
         s, rej = replay(c, actions, f'{w} path "{path["id"]}"', quiet_rejections=True)
         earned, possible, pct, missed, gates = s.score()
         gate_ids = ", ".join(g[0] for g in gates) or "none"
-        print(f'  path {path["id"]:<24} {earned:>4g}/{possible:<4g} {pct:5.0f}%  critical missed: {", ".join(missed) or "none"}; gates: {gate_ids}; rejected steps: {len(rej)}')
+        print(f'  path {path["id"]:<28} {earned:>4g}/{possible:<4g} {pct:5.0f}%  finished: {"yes" if s.finished else "no "}  critical missed: {", ".join(missed) or "none"}; gates: {gate_ids}; rejected steps: {len(rej)}')
+        check_expectation(path, pct, missed, gates, s.finished, f'{w} path "{path["id"]}"')
+
+
+def check_expectation(path: dict, pct: float, missed: list[str], gates: list, finished: bool, where: str) -> None:
+    """A path's `expect` is its defined failure condition (docs/PHASE2.md): the outcome must be exactly what it says.
+
+    `percent`: a number (to the nearest whole percent) or `[low, high]`; `gates`: the safety gates that hold (exact
+    set); `criticalMissed`: the critical rubric items missed (exact set); `finished`: whether the case can finish.
+    """
+    expect = path.get("expect")
+    if expect is None:
+        err(where, "no `expect`: every path states its outcome")
+        return
+    want = expect.get("percent")
+    if isinstance(want, (int, float)) and round(pct) != round(want):
+        err(where, f"expected {want}%, got {pct:.0f}%")
+    if isinstance(want, list) and not (want[0] <= round(pct) <= want[1]):
+        err(where, f"expected {want[0]}–{want[1]}%, got {pct:.0f}%")
+    if "gates" in expect and sorted(expect["gates"]) != sorted(g[0] for g in gates):
+        err(where, f"expected gates {sorted(expect['gates'])}, got {sorted(g[0] for g in gates)}")
+    if "criticalMissed" in expect and sorted(expect["criticalMissed"]) != sorted(missed):
+        err(where, f"expected critical misses {sorted(expect['criticalMissed'])}, got {sorted(missed)}")
+    if "finished" in expect and bool(expect["finished"]) != finished:
+        err(where, f"expected finished={expect['finished']}, got {finished}")
+
+
+def check_families(cases: list[dict]) -> None:
+    """Cases of one family (extensions.tcmcraft.caseFamily) share a split and every shared first-visit fact."""
+    families: dict[str, list[dict]] = {}
+    for c in cases:
+        fam = c.get("extensions", {}).get("tcmcraft", {}).get("caseFamily")
+        if fam:
+            families.setdefault(fam, []).append(c)
+    for fam, members in families.items():
+        w = f"family {fam}"
+        splits = {m["extensions"]["tcmcraft"].get("split") for m in members}
+        if len(splits) != 1 or None in splits:
+            err(w, f"cases disagree on the split: {sorted(map(str, splits))}")
+        first = {"history": lambda x: not x["id"].startswith("h-fu-"), "exam": lambda x: not x["id"].startswith("e-fu-")}
+        for coll, keep in first.items():
+            seen: dict[str, tuple[str, str]] = {}
+            for m in members:
+                for item in m[coll]:
+                    if not keep(item):
+                        continue
+                    key = json.dumps({k: item.get(k) for k in ("question", "answer", "maneuver", "finding", "phases")}, ensure_ascii=False, sort_keys=True)
+                    if item["id"] in seen and seen[item["id"]][1] != key:
+                        err(w, f'{coll} item "{item["id"]}" differs between {seen[item["id"]][0]} and {m["id"]}')
+                    seen.setdefault(item["id"], (m["id"], key))
+        shared_records: dict[str, tuple[str, str]] = {}
+        for m in members:
+            for inv in m["investigations"]:
+                early = {ph: r for ph, r in inv["results"].items() if ph != "followup"}
+                if not early:
+                    continue
+                key = json.dumps(early, ensure_ascii=False, sort_keys=True)
+                if inv["id"] in shared_records and shared_records[inv["id"]][1] != key:
+                    err(w, f'record "{inv["id"]}" differs between {shared_records[inv["id"]][0]} and {m["id"]} before the review')
+                shared_records.setdefault(inv["id"], (m["id"], key))
+        print(f"  family {fam}: {len(members)} case(s), split {', '.join(map(str, splits))}: {', '.join(m['id'] for m in members)}")
 
 
 # =============================================================================================
@@ -1335,6 +1395,8 @@ def main() -> int:
         check_utterances(c, w)
         if args.paths:
             replay_paths(c, w)
+
+    check_families(cases)
 
     catalogs = load_catalogs(cc)
     materials = {m["id"] for cat in catalogs.values() for m in cat.get("materials", [])}
