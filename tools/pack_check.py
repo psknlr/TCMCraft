@@ -494,6 +494,7 @@ ENUMS = {
     "role": {"nurse", "radiologist", "pathologist", "lab-tech", "attending", "pharmacist", "consultant", "receptionist", "paramedic"},
     "affect": {"calm", "anxious", "distressed", "in-pain", "drowsy", "irritable", "frightened", "breathless", "confused"},
     "healthLiteracy": {"low", "medium", "high"},
+    "safetyFinding": {"unknown", "negative", "positive"},
     "hairStyle": {"short", "long", "bald", "bun", "ponytail", "curly"},
     "build": {"slim", "average", "heavy"},
     "stature": {"infant", "child", "teen", "adult"},
@@ -559,6 +560,8 @@ def check_shape(c: dict, w: str) -> None:
     check_enum(p["persona"].get("healthLiteracy"), "healthLiteracy", f"{w} patient.persona.healthLiteracy")
     for key in ("hairStyle", "build", "stature", "accessory"):
         check_enum(p.get("appearance", {}).get(key), key, f"{w} patient.appearance.{key}")
+    for i, h in enumerate(c.get("history", [])):
+        check_enum((h.get("safety") or {}).get("finding"), "safetyFinding", f"{w} history.{i}.safety.finding")
     collections = {"phases": ("label",), "history": ("question", "answer"), "exam": ("maneuver", "finding"), "investigations": ("name",), "interventions": ("name",),
                    "objectives": ("title", "hint"), "decisions": ("prompt", "need"), "rubric": ("text",)}
     for coll, fields in collections.items():

@@ -67,7 +67,7 @@ HISTORY = [
        L("有两个晚上三点多婆婆起来走动，我起来看她，脚步很不稳，有一次撞到门框，左肩膀瘀青了。没有跌倒。没有做过自己不记得的事。",
          "Twice, at about three, my mother-in-law got up and wandered and I got up for her — I was very unsteady, and once I walked into the door frame and bruised my left shoulder. I didn't fall. I haven't done anything I can't remember."),
        KW(["站不稳", "跌倒", "摔倒", "撞到", "不记得", "晚上起来"], ["unsteady", "fallen", "fall", "can't remember", "sleepwalking", "at night after the tablet"]),
-       required=True, phases=REVIEW, safety={"datum": "night-falls", "finding": "near-fall"}),
+       required=True, phases=REVIEW, safety={"datum": "night-falls", "finding": "positive"}),
     hx("h-rv-morning", "functional",
        L("早上起来精神怎么样？怎么去上班？", "How are you in the mornings, and how do you get to work?"),
        L("早上头昏昏的，反应慢，到十点才清醒。我每天自己开车上班，大概七点四十出门。",

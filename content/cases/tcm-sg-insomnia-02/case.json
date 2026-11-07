@@ -1418,7 +1418,7 @@
       "disclosure": "on-ask",
       "safety": {
         "datum": "night-falls",
-        "finding": "near-fall"
+        "finding": "positive"
       },
       "required": true,
       "phases": [
