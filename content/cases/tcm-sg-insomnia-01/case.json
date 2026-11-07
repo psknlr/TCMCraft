@@ -1,10 +1,10 @@
 {
   "schema": "clinicalcraft/case@1",
   "id": "tcm-sg-insomnia-01",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": {
-    "zh-CN": "失眠 · 47岁女性",
-    "en": "Difficulty sleeping · 47-year-old woman"
+    "zh-CN": "失眠 · 47岁女性 · 复诊A",
+    "en": "Difficulty sleeping · 47-year-old woman · review A"
   },
   "summary": {
     "zh-CN": "一位四十多岁的上班族来到新加坡的社区中医诊所，睡不好已有好几个月。完成评估与方案，并在两周后复诊。",
@@ -4409,7 +4409,7 @@
     "tcmcraft": {
       "edition": "singapore",
       "caseFamily": "sg-insomnia",
-      "variant": "base",
+      "variant": "review-a-iron",
       "split": "dev",
       "modules": [
         "four-examinations",

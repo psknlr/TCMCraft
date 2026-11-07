@@ -1,4 +1,4 @@
-# tcm-sg-insomnia-01 — Difficulty sleeping · 47-year-old woman
+# tcm-sg-insomnia-01 — Difficulty sleeping · 47-year-old woman · review A
 
 ## Case card
 
@@ -6,7 +6,7 @@
 |---|---|
 | Setting | Outpatient — a fictional Singapore community TCM clinic |
 | Facility | `tcm-sg-clinic` |
-| Family | `sg-insomnia` (split **dev**): the base case, variant `base` |
+| Family | `sg-insomnia` (split **dev**): the base case, variant `review-a-iron`. [`tcm-sg-insomnia-02`](../tcm-sg-insomnia-02/README.md) (review B) shares this first visit. |
 | Difficulty | ★★★ (3/5) |
 | Estimated time | 40 minutes |
 | Specialty | Traditional Chinese medicine, sleep medicine, family medicine |
@@ -248,7 +248,7 @@ There are 68 steps in all. Acupuncture (`explain-consent` then `acupuncture-slee
 - **The disagreement.** It is a decision, an ordered pair of steps and a record. Dr Ho's change of mind is authored, not argued: a learner who brings weak evidence gets the same agreement as one who brings strong evidence. Only the examiner-judged item `r-comm-colleague` sees the quality of the conversation.
 - **CBT-I.** It is one step. The sleep restriction schedule, its weekly adjustment and adherence are narrative. The review diary is authored.
 - **The iron–tea interaction.** It is taught, not modelled: nothing changes the haemoglobin.
-- **The review.** It is a single authored branch. Other reviews of this first visit (no improvement, a mood change, a sleepiness incident) are future variants of the `sg-insomnia` family.
+- **The review.** It is a single authored branch. `tcm-sg-insomnia-02` is review B of the same first visit (a watch against the diary, and a new hypnotic). Other reviews (a mood change, no improvement) would be further variants.
 
 ## Matcher notes
 
@@ -288,6 +288,7 @@ No DOIs are given: none was verified with a lookup in this session.
 
 ## Changelog
 
+- **0.1.1 (2026-11-07).** Family metadata (variant `review-a-iron`) and the title suffix "· review A", now that `tcm-sg-insomnia-02` shares the first visit. No scoring change.
 - **0.1.0 (2026-11-07).** First version: phase 2, case 5 (docs/PHASE2.md).
 
 ## Validation

@@ -789,8 +789,8 @@ def build() -> dict:
     return {
         "schema": "clinicalcraft/case@1",
         "id": CASE_ID,
-        "version": "0.1.0",
-        "title": L("失眠 · 47岁女性", "Difficulty sleeping · 47-year-old woman"),
+        "version": "0.1.1",
+        "title": L("失眠 · 47岁女性 · 复诊A", "Difficulty sleeping · 47-year-old woman · review A"),
         "summary": L("一位四十多岁的上班族来到新加坡的社区中医诊所，睡不好已有好几个月。完成评估与方案，并在两周后复诊。",
                      "A working woman in her forties comes to a community TCM clinic in Singapore after months of poor sleep. Assess her, plan her care, and see her again in two weeks."),
         "specialty": ["traditional-chinese-medicine", "sleep-medicine", "family-medicine"],
@@ -875,7 +875,7 @@ def build() -> dict:
             "tcmcraft": {
                 "edition": "singapore",
                 "caseFamily": "sg-insomnia",
-                "variant": "base",
+                "variant": "review-a-iron",
                 "split": "dev",
                 "modules": ["four-examinations", "pattern-differentiation", "herbal-prescribing", "care-coordination", "longitudinal-follow-up", "review-disagreement"],
                 "patternFramework": "zang-fu (脏腑辨证)",

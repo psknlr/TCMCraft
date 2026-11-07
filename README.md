@@ -50,8 +50,12 @@ family physician before teaching use.
 
 ## Phase 2 (in progress): the 12-case prototype
 
-The plan, coverage and status are in [docs/PHASE2.md](docs/PHASE2.md): 5 of 12 cases are built. The first family,
-`sg-lbp`, has one first visit and four different reviews; the second, `sg-insomnia`, starts with its base case:
+The plan, coverage and status are in [docs/PHASE2.md](docs/PHASE2.md). 7 of 12 cases are built: all the synthetic
+ones. The other five adapt published case reports and wait on the permission question. There are three families:
+
+- `sg-lbp`: one first visit, four reviews;
+- `sg-insomnia`: one first visit, two reviews;
+- `sg-gi`: its base case.
 
 | Case | Review | Phase 2 dimension |
 |---|---|---|
@@ -59,7 +63,9 @@ The plan, coverage and status are in [docs/PHASE2.md](docs/PHASE2.md): 5 of 12 c
 | [`tcm-sg-lbp-02`](content/cases/tcm-sg-lbp-02/README.md) | B — new bilateral sciatica, saddle numbness and urinary hesitancy | alternative follow-up branch: escalation and handover |
 | [`tcm-sg-lbp-03`](content/cases/tcm-sg-lbp-03/README.md) | C — he followed the label exactly; the label was wrong | execution discrepancy: incident, correction, open disclosure |
 | [`tcm-sg-lbp-04`](content/cases/tcm-sg-lbp-04/README.md) | D — cold-damp has turned to damp-heat, and this time the yellow coating is genuine | alternative follow-up branch: changed condition, prescription version 3 |
-| [`tcm-sg-insomnia-01`](content/cases/tcm-sg-insomnia-01/README.md) | Chronic insomnia in a carer with heavy periods; iron-deficiency anaemia at review | review disagreement: the senior's view, from the intake form alone, resolved by evidence and recorded |
+| [`tcm-sg-insomnia-01`](content/cases/tcm-sg-insomnia-01/README.md) | A — chronic insomnia in a carer with heavy periods; iron-deficiency anaemia at review | review disagreement: the senior's view, from the intake form alone, resolved by evidence and recorded |
+| [`tcm-sg-insomnia-02`](content/cases/tcm-sg-insomnia-02/README.md) | B — a smartwatch and the sleep diary disagree; zolpidem taken with calming herbs | uncertain evidence; herb–drug review |
+| [`tcm-sg-gi-01`](content/cases/tcm-sg-gi-01/README.md) | A — the dispensary objects to liquorice in a man on a thiazide; his potassium falls anyway | review disagreement (dispensary); execution: a hidden liquorice source |
 
 Every case's alternative paths state their expected outcome (score, safety gates, critical misses, whether it can
 finish), and `tools/pack_check.py --paths` fails when a replay differs.
@@ -84,12 +90,13 @@ A bus stop is outside. There are ten new equipment types, drawn as voxel parts.
 .clinicalcraft/settings.json          contentDirs → ../content (open this folder as a ClinicalCraft project)
 content/
   cases/tcm-sg-lbp-0{1,2,3,4}/        case.json · README.md (facilitator guide); family sg-lbp
-  cases/tcm-sg-insomnia-01/           family sg-insomnia
+  cases/tcm-sg-insomnia-0{1,2}/       family sg-insomnia
+  cases/tcm-sg-gi-01/                 family sg-gi
   catalogs/tcmcraft-clinic.json       10 TCM equipment types, 10 materials (bilingual)
   templates/tcm-*.json                consulting room, acupuncture and tuina room, herbal dispensary
   facilities/tcm-sg-clinic.json       the clinic
 tools/
-  content-gen/                        Python generator that writes content/ (build.py; case_*.py, lbp_family.py, clinic.py)
+  content-gen/                        Python generator that writes content/ (build.py; case_*.py, family.py and *_family.py, clinic.py)
   pack_check.py                       offline checks: schema, integrity, lints, reference-path replay, matcher corpus, facility
   paths/<case id>.json                alternative paths with their expected outcomes (pack_check.py --paths)
   check.sh                            the above, then ClinicalCraft's own validate/verify/demonstration

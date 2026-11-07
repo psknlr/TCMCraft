@@ -1,0 +1,294 @@
+[
+  {
+    "id": "trusts-the-watch",
+    "summary": "Takes the watch as objective (sleep-state misperception) first, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-sleep-evidence",
+          "optionIds": [
+            "diary"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-sleep-evidence",
+            "optionIds": [
+              "watch"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-evidence"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "orders-polysomnography",
+    "summary": "Sends her for polysomnography to settle the disagreement first",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-sleep-evidence",
+          "optionIds": [
+            "diary"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-sleep-evidence",
+            "optionIds": [
+              "psg"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "sleep-study"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-evidence"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "averages-the-two",
+    "summary": "Averages the watch and the diary first, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-sleep-evidence",
+          "optionIds": [
+            "diary"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-sleep-evidence",
+            "optionIds": [
+              "average"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-evidence"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "herbs-instead-of-zolpidem",
+    "summary": "Tells her to stop the zolpidem and rely on the herbs (refused), then coordinates",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-review",
+          "optionIds": [
+            "coordinate"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-review",
+            "optionIds": [
+              "herbs-instead"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "stop-zolpidem"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 88,
+      "gates": [
+        "g-hypnotic-substitution"
+      ],
+      "criticalMissed": [
+        "r-hypnotic-review"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "adds-cinnabar",
+    "summary": "Adds cinnabar to strengthen the sedation",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-review",
+          "optionIds": [
+            "coordinate"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-review",
+            "optionIds": [
+              "cinnabar"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "add-cinnabar"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-cinnabar"
+      ],
+      "criticalMissed": [
+        "r-hypnotic-review"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "longer-in-bed",
+    "summary": "Agrees she should stay in bed longer for deep sleep (refused)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "watch-explain"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "extend-bed"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 95,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "no-prescriber-contact",
+    "summary": "Handles everything except contacting the prescriber",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "prescriber-letter"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [
+        "r-hypnotic-review"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "keeps-the-bedtime-sachet",
+    "summary": "Contacts the prescriber but leaves the bedtime sachet as it is",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "hold-evening-sachet"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 95,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "never-asks-about-new-medicines",
+    "summary": "Never asks about new medicines or other doctors at review",
+    "replace": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-rv-meds"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 76,
+      "gates": [],
+      "criticalMissed": [
+        "r-hypnotic-review"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 51,
+    "expect": {
+      "percent": 62,
+      "gates": [],
+      "criticalMissed": [
+        "r-evidence",
+        "r-hypnotic-review"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-medical-screen",
+        "r-disagreement",
+        "r-gp",
+        "r-evidence",
+        "r-hypnotic-review"
+      ],
+      "finished": false
+    }
+  }
+]

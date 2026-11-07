@@ -1,0 +1,327 @@
+[
+  {
+    "id": "reduces-to-3g",
+    "summary": "Version 2 keeps 炙甘草 at 3 g with monitoring (the other acceptable pathway)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "rx-v2-omit"
+        },
+        "with": {
+          "type": "intervene",
+          "interventionId": "rx-v2-reduce"
+        }
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "overrules-the-query",
+    "summary": "Overrules the query as within the Pharmacopoeia range (not released), then revises",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-rx-query",
+          "optionIds": [
+            "revise"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-rx-query",
+            "optionIds": [
+              "override"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "insist-v1"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 85,
+      "gates": [
+        "g-query-overridden"
+      ],
+      "criticalMissed": [
+        "r-rx-query"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "stops-the-thiazide",
+    "summary": "Tells him to stop his hydrochlorothiazide while on the herbs",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-rx-query",
+          "optionIds": [
+            "revise"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-rx-query",
+            "optionIds": [
+              "stop-thiazide"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "stop-thiazide"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 40,
+      "gates": [
+        "g-stop-antihypertensive"
+      ],
+      "criticalMissed": [
+        "r-rx-query"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "dispenses-version-1",
+    "summary": "Tries to dispense version 1 with the query open (intercepted)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-rx-query",
+          "optionIds": [
+            "revise"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "dispense"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-open-query-intercepted"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "sends-to-ed",
+    "summary": "Sends him to the emergency department first",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-medical",
+          "optionIds": [
+            "refer-endoscopy"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-medical",
+            "optionIds": [
+              "ed-now"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "refer-ed"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 94,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "calls-it-functional",
+    "summary": "Calls it functional dyspepsia with no referral first, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-medical",
+          "optionIds": [
+            "refer-endoscopy"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-medical",
+            "optionIds": [
+              "functional"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 94,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "no-referral-letter",
+    "summary": "Never writes to the GP (no endoscopy referral, no monitoring)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "gp-letter"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 91,
+      "gates": [],
+      "criticalMissed": [
+        "r-referral"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "reassures-at-review",
+    "summary": "At review, calls the potassium only slightly low first, then finds the source",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-review",
+          "optionIds": [
+            "hidden-liquorice"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-review",
+            "optionIds": [
+              "reassure"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 91,
+      "gates": [],
+      "criticalMissed": [
+        "r-review"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "blames-the-formula",
+    "summary": "At review, stops all the herbs as the cause first, then finds the source",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-review",
+          "optionIds": [
+            "hidden-liquorice"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-review",
+            "optionIds": [
+              "formula-cause"
+            ]
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 91,
+      "gates": [],
+      "criticalMissed": [
+        "r-review"
+      ],
+      "finished": true
+    }
+  },
+  {
+    "id": "never-asks-about-drinks",
+    "summary": "At review, never asks about herbal teas, new foods or supplements",
+    "replace": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-rv-drinks"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 79,
+      "gates": [],
+      "criticalMissed": [
+        "r-review"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 45,
+    "expect": {
+      "percent": 70,
+      "gates": [],
+      "criticalMissed": [
+        "r-review"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-alarm-screen",
+        "r-rx-query",
+        "r-referral"
+      ],
+      "finished": false
+    }
+  }
+]
