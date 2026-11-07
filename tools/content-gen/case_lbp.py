@@ -57,7 +57,7 @@ HISTORY = [
         L("三个星期前帮我妈妈搬一个柜子，第二天早上就开始痛。其实三年前第一次痛，之后一年发两三次，每次贴膏药两到四个星期就好。",
           "Three weeks ago I helped my mum shift a cupboard, and the next morning it started. The first time was three years ago — since then it comes two or three times a year, and each time it settles in two to four weeks with plasters."),
         KW(["怎么开始", "什么诱因", "以前痛过", "第一次痛", "发作过", "反复发作", "搬重物", "扭到"],
-           ["start", "began", "previous episodes", "happened before", "first time", "trigger", "lifting", "howitstarted"]),
+           ["whendiditstart", "howdiditstart", "began", "previous episodes", "happened before", "first time", "trigger", "lifting", "howitstarted"]),
     ),
     hx(
         "h-site", "pain",
@@ -1371,8 +1371,8 @@ def build() -> dict:
     return {
         "schema": "clinicalcraft/case@1",
         "id": CASE_ID,
-        "version": "0.1.0",
-        "title": L("腰痛反复发作 · 52岁男性", "Recurrent low back pain · 52-year-old man"),
+        "version": "0.1.1",
+        "title": L("腰痛反复发作 · 52岁男性 · 复诊A", "Recurrent low back pain · 52-year-old man · review A"),
         "summary": L("一位五十多岁的上班族来到新加坡的社区中医诊所，腰痛反复发作。完成评估与治疗，并在一周后复诊。",
                      "A working man in his fifties comes to a community TCM clinic in Singapore with back pain that keeps coming back. Assess and treat him, then see him again a week later."),
         "specialty": ["traditional-chinese-medicine", "acupuncture", "musculoskeletal"],
@@ -1465,6 +1465,9 @@ def build() -> dict:
             "testUtterances": TEST_UTTERANCES,
             "tcmcraft": {
                 "edition": "singapore",
+                "caseFamily": "sg-lbp",
+                "variant": "review-a-adherence",
+                "split": "dev",
                 "modules": ["four-examinations", "pattern-differentiation", "herbal-prescribing", "acupuncture", "care-coordination", "longitudinal-follow-up"],
                 "patternFramework": "zang-fu and bi-syndrome (脏腑辨证 · 痹证辨证)",
                 "acceptablePathways": [

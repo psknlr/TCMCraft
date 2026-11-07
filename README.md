@@ -48,6 +48,20 @@ Scoring:
 The review status is **unreviewed** (AI-assisted authoring). It needs review by a registered TCM physician and a
 family physician before teaching use.
 
+## Phase 2 (in progress): the 12-case prototype
+
+The plan, coverage and status are in [docs/PHASE2.md](docs/PHASE2.md). The first family, `sg-lbp`, has one first
+visit and three different reviews:
+
+| Case | Review | Phase 2 dimension |
+|---|---|---|
+| [`tcm-sg-lbp-01`](content/cases/tcm-sg-lbp-01/README.md) | A — a partial response from missed doses and continuing exposure | uncertain evidence; execution (dispensary query) |
+| [`tcm-sg-lbp-02`](content/cases/tcm-sg-lbp-02/README.md) | B — new bilateral sciatica, saddle numbness and urinary hesitancy | alternative follow-up branch: escalation and handover |
+| [`tcm-sg-lbp-03`](content/cases/tcm-sg-lbp-03/README.md) | C — he followed the label exactly; the label was wrong | execution discrepancy: incident, correction, open disclosure |
+
+Every case's alternative paths state their expected outcome (score, safety gates, critical misses, whether it can
+finish), and `tools/pack_check.py --paths` fails when a replay differs.
+
 ### `tcm-sg-clinic` · TCMCraft Community TCM Clinic (fictional)
 
 A single-storey clinic built from three room templates:
@@ -67,18 +81,18 @@ A bus stop is outside. There are ten new equipment types, drawn as voxel parts.
 ```
 .clinicalcraft/settings.json          contentDirs → ../content (open this folder as a ClinicalCraft project)
 content/
-  cases/tcm-sg-lbp-01/                case.json · README.md (facilitator guide)
+  cases/tcm-sg-lbp-0{1,2,3}/          case.json · README.md (facilitator guide); family sg-lbp
   catalogs/tcmcraft-clinic.json       10 TCM equipment types, 10 materials (bilingual)
   templates/tcm-*.json                consulting room, acupuncture and tuina room, herbal dispensary
   facilities/tcm-sg-clinic.json       the clinic
 tools/
-  content-gen/                        Python generator that writes content/ (build.py; case_lbp.py, clinic.py)
+  content-gen/                        Python generator that writes content/ (build.py; case_lbp*.py, lbp_family.py, clinic.py)
   pack_check.py                       offline checks: schema, integrity, lints, reference-path replay, matcher corpus, facility
-  paths/tcm-sg-lbp-01.json            alternative paths for the score table (pack_check.py --paths)
+  paths/<case id>.json                alternative paths with their expected outcomes (pack_check.py --paths)
   check.sh                            the above, then ClinicalCraft's own validate/verify/demonstration
   clinicalcraft.rev                   the ClinicalCraft commit the pack is checked against
   cmcr_index.py                       writes docs/CMCR_CORPUS.md from the case archive's manifests
-docs/                                 DESIGN · IMPLEMENTATION · ENGINE_EXTENSIONS · CMCR_CORPUS
+docs/                                 DESIGN · IMPLEMENTATION · PHASE2 · ENGINE_EXTENSIONS · CMCR_CORPUS
 CMCR中医案例80篇/                       80 CMCR TCM case reports (ZIP; source material for later phases)
 .github/workflows/check.yml           CI: tools/check.sh against the pinned ClinicalCraft
 ```

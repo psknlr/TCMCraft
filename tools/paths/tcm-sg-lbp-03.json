@@ -1,0 +1,184 @@
+[
+  {
+    "id": "blames-adherence",
+    "summary": "Reads it as missed doses and counsels him, then corrects",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "label-error"
+          ]
+        },
+        "actions": [
+          {
+            "type": "answer",
+            "decisionId": "d-followup",
+            "optionIds": [
+              "adherence"
+            ]
+          },
+          {
+            "type": "intervene",
+            "interventionId": "adherence-counsel"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 90,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "changes-the-formula",
+    "summary": "Switches to a damp-heat formula at the review",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "label-error"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "switch-damp-heat"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "doubles-the-dose",
+    "summary": "Has him take two sachets at once each morning",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-followup",
+          "optionIds": [
+            "label-error"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "double-dose"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "label-left-wrong",
+    "summary": "Continues the course without having the label corrected (the review objective stays open)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "relabel-explain"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 93,
+      "gates": [
+        "g-label-left-wrong"
+      ],
+      "criticalMissed": [
+        "r-relabel"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "no-incident-report",
+    "summary": "Corrects the label but never reports the incident (the review objective stays open)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "incident-report"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 95,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "relabels-before-checking",
+    "summary": "Tries to relabel before comparing the records (intercepted), then compares",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "order",
+          "investigationId": "dispensing-record"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "relabel-explain"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "first-visit-only",
+    "summary": "Stops after booking the review",
+    "truncateAfter": 69,
+    "expect": {
+      "percent": 74,
+      "gates": [],
+      "criticalMissed": [
+        "r-relabel"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "do-nothing",
+    "summary": "Starts the case and does nothing",
+    "truncateAfter": 1,
+    "expect": {
+      "percent": 0,
+      "gates": [],
+      "criticalMissed": [
+        "r-redflags",
+        "r-rx-version",
+        "r-relabel"
+      ],
+      "finished": false
+    }
+  }
+]

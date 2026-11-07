@@ -15,6 +15,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import case_lbp  # noqa: E402
+import case_lbp_b  # noqa: E402
+import case_lbp_c  # noqa: E402
 import clinic  # noqa: E402
 from common import CONTENT, write  # noqa: E402
 
@@ -22,7 +24,8 @@ from common import CONTENT, write  # noqa: E402
 def main() -> int:
     check = "--check" in sys.argv[1:]
     ok = True
-    ok &= write(CONTENT / "cases" / case_lbp.CASE_ID / "case.json", case_lbp.build(), check)
+    for case in (case_lbp, case_lbp_b, case_lbp_c):
+        ok &= write(CONTENT / "cases" / case.CASE_ID / "case.json", case.build(), check)
     ok &= write(CONTENT / "catalogs" / f"{clinic.CATALOG_ID}.json", clinic.catalog(), check)
     for template in clinic.templates():
         ok &= write(CONTENT / "templates" / f"{template['id']}.json", template, check)
