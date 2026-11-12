@@ -269,9 +269,9 @@ python3 tools/pack_check.py --paths
 tools/check.sh ../ClinicalCraft
 ```
 
-`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline demonstration against the pinned ClinicalCraft revision.
+`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline demonstration, in standard and in embodied mode, against the pinned ClinicalCraft revision.
 
-Last engine run (ClinicalCraft `4569808`, CI): `cases validate --strict` 0 errors and 0 warnings; `cases verify` 90 steps, objectives 6/6, decisions 5/5, utterances 43/43, 33/33 (100 %); offline demonstration finished and completed at 100 %.
+Last engine run (ClinicalCraft `4569808`, CI, 2026-11-12): `cases validate --strict` 0 errors and 0 warnings; `cases verify` 91 steps, objectives 6/6, decisions 5/5, utterances 45/45, 36/36 (100 %); offline demonstration finished and completed with objectives 6/6 at 100 % in standard and in embodied mode.
 
 ## 中文摘要
 
