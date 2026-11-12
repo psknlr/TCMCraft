@@ -27,7 +27,7 @@
       }
     ],
     "expect": {
-      "percent": 90,
+      "percent": 91,
       "gates": [],
       "criticalMissed": [],
       "finished": true
@@ -158,7 +158,7 @@
     "summary": "Stops after booking the review",
     "truncateAfter": 69,
     "expect": {
-      "percent": 74,
+      "percent": 75,
       "gates": [],
       "criticalMissed": [
         "r-relabel"

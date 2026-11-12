@@ -37,10 +37,10 @@ Mr Tan Wee Liang (pseudonym), 52, an operations supervisor who sits for long hou
 - **Plan.**
   - Self-management: stay active, stretches, sitting breaks, keep warm.
   - Herbs: modified 独活寄生汤 as concentrated granules for 7 days.
-  - Acupuncture: BL23, BL25 and BL40 bilaterally, right GB30 and local Ashi points; 10 needles, retained for 20 minutes, with him lying prone.
+  - Acupuncture, if he agrees (it is optional; deferring it is a completable route): BL23, BL25 and BL40 bilaterally, right GB30 and local Ashi points; 10 needles, retained for 20 minutes, with him lying prone. Needling first needs the danger-sign screen and diagnosis, the pattern, his history of fainting with needles and a look at the skin at the planned sites, then consent, clean-needle preparation and a lying position.
   - Coordination: a letter to his polyclinic and heart-clinic doctors.
-- **The dispensary query.** The dispensary holds prescription version 1 because 桑寄生 is out of stock (槲寄生 is offered, but it is a different medicinal) and because the medication field is incomplete. The prescriber issues **version 2** — naming 槲寄生, or leaving 桑寄生 out — and records aspirin. Only then is the medicine supplied.
-- **Review at one week.** His pain is down from 6 to 4 out of 10, but the gain has not held. The sachet count shows 6 of 14 left: he missed evening doses on night shifts. He also stopped the stretches and still sits in the cold. There is a small, painless bruise at the BL40 site and no danger signs. The assessment stands; the plan for carrying it out is revised: dosing fitted to his shifts, reminders, a jacket and sitting breaks, and the acupuncture course continued.
+- **The dispensary query.** The dispensary holds prescription version 1 because 桑寄生 is out of stock (槲寄生 is offered, but it is a different medicinal) and because the medication field is incomplete. The prescriber issues **version 2** — naming 槲寄生, or leaving 桑寄生 out — and records aspirin. Version 2 can be signed only after the query is answered and his aspirin is verified both with him and on the polyclinic list, and only one version 2 can be active. Only then is the medicine supplied.
+- **Review at one week.** His pain is down from 6 to 4 out of 10, but the gain has not held. The sachet count shows 6 of 14 left. He recalls five missed evening doses; going through it with him, he remembers a sixth (two night shifts, four forgotten evenings). He also stopped the stretches and still sits in the cold. There are no danger signs and no adverse effects. The assessment stands; the plan for carrying it out is revised: dosing fitted to his shifts, reminders, a jacket and sitting breaks, and the agreed plan continued.
 
 ## Scenario timeline
 
@@ -49,8 +49,8 @@ Static clock (`clock.mode: "static"`); the phases stand for time.
 | Phase | Opens | Where | What happens |
 |---|---|---|---|
 | `consult` — first visit: history and four examinations | at start | Consulting room 1 (seated on the examination couch) | History, four examinations, the kiosk photo, the polyclinic printout, the tongue recapture, three assessment decisions |
-| `treatment` — first visit: prescription, review and acupuncture | automatically once `d-disease` and `d-pattern` are answered correctly | Consulting room, dispensary; the patient moves to the treatment room when positioned for needling | Consent, prescription v1 → dispensary query (a record that exists only after v1 is submitted) → v2 → supply → counselling → acupuncture → documentation → booking |
-| `followup` — review one week later | automatically once the medicine was validly supplied, the needles validly withdrawn and counted, and the review booked | Consulting room | Status, adherence, adverse effects, danger signs, the dispensing and session records, the sachet count, the review decision and plan |
+| `treatment` — first visit: prescription, review and acupuncture | automatically once `d-disease` and `d-pattern` are answered correctly | Consulting room, dispensary; the patient moves to the treatment room when positioned for needling | Consent, prescription v1 → dispensary query (a record that exists only after v1 is submitted) → v2 → supply → counselling → acupuncture and documentation, or an agreed deferral → booking |
+| `followup` — review one week later | automatically once the medicine was validly supplied, the needles validly withdrawn and counted (or acupuncture deferred), and the review booked | Consulting room | Status, adherence, adverse effects, danger signs, the dispensing and session records, the sachet count, the review decision and plan |
 
 No physiology model and no monitor: an outpatient TCM clinic has none. Vital signs are an examination finding.
 
@@ -62,7 +62,7 @@ No physiology model and no monitor: an outpatient TCM clinic has none. Vital sig
 2. Complete the four examinations and the physical screen.
 3. Weigh the evidence and make the diagnosis and pattern assessment (`d-evidence`, `d-disease`, `d-pattern`).
 4. Prescribe, resolve the dispensary's query and supply the medicine (`d-rx-review`, valid `dispense`, `counsel-herbs`).
-5. Give the first acupuncture session safely and book the review.
+5. Give the first acupuncture session safely, or agree with him to defer it, and book the review.
 6. One-week review: check what was actually done and revise the plan (`d-followup`, `adherence-plan`, `continue-course`).
 
 ### Decisions
@@ -81,30 +81,33 @@ ClinicalCraft has no prescription object yet ([docs/ENGINE_EXTENSIONS.md](../../
 
 - **Version 1** is `rx-draft`, which can be given once.
 - **The dispensary query** is the record `dispensary-query`. Its `availability.when` is `{"intervened": "rx-draft"}`, so it does not exist until version 1 has been submitted.
-- **Version 2** is either of two acceptable pathways: `rx-v2-substitute` (naming 槲寄生) or `rx-v2-omit` (leaving 桑寄生 out). Each is a checklist step that is valid only after the query has been read.
+- **Version 2** is either of two acceptable pathways: `rx-v2-substitute` (naming 槲寄生) or `rx-v2-omit` (leaving 桑寄生 out). Each is a checklist step, valid only once the query has been read and answered (`d-rx-review`) and his aspirin verified both with him (`h-antithrombotic`) and on the polyclinic list (`prior-records`). Only one version 2 can be active: once one is signed, the other is refused (`g-version-refused`, complication).
 - **Supply** is `dispense`, a checklist step and the *version check*. An attempt while no valid version 2 exists is recorded as an invalid attempt: nothing is supplied, it uses none of the step's doses, and it is shown in the verdict (`g-outdated-version-intercepted`).
-- **Needling** is `acu-insert`, a checklist step whose prerequisites are consent, clean-technique preparation and a lying position. An attempt without them is intercepted (`g-needling-refused`).
-- **Withdrawal** is `acu-remove`, the needle count. It is valid only after a valid insertion.
+- **Needling** is `acu-insert`, a checklist step. Its prerequisites are the minimum assessment (`d-disease`, `d-pattern`, the fainting history `h-prior-acu` and the skin check `e-skin-back`), then consent, clean-technique preparation and a lying position. An attempt without them is intercepted (`g-needling-refused`).
+- **Withdrawal** is `acu-remove`, the needle count. It is valid only after a valid insertion; `acu-document` is valid only after a valid withdrawal, and the session record exists only once it is written.
+- **Deferring** is `acu-defer`, valid after consent and before any needling. The review then opens without a session, and the acupuncture items of the rubric are not scored.
 
-### Rubric (15 deterministic items, 33 points; 2 examiner-judged communication items)
+### Rubric (17 deterministic items, 36 points; 2 examiner-judged communication items)
 
 | Item | Domain | Weight | Notes |
 |---|---|---|---|
 | `r-redflags` | history | 3 | **critical**: neuro, bladder/bowel/saddle and systemic questions plus the neuro exam |
 | `r-inquiry` | history | 2 | site, modifiers, cold–heat, knees, past history, medicines |
-| `r-antithrombotic` | safety | 2 | aspirin found (asked specifically, or the printout read) |
+| `r-antithrombotic` | safety | 2 | aspirin found and confirmed: asked specifically **and** the printout read |
 | `r-four-exam` | examination | 2 | inspection, tongue, listening/smelling, pulse, lumbar palpation |
 | `r-evidence` | investigations | 2 | `d-evidence` first try and a reliable look at the tongue |
 | `r-disease` | diagnosis | 2 | `d-disease` first try |
 | `r-pattern` | diagnosis | 3 | `d-pattern` first try |
 | `r-rx-review` | management | 2 | `d-rx-review` first try |
 | `r-rx-version` | safety | 3 | **critical**: valid supply, no verbal swap |
-| `r-acu-sequence` | safety | 3 | consent → preparation → lying → needling → withdrawal and count, by committed sequence |
+| `r-acu-sequence` | safety | 3 | consent → preparation → lying → needling → withdrawal and count, by committed sequence; scored once needling is attempted |
+| `r-pre-needling` | safety | 2 | the fainting history and the skin at the planned sites; scored once needling is attempted |
 | `r-needle-count` | safety | 3 | **critical**, scored once needles went in |
 | `r-self-management` | management | 1 | stay active, exercise, posture, warmth |
 | `r-no-imaging` | efficiency | 1 | avoided-harm item, scored once `d-disease` is attempted or imaging is referred |
 | `r-coordination` | management | 1 | letter to his polyclinic and heart-clinic doctors |
 | `r-followup` | management | 3 | `d-followup` first try, adherence plan, no relabelling, no dose doubling; scored once the review opens (or a wrong step is taken) |
+| `r-count-reconciled` | history | 1 | the sachet count read and gone through with him (`h-fu-recount`); scored at review |
 
 ### Safety gates
 
@@ -114,28 +117,36 @@ ClinicalCraft has no prescription object yet ([docs/ENGINE_EXTENSIONS.md](../../
 | `g-needles-unaccounted` | safety-critical (cap 40 %) | valid needling without a valid withdrawal and count |
 | `g-stop-antiplatelet` | safety-critical (cap 40 %) | `stop-aspirin` |
 | `g-outdated-version-intercepted` | complication | an invalid `dispense` attempt (version check refused it) |
-| `g-needling-refused` | complication | an invalid `acu-insert` attempt (prerequisites missing) |
+| `g-version-refused` | complication | an invalid version 2 attempt (query not answered, aspirin not verified, or another version 2 already active) |
+| `g-needling-refused` | complication | an invalid `acu-insert` attempt (assessment, fainting history, skin check, consent, preparation or position missing) |
 
 ### How paths score
 
 Replayed with `python3 tools/pack_check.py --paths` (paths in `tools/paths/tcm-sg-lbp-01.json`). Each path states its expected outcome, and the check fails if the replay differs:
 
-| Path | Score | Critical missed | Gates |
-|---|---|---|---|
-| Reference path | 33/33 = 100 % | — | — |
-| Version 2 leaves 桑寄生 out (the other acceptable pathway) | 100 % | — | — |
-| Adds tuina after consent | 100 % | — | — |
-| Reads the kiosk photo at face value first | 94 % | — | — |
-| Calls damp-heat first | 91 % | — | — |
-| Agrees the substitution by phone first | 40 % (capped) | `r-rx-version` | `g-unauthorised-substitution` |
-| Tries to dispense version 1 first (intercepted) | 100 % | — | `g-outdated-version-intercepted` (complication) |
-| Tries to needle before positioning (intercepted) | 100 % | — | `g-needling-refused` (complication) |
-| Never withdraws and counts the needles | 40 % (capped); the review never opens | `r-needle-count` | `g-needles-unaccounted` |
-| Advises stopping aspirin | 40 % (capped) | — | `g-stop-antiplatelet` |
-| Refers for MRI | 97 % | — | — |
-| Relabels damp-heat at review | 91 % | — | — |
-| Stops after booking the review | 91 %; the case cannot finish | — | — |
-| Does nothing | 0/26 = 0 % | `r-redflags`, `r-rx-version` | — |
+| Path | Score | Can finish | Critical missed | Gates |
+|---|---|---|---|---|
+| Reference path | 36/36 = 100 % | yes | — | — |
+| Version 2 leaves 桑寄生 out instead of naming 槲寄生 (the other acceptable pathway) | 100 % | yes | — | — |
+| Adds tuina after consent (acceptable, not required) | 100 % | yes | — | — |
+| First reads the kiosk photo at face value, then corrects | 94 % | yes | — | — |
+| First calls damp-heat, then corrects | 92 % | yes | — | — |
+| Agrees the substitution by phone before issuing version 2 | 40 % (capped) | yes | `r-rx-version` | `g-unauthorised-substitution` |
+| Tries to dispense version 1 while the query is open (intercepted by the version check), then revises | 100 % | yes | — | `g-outdated-version-intercepted` (complication) |
+| Tries to needle before positioning him lying (intercepted), then positions and needles | 100 % | yes | — | `g-needling-refused` (complication) |
+| Never withdraws and counts the needles (the review never opens) | 40 % (capped) | **no** | `r-needle-count` | `g-needles-unaccounted` |
+| Advises him to stop aspirin during the herbal course | 40 % (capped) | yes | — | `g-stop-antiplatelet` |
+| Refers him for a lumbar MRI | 97 % | yes | — | — |
+| At review calls the pattern wrong and switches to a damp-heat formula | 92 % | yes | — | — |
+| Stops after booking the review (first visit only) | 89 % | **no** | — | — |
+| Starts the case and does nothing | 0 % | **no** | `r-redflags`, `r-rx-version` | — |
+| Audit: signs a second, different version 2 before dispensing (refused: one active version) | 100 % | yes | — | `g-version-refused` (complication) |
+| Audit: signs a second version 2 after the first was dispensed (refused) | 100 % | yes | — | `g-version-refused` (complication) |
+| Audit: never asks about antiplatelets, never reads the medication list, never answers the query (version 2 and supply refused) | 78 % | **no** | `r-rx-version` | `g-outdated-version-intercepted` (complication), `g-version-refused` (complication) |
+| Audit: never asks about fainting with needles or inspects the skin at the sites (needling refused) | 83 % | **no** | — | `g-needling-refused` (complication) |
+| Audit: consent, preparation, position and needling before any assessment (refused), then the reference path | 100 % | yes | — | `g-needling-refused` (complication) |
+| Audit: agrees with him to defer acupuncture (self-management, exercise and herbs), and completes the review | 100 % | yes | — | — |
+| Reads the count but never reconciles it with his account | 97 % | yes | — | — |
 
 Intercepted attempts cost no points by design. The interception is the system working, and it is recorded as its own line in the verdict: the original error, the interception and the final outcome are kept apart, as the design asks (docs/DESIGN.md §8.1).
 
@@ -152,14 +163,14 @@ Intercepted attempts cost no points by design. The interception is the system wo
 9. `rx-v2-substitute`, `dispense`, `counsel-herbs` and `gp-letter`.
 10. `acu-prep`, `acu-position`, `acu-insert`, `acu-remove`, `acu-document` and `arrange-followup`. The follow-up phase opens.
 11. Six follow-up history items and five follow-up examinations.
-12. Read the dispensing record, the session record and the sachet count → `d-followup` (`adherence`).
+12. Read the dispensing record, the session record and the sachet count, and go through the count with him (`h-fu-recount`) → `d-followup` (`adherence`).
 13. `adherence-plan`, `continue-course` and `finish`.
 
 ## Clinical numbers check
 
 - **BMI.** 78 kg / (1.70 m)² = 27.0.
 - **Pain.** 6/10 at the first visit, 4/10 at review.
-- **Sachets.** 7 days × 2 = 14. Taken: 7 morning + 1 evening = 8. Left: 6. That is 6 missed doses: 2 on night shifts and 4 forgotten evenings. His own "three evenings" understates it, which is kept deliberately and noted on the result.
+- **Sachets.** 7 days × 2 = 14. Taken: 7 morning + 1 evening = 8. Left: 6. That is 6 missed doses: 2 on night shifts and 4 forgotten evenings. His first account (2 night shifts + 3 forgotten evenings = 5 missed, 5 left) is one short, deliberately: the count's note says so, and going through it with him (`h-fu-recount`) brings out the fourth forgotten evening, credited by `r-count-reconciled`.
 - **Needles.** BL23 ×2, BL25 ×2, BL40 ×2, GB30 ×1, Ashi ×3 = 10 in, 10 out.
 - **Formula (crude-herb equivalent, g/day).** 独活 9, 桑寄生 15, 杜仲 10, 牛膝 10, 秦艽 9, 防风 9, 桂枝 6, 茯苓 15, 当归 9, 川芎 6, 白芍 12, 熟地黄 12, 党参 12, 炙甘草 6. Each dose is within the usual ranges authors work from; check them against the Pharmacopoeia (see *To verify*).
 
@@ -183,7 +194,8 @@ Intercepted attempts cost no points by design. The interception is the system wo
 | Damp-heat from the kiosk photo | `d-evidence` and `d-pattern` feedback; Dr Ho's correction (`photo-damp-heat`) |
 | Missing the aspirin | It is `specific` disclosure; the dispensary's second query point; `r-antithrombotic` |
 | A verbal "just swap it" | `rx-verbal-swap` is contraindicated with a harm text; the safety-critical gate; Mr Lim's correction (`herb-identity`) |
-| Needling him sitting up | `acu-insert` is refused until he is lying (the prior faint is `specific` disclosure, but the prerequisite holds regardless) |
+| Needling him sitting up, or before the assessment | `acu-insert` is refused until the assessment, the fainting history, the skin check, consent, preparation and a lying position are all in place |
+| Signing version 2 before checking his medicines | Refused until the query is answered and aspirin is verified with him and on the list; `g-version-refused` |
 | "No acupuncture on aspirin" | Dr Ho's correction (`aspirin-no-acupuncture`); `d-followup` feedback |
 | Stopping aspirin | Contraindicated, with a safety-critical gate; Mr Lim's and Dr Wong's corrections |
 | Escalating at review (new pattern, MRI, double dose) | `d-followup` options and their feedback; contraindicated interventions |
@@ -195,7 +207,7 @@ Intercepted attempts cost no points by design. The interception is the system wo
   - He starts seated on the examination couch of consulting room 1.
   - `acu-position` moves him onto a couch in the acupuncture and tuina room (`destination: {"roomKind": "rehabilitation"}`, `posture: "lying"`).
   - The follow-up phase brings him back to a consulting room (`location: {"roomKind": "consult"}`).
-- **Kit.** Records (`records`) are read at a records terminal: every consulting room has one, and the dispensary has the review terminal. Supply (`medications`) is at the herbal dispensary: the herb cabinets and the granule dispenser. The case requires only canonical ClinicalCraft capabilities. The acupuncture cart, tongue-imaging station and TDP lamps are drawn and tagged, but they do not yet gate the acts, because the capability vocabulary has no TCM entries ([docs/ENGINE_EXTENSIONS.md §1](../../../docs/ENGINE_EXTENSIONS.md)).
+- **Kit.** Records (`records`) are read and written at a records terminal: every consulting room has one, the treatment room has a charting terminal (for `acu-document` at the bedside), and the dispensary has the review terminal. Supply (`medications`) is at the herbal dispensary: the herb cabinets and the granule dispenser. The case requires only canonical ClinicalCraft capabilities. The acupuncture cart, tongue-imaging station and TDP lamps are drawn and tagged, but they do not yet gate the acts, because the capability vocabulary has no TCM entries ([docs/ENGINE_EXTENSIONS.md §1](../../../docs/ENGINE_EXTENSIONS.md)).
 - **Scope of practice.**
   - Consent, prescriptions, needling, needle withdrawal, tuina and the letter are `scope: "medical"`: a registered practitioner's acts.
   - The clinic assistant (role `nurse`) prepares the room and helps him lie down, and never needles.
@@ -206,7 +218,7 @@ Intercepted attempts cost no points by design. The interception is the system wo
 - **Prescriptions.** A prescription is a set of interventions and records, not an object with items, units and versions. Dose and unit errors therefore cannot be made or caught at item level.
 - **Evidence.** Tongue and pulse findings are authored text; there are no images, audio or pulse waveforms yet. The kiosk photo is described, not shown.
 - **Acupuncture.** Points are named, not located on a body model. The needle count is one step, not item-by-item identity as in SurgeryCraft's surgical count.
-- **One episode.** The review is a single authored branch. The escalation and non-improvement variants of docs/DESIGN.md §7 are future cases in the same case family.
+- **One episode.** The review is a single authored branch; tcm-sg-lbp-02 to 04 are its other reviews. Review facts are written so that they hold whether or not he was needled; only the session record depends on it.
 - **Static clock.** Durations (20-minute retention, one week) are narrative, not simulated time.
 
 ## Matcher notes
@@ -214,7 +226,7 @@ Intercepted attempts cost no points by design. The interception is the system wo
 - Follow-up items are phase twins. `h-fu-status` supersedes `h-presenting`, `h-severity` and `h-character`; `h-fu-redflags` supersedes `h-redflag-neuro` and `h-redflag-ce`; `h-fu-adverse` supersedes `h-bruising`. Twins carry only "now"-phrasings, so first-visit questions are never answered by follow-up items.
 - `h-meds` excludes aspirin, blood-thinner, herb and granule words, so those questions reach `h-antithrombotic`, `h-herbs-supplements` or `h-fu-adherence`.
 - `h-urine-stool` (TCM 二便 inquiry) and `h-redflag-ce` (control and saddle) exclude each other's words.
-- The corpus has 43 utterances in both languages, with every required item paraphrased. `cases verify` passes all 43; the matcher port in `tools/pack_check.py`, which agrees with ClinicalCraft on all 1,579 utterances of the built-in cases, checks them offline.
+- The corpus has 45 utterances in both languages, with every required item paraphrased. `cases verify` checks them all; the matcher port in `tools/pack_check.py`, which agrees with ClinicalCraft on all 1,579 utterances of the built-in cases, checks them offline.
 
 ## References
 
@@ -239,6 +251,7 @@ No DOIs are given: none was verified with a lookup in this session.
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** Audit revision (docs/AUDIT_2026-11-12.md). One active version 2, signed only after the query is answered and aspirin verified from both sources (`g-version-refused`). Needling needs the minimum assessment (`r-pre-needling`). Acupuncture can be deferred (`acu-defer`), and review facts no longer assume needling. Credit for reconciling his account with the sachet count (`h-fu-recount`, `r-count-reconciled`). A charting terminal in the treatment room, so the case finishes in embodied mode. `reviewedAt` removed; dates in `extensions.tcmcraft.dates`.
 - **0.1.1 (2026-11-07).** Family metadata (`sg-lbp`, `review-a-adherence`, split dev) and the title suffix "· review A". The onset item's English keyword `start` became `whendiditstart` / `howdiditstart`, so that a review-time "when did the numbness start?" in the family's variants is not answered by the first-visit onset item. No scoring change.
 - **0.1.0 (2026-11-06).** First version: the phase 1 episode of docs/DESIGN.md.
 
@@ -256,9 +269,9 @@ python3 tools/pack_check.py --paths
 tools/check.sh ../ClinicalCraft
 ```
 
-`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline demonstration against the pinned ClinicalCraft revision.
+`tools/check.sh` runs ClinicalCraft's `cases validate --strict`, `cases verify`, `facilities validate --all` and the offline demonstration, in standard and in embodied mode, against the pinned ClinicalCraft revision.
 
-Last engine run (ClinicalCraft `4569808`, CI): `cases validate --strict` 0 errors and 0 warnings; `cases verify` 90 steps, objectives 6/6, decisions 5/5, utterances 43/43, 33/33 (100 %); offline demonstration finished and completed at 100 %.
+Last engine run (ClinicalCraft `4569808`, CI, 2026-11-12): `cases validate --strict` 0 errors and 0 warnings; `cases verify` 91 steps, objectives 6/6, decisions 5/5, utterances 45/45, 36/36 (100 %); offline demonstration finished and completed with objectives 6/6 at 100 % in standard and in embodied mode.
 
 ## 中文摘要
 
@@ -276,7 +289,7 @@ Last engine run (ClinicalCraft `4569808`, CI): `cases validate --strict` 0 error
 2. 评估舌象证据质量。
 3. 四诊合参，鉴别寒湿与湿热、瘀血腰痛。
 4. 把药房审方意见作为新版本处方处理，并在发药前核实抗血小板药。
-5. 按同意、准备、卧位、进针、出针核对的顺序完成针灸。
+5. 如他同意针灸：先完成评估、问清晕针史、检查针刺部位皮肤，再按同意、准备、卧位、进针、出针核对的顺序完成；他也可以选择暂不针灸。
 6. 复诊时依据执行记录区分依从性问题与辨证错误。
 
 **关键决策。**
@@ -284,8 +297,8 @@ Last engine run (ClinicalCraft `4569808`, CI): `cases validate --strict` 0 error
 - 舌象照片要重新采集。
 - 无红旗征，不做影像。
 - 证属寒湿痹阻兼肝肾不足。
-- 处方改动由处方医师签发新版本（换用槲寄生或去掉桑寄生均可），补记阿司匹林并告知主诊医生。
-- 复诊维持辨证，按班次调整服药和自我管理，继续疗程。
+- 处方改动由处方医师签发新版本（换用槲寄生或去掉桑寄生均可，但同一时间只能有一个有效的第2版），签发前回应审方意见，并向本人及用药清单两方面核实阿司匹林，再告知主诊医生。
+- 复诊时把他口述的漏服次数与药包清点核对一致；维持辨证，按班次调整服药和自我管理，继续商定的方案。
 
 **复盘要点。**
 

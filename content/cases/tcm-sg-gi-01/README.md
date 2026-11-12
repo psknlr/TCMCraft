@@ -65,7 +65,7 @@ The letter to his GP covers the endoscopy referral, his blood pressure, version 
 - **The feared effect.** His potassium has fallen to 3.3 mmol/L. His blood pressure has risen (clinic 152/90; home log 142/86 → 152/92). He has gained 1 kg, his ankles are puffy, and his calves cramped twice.
 - **The source.** Version 2 has no liquorice. His wife said the bloating was "heatiness", so for ten days he has drunk a bottle of 廿四味 herbal tea every day and eaten liquorice plums. He thought herbal tea was "just a drink", and he mentions it only when asked about herbal teas, new foods or supplements.
 - **Endoscopy.** Mild chronic gastritis, H. pylori negative, no metaplasia or dysplasia.
-- **Plan.** Stop the tea and the plums, keep version 2, and call Dr Wong the same day. She prescribes potassium for a week, rechecks, and will reconsider the diuretic if needed.
+- **Plan.** Stop the tea and the plums, make sure his prescription has no liquorice — keep version 2 if it left it out; if it kept 3 g, issue version 3 without it and supply that — and call Dr Wong the same day. She prescribes potassium for a week, rechecks, and will reconsider the diuretic if needed.
 
 ## Scenario timeline
 
@@ -84,7 +84,7 @@ The letter to his GP covers the endoscopy referral, his blood pressure, version 
 | `o-exam` | `e-general`, `e-vitals`, `e-tongue`, `e-pulse` and `e-abdomen` examined |
 | `o-assess` | `d-medical` and `d-pattern` decided |
 | `o-plan` | `d-rx-query` decided; a valid version 2, `dispense` and `gp-letter`; `arrange-review` |
-| `o-review` | `d-review` decided; a valid `stop-herbal-tea`, `gp-call` and `continue-v2` |
+| `o-review` | `d-review` decided; a valid `stop-herbal-tea` and `gp-call`; and no liquorice now: a valid `continue-v2` (version 2 omitted it) or a valid `dispense-v3` (version 2 kept 3 g) |
 
 ### Decisions
 
@@ -98,11 +98,12 @@ The letter to his GP covers the endoscopy referral, his blood pressure, version 
 ### Execution as state
 
 - **Version 1 (`rx-v1`).** The query becomes readable once it is submitted (`availability.when`).
-- **Version 2.** Either `rx-v2-omit` or `rx-v2-reduce` is a valid checklist step once the query has been read.
+- **Version 2.** Either `rx-v2-omit` or `rx-v2-reduce` is a valid checklist step once the query has been read and answered (`d-rx-query`). Only one version 2 can be active: once one is signed, the other is refused (`g-version-refused`). Each names its 炙甘草 dose (none, or 3 g), and so does the dispensing note.
+- **The review follows the version dispensed.** `continue-v2` ("no liquorice") is valid only if version 2 left the liquorice out. If it kept 3 g, continuing it is refused (`g-liquorice-kept-refused`) and the review needs `rx-v3-omit` and `dispense-v3`. The GP's reply no longer states what version 2 contains.
 - **Supply.** `dispense` is valid only after a valid version 2. An attempt before that is intercepted (`g-open-query-intercepted`).
 - **Refused answers.** `insist-v1` ("within the range") and `stop-thiazide` are always refused, with the reasons.
 
-### Rubric (17 deterministic items, 33 points; 2 examiner-judged communication items)
+### Rubric (18 deterministic items, 35 points; 2 examiner-judged communication items)
 
 | Item | Domain | Weight | Notes |
 |---|---|---|---|
@@ -122,6 +123,7 @@ The letter to his GP covers the endoscopy referral, his blood pressure, version 
 | `r-review-exam` | examination | 1 | blood pressure and weight, ankles |
 | `r-review` | diagnosis | 3 | **critical**: `d-review` first try |
 | `r-stop-source` | safety | 2 | a valid `stop-herbal-tea` |
+| `r-no-liquorice-now` | safety | 2 | at review, no liquorice in his prescription: version 2 continued if it left it out, version 3 if it kept 3 g |
 | `r-gp-today` | management | 2 | a valid `gp-call` |
 | `r-comm-patient` | communication | 1 | examiner-judged: his fear of cancer, the referral, the change, no blame at review |
 | `r-comm-dispenser` | communication | 1 | examiner-judged: the query treated as a safety check |
@@ -133,6 +135,8 @@ The letter to his GP covers the endoscopy referral, his blood pressure, version 
 | `g-stop-antihypertensive` | safety-critical (cap 40 %) | `stop-thiazide` |
 | `g-query-overridden` | complication | `insist-v1` (refused) |
 | `g-open-query-intercepted` | complication | `dispense` attempted before a valid version 2 |
+| `g-version-refused` | complication | a version attempted before the query was answered, a second version 2, or a version 3 that is not needed (refused) |
+| `g-liquorice-kept-refused` | complication | `continue-v2` attempted while version 2 still contains liquorice, or before the review (refused) |
 
 ### Paths and their expected outcomes
 
@@ -140,19 +144,22 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
-| Reference path (liquorice omitted) | 33/33 = 100 % | yes | — | — |
-| Version 2 keeps 炙甘草 at 3 g with monitoring | 100 % | yes | — | — |
-| Overrules the query as "within the range", then revises | 85 % | yes | `r-rx-query` | `g-query-overridden` |
-| Tells him to stop the thiazide | 40 % (capped) | yes | `r-rx-query` | `g-stop-antihypertensive` |
-| Tries to dispense version 1 (intercepted) | 100 % | yes | — | `g-open-query-intercepted` |
+| Reference path | 35/35 = 100 % | yes | — | — |
+| Version 2 keeps 炙甘草 at 3 g with monitoring (the other acceptable pathway); at review, version 3 without it | 100 % | yes | — | — |
+| Overrules the query as within the Pharmacopoeia range (not released), then revises | 86 % | yes | `r-rx-query` | `g-query-overridden` (complication) |
+| Tells him to stop his hydrochlorothiazide while on the herbs | 40 % (capped) | yes | `r-rx-query` | `g-stop-antihypertensive` |
+| Tries to dispense version 1 with the query open (intercepted) | 100 % | yes | — | `g-open-query-intercepted` (complication) |
 | Sends him to the emergency department first | 94 % | yes | — | — |
-| Calls it functional dyspepsia first | 94 % | yes | — | — |
-| Never writes to the GP | 21/23 = 91 %; the review never opens | **no** | `r-referral` | — |
-| At review, "only slightly low" first | 91 % | yes | `r-review` | — |
-| At review, blames the formula first | 91 % | yes | `r-review` | — |
-| Never asks about herbal teas or supplements at review | 79 % | **no** | `r-review` | — |
-| Stops after booking the review | 70 % | no | `r-review` | — |
-| Does nothing | 0/21 = 0 % | no | `r-alarm-screen`, `r-rx-query`, `r-referral` | — |
+| Calls it functional dyspepsia with no referral first, then corrects | 94 % | yes | — | — |
+| Never writes to the GP (no endoscopy referral, no monitoring) | 91 % | **no** | `r-referral` | `g-liquorice-kept-refused` (complication) |
+| At review, calls the potassium only slightly low first, then finds the source | 91 % | yes | `r-review` | — |
+| At review, stops all the herbs as the cause first, then finds the source | 91 % | yes | `r-review` | — |
+| At review, never asks about herbal teas, new foods or supplements | 80 % | **no** | `r-review` | — |
+| Stops after booking the review | 66 % | **no** | `r-review` | — |
+| Starts the case and does nothing | 0 % | **no** | `r-alarm-screen`, `r-rx-query`, `r-referral` | — |
+| Audit: version 2 keeps 3 g of liquorice, and at review tries to continue it unchanged (refused: version 3 needed) | 94 % | **no** | — | `g-liquorice-kept-refused` (complication) |
+| Signs a second version 2 (3 g) after the first (refused: one active version) | 100 % | yes | — | `g-version-refused` (complication) |
+| Signs version 2 before answering the query (refused), then answers and signs | 100 % | yes | — | `g-version-refused` (complication) |
 
 ## Reference path (`solution`)
 
@@ -165,7 +172,7 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 7. `rx-v2-omit`, `dispense`, `counsel-herbs`, `gp-letter`, `diet-advice` and `arrange-review`. The review opens.
 8. Five review history items and four review examinations.
 9. Read the GP's results, the endoscopy report and the blood-pressure log → `d-review` (`hidden-liquorice`).
-10. `stop-herbal-tea`, `gp-call`, `continue-v2` and `finish`.
+10. `stop-herbal-tea`, `gp-call`, `continue-v2` and `finish`. On the 3 g pathway, `rx-v3-omit` and `dispense-v3` take the place of `continue-v2`.
 
 There are 65 steps in all.
 
@@ -179,7 +186,7 @@ There are 65 steps in all.
 - **Weight.** 68 kg, then 69 kg at review.
 - **Version 1 (crude-herb equivalent, g/day).** 党参 15, 白术 12, 茯苓 15, 炙甘草 6, 陈皮 9, 法半夏 9, 木香 6, 砂仁 6.
 - **Sachets.** One after lunch and one after dinner for 14 days: 28. He comes on the morning of day 14 with two left, having missed none (26 taken).
-- **Version 2.** As version 1 without 炙甘草 (or with 3 g). At review two more weeks are repeated: 28 sachets.
+- **Version 2.** As version 1 without 炙甘草 (or with 3 g). At review two more weeks are supplied: version 2 repeated if it has no liquorice, otherwise version 3 (as version 2 without 炙甘草) — 28 sachets either way.
 
 ## Facilitator notes
 
@@ -203,6 +210,7 @@ There are 65 steps in all.
 | Stopping his antihypertensive | Refused; gated safety-critical |
 | Supplying before the query is resolved | Intercepted by the version check |
 | Blaming the formula at review | `d-review` feedback; he would keep drinking the tea |
+| Keeping 3 g of liquorice at review | `continue-v2` refused; version 3 needed; `r-no-liquorice-now` |
 | Not asking about herbal teas and snacks | `d-review` stays closed; he does not volunteer it |
 
 ## Embodied mode
@@ -256,6 +264,7 @@ No DOIs are given: none was verified with a lookup in this session.
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** Audit revision (docs/AUDIT_2026-11-12.md). One active version 2, signed only after the query is answered (`g-version-refused`). The review follows the version dispensed: if version 2 kept 3 g of liquorice, a version 3 without it (`rx-v3-omit`, `dispense-v3`); continuing it is refused (`g-liquorice-kept-refused`); new item `r-no-liquorice-now`. The GP's reply and the review texts no longer claim version 2 has no liquorice. `reviewedAt` removed; dates in `extensions.tcmcraft.dates`.
 - **0.1.0 (2026-11-07).** First version: phase 2, case 7 (docs/PHASE2.md).
 
 ## Validation
@@ -291,7 +300,7 @@ tools/check.sh ../ClinicalCraft
 **复诊。** 胃胀好转，但血钾3.3、血压升高、脚肿、小腿抽筋。来源是每天一瓶廿四味凉茶和甘草梅。正确做法：
 
 - 停凉茶与甘草梅；
-- 维持第2版；
+- 确保处方不含甘草：第2版已去掉则维持，第2版保留3 g则开具并发放不含甘草的第3版；
 - 当天告知家庭医生。
 
 胃镜为轻度慢性胃炎，幽门螺杆菌阴性。

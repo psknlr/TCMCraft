@@ -99,7 +99,7 @@
       }
     ],
     "expect": {
-      "percent": 91,
+      "percent": 92,
       "gates": [],
       "criticalMissed": [],
       "finished": true
@@ -286,7 +286,7 @@
       }
     ],
     "expect": {
-      "percent": 91,
+      "percent": 92,
       "gates": [],
       "criticalMissed": [],
       "finished": true
@@ -297,7 +297,7 @@
     "summary": "Stops after booking the review (first visit only)",
     "truncateAfter": 69,
     "expect": {
-      "percent": 91,
+      "percent": 89,
       "gates": [],
       "criticalMissed": [],
       "finished": false
@@ -315,6 +315,262 @@
         "r-rx-version"
       ],
       "finished": false
+    }
+  },
+  {
+    "id": "two-version-2s",
+    "summary": "Audit: signs a second, different version 2 before dispensing (refused: one active version)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "dispense"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v2-omit"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-version-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "second-version-2-after-supply",
+    "summary": "Audit: signs a second version 2 after the first was dispensed (refused)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "counsel-herbs"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v2-omit"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-version-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "supply-without-reconciliation",
+    "summary": "Audit: never asks about antiplatelets, never reads the medication list, never answers the query (version 2 and supply refused)",
+    "replace": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-antithrombotic"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "order",
+          "investigationId": "prior-records"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "read",
+          "investigationId": "prior-records",
+          "phase": "consult"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-rx-review",
+          "optionIds": [
+            "new-version",
+            "aspirin-managed"
+          ]
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 78,
+      "gates": [
+        "g-outdated-version-intercepted",
+        "g-version-refused"
+      ],
+      "criticalMissed": [
+        "r-rx-version"
+      ],
+      "finished": false
+    }
+  },
+  {
+    "id": "needles-without-fainting-or-skin-check",
+    "summary": "Audit: never asks about fainting with needles or inspects the skin at the sites (needling refused)",
+    "replace": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-prior-acu"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "examine",
+          "findingId": "e-skin-back"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 83,
+      "gates": [
+        "g-needling-refused"
+      ],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "needles-before-assessment",
+    "summary": "Audit: consent, preparation, position and needling before any assessment (refused), then the reference path",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-presenting"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "explain-consent"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "acu-prep"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "acu-position"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "acu-insert"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "acu-remove"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-needling-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "defers-acupuncture",
+    "summary": "Audit: agrees with him to defer acupuncture (self-management, exercise and herbs), and completes the review",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "acu-prep"
+        },
+        "with": {
+          "type": "intervene",
+          "interventionId": "acu-defer"
+        }
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "acu-position"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "acu-insert"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "acu-remove"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "acu-document"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "order",
+          "investigationId": "acupuncture-record"
+        },
+        "with": []
+      },
+      {
+        "step": {
+          "type": "read",
+          "investigationId": "acupuncture-record",
+          "phase": "followup"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "takes-his-word-for-adherence",
+    "summary": "Reads the count but never reconciles it with his account",
+    "replace": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-fu-recount"
+        },
+        "with": []
+      }
+    ],
+    "expect": {
+      "percent": 97,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
     }
   }
 ]

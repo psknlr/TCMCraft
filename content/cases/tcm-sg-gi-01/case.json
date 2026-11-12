@@ -1,7 +1,7 @@
 {
   "schema": "clinicalcraft/case@1",
   "id": "tcm-sg-gi-01",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "title": {
     "zh-CN": "上腹胀满 · 63岁男性",
     "en": "Epigastric fullness · 63-year-old man"
@@ -67,7 +67,6 @@
     },
     "review": {
       "status": "unreviewed",
-      "reviewedAt": "2026-11-07",
       "reviewers": [],
       "guidelines": [
         "ACG/CAG 2017 dyspepsia",
@@ -1819,8 +1818,8 @@
             "en": "Two days ago (polyclinic, Dr Wong)"
           },
           "text": {
-            "zh-CN": "钾3.3 mmol/L（偏低），钠141 mmol/L，肌酐94 µmol/L。诊所血压154/92 mmHg。已按转介信安排胃镜（结果见另页）。中药处方第2版不含甘草，已知悉。请中医诊所留意其他甘草来源。",
-            "en": "Potassium 3.3 mmol/L (low), sodium 141 mmol/L, creatinine 94 µmol/L. Clinic blood pressure 154/92 mmHg. Endoscopy arranged from your letter (report attached separately). Noted that herbal prescription version 2 contains no liquorice. Please look out for other sources of liquorice."
+            "zh-CN": "钾3.3 mmol/L（偏低），钠141 mmol/L，肌酐94 µmol/L。诊所血压154/92 mmHg。已按转介信安排胃镜（结果见另页）。随信附来的中药处方第2版已收悉。请中医诊所核查他的全部甘草来源，包括处方以外的。",
+            "en": "Potassium 3.3 mmol/L (low), sodium 141 mmol/L, creatinine 94 µmol/L. Clinic blood pressure 154/92 mmHg. Endoscopy arranged from your letter (report attached separately). Herbal prescription version 2, as attached to your letter, noted. Please check all his sources of liquorice, including any outside the prescription."
           },
           "values": [
             {
@@ -2072,20 +2071,36 @@
       "checklist": true,
       "maxDoses": 1,
       "setFlags": [
-        "rx-v2"
+        "rx-v2",
+        "rx-v2-no-liquorice"
       ],
       "contraindicatedWhen": {
-        "not": {
-          "read": "dispensary-query"
-        }
+        "any": [
+          {
+            "not": {
+              "all": [
+                {
+                  "read": "dispensary-query"
+                },
+                {
+                  "decided": "d-rx-query"
+                }
+              ]
+            }
+          },
+          {
+            "intervened": "rx-v2-reduce",
+            "valid": true
+          }
+        ]
       },
       "harm": {
-        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
-        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+        "zh-CN": "不能签发：先看并回应药房的审方意见；且同一时间只能有一个有效的第2版——已签发的第2版保持有效。",
+        "en": "Not signed: read and answer the dispensary's query first; and only one version 2 can be active — once one is signed, it stands."
       },
       "response": {
-        "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
-        "en": "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled."
+        "zh-CN": "第2版（不含甘草）已签发，药房确认收到，第1版标记为作废。",
+        "en": "Version 2 (no liquorice) is signed; the dispensary acknowledges it and marks version 1 cancelled."
       }
     },
     {
@@ -2121,20 +2136,36 @@
       "checklist": true,
       "maxDoses": 1,
       "setFlags": [
-        "rx-v2"
+        "rx-v2",
+        "rx-v2-liquorice-3g"
       ],
       "contraindicatedWhen": {
-        "not": {
-          "read": "dispensary-query"
-        }
+        "any": [
+          {
+            "not": {
+              "all": [
+                {
+                  "read": "dispensary-query"
+                },
+                {
+                  "decided": "d-rx-query"
+                }
+              ]
+            }
+          },
+          {
+            "intervened": "rx-v2-omit",
+            "valid": true
+          }
+        ]
       },
       "harm": {
-        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
-        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+        "zh-CN": "不能签发：先看并回应药房的审方意见；且同一时间只能有一个有效的第2版——已签发的第2版保持有效。",
+        "en": "Not signed: read and answer the dispensary's query first; and only one version 2 can be active — once one is signed, it stands."
       },
       "response": {
-        "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
-        "en": "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled."
+        "zh-CN": "第2版（炙甘草3 g）已签发，药房确认收到，第1版标记为作废。",
+        "en": "Version 2 (炙甘草 3 g) is signed; the dispensary acknowledges it and marks version 1 cancelled."
       }
     },
     {
@@ -2258,8 +2289,8 @@
         "en": "Version check failed: prescription version 1 still has an open query, and the dispensary will not supply it. Answer the query and issue a new version first."
       },
       "response": {
-        "zh-CN": "药房按第2版调剂了28包配方颗粒，贴好中英文标签。",
-        "en": "The dispensary fills 28 sachets of granules from version 2 and applies a bilingual label."
+        "zh-CN": "药房按已签发的第2版调剂了28包配方颗粒，贴好中英文标签；调剂记录注明所用版本及炙甘草的剂量（无或3 g）。",
+        "en": "The dispensary fills 28 sachets of granules from the signed version 2 and applies a bilingual label; the dispensing record names the version and its 炙甘草 dose (none, or 3 g)."
       }
     },
     {
@@ -2567,16 +2598,124 @@
       ],
       "contraindicatedWhen": {
         "not": {
-          "phase": "review"
+          "all": [
+            {
+              "phase": "review"
+            },
+            {
+              "intervened": "rx-v2-omit",
+              "valid": true
+            }
+          ]
         }
       },
       "harm": {
-        "zh-CN": "还没有方案可以维持。",
-        "en": "There is no plan to continue yet."
+        "zh-CN": "不能照旧续配：要么还没到复诊，要么他现在的第2版仍含炙甘草3 g——血钾已降到3.3，应开具不含甘草的第3版。",
+        "en": "Not continued as it stands: either this is not the review yet, or his current version 2 still contains 3 g of 炙甘草 — with his potassium down to 3.3, issue a version 3 without it."
       },
       "response": {
-        "zh-CN": "药房按第2版续配两周（28包），标签核对一致。",
-        "en": "The dispensary repeats version 2 for two weeks (28 sachets); the label is checked against it."
+        "zh-CN": "药房按第2版（不含甘草）续配两周（28包），标签核对一致。",
+        "en": "The dispensary repeats version 2 (no liquorice) for two weeks (28 sachets); the label is checked against it."
+      }
+    },
+    {
+      "id": "rx-v3-omit",
+      "name": {
+        "zh-CN": "开具处方第3版：去掉第2版中余下的炙甘草3 g，其余不变；第2版作废（处方医师签名）",
+        "en": "Issue prescription version 3 leaving out the remaining 3 g of 炙甘草, otherwise as version 2; version 2 cancelled (signed by the prescriber)"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "处方第3版",
+          "去掉甘草",
+          "第3版",
+          "甘草全去掉"
+        ],
+        "en": [
+          "prescription version 3",
+          "version 3",
+          "remove the liquorice",
+          "noliquorice"
+        ]
+      },
+      "dose": {
+        "zh-CN": "第3版：同第2版，去掉炙甘草；注明理由（复诊时血钾3.3、血压上升、水肿，另有凉茶与甘草梅的甘草摄入）；两周（28包）；第2版作废。",
+        "en": "Version 3: as version 2 without 炙甘草; the reason written on it (potassium 3.3 with rising blood pressure and oedema at review, and liquorice from herbal tea and plums as well); two weeks (28 sachets); version 2 cancelled."
+      },
+      "requires": [
+        "records"
+      ],
+      "scope": "medical",
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "rx-v3"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "all": [
+            {
+              "phase": "review"
+            },
+            {
+              "intervened": "rx-v2-reduce",
+              "valid": true
+            }
+          ]
+        }
+      },
+      "harm": {
+        "zh-CN": "只有当现行处方仍含甘草（第2版保留了炙甘草3 g）时，复诊才需要开第3版。",
+        "en": "A version 3 is needed at review only if the current prescription still contains liquorice (a version 2 that kept 3 g of 炙甘草)."
+      },
+      "response": {
+        "zh-CN": "第3版已签发，药房确认收到，第2版标记为作废。",
+        "en": "Version 3 is signed; the dispensary acknowledges it and marks version 2 cancelled."
+      }
+    },
+    {
+      "id": "dispense-v3",
+      "name": {
+        "zh-CN": "将处方第3版交药房调剂并发药",
+        "en": "Release prescription version 3 for dispensing and supply"
+      },
+      "kind": "medication",
+      "aliases": {
+        "zh-CN": [
+          "按第3版发药",
+          "第3版调剂",
+          "发第3版"
+        ],
+        "en": [
+          "dispense version 3",
+          "supply version 3",
+          "fill version 3"
+        ]
+      },
+      "requires": [
+        "medications"
+      ],
+      "risk": "low",
+      "checklist": true,
+      "maxDoses": 1,
+      "setFlags": [
+        "v3-dispensed"
+      ],
+      "contraindicatedWhen": {
+        "not": {
+          "intervened": "rx-v3-omit",
+          "valid": true
+        }
+      },
+      "harm": {
+        "zh-CN": "没有已签发的第3版可以调剂。",
+        "en": "There is no signed version 3 to fill."
+      },
+      "response": {
+        "zh-CN": "药房按第3版（不含甘草）调剂了28包，收回剩余的第2版药包，标签核对一致。",
+        "en": "The dispensary fills 28 sachets from version 3 (no liquorice), takes back the version 2 sachets he has left, and checks the label against it."
       }
     }
   ],
@@ -2789,8 +2928,16 @@
             "valid": true
           },
           {
-            "intervened": "continue-v2",
-            "valid": true
+            "any": [
+              {
+                "intervened": "continue-v2",
+                "valid": true
+              },
+              {
+                "intervened": "dispense-v3",
+                "valid": true
+              }
+            ]
           }
         ]
       },
@@ -3045,8 +3192,8 @@
       "id": "d-review",
       "kind": "single",
       "prompt": {
-        "zh-CN": "复诊：胃胀好多了，但血钾降到3.3、血压上升、双踝水肿。第2版不含甘草（或只有3 g）。怎么看？",
-        "en": "At review: the fullness is much better, but his potassium is down to 3.3, his blood pressure is up and his ankles are swollen. Version 2 has little or no liquorice. What is going on?"
+        "zh-CN": "复诊：胃胀好多了，但血钾降到3.3、血压上升、双踝水肿。第2版去掉了甘草或减到3 g。怎么看？",
+        "en": "At review: the fullness is much better, but his potassium is down to 3.3, his blood pressure is up and his ankles are swollen. Version 2 left the liquorice out or cut it to 3 g. What is going on?"
       },
       "requires": {
         "all": [
@@ -3073,13 +3220,13 @@
         {
           "id": "hidden-liquorice",
           "text": {
-            "zh-CN": "隐藏的甘草来源：每天一瓶廿四味凉茶加甘草梅，与噻嗪类利尿剂相加，出现低钾、血压升高、水肿、抽筋。停凉茶与甘草梅，维持第2版，当天告知家庭医生由她处理血钾与降压药；胃镜良性，继续调理",
-            "en": "A hidden source of liquorice: a bottle of 廿四味 herbal tea every day plus liquorice plums, adding to the thiazide, with low potassium, higher blood pressure, swelling and cramps. Stop the tea and the plums, keep version 2, and tell his GP today, who manages the potassium and the antihypertensives; the endoscopy is benign, so carry on treating the digestion"
+            "zh-CN": "隐藏的甘草来源：每天一瓶廿四味凉茶加甘草梅，与噻嗪类利尿剂相加，出现低钾、血压升高、水肿、抽筋。停凉茶与甘草梅；确保他的处方不含甘草（第2版已去掉则维持，第2版保留3 g则开不含甘草的第3版）；当天告知家庭医生由她处理血钾与降压药；胃镜良性，继续调理",
+            "en": "A hidden source of liquorice: a bottle of 廿四味 herbal tea every day plus liquorice plums, adding to the thiazide, with low potassium, higher blood pressure, swelling and cramps. Stop the tea and the plums; make sure his prescription contains no liquorice (keep version 2 if it left it out; issue a version 3 without it if version 2 kept 3 g); tell his GP today, who manages the potassium and the antihypertensives; the endoscopy is benign, so carry on treating the digestion"
           },
           "correct": true,
           "feedback": {
-            "zh-CN": "正确。廿四味等凉茶多含甘草，甘草梅也是。处方里去掉了甘草，但总的甘草摄入要把食物、饮料和保健品都算进去——药房担心的正是这个效应。体重增加1公斤、脚肿、血压上升、血钾下降，是典型的假性醛固酮增多症表现。",
-            "en": "Correct. Herbal teas such as 廿四味 usually contain liquorice, and so do liquorice plums. The prescription left the liquorice out, but total intake counts foods, drinks and supplements too — exactly the effect the dispensary feared. A kilogram gained, swollen ankles, rising blood pressure and falling potassium are the picture of pseudo-aldosteronism."
+            "zh-CN": "正确。廿四味等凉茶多含甘草，甘草梅也是。处方去掉或减少了甘草，但总的甘草摄入要把处方、食物、饮料和保健品都算进去——药房担心的正是这个效应。体重增加1公斤、脚肿、血压上升、血钾下降，是典型的假性醛固酮增多症表现；如第2版仍有3 g，此时也应去掉。",
+            "en": "Correct. Herbal teas such as 廿四味 usually contain liquorice, and so do liquorice plums. The prescription left the liquorice out or cut it, but total intake counts the prescription, foods, drinks and supplements together — exactly the effect the dispensary feared. A kilogram gained, swollen ankles, rising blood pressure and falling potassium are the picture of pseudo-aldosteronism; if version 2 kept 3 g, that goes too now."
           }
         },
         {
@@ -3090,8 +3237,8 @@
           },
           "correct": false,
           "feedback": {
-            "zh-CN": "不对。第2版几乎不含甘草；停掉中药而不找来源，他会继续喝凉茶。",
-            "en": "No. Version 2 has little or no liquorice; stop the herbs without finding the source and he will go on drinking the tea."
+            "zh-CN": "不对。第2版没有或只有3 g甘草；停掉中药而不找来源，他会继续喝凉茶。",
+            "en": "No. Version 2 has no liquorice, or 3 g; stop the herbs without finding the source and he will go on drinking the tea."
           }
         },
         {
@@ -3443,6 +3590,30 @@
       }
     },
     {
+      "id": "r-no-liquorice-now",
+      "domain": "safety",
+      "weight": 2,
+      "text": {
+        "zh-CN": "复诊时确保他的处方不含甘草（第2版已去掉则维持；保留3 g则开第3版）",
+        "en": "At review, made sure his prescription contains no liquorice (version 2 kept if it left it out; a version 3 if it kept 3 g)"
+      },
+      "met": {
+        "any": [
+          {
+            "intervened": "continue-v2",
+            "valid": true
+          },
+          {
+            "intervened": "dispense-v3",
+            "valid": true
+          }
+        ]
+      },
+      "scoredWhen": {
+        "phase": "review"
+      }
+    },
+    {
       "id": "r-gp-today",
       "domain": "management",
       "weight": 2,
@@ -3679,6 +3850,42 @@
       },
       "when": {
         "intervened": "insist-v1"
+      }
+    },
+    {
+      "id": "g-version-refused",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "在回应审方意见之前、已有一个有效第2版时，或无需第3版时，尝试签发处方版本（已被拒绝）",
+        "en": "A prescription version attempted before the query was answered, while another version 2 was active, or when no version 3 was needed (refused)"
+      },
+      "when": {
+        "any": [
+          {
+            "intervened": "rx-v2-omit",
+            "valid": false
+          },
+          {
+            "intervened": "rx-v2-reduce",
+            "valid": false
+          },
+          {
+            "intervened": "rx-v3-omit",
+            "valid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "g-liquorice-kept-refused",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "试图照旧续配仍含甘草的第2版（或在复诊前续配）（已被拒绝）",
+        "en": "Version 2 continued unchanged while it still contained liquorice, or before the review (refused)"
+      },
+      "when": {
+        "intervened": "continue-v2",
+        "valid": false
       }
     },
     {
@@ -4195,6 +4402,12 @@
       }
     ],
     "tcmcraft": {
+      "dates": {
+        "authored": "2026-11-07",
+        "lastRevised": "2026-11-12",
+        "technicalVerification": "every commit: tools/check.sh against the pinned ClinicalCraft (tools/clinicalcraft.rev), in CI",
+        "clinicalSignOff": null
+      },
       "edition": "singapore",
       "caseFamily": "sg-gi",
       "variant": "review-a-hidden-liquorice",

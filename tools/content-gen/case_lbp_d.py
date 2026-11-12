@@ -22,6 +22,7 @@ import copy
 import case_lbp as base
 import lbp_family
 from case_lbp import AUTHORED, FOLLOWUP, KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt, order_read
+from common import dates
 
 CASE_ID = "tcm-sg-lbp-04"
 
@@ -70,7 +71,7 @@ HISTORY = [
        phases=FOLLOWUP),
     hx("h-fu-adverse", "other",
        L("治疗以后有没有什么不舒服或者副作用？", "Any side effects or problems since the treatment?"),
-       L("膝盖后面的小瘀青已经没了。倒是腰上贴暖贴的地方有点红、有点痒。", "The little bruise behind my knee has gone. But the skin where I put the heat patches is a bit red and itchy."),
+       L("没有瘀青或出血。倒是腰上贴暖贴的地方有点红、有点痒。", "No bruising or bleeding. But the skin where I put the heat patches is a bit red and itchy."),
        KW(["副作用", "不良反应", "治疗以后", "皮肤红", "痒"], ["side effects", "sideeffects", "problems since", "skin red", "itchy"]),
        phases=FOLLOWUP, supersedes=["h-bruising"]),
     hx("h-fu-redflags", "ros",
@@ -345,7 +346,7 @@ DEBRIEF = {
 def build() -> dict:
     return lbp_family.variant(
         case_id=CASE_ID,
-        version="0.1.0",
+        version="0.2.0",
         variant_id="review-d-changed-pattern",
         title=L("腰痛反复发作 · 52岁男性 · 复诊D", "Recurrent low back pain · 52-year-old man · review D"),
         outcome=OUTCOME,
@@ -353,6 +354,7 @@ def build() -> dict:
                 "objectives": OBJECTIVES, "rubric": RUBRIC, "safetyGates": SAFETY_GATES, "solution": SOLUTION, "utterances": UTTERANCES},
         debrief=DEBRIEF,
         tcmcraft={
+            "dates": dates("2026-11-07"),
             "unacceptable": ["rx-verbal-swap", "stop-aspirin", *MORE_WARMING],
             "acceptablePathways": base.build()["extensions"]["tcmcraft"]["acceptablePathways"] + [
                 {"id": "damp-heat-revision", "decisionPoint": "review", "interventions": ["rx-v3-damp-heat", "dispense-v3"],

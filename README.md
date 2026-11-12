@@ -70,6 +70,16 @@ ones. The other five adapt published case reports and wait on the permission que
 Every case's alternative paths state their expected outcome (score, safety gates, critical misses, whether it can
 finish), and `tools/pack_check.py --paths` fails when a replay differs.
 
+The [audit of 12 November 2026](docs/AUDIT_2026-11-12.md) is answered in content version 0.2.0:
+
+- the back-pain cases now finish in embodied mode;
+- prescription versions are mutually exclusive and need the query answered and the medicines verified;
+- needling needs the minimum assessment, and acupuncture can be deferred;
+- the emergency handover states only what has been established;
+- one policy covers every delaying act at the cauda equina review.
+
+The audit's counterexamples are paths with stated outcomes.
+
 ### `tcm-sg-clinic` · TCMCraft Community TCM Clinic (fictional)
 
 A single-storey clinic built from three room templates:
@@ -102,7 +112,7 @@ tools/
   check.sh                            the above, then ClinicalCraft's own validate/verify/demonstration
   clinicalcraft.rev                   the ClinicalCraft commit the pack is checked against
   cmcr_index.py                       writes docs/CMCR_CORPUS.md from the case archive's manifests
-docs/                                 DESIGN · IMPLEMENTATION · PHASE2 · ENGINE_EXTENSIONS · CMCR_CORPUS
+docs/                                 DESIGN · IMPLEMENTATION · PHASE2 · ENGINE_EXTENSIONS · CMCR_CORPUS · AUDIT_2026-11-12
 CMCR中医案例80篇/                       80 CMCR TCM case reports (ZIP; source material for later phases)
 .github/workflows/check.yml           CI: tools/check.sh against the pinned ClinicalCraft
 ```
@@ -142,7 +152,8 @@ tools/check.sh ../ClinicalCraft
 - `build.py` rewrites `content/`; `--check` only verifies that it is up to date.
 - `pack_check.py` needs no Node.js. Point `CLINICALCRAFT_DIR` at a checkout to include the built-in catalogs.
 - `check.sh` runs both, then ClinicalCraft's `facilities validate --all`, `cases validate --strict`, `cases verify`
-  and the offline demonstration (`exec --autopilot`).
+  and the offline demonstration (`exec --autopilot`) in standard and in embodied mode. Each demonstration must
+  finish, complete every objective and score 100 %.
 
 `pack_check.py` ports the parts of ClinicalCraft's checks that decide pass or fail. Its replay reproduces 100 % on
 ClinicalCraft's 20 built-in CMCR cases, and its matcher agrees with ClinicalCraft on all 1,579 built-in test

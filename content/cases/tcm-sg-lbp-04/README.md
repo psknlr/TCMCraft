@@ -105,7 +105,7 @@ Phase twins at the review:
 | `r-no-more-warming` | safety | 2 | avoided-harm: no `continue-course`, no `add-fuzi` |
 | `r-comm-change` | communication | 1 | examiner-judged |
 
-There are 21 deterministic items in all, 46 points.
+There are 22 deterministic items in all, 48 points.
 
 ### Safety gates
 
@@ -121,15 +121,15 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
-| Reference path | 46/46 = 100 % | yes | — | — |
-| Dismisses the coating as staining first | 93 % | yes | `r-revise` | — |
-| Calls it a spinal infection first | 93 % | yes | `r-revise` | — |
-| Adds aconite | 40 % (capped) | yes | — | `g-aconite-into-heat` |
-| Keeps version 2 unchanged before revising | 96 % | yes | — | — |
-| Never stops the heat patches | 96 % | **no** | — | — |
+| Reference path | 48/48 = 100 % | yes | — | — |
+| Dismisses the yellow coating as staining again, then corrects | 94 % | yes | `r-revise` | — |
+| Reads it as a spinal infection first, then corrects | 94 % | yes | `r-revise` | — |
+| Adds aconite to push the warming | 40 % (capped) | yes | — | `g-aconite-into-heat` |
+| Keeps version 2 and the course unchanged before revising | 96 % | yes | — | — |
+| Revises the formula but never stops the heat patches (the review objective stays open) | 96 % | **no** | — | — |
 | Tries the heat-clearing formula at the first visit (intercepted) | 100 % | yes | — | `g-revision-intercepted` (complication) |
-| Stops after booking the review | 70 % | no | `r-revise` | — |
-| Does nothing | 0 % | no | `r-redflags`, `r-rx-version`, `r-revise` | — |
+| Stops after booking the review | 71 % | **no** | `r-revise` | — |
+| Starts the case and does nothing | 0 % | **no** | `r-redflags`, `r-rx-version`, `r-revise` | — |
 
 ## Reference path (`solution`)
 
@@ -201,6 +201,7 @@ Everything listed for `tcm-sg-lbp-01`, and:
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** The shared first visit's audit revision (tcm-sg-lbp-01 0.2.0): one active version 2, reconciliation before signing, the minimum assessment before needling, an optional deferral of acupuncture. Review facts no longer assume needling. Scores move by the first visit's new item (`r-pre-needling`).
 - **0.1.0 (2026-11-07).** First version: phase 2, case 4 (docs/PHASE2.md).
 
 ## Validation

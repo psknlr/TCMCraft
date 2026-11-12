@@ -144,6 +144,7 @@ Ms Lim Hui Min (pseudonym), 47, an accounts executive, has slept badly for five 
 | `g-stop-iron` | safety-critical (cap 40 %) | `stop-iron`: herbs offered in place of iron for iron-deficiency anaemia |
 | `g-deferred-against-evidence` | complication | `defer-to-senior` or `combine-formulas` attempted (both are refused) |
 | `g-hypnotic-escalation` | complication | `stronger-sleeper` attempted (refused) |
+| `g-needling-refused` | complication | `acupuncture-sleep` attempted before the assessment (`d-medical`, `d-pattern`) and consent (refused) |
 
 ### Paths and their expected outcomes
 
@@ -152,17 +153,19 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
 | Reference path | 29/29 = 100 % | yes | — | — |
-| Prescribes Dr Ho's formula as it stands, then corrects | 83 % | yes | `r-disagreement` | `g-deferred-against-evidence` |
-| Combines both formulas, then corrects | 83 % | yes | `r-disagreement` | `g-deferred-against-evidence` |
-| Prescribes 归脾汤, then discusses it with Dr Ho | 90 % | yes | `r-disagreement` | — |
-| Calls it liver fire from the questionnaire, then corrects | 90 % | yes | — | — |
-| Sleep study and urgent psychiatry first | 93 % | yes | — | — |
-| Advises nightly, stronger sleeping tablets | 97 % | yes | — | `g-hypnotic-escalation` |
-| Never refers her to her GP | 22/24 = 92 %; the review never opens | **no** | `r-gp` | — |
-| Tells her at review that the herbs replace the iron | 40 % (capped) | yes | — | `g-stop-iron` |
-| Leaves the iron with the milk tea and the granules | 90 % | **no** | — | — |
-| Stops after booking the review | 90 % | no | — | — |
-| Does nothing | 0/22 = 0 % | no | `r-medical-screen`, `r-disagreement`, `r-gp` | — |
+| Prescribes Dr Ho's Dan Zhi Xiao Yao San as it stands, then corrects | 83 % | yes | `r-disagreement` | `g-deferred-against-evidence` (complication) |
+| Combines both formulas to keep everyone happy, then corrects | 83 % | yes | `r-disagreement` | `g-deferred-against-evidence` (complication) |
+| Prescribes Gui Pi Tang and only then discusses it with Dr Ho | 90 % | yes | `r-disagreement` | — |
+| Calls it liver qi stagnation turning to fire from the questionnaire, then corrects | 90 % | yes | — | — |
+| Sends her for a sleep study and an urgent psychiatry referral instead of a GP work-up first | 93 % | yes | — | — |
+| Advises nightly, stronger pharmacy sleeping tablets | 97 % | yes | — | `g-hypnotic-escalation` (complication) |
+| Treats the insomnia without referring her to her GP | 92 % | **no** | `r-gp` | — |
+| At review, tells her the herbs can replace the iron | 40 % (capped) | yes | — | `g-stop-iron` |
+| At review, leaves the iron taken with milk tea and the granules | 90 % | **no** | — | — |
+| Stops after booking the review | 90 % | **no** | — | — |
+| Starts the case and does nothing | 0 % | **no** | `r-medical-screen`, `r-disagreement`, `r-gp` | — |
+| Adds acupuncture after the assessment and consent (an acceptable adjunct) | 100 % | yes | — | — |
+| Tries acupuncture before the assessment (refused) | 100 % | yes | — | `g-needling-refused` (complication) |
 
 A path that cannot finish shows only the items that could be scored. The review items count once the review opens, so "never refers her to her GP" is out of 24 points, not 29. Its failure is the critical miss and the unfinished case, not the percentage.
 
@@ -179,7 +182,7 @@ A path that cannot finish shows only the items that could be scored. The review 
 9. Read the GP's results and the new sleep diary → `d-review` (`continue-spaced`).
 10. `iron-spacing`, `continue-plan` and `finish`.
 
-There are 68 steps in all. Acupuncture (`explain-consent` then `acupuncture-sleep`, lying down in the treatment room) is an acceptable adjunct, not part of the reference path.
+There are 68 steps in all. Acupuncture (`acupuncture-sleep`, lying down in the treatment room) is an acceptable adjunct, not part of the reference path. It is valid only after the biomedical and pattern assessments and consent.
 
 ## Clinical numbers check
 
@@ -288,6 +291,7 @@ No DOIs are given: none was verified with a lookup in this session.
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** Audit revision (docs/AUDIT_2026-11-12.md): acupuncture needs the assessment and consent first, and a refused attempt is recorded (`g-needling-refused`). `reviewedAt` removed; dates in `extensions.tcmcraft.dates`. No change to the reference score.
 - **0.1.1 (2026-11-07).** Family metadata (variant `review-a-iron`) and the title suffix "· review A", now that `tcm-sg-insomnia-02` shares the first visit. No scoring change.
 - **0.1.0 (2026-11-07).** First version: phase 2, case 5 (docs/PHASE2.md).
 

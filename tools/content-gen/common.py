@@ -44,3 +44,20 @@ def write(path: Path, data: Any, check: bool) -> bool:
     path.write_text(text, encoding="utf-8")
     print(f"wrote {path.relative_to(ROOT)}")
     return True
+
+
+# The date of this revision of the pack's content (docs/AUDIT_2026-11-12.md).
+LAST_REVISED = "2026-11-12"
+
+
+def dates(authored: str) -> dict:
+    """Content creation, technical verification and clinical sign-off, kept apart (`extensions.tcmcraft.dates`).
+
+    `provenance.review.reviewedAt` is reserved for a review that really happened, so an unreviewed case has none.
+    """
+    return {
+        "authored": authored,
+        "lastRevised": LAST_REVISED,
+        "technicalVerification": "every commit: tools/check.sh against the pinned ClinicalCraft (tools/clinicalcraft.rev), in CI",
+        "clinicalSignOff": None,
+    }

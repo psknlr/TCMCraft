@@ -313,5 +313,59 @@
       ],
       "finished": false
     }
+  },
+  {
+    "id": "adds-acupuncture",
+    "summary": "Adds acupuncture after the assessment and consent (an acceptable adjunct)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "arrange-review"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "acupuncture-sleep"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "acupuncture-before-assessment",
+    "summary": "Tries acupuncture before the assessment (refused)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-sleep-pattern"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "explain-consent"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "acupuncture-sleep"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-needling-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
   }
 ]

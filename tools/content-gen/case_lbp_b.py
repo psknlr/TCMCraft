@@ -14,6 +14,7 @@ from __future__ import annotations
 import case_lbp as base
 import lbp_family
 from case_lbp import FOLLOWUP, KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt
+from common import dates
 
 CASE_ID = "tcm-sg-lbp-02"
 
@@ -22,10 +23,10 @@ DANGER_EVIDENCE = {"any": [{"asked": "h-fu-redflags"}, {"asked": "h-fu-status"},
 HISTORY = [
     hx("h-fu-status", "hpi",
        L("这一个星期腰怎么样了？", "How has your back been this past week?"),
-       L("针灸完那几天好了一些。可是前天上班搬一箱货，腰里像有什么东西“啪”一下，之后痛就往两条腿下面窜，左边更厉害，一直到脚底。现在痛到八分。",
-         "It was better for a few days after the needles. But the day before yesterday I lifted a carton at work and felt something go in my back — since then the pain shoots down both legs, worse on the left, right down to the sole of my foot. It's an eight now."),
-       KW(["这个星期", "这一周", "这周", "好点了吗", "有没有好转", "上次以后", "上周以后"],
-          ["this week", "past week", "any better", "progress", "since last time", "since last week"]),
+       L("头几天好了一些。可是前天上班搬一箱货，腰里像有什么东西“啪”一下，之后痛就往两条腿下面窜，左边更厉害，一直到脚底。现在痛到八分。",
+         "It was better for the first few days. But the day before yesterday I lifted a carton at work and felt something go in my back — since then the pain shoots down both legs, worse on the left, right down to the sole of my foot. It's an eight now."),
+       KW(["这个星期", "这一周", "这周", "好点了吗", "有没有好转", "上次以后", "上周以后", "两条腿都痛", "痛到脚底", "往下窜"],
+          ["this week", "past week", "any better", "progress", "since last time", "since last week", "both legs hurt", "downtothesole"]),
        required=True, phases=FOLLOWUP, supersedes=["h-presenting", "h-severity", "h-character"]),
     hx("h-fu-onset-time", "hpi",
        L("下面发麻和小便困难具体是什么时候开始的？", "When exactly did the numbness down below and the trouble passing urine start?"),
@@ -36,7 +37,10 @@ HISTORY = [
        L("现在腿脚有没有麻木无力？大小便正常吗？", "Any numbness or weakness in your legs now, and are your bladder and bowels normal?"),
        L("两只脚都麻，左脚有点没力，走路会拖。昨天开始，上完厕所擦的时候下面麻麻的，像隔着一层棉花。今天早上小便要用力才出得来，尿得很细。没有尿裤子。",
          "Both feet are numb, and my left foot is weak — it drags when I walk. Since yesterday, when I wipe after the toilet it feels numb down there, like through cotton wool. This morning I had to strain to pass water, and the stream was thin. I haven't wet myself."),
-       KW(["现在腿", "现在大小便", "现在有没有麻", "新的麻木"], ["new weakness", "new numbness", "newnumbness", "anything new in your legs"]),
+       KW(["现在腿", "现在大小便", "现在有没有麻", "新的麻木", "小便解得出", "解得出来", "尿得出", "尿不出", "使劲", "用力才",
+           "排尿困难", "小便困难", "小便问题", "小便没有问题", "小便没问题", "尿得细", "会阴", "下面麻", "擦屁股", "纸碰到"],
+          ["new weakness", "new numbness", "newnumbness", "anything new in your legs", "pass urine", "passing urine", "strain to pass",
+           "trouble peeing", "saddle", "wiping", "down below"]),
        required=True, phases=FOLLOWUP, supersedes=["h-redflag-neuro", "h-redflag-ce"],
        safety={"datum": "cauda-equina-review", "finding": "positive"}),
     hx("h-fu-bowel", "ros",
@@ -57,7 +61,7 @@ HISTORY = [
        phases=FOLLOWUP),
     hx("h-fu-adverse", "other",
        L("治疗以后有没有什么不舒服或者副作用？", "Any side effects or problems since the treatment?"),
-       L("膝盖后面那个小瘀青已经淡了。胃没有不舒服，没有出血。", "That little bruise behind my knee has faded. No stomach upset, no bleeding."),
+       L("胃没有不舒服，没有瘀青或出血。", "No stomach upset, no bruising or bleeding."),
        KW(["副作用", "不良反应", "治疗以后", "胃不舒服"], ["side effects", "sideeffects", "problems since", "upset stomach"]),
        phases=FOLLOWUP, supersedes=["h-bruising"]),
 ]
@@ -108,6 +112,14 @@ TRANSFER_HARM = L(
 )
 
 DELAYS = ["acu-review-session", "continue-course", "wait-and-see", "herbs-stasis"]
+# Treating or waiting instead of transferring. Every one of these is a checklist step that is refused at the review
+# (not given, so on the static clock no time is lost) — tuina included. The engine cannot tell when a refused attempt
+# was made, so a tuina refused at the first visit (before its prerequisites) also counts here.
+REFUSED_DELAYS = [{"intervened": x} for x in DELAYS] + [{"intervened": "tuina", "valid": False}]
+# The written handover can only state what has been established: the new symptoms and when each began, the
+# neurological findings and the last doses.
+HANDOVER_FACTS = {"all": [{"phase": "followup"}, {"asked": "h-fu-status"}, {"asked": "h-fu-redflags"}, {"asked": "h-fu-onset-time"},
+                          {"asked": "h-fu-meds-last"}, {"examined": "e-fu-neuro"}]}
 
 INTERVENTIONS = [
     # replaces the base's first-visit referral: the same act, appropriate only once new danger signs are known
@@ -121,16 +133,27 @@ INTERVENTIONS = [
        indicatedWhen={"asked": "h-fu-redflags"},
        response=L("急诊接诊医生同意接收，请诊所附上书面交接。因他行走困难、疼痛剧烈，诊所拨打995叫了救护车。",
                   "The Emergency Department doctor accepts him and asks for a written handover. Because he can barely walk and is in severe pain, the clinic calls 995 for an ambulance.")),
-    iv("handover-letter", "consult",
-       L("书面交接给急诊：新症状及出现时间、检查所见、用药（含最后剂量）与已做的中医治疗",
-         "Written handover to the Emergency Department: new symptoms and when each began, examination findings, medicines with last doses, and the TCM treatment given"),
-       KW(["交接", "交接单", "转诊信", "写给急诊"], ["handover", "referral letter", "letter to the ed", "written handover"]),
-       dose=L("包括：前天搬重物后双下肢放射痛；昨天约16:00起鞍区麻木、今晨起排尿费力（无尿失禁）；左踝背屈4级、左踝反射消失、鞍区感觉减退；阿司匹林100 mg（今晨7:00）、布洛芬400 mg（昨晚）、氨氯地平、阿托伐他汀；一周来服独活寄生汤加减配方颗粒（第2版处方，附药物组成，今晨最后一次）；一周前针刺10针（已全部取出）。",
-              "Include: radiating pain down both legs since lifting two days ago; saddle numbness since about 16:00 yesterday and straining to pass urine since this morning (no incontinence); left ankle dorsiflexion 4/5, absent left ankle reflex, reduced saddle sensation; aspirin 100 mg (07:00 today), ibuprofen 400 mg (last night), amlodipine, atorvastatin; a week of modified Du Huo Ji Sheng Tang granules (prescription version 2, composition attached, last dose this morning); acupuncture a week ago, 10 needles, all removed."),
-       requires=["records"], scope="medical", risk="none", checklist=True, setFlags=["handover-written"],
+    iv("handover-initial", "consult",
+       L("电话初步交接给急诊：只说目前已确认的，未核实的明确标为“未核实”，书面交接随后补上",
+         "Initial handover to the Emergency Department by phone: only what is established so far, with anything not yet checked stated as unverified; the written handover follows"),
+       KW(["电话交接", "初步交接", "先打电话交接"], ["initial handover", "phone handover", "handover by phone", "call the ed now"]),
+       dose=L("说明：他是谁、为什么转诊（到目前为止他自己讲的新症状和你已查到的体征）、初诊已知的用药（阿司匹林100 mg 每日、氨氯地平、阿托伐他汀）与一周前开始的中药颗粒；明确哪些还没核实（各症状的起始时间、神经系统检查、最后一次服药时间），书面交接随后发出。",
+              "Say who he is, why you are transferring him (the new symptoms as he has described them so far, and any signs you have found), his medicines as known from the first visit (aspirin 100 mg daily, amlodipine, atorvastatin) and the granules started a week ago; say plainly what is not yet checked (when each symptom began, the neurological examination, the time of each last dose), and that a written handover will follow."),
+       scope="medical", risk="none", setFlags=["handover-initial"],
        contraindicatedWhen={"not": {"phase": "followup"}},
        harm=L("这一次就诊没有需要交接给急诊的内容。", "There is nothing to hand over to emergency care at this visit."),
-       response=L("交接单已随他交给救护人员，副本存档。", "The handover goes with him to the ambulance crew; a copy is filed.")),
+       response=L("急诊护士记下初步交接，并标出待确认的项目。", "The Emergency Department nurse takes the initial handover and notes what is still to be confirmed.")),
+    iv("handover-letter", "consult",
+       L("书面交接给急诊：新症状及出现时间、检查所见、用药（含最后剂量）与中医治疗记录",
+         "Written handover to the Emergency Department: new symptoms and when each began, examination findings, medicines with last doses, and the TCM treatment record"),
+       KW(["交接", "交接单", "转诊信", "写给急诊"], ["handover", "referral letter", "letter to the ed", "written handover"]),
+       dose=L("包括：前天搬重物后双下肢放射痛；昨天约16:00起鞍区麻木、今晨起排尿费力（无尿失禁）；左踝背屈4级、左踝反射消失、鞍区感觉减退；阿司匹林100 mg（今晨7:00）、布洛芬400 mg（昨晚）、氨氯地平、阿托伐他汀；中医治疗记录附后：一周来服独活寄生汤加减配方颗粒（已签发的第2版处方及其组成，今晨最后一次），以及针灸治疗记录（如有）。",
+              "Include: radiating pain down both legs since lifting two days ago; saddle numbness since about 16:00 yesterday and straining to pass urine since this morning (no incontinence); left ankle dorsiflexion 4/5, absent left ankle reflex, reduced saddle sensation; aspirin 100 mg (07:00 today), ibuprofen 400 mg (last night), amlodipine, atorvastatin; the TCM treatment record attached: a week of modified Du Huo Ji Sheng Tang granules (the signed version 2 with its composition, last dose this morning) and the acupuncture session record, if a session was given."),
+       requires=["records"], scope="medical", risk="none", checklist=True, setFlags=["handover-written"],
+       contraindicatedWhen={"not": HANDOVER_FACTS},
+       harm=L("书面交接只能写已经确认的内容：先问清楚这一周的变化、危险信号及各自的起始时间、最后一次服药，并复查神经系统。转诊不必等它——可以先电话初步交接，书面交接随后补上。",
+              "The written handover can only state what has been established: first ask what changed this week, the danger signs and when each began, and the last doses, and repeat the neurological examination. The transfer need not wait for it — give an initial handover by phone now and send the letter when it is complete."),
+       response=L("书面交接已发给急诊，并随他一起去医院；副本存档。", "The written handover is sent to the Emergency Department and goes with him; a copy is filed.")),
     iv("stop-tcm", "other",
        L("暂停中药颗粒和后续针灸，待急诊评估后再定", "Stop the herbal granules and further acupuncture until he has been assessed"),
        KW(["停中药", "暂停治疗", "停止针灸", "停颗粒"], ["stop the herbs", "pause treatment", "stop acupuncture", "hold the granules"]),
@@ -185,9 +208,9 @@ INTERVENTIONS = [
        KW(["推拿", "按摩", "揉法", "滚法"], ["tuina", "massage", "soft tissue", "manual therapy"]),
        dose=L("以滚法、揉法放松腰部椎旁肌，力度以患者可耐受为度，随时询问感受。", "Rolling and kneading techniques to relax the lumbar paraspinal muscles, at a pressure he finds tolerable, checking in with him throughout."),
        scope="medical", risk="low", checklist=True, maxDoses=1,
-       contraindicatedWhen={"any": [{"not": {"intervened": "explain-consent"}}, {"phase": "followup"}]},
-       harm=L("未取得知情同意时先说明手法并征得同意。复诊时出现新的神经系统危险信号，任何手法治疗都要等急诊评估之后。",
-              "Without recorded consent, explain the technique and obtain his agreement first. At the review, with new neurological danger signs, any manual therapy waits until he has been assessed in the Emergency Department."),
+       contraindicatedWhen={"any": [{"not": {"all": [{"decided": "d-disease"}, {"decided": "d-pattern"}, {"intervened": "explain-consent"}]}}, {"phase": "followup"}]},
+       harm=L("初诊时，推拿前要先完成危险信号筛查与诊断、辨证，再说明手法并征得同意。复诊时出现新的神经系统危险信号，任何手法治疗都要等急诊评估之后。",
+              "At the first visit, tuina needs the danger-sign screen and diagnosis and the pattern assessment, then an explanation of the technique and his agreement. At the review, with new neurological danger signs, any manual therapy waits until he has been assessed in the Emergency Department."),
        response=L("推拿后他说腰部松了一些。", "After the tuina he says his back feels a little looser.")),
 ]
 
@@ -252,9 +275,10 @@ RUBRIC = [
      "text": L("暂停中药和针灸，等待急诊评估", "Paused the herbs and acupuncture pending emergency assessment"),
      "met": {"intervened": "stop-tcm", "valid": True}},
     {"id": "r-no-delay", "domain": "safety", "weight": 3,
-     "text": L("没有用针刺、推拿、继续疗程、观察等待或改方来拖延急诊处理", "Did not delay emergency care with needling, a continued course, watchful waiting, a new formula or a routine referral"),
-     "met": {"not": {"any": [{"intervened": x} for x in DELAYS] + [{"intervened": "refer-imaging", "valid": False}]}},
-     "scoredWhen": {"any": [{"phase": "followup"}] + [{"intervened": x} for x in DELAYS] + [{"intervened": "refer-imaging"}]}},
+     "text": L("没有试图以针刺、推拿、继续疗程、观察等待、改方或常规转介代替急诊转诊（被拒绝的尝试也计入）",
+               "Did not try to treat or wait instead of transferring — needling, tuina, a continued course, watchful waiting, a new formula or a routine referral (refused attempts included)"),
+     "met": {"not": {"any": REFUSED_DELAYS + [{"intervened": "refer-imaging", "valid": False}]}},
+     "scoredWhen": {"any": [{"phase": "followup"}] + REFUSED_DELAYS + [{"intervened": "refer-imaging"}]}},
     {"id": "r-comm-escalation", "domain": "communication", "weight": 1,
      "text": L("清楚而不惊吓地说明为什么必须马上去急诊", "Explained clearly, without alarming him, why he must go to the Emergency Department now"),
      "judgeGuidance": L("学员是否用通俗的语言说明这些新症状可能是神经受压、为什么今天就要做检查、到急诊后大概会发生什么；确认他如何安全到达（救护车）、是否通知家人，并交代路上如有加重怎么办？",
@@ -262,9 +286,17 @@ RUBRIC = [
 ]
 
 SAFETY_GATES = [
+    # One policy for comparable acts. Safety-critical: the decision to delay (a delaying plan chosen at the review
+    # decision — every wrong option there delays), or a delaying act actually carried out (a routine referral sent).
+    # Complication: a treatment or waiting plan attempted and refused — not given, transfer not held up.
     {"id": "g-delayed-emergency-care", "verdict": "safety-critical", "capPercent": 40,
-     "label": L("出现疑似马尾综合征征象后仍以中医治疗或等待来拖延急诊处理", "Emergency care delayed with TCM treatment or waiting after signs of suspected cauda equina syndrome"),
-     "when": {"any": [{"intervened": x} for x in DELAYS] + [{"intervened": "refer-imaging", "valid": False}]}},
+     "label": L("出现疑似马尾综合征征象后决定拖延急诊处理（复诊决策选择了拖延的方案，或已发出常规转介）",
+                "Emergency care delayed after signs of suspected cauda equina syndrome (a delaying plan chosen at the review decision, or a routine referral sent)"),
+     "when": {"any": [{"all": [{"attempted": "d-followup"}, {"not": {"decidedFirstTry": "d-followup"}}]}, {"intervened": "refer-imaging", "valid": False}]}},
+    {"id": "g-delay-refused", "verdict": "complication",
+     "label": L("试图以中医治疗或等待代替急诊转诊（被拒绝，未执行，转诊未被耽搁）",
+                "Treatment or waiting attempted instead of emergency transfer (refused: not given, and the transfer was not held up)"),
+     "when": {"any": REFUSED_DELAYS}},
     {"id": "g-transfer-without-handover", "verdict": "complication",
      "label": L("转诊时没有书面交接", "Transferred without a written handover"),
      "when": {"all": [{"intervened": "refer-ed", "valid": True}, {"not": {"intervened": "handover-letter", "valid": True}}]}},
@@ -274,7 +306,7 @@ SOLUTION = [
     *ask("h-fu-status", "h-fu-redflags", "h-fu-onset-time", "h-fu-bowel", "h-fu-meds-last", "h-fu-adverse"),
     *examine("e-fu-general", "e-fu-neuro", "e-fu-slr", "e-fu-abdomen", "e-fu-lumbar"),
     answer("d-followup", "transfer"),
-    *intervene("stop-tcm", "refer-ed", "handover-letter"),
+    *intervene("stop-tcm", "refer-ed", "handover-initial", "handover-letter"),
     {"type": "finish"},
 ]
 
@@ -286,6 +318,18 @@ UTTERANCES = [
     U("麻木是什么时候开始的？", "zh-CN", "h-fu-onset-time", also=["h-fu-redflags"]),
     U("what time did the numbness come on?", "en", "h-fu-onset-time", also=["h-fu-redflags"]),
     U("最后一次吃阿司匹林是几点？", "zh-CN", "h-fu-meds-last"),
+    # the audit's own questions (2026-11-12), verbatim; and negated forms
+    U("会阴部感觉麻木吗？", "zh-CN", "h-fu-redflags"),
+    U("你现在小便解得出来吗？", "zh-CN", "h-fu-redflags"),
+    U("小便时要使劲才能尿出来吗？", "zh-CN", "h-fu-redflags"),
+    U("擦屁股时，纸碰到皮肤的感觉跟平时一样吗？", "zh-CN", "h-fu-redflags"),
+    U("有尿意但尿不出来吗？", "zh-CN", "h-fu-redflags"),
+    U("排尿困难吗？", "zh-CN", "h-fu-redflags"),
+    U("两条腿都痛到脚底吗？", "zh-CN", "h-fu-status"),
+    U("小便没有问题吧？", "zh-CN", "h-fu-redflags"),
+    U("下面不会麻吧？", "zh-CN", "h-fu-redflags"),
+    U("you're not having to strain to pass urine, are you?", "en", "h-fu-redflags"),
+    U("no numbness down below when you wipe?", "en", "h-fu-redflags"),
     U("have you taken any painkillers?", "en", "h-fu-meds-last"),
     U("上一次大便是什么时候？", "zh-CN", "h-fu-bowel"),
     U("when did you last open your bowels?", "en", "h-fu-bowel"),
@@ -317,7 +361,7 @@ DEBRIEF = {
 def build() -> dict:
     c = lbp_family.variant(
         case_id=CASE_ID,
-        version="0.1.0",
+        version="0.2.0",
         variant_id="review-b-escalation",
         title=L("腰痛反复发作 · 52岁男性 · 复诊B", "Recurrent low back pain · 52-year-old man · review B"),
         outcome=OUTCOME,
@@ -326,6 +370,7 @@ def build() -> dict:
                 "unknowns": [L("转诊后的MRI结果与急诊处理。", "The MRI result and the Emergency Department's management after transfer.")]},
         debrief=DEBRIEF,
         tcmcraft={
+            "dates": dates("2026-11-07"),
             "unacceptable": ["rx-verbal-swap", "stop-aspirin", *DELAYS, "refer-imaging (at the review)", "tuina (at the review)"],
             "followUpModel": "authored branch: new neurological danger signs at the review (not a calibrated outcome model)",
         },

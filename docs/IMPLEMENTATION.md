@@ -11,7 +11,7 @@ Engine revision written and checked against: ClinicalCraft `4569808889ca` (`tool
 | Phase (DESIGN §10) | Status | What exists |
 |---|---|---|
 | **1. A single longitudinal encounter** | **Built and passing on the engine; awaiting the in-world walk-through and clinical review** | Case `tcm-sg-lbp-01` (three phases, 38 history items, 17 examinations, 7 investigations and records, 23 interventions, 5 decisions, 17 rubric items, 5 safety gates, a 90-step reference path, a 43-utterance matcher corpus); the fictional clinic `tcm-sg-clinic` (3 room templates, 10 equipment types); offline checks and CI against the pinned engine |
-| 2. 12-case prototype | **In progress: 7 of 12; every synthetic case built** ([PHASE2.md](PHASE2.md)) | Family `sg-lbp` with four reviews of one first visit: `tcm-sg-lbp-01` (review A: adherence and exposure), `tcm-sg-lbp-02` (review B: suspected cauda equina syndrome → transfer), `tcm-sg-lbp-03` (review C: label ≠ prescription), `tcm-sg-lbp-04` (review D: cold-damp turned damp-heat → prescription version 3). Family `sg-insomnia`: `tcm-sg-insomnia-01` (review A: the senior's differing view resolved by evidence; iron spaced from tea and herbs) and `tcm-sg-insomnia-02` (review B: a smartwatch against the sleep diary; zolpidem taken with calming herbs). Family `sg-gi`: `tcm-sg-gi-01` (the dispensary objects to liquorice with a thiazide; a hidden liquorice source at review). Cases 8–12 (CMCR adaptations) wait on the permission basis for the source reports. The case-family builder, family consistency checks and failure conditions are machine-checked (`tools/paths/*.json` `expect`). |
+| 2. 12-case prototype | **In progress: 7 of 12; every synthetic case built** ([PHASE2.md](PHASE2.md)) | Family `sg-lbp` with four reviews of one first visit: `tcm-sg-lbp-01` (review A: adherence and exposure), `tcm-sg-lbp-02` (review B: suspected cauda equina syndrome → transfer), `tcm-sg-lbp-03` (review C: label ≠ prescription), `tcm-sg-lbp-04` (review D: cold-damp turned damp-heat → prescription version 3). Family `sg-insomnia`: `tcm-sg-insomnia-01` (review A: the senior's differing view resolved by evidence; iron spaced from tea and herbs) and `tcm-sg-insomnia-02` (review B: a smartwatch against the sleep diary; zolpidem taken with calming herbs). Family `sg-gi`: `tcm-sg-gi-01` (the dispensary objects to liquorice with a thiazide; a hidden liquorice source at review). Cases 8–12 (CMCR adaptations) wait on the permission basis for the source reports. Content version 0.2.0 answers the audit of 12 November 2026 ([AUDIT_2026-11-12.md](AUDIT_2026-11-12.md)). The case-family builder, family consistency checks and failure conditions are machine-checked (`tools/paths/*.json` `expect`). |
 | 3. 60-case engineering pilot | Not started | — |
 | 4. Formal benchmark | Not started | — |
 | 5. Specialised capabilities | Not started | — |
@@ -28,8 +28,11 @@ state". What has been shown and what has not:
 - **Shown on the engine.** ClinicalCraft at the pinned revision ran in CI (`tools/check.sh` from
   `.github/workflows/check.yml`):
   - `cases validate --strict`: 0 errors, 0 warnings.
-  - `cases verify`: the 90-step path, objectives 6/6, decisions 5/5, utterances 43/43, 33/33 (100 %).
-  - The offline demonstration (`exec --autopilot`): finished and completed at 100 %.
+  - `cases verify`: every case's reference path at 100 %, with every objective, decision and corpus utterance.
+  - The offline demonstration (`exec --autopilot`), in standard and in embodied mode: every case finished and
+    completed, every objective met, 100 %. Embodied mode was added after the audit of 12 November 2026
+    (docs/AUDIT_2026-11-12.md), which found that the back-pain cases could not document the acupuncture session at
+    the bedside.
   - `facilities validate --all`: every file valid. The warnings left say that built-in outpatient cases needing labs
     or imaging cannot be completed in this TCM clinic, and that this case cannot be completed in `clinic-v4`. Both
     are expected: the web does not offer a facility that cannot complete a case.

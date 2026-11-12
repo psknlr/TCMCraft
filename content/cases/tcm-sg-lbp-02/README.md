@@ -36,14 +36,14 @@ Outcomes 1–5 are those of `tcm-sg-lbp-01` (the shared first visit). Outcome 6:
   - Straight-leg raise 35° on the left and 50° on the right, with pain below the knee.
   - The clinic has no bladder scanner.
 - **Assessment.** Suspected cauda equina syndrome, with symptoms of incomplete urinary dysfunction and no retention.
-- **Right course.** Stop TCM treatment. Phone the Emergency Department and send him there now, by ambulance (995) because he can barely walk. Send a written handover with the symptoms and their times, the signs, his medicines with their last doses, and the herbs and acupuncture already given.
+- **Right course.** Stop TCM treatment. Phone the Emergency Department and send him there now, by ambulance (995) because he can barely walk. Give an initial handover by phone at once, stating only what is established and marking the rest unverified; then send the written handover — the symptoms and their times, the signs, his medicines with their last doses, and the TCM treatment record — once each of those facts has been obtained. The transfer never waits for the letter.
 
 ## Scenario timeline
 
 | Phase | Opens | Where | What happens |
 |---|---|---|---|
 | `consult`, `treatment` | as in `tcm-sg-lbp-01` | consulting room, dispensary, treatment room | the shared first visit |
-| `followup` — review one week later | automatically once the medicine was validly supplied, the needles validly withdrawn and counted, and the review booked | consulting room | what has changed; the danger signs again; neurological re-examination; the decision; stopping TCM; transfer; handover |
+| `followup` — review one week later | automatically once the medicine was validly supplied, the needles validly withdrawn and counted (or acupuncture deferred), and the review booked | consulting room | what has changed; the danger signs again; neurological re-examination; the decision; stopping TCM; transfer; initial and written handover |
 
 Static clock; no physiology model.
 
@@ -67,11 +67,12 @@ It opens once the learner has asked how the week went and about the danger signs
 | Intervention | Rule |
 |---|---|
 | `refer-ed` | A checklist step. It is valid only once review evidence of the new signs exists (the status or danger-sign questions, or the neurological re-examination). At the first visit it is intercepted with the base case's teaching that nothing then needs emergency care. |
-| `handover-letter` | A checklist step, valid only at the review. Its dose text lists what the handover must contain. |
+| `handover-initial` | Optional, valid at any point of the review: a phone handover that states only what is established and marks the rest unverified. |
+| `handover-letter` | A checklist step, valid only once its facts exist: the week's change, the danger signs and when each began, the last doses and the neurological re-examination (`HANDOVER_FACTS`). Refused earlier, with the advice to hand over by phone now. |
 | `stop-tcm` | A checklist step, valid only at the review. |
-| `acu-review-session`, `continue-course`, `wait-and-see`, `herbs-stasis` | Always contraindicated: each delays emergency care. |
+| `acu-review-session`, `continue-course`, `wait-and-see`, `herbs-stasis` | Always refused (checklist steps): each would delay emergency care. |
 | `refer-imaging` | Neutral at the first visit. Contraindicated at the review, where a routine referral is too slow. |
-| `tuina` | As in the base case, and also refused at the review. |
+| `tuina` | As in the base case (the assessment and consent first), and also refused at the review, where it counts with the other delaying treatments. |
 
 ### Rubric (first visit as in `tcm-sg-lbp-01` without its review items; review items below)
 
@@ -82,18 +83,21 @@ It opens once the learner has asked how the week went and about the danger signs
 | `r-transfer` | management | 3 | **critical**: a valid `refer-ed` |
 | `r-handover` | management | 2 | a valid `handover-letter` |
 | `r-stop-tcm` | safety | 2 | a valid `stop-tcm` |
-| `r-no-delay` | safety | 3 | avoided-harm: none of the delaying acts; scored once the review opens or a delaying act is taken |
+| `r-no-delay` | safety | 3 | avoided-harm: no attempt to treat or wait instead of transferring — needling, tuina, a continued course, waiting, a new formula or a routine referral, refused attempts included; scored once the review opens or such an attempt is made |
 | `r-comm-escalation` | communication | 1 | examiner-judged |
 
-There are 20 deterministic items in all, 46 points. That is more than the 8–15 the content standard suggests, because the case covers two visits; the lint only enforces the minimum.
+There are 21 deterministic items in all, 48 points. That is more than the 8–15 the content standard suggests, because the case covers two visits; the lint only enforces the minimum.
 
 ### Safety gates
 
 | Gate | Verdict | When |
 |---|---|---|
-| `g-delayed-emergency-care` | safety-critical (cap 40 %) | any delaying act, or a routine MRI referral at the review |
+| `g-delayed-emergency-care` | safety-critical (cap 40 %) | the decision to delay: `d-followup` first answered with a delaying plan (every wrong option there delays), or a delaying act actually carried out (a routine MRI referral sent at the review) |
+| `g-delay-refused` | complication | treatment or waiting attempted instead of transfer — needling, tuina, a continued course, waiting or a new formula — and refused: not given, and the transfer not held up |
 | `g-transfer-without-handover` | complication | a valid transfer without a valid handover |
 | `tcm-sg-lbp-01`'s first-visit gates | as there | the shared first visit |
+
+**One policy for comparable acts.** A delaying act that is *carried out* (a routine referral sent) and a *decision* to delay are safety-critical. A treatment or waiting plan that is *attempted and refused* is a complication: nothing was given, and on the static clock the transfer was not held up. Every such act — tuina included — follows the same rule, and immediate referral stays available throughout. The engine records each refused attempt, but not when it was made, so a tuina refused at the first visit (before its prerequisites) also counts against `r-no-delay` and `g-delay-refused`.
 
 ### Paths and their expected outcomes
 
@@ -101,15 +105,18 @@ These are checked by `python3 tools/pack_check.py --paths`, which fails when an 
 
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
-| Reference path | 46/46 = 100 % | yes | — | — |
-| Needles the leg pain before deciding | 40 % (capped) | yes | — | `g-delayed-emergency-care` |
-| Routine MRI referral at the review, then transfer | 40 % (capped) | yes | — | `g-delayed-emergency-care` |
-| Sends him home to wait for retention, then corrects | 40 % (capped) | yes | — | `g-delayed-emergency-care` |
-| Reads it as a sciatica flare first | 93 % | yes | `r-recognise` | — |
-| Transfers without a written handover | 96 % | **no** (objective open) | — | `g-transfer-without-handover` |
-| Tries to send him to the ED at the first visit (intercepted) | 100 % | yes | — | — |
-| Stops after booking the review | 72 % | no | `r-recognise`, `r-transfer` | — |
-| Does nothing | 0 % | no | `r-redflags`, `r-rx-version`, `r-recognise`, `r-transfer` | — |
+| Reference path | 48/48 = 100 % | yes | — | — |
+| Gives acupuncture for the leg pain before deciding | 94 % | yes | — | `g-delay-refused` (complication) |
+| Writes a routine MRI referral at the review (then transfers) | 40 % (capped) | yes | — | `g-delayed-emergency-care` |
+| Sends him home to wait for complete retention (then corrects) | 94 % | yes | — | `g-delay-refused` (complication) |
+| First reads it as a sciatica flare, then corrects | 40 % (capped) | yes | `r-recognise` | `g-delayed-emergency-care` |
+| Transfers him without a written handover (the review objective stays open) | 96 % | **no** | — | `g-transfer-without-handover` (complication) |
+| Tries to send him to the ED at the first visit (intercepted: no danger signs then) | 100 % | yes | — | — |
+| Stops after booking the review | 73 % | **no** | `r-recognise`, `r-transfer` | — |
+| Starts the case and does nothing | 0 % | **no** | `r-redflags`, `r-rx-version`, `r-recognise`, `r-transfer` | — |
+| Audit: hands over before the review history (the initial handover is given; the letter is refused until its facts are known) | 100 % | yes | — | — |
+| Audit: tries tuina after the danger signs (refused), then transfers | 94 % | yes | — | `g-delay-refused` (complication) |
+| Audit: tries acupuncture after the danger signs (refused), then transfers | 94 % | yes | — | `g-delay-refused` (complication) |
 
 ## Reference path (`solution`)
 
@@ -118,9 +125,9 @@ The first 69 steps are `tcm-sg-lbp-01`'s first visit. The review then runs:
 1. Ask about status, danger signs, onset times, bowels, medicines and last doses, and adverse effects.
 2. Re-examine: general appearance, neurological examination, straight-leg raise, lower abdomen and lower back.
 3. `d-followup` (`transfer`).
-4. `stop-tcm`, `refer-ed`, `handover-letter`, then `finish`.
+4. `stop-tcm`, `refer-ed`, `handover-initial`, `handover-letter`, then `finish`.
 
-There are 85 steps in all.
+There are 86 steps in all.
 
 ## Clinical numbers check
 
@@ -144,21 +151,24 @@ There are 85 steps in all.
 
 | Error | How the case surfaces it |
 |---|---|
-| Treating the new pain as a TCM pattern change (stasis) | `d-followup` feedback; `herbs-stasis` refused and gated |
-| "Needle the sciatica, review in a few days" | `acu-review-session` refused and gated; the decision's feedback |
-| A routine MRI referral | `refer-imaging` contraindicated at the review and gated |
+| Treating the new pain as a TCM pattern change (stasis) | `d-followup` feedback; the decision gated safety-critical; `herbs-stasis` refused (`g-delay-refused`) |
+| "Needle the sciatica, review in a few days" | the decision gated safety-critical; `acu-review-session` refused (`g-delay-refused`); `r-no-delay` |
+| Tuina at the review | refused like the other delaying treatments (`g-delay-refused`); `r-no-delay` |
+| A routine MRI referral | `refer-imaging` is carried out but unsafe at the review: gated safety-critical |
+| A handover with findings not yet obtained | `handover-letter` refused until its facts exist; `handover-initial` is available at once |
 | Transferring without a handover | The objective stays open; the complication gate; `r-handover` |
 | Never re-asking the danger signs because they were negative last week | `d-followup` cannot open without them; `r-review-assessment` |
 
 ## Embodied mode
 
-The first visit is as in `tcm-sg-lbp-01`. The review takes place in a consulting room (`location: {"roomKind": "consult"}`). The transfer is narrated: the patient leaves by ambulance, and nothing moves him to another facility. The handover requires `records`, available at the records terminal in every consulting room.
+The first visit is as in `tcm-sg-lbp-01`. The review takes place in a consulting room (`location: {"roomKind": "consult"}`). The transfer is narrated: the patient leaves by ambulance, and nothing moves him to another facility. The written handover requires `records`, available at the records terminal in every consulting room; the phone handover needs nothing.
 
 ## Fidelity limits
 
 - The bladder cannot be assessed in the clinic (no scanner), and a rectal examination is outside the clinic's scope; both are stated as being for the Emergency Department.
 - What happens after transfer is unknown in this case. Facts after the handover are not simulated.
-- The ambulance call is narrative: there is no transport or timing model.
+- The ambulance call is narrative: there is no transport or timing model, so "was transfer delayed?" is judged by the decision and by what was carried out, not by minutes.
+- The handover's content is authored text: the engine cannot fill fields from what has been obtained, so the written letter is refused until all of its facts exist, and the phone handover states only that unverified items are marked as such.
 
 ## Matcher notes
 
@@ -167,6 +177,7 @@ The first visit is as in `tcm-sg-lbp-01`. The review takes place in a consulting
   - `h-fu-redflags` supersedes `h-redflag-neuro` and `h-redflag-ce`;
   - `h-fu-meds-last` supersedes `h-meds` and `h-antithrombotic` (at review, the current medicines with their last doses);
   - `h-fu-adverse` supersedes `h-bruising`.
+- `h-fu-redflags` carries everyday Mandarin phrasings of urinary and saddle symptoms (使劲、尿得出、尿不出、擦屁股、会阴, and negated forms such as "小便没问题吧？"). The audit's nine questions are in the corpus verbatim. They are regression tests, no longer held out: an independently written, clinically annotated held-out set is still needed (docs/AUDIT_2026-11-12.md).
 - `h-fu-onset-time` is declared before `h-fu-redflags`, so "when did the numbness start?" reaches it first. Each such utterance lists `h-fu-redflags` in `alsoOk`.
 - The base case's onset keyword `start` became `whendiditstart` / `howdiditstart` (tcm-sg-lbp-01 0.1.1). Otherwise "when did the numbness start?" selected the first-visit onset item.
 
@@ -184,6 +195,7 @@ Everything listed for `tcm-sg-lbp-01`, and:
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** Audit revision (docs/AUDIT_2026-11-12.md). The written handover is refused until its facts are obtained, and a phone handover (`handover-initial`) is available at once; the letter no longer claims the ambulance crew has it. One policy for delaying acts: refused attempts — tuina included — are a complication (`g-delay-refused`), and the decision to delay or a delaying act carried out is safety-critical. Mandarin urinary and saddle phrasings added to `h-fu-redflags`. Review facts no longer assume needling.
 - **0.1.0 (2026-11-07).** First version: phase 2, case 2 (docs/PHASE2.md).
 
 ## Validation
