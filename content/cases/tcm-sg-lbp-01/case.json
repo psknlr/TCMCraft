@@ -1,7 +1,7 @@
 {
   "schema": "clinicalcraft/case@1",
   "id": "tcm-sg-lbp-01",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "title": {
     "zh-CN": "腰痛反复发作 · 52岁男性 · 复诊A",
     "en": "Recurrent low back pain · 52-year-old man · review A"
@@ -70,7 +70,6 @@
     },
     "review": {
       "status": "unreviewed",
-      "reviewedAt": "2026-11-06",
       "reviewers": [],
       "guidelines": [
         "NICE NG59 (2016, updated 2020)",
@@ -191,8 +190,8 @@
         "en": "First visit: prescription, review and acupuncture"
       },
       "description": {
-        "zh-CN": "开方并处理药房的审方意见，完成首次针灸。",
-        "en": "Prescribe, resolve the dispensary's query and give the first acupuncture session."
+        "zh-CN": "开方并处理药房的审方意见；如他同意，完成首次针灸。",
+        "en": "Prescribe, resolve the dispensary's query and, if he agrees, give the first acupuncture session."
       },
       "learnerSwitchable": false,
       "enterWhen": {
@@ -224,8 +223,16 @@
             "valid": true
           },
           {
-            "intervened": "acu-remove",
-            "valid": true
+            "any": [
+              {
+                "intervened": "acu-remove",
+                "valid": true
+              },
+              {
+                "intervened": "acu-defer",
+                "valid": true
+              }
+            ]
           },
           {
             "intervened": "arrange-followup"
@@ -1606,8 +1613,8 @@
         "en": "How has your back been this past week?"
       },
       "answer": {
-        "zh-CN": "好一些。针灸完那两三天松了很多，现在大概四分；可是上完夜班又僵回来，早上僵十五分钟左右。",
-        "en": "Better. For two or three days after the needles it was much looser — it's about a four now. But after night shift it stiffens up again; mornings are stiff for about fifteen minutes."
+        "zh-CN": "好一些。头两三天松了很多，现在大概四分；可是上完夜班又僵回来，早上僵十五分钟左右。",
+        "en": "Better. For the first two or three days it was much looser — it's about a four now. But after night shift it stiffens up again; mornings are stiff for about fifteen minutes."
       },
       "keywords": {
         "zh-CN": [
@@ -1685,6 +1692,44 @@
       }
     },
     {
+      "id": "h-fu-recount",
+      "topic": "medications",
+      "question": {
+        "zh-CN": "药包剩了6包，比你说的多一包。我们一起把这几个晚上对一下好吗？",
+        "en": "There are six sachets left, one more than you said. Shall we go through the evenings together?"
+      },
+      "answer": {
+        "zh-CN": "哦，对……星期天喝完喜酒回来也忘了。所以是两个夜班，加上四个晚上忘了。",
+        "en": "Oh — right… I forgot on Sunday too, after the wedding dinner. So the two night shifts, and four evenings I forgot."
+      },
+      "keywords": {
+        "zh-CN": [
+          "对一下",
+          "核对",
+          "数目不对",
+          "对不上",
+          "多一包",
+          "剩6包"
+        ],
+        "en": [
+          "go through the evenings",
+          "the count says",
+          "doesn't match",
+          "onemore",
+          "six left",
+          "recount"
+        ]
+      },
+      "disclosure": "specific",
+      "phases": [
+        "followup"
+      ],
+      "source": {
+        "zh-CN": "虚构教学病例：由编者撰写。",
+        "en": "Fictional teaching case: authored."
+      }
+    },
+    {
       "id": "h-fu-exercise",
       "topic": "functional",
       "question": {
@@ -1730,8 +1775,8 @@
         "en": "Any side effects or problems since the treatment?"
       },
       "answer": {
-        "zh-CN": "右边膝盖后面扎针的地方有一点点瘀青，现在不痛了。没有头晕，胃也没有不舒服，没有出血，大便颜色正常。",
-        "en": "A tiny bruise behind my right knee where a needle went in — it doesn't hurt now. No giddiness, no stomach upset, no bleeding, and my stools are a normal colour."
+        "zh-CN": "没有头晕，胃也没有不舒服，没有瘀青或出血，大便颜色正常。",
+        "en": "No giddiness, no stomach upset, no bruising or bleeding, and my stools are a normal colour."
       },
       "keywords": {
         "zh-CN": [
@@ -2342,8 +2387,8 @@
       "id": "e-fu-sites",
       "system": "skin",
       "maneuver": {
-        "zh-CN": "查看上次针刺部位",
-        "en": "Inspect last week's needling sites"
+        "zh-CN": "查看腰背部与腘窝皮肤（上次如有针刺，含针刺部位）",
+        "en": "Inspect the skin of the back and behind the knees (last week's needling sites, if he was needled)"
       },
       "keywords": {
         "zh-CN": [
@@ -2362,10 +2407,10 @@
         ]
       },
       "finding": {
-        "zh-CN": "右侧腘窝（委中穴处）有一处约1 cm的淡黄绿色瘀斑，无压痛、无肿胀或包块；其余针刺部位正常。",
-        "en": "A faint 1 cm yellow-green bruise in the right popliteal fossa at the BL40 (Weizhong) site, non-tender, no swelling or lump; other sites clear."
+        "zh-CN": "皮肤完整，无瘀斑、红肿、硬结或感染迹象。",
+        "en": "Skin intact: no bruising, redness, swelling, lump or sign of infection."
       },
-      "abnormal": true,
+      "abnormal": false,
       "phases": [
         "followup"
       ],
@@ -2795,6 +2840,10 @@
       "performedAt": "records",
       "value": "useful",
       "availability": {
+        "when": {
+          "intervened": "acu-document",
+          "valid": true
+        },
         "historical": false
       },
       "results": {
@@ -2851,8 +2900,8 @@
             "en": "Counted with him: 6 of 14 sachets left (8 taken). Dose diary: the morning sachet taken on all 7 days; the evening sachet taken once — missed twice on night shifts and forgotten on four other evenings."
           },
           "note": {
-            "zh-CN": "患者口述“三个晚上忘了”，与药包数（漏服6次）不完全一致；以清点结果为准并与患者核对。",
-            "en": "He said he forgot on three evenings, which does not quite match the count (six missed doses); go by the count and talk it through with him."
+            "zh-CN": "患者口述漏服5次（两个夜班、三个晚上忘了），与药包数（漏服6次）差一次；以清点结果为准并与患者核对——问起时他想起星期天也忘了。",
+            "en": "He reported five missed doses (two night shifts, three forgotten evenings), one fewer than the count shows (six); go by the count and go through it with him — asked, he remembers forgetting on Sunday too."
           },
           "source": {
             "zh-CN": "虚构教学病例：由编者撰写。",
@@ -3120,8 +3169,8 @@
         ]
       },
       "dose": {
-        "zh-CN": "第2版：槲寄生15 g（饮片当量）替换桑寄生，其余同第1版；在处方上注明替换理由（桑寄生缺货）；用药记录加入阿司匹林100 mg 每日一次；第1版作废。",
-        "en": "Version 2: Visci Herba (槲寄生) 15 g crude-herb equivalent in place of Taxilli Herba (桑寄生), otherwise as version 1; the reason (桑寄生 out of stock) written on the prescription; aspirin 100 mg once daily added to the medication record; version 1 cancelled."
+        "zh-CN": "第2版：槲寄生15 g（饮片当量）替换桑寄生，其余同第1版；在处方上注明替换理由（桑寄生缺货）；用药记录加入阿司匹林100 mg 每日一次（患者自述，并经综合诊所用药清单核实）；第1版作废。",
+        "en": "Version 2: Visci Herba (槲寄生) 15 g crude-herb equivalent in place of Taxilli Herba (桑寄生), otherwise as version 1; the reason (桑寄生 out of stock) written on the prescription; aspirin 100 mg once daily added to the medication record (reported by him and confirmed on the polyclinic list); version 1 cancelled."
       },
       "requires": [
         "records"
@@ -3134,13 +3183,34 @@
         "rx-v2"
       ],
       "contraindicatedWhen": {
-        "not": {
-          "read": "dispensary-query"
-        }
+        "any": [
+          {
+            "not": {
+              "all": [
+                {
+                  "read": "dispensary-query"
+                },
+                {
+                  "decided": "d-rx-review"
+                },
+                {
+                  "asked": "h-antithrombotic"
+                },
+                {
+                  "read": "prior-records"
+                }
+              ]
+            }
+          },
+          {
+            "intervened": "rx-v2-omit",
+            "valid": true
+          }
+        ]
       },
       "harm": {
-        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
-        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+        "zh-CN": "不能签发：新版本处方之前，要先看并回应药房的审方意见，并向患者本人和综合诊所用药清单两方面核实抗血小板药；且同一时间只能有一个有效的第2版——已签发的第2版保持有效，另一种写法不再签发。",
+        "en": "Not signed: before a new version, read and answer the dispensary's query and verify his antiplatelet medicine both with him and on the polyclinic list; and only one version 2 can be active — once one is signed, it stands and the other form is not issued."
       },
       "response": {
         "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
@@ -3169,8 +3239,8 @@
         ]
       },
       "dose": {
-        "zh-CN": "第2版：去掉桑寄生，其余同第1版（杜仲、牛膝仍补肝肾、强筋骨）；复诊时再评估；用药记录加入阿司匹林100 mg 每日一次；第1版作废。",
-        "en": "Version 2: Taxilli Herba (桑寄生) left out, otherwise as version 1 (杜仲 and 牛膝 still tonify the liver and kidney and strengthen sinew and bone); reassess at review; aspirin 100 mg once daily added to the medication record; version 1 cancelled."
+        "zh-CN": "第2版：去掉桑寄生，其余同第1版（杜仲、牛膝仍补肝肾、强筋骨）；复诊时再评估；用药记录加入阿司匹林100 mg 每日一次（患者自述，并经综合诊所用药清单核实）；第1版作废。",
+        "en": "Version 2: Taxilli Herba (桑寄生) left out, otherwise as version 1 (杜仲 and 牛膝 still tonify the liver and kidney and strengthen sinew and bone); reassess at review; aspirin 100 mg once daily added to the medication record (reported by him and confirmed on the polyclinic list); version 1 cancelled."
       },
       "requires": [
         "records"
@@ -3183,13 +3253,34 @@
         "rx-v2"
       ],
       "contraindicatedWhen": {
-        "not": {
-          "read": "dispensary-query"
-        }
+        "any": [
+          {
+            "not": {
+              "all": [
+                {
+                  "read": "dispensary-query"
+                },
+                {
+                  "decided": "d-rx-review"
+                },
+                {
+                  "asked": "h-antithrombotic"
+                },
+                {
+                  "read": "prior-records"
+                }
+              ]
+            }
+          },
+          {
+            "intervened": "rx-v2-substitute",
+            "valid": true
+          }
+        ]
       },
       "harm": {
-        "zh-CN": "还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。",
-        "en": "You have not read the dispensary's query yet: there is nothing to revise against."
+        "zh-CN": "不能签发：新版本处方之前，要先看并回应药房的审方意见，并向患者本人和综合诊所用药清单两方面核实抗血小板药；且同一时间只能有一个有效的第2版——已签发的第2版保持有效，另一种写法不再签发。",
+        "en": "Not signed: before a new version, read and answer the dispensary's query and verify his antiplatelet medicine both with him and on the polyclinic list; and only one version 2 can be active — once one is signed, it stands and the other form is not issued."
       },
       "response": {
         "zh-CN": "第2版已签发，药房确认收到，第1版标记为作废。",
@@ -3243,12 +3334,12 @@
         }
       },
       "harm": {
-        "zh-CN": "版本核对未通过：处方第1版仍有未解决的审方意见，药房不会按过期版本发药。先由处方医师开具新版本处方。",
-        "en": "Version check failed: prescription version 1 still has an open query, and the dispensary will not supply an outdated version. The prescriber must issue a new version first."
+        "zh-CN": "版本核对未通过：处方第1版仍有未解决的审方意见，药房不会按过期版本发药。先回应审方意见、核实用药，由处方医师签发第2版。",
+        "en": "Version check failed: prescription version 1 still has an open query, and the dispensary will not supply an outdated version. Answer the query, verify his medicines, and have the prescriber sign version 2 first."
       },
       "response": {
-        "zh-CN": "药房按第2版调剂了14包配方颗粒，贴好中英文标签。",
-        "en": "The dispensary fills 14 sachets of granules from version 2 and applies a bilingual label."
+        "zh-CN": "药房按已签发的第2版调剂了14包配方颗粒，贴好中英文标签；调剂记录注明所用版本。",
+        "en": "The dispensary fills 14 sachets of granules from the signed version 2 and applies a bilingual label; the dispensing record names the version used."
       }
     },
     {
@@ -3325,6 +3416,53 @@
       "response": {
         "zh-CN": "信件已由患者带回，副本存档。",
         "en": "The letter goes with him; a copy is filed."
+      }
+    },
+    {
+      "id": "acu-defer",
+      "name": {
+        "zh-CN": "与他商定暂不针灸：先以自我管理、运动与中药治疗，记录他的选择，复诊时可再讨论针灸",
+        "en": "Agree with him to defer acupuncture: self-management, exercise and the herbs for now; record his choice, and offer acupuncture again at review"
+      },
+      "kind": "other",
+      "aliases": {
+        "zh-CN": [
+          "暂不针灸",
+          "不扎针",
+          "先不针灸",
+          "不做针灸"
+        ],
+        "en": [
+          "defer acupuncture",
+          "no acupuncture",
+          "not needling",
+          "without acupuncture",
+          "skip the needles"
+        ]
+      },
+      "risk": "none",
+      "setFlags": [
+        "acupuncture-deferred"
+      ],
+      "contraindicatedWhen": {
+        "any": [
+          {
+            "not": {
+              "intervened": "explain-consent"
+            }
+          },
+          {
+            "intervened": "acu-insert"
+          }
+        ]
+      },
+      "harm": {
+        "zh-CN": "要么还没有说明方案与其他选择，无从共同决定；要么已经开始针刺。",
+        "en": "Either the plan and its alternatives have not been explained yet, so there is no shared decision to record, or needling has already begun."
+      },
+      "response": {
+        "zh-CN": "他点头：“那这次先吃药、做运动，下次再看要不要扎针。”已记录。",
+        "en": "He nods: \"Herbs and exercises this time, then, and we'll see about needles next time.\" Recorded."
       }
     },
     {
@@ -3435,23 +3573,42 @@
         "needles-in"
       ],
       "contraindicatedWhen": {
-        "not": {
-          "all": [
-            {
-              "intervened": "explain-consent"
-            },
-            {
-              "intervened": "acu-prep"
-            },
-            {
-              "intervened": "acu-position"
+        "any": [
+          {
+            "not": {
+              "all": [
+                {
+                  "decided": "d-disease"
+                },
+                {
+                  "decided": "d-pattern"
+                },
+                {
+                  "asked": "h-prior-acu"
+                },
+                {
+                  "examined": "e-skin-back"
+                },
+                {
+                  "intervened": "explain-consent"
+                },
+                {
+                  "intervened": "acu-prep"
+                },
+                {
+                  "intervened": "acu-position"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "intervened": "acu-defer"
+          }
+        ]
       },
       "harm": {
-        "zh-CN": "前置条件未满足：进针前需要已记录的知情同意、洁净针刺准备，以及卧位（他有晕针史）。本次进针未执行。",
-        "en": "Prerequisites not met: needling needs recorded consent, clean-needle preparation and a lying position (he has fainted with needles before). The needles were not inserted."
+        "zh-CN": "前置条件未满足：进针前需要完成危险信号筛查与诊断、辨证，问清以往针灸时有无晕针，检查拟针刺部位的皮肤，并有已记录的知情同意、洁净针刺准备和卧位；如已同意暂不针灸，则不进针。本次进针未执行。",
+        "en": "Prerequisites not met: needling needs the danger-sign screen and diagnosis, the pattern assessment, his history of fainting with needles, a check of the skin at the planned sites, and recorded consent, clean-needle preparation and a lying position — and no needling once he has chosen to defer it. The needles were not inserted."
       },
       "response": {
         "zh-CN": "10针已进针。他说针下酸胀、腰部发热，没有头晕。",
@@ -3533,9 +3690,15 @@
       "setFlags": [
         "session-documented"
       ],
-      "indicatedWhen": {
-        "intervened": "acu-remove",
-        "valid": true
+      "contraindicatedWhen": {
+        "not": {
+          "intervened": "acu-remove",
+          "valid": true
+        }
+      },
+      "harm": {
+        "zh-CN": "还没有完成的针灸可以记录。",
+        "en": "There is no completed session to document yet."
       },
       "response": {
         "zh-CN": "治疗记录已保存。",
@@ -3573,12 +3736,22 @@
       "maxDoses": 1,
       "contraindicatedWhen": {
         "not": {
-          "intervened": "explain-consent"
+          "all": [
+            {
+              "decided": "d-disease"
+            },
+            {
+              "decided": "d-pattern"
+            },
+            {
+              "intervened": "explain-consent"
+            }
+          ]
         }
       },
       "harm": {
-        "zh-CN": "未取得知情同意：先说明手法、可能的不适并征得同意。",
-        "en": "No consent recorded: explain the technique and possible discomfort and obtain his agreement first."
+        "zh-CN": "前置条件未满足：推拿前要先完成危险信号筛查与诊断、辨证，再说明手法、可能的不适并征得同意。",
+        "en": "Prerequisites not met: tuina needs the danger-sign screen and diagnosis and the pattern assessment first, then an explanation of the technique and possible discomfort, and his agreement."
       },
       "response": {
         "zh-CN": "推拿后他说腰部松了一些。",
@@ -3663,8 +3836,8 @@
     {
       "id": "continue-course",
       "name": {
-        "zh-CN": "维持现行处方版本，继续既定针灸疗程（每周两次，再两周），两周后复诊",
-        "en": "Keep the current prescription version, continue the planned acupuncture course (twice weekly for two more weeks) and review in two weeks"
+        "zh-CN": "维持现行处方版本与商定的方案（如他选择了针灸，则每周两次、再两周），两周后复诊",
+        "en": "Keep the current prescription version and the agreed plan (twice-weekly acupuncture for two more weeks, if he chose it) and review in two weeks"
       },
       "kind": "disposition",
       "aliases": {
@@ -3691,8 +3864,8 @@
         "decided": "d-followup"
       },
       "response": {
-        "zh-CN": "下两周的针灸已排好，药房按第2版续配。",
-        "en": "The next two weeks of acupuncture are booked, and the dispensary repeats version 2."
+        "zh-CN": "两周后的复诊已排好，药房按现行的第2版续配。",
+        "en": "The review in two weeks is booked, and the dispensary repeats the current version 2."
       }
     },
     {
@@ -4002,16 +4175,16 @@
     {
       "id": "o-acupuncture",
       "title": {
-        "zh-CN": "安全完成首次针灸并安排复诊",
-        "en": "Give the first acupuncture session safely and book the review"
+        "zh-CN": "安全完成首次针灸（或与他商定暂不针灸）并安排复诊",
+        "en": "Give the first acupuncture session safely (or agree with him to defer it) and book the review"
       },
       "short": {
         "zh-CN": "针灸",
         "en": "Acupuncture"
       },
       "hint": {
-        "zh-CN": "进针前确认同意、准备与体位都已到位；出针时与进针数核对；记录本次治疗，再预约复诊。",
-        "en": "Before needling, make sure consent, preparation and position are in place; on withdrawal, check the count against what went in; document the session, then book the review."
+        "zh-CN": "针灸是可选的：如他同意，进针前确认评估、晕针史、皮肤检查、同意、准备与体位都已到位；出针时与进针数核对并记录。如商定暂不针灸，记录他的选择。最后预约复诊。",
+        "en": "Acupuncture is optional: if he agrees, make sure the assessment, his fainting history, the skin check, consent, preparation and position are in place before needling; on withdrawal, check the count and document the session. If you agree to defer it, record his choice. Then book the review."
       },
       "guidance": {
         "zh-CN": "在针灸推拿治疗室。",
@@ -4020,11 +4193,24 @@
       "completeWhen": {
         "all": [
           {
-            "intervened": "acu-remove",
-            "valid": true
-          },
-          {
-            "intervened": "acu-document"
+            "any": [
+              {
+                "all": [
+                  {
+                    "intervened": "acu-remove",
+                    "valid": true
+                  },
+                  {
+                    "intervened": "acu-document",
+                    "valid": true
+                  }
+                ]
+              },
+              {
+                "intervened": "acu-defer",
+                "valid": true
+              }
+            ]
           },
           {
             "intervened": "arrange-followup"
@@ -4441,8 +4627,8 @@
         {
           "id": "adherence",
           "text": {
-            "zh-CN": "部分有效，主要受服药依从性（晚上漏服）和持续诱因（久坐、冷气、停了运动）限制；无危险信号，证候判断仍成立——维持评估，按班次调整服药与自我管理，继续既定针灸疗程并再评估",
-            "en": "A partial response limited mainly by adherence (missed evening doses) and continuing exposure (long sitting in cold air-con, exercises stopped); no danger signs and the pattern still holds — keep the assessment, fit dosing and self-management to his shifts, continue the planned acupuncture course and review again"
+            "zh-CN": "部分有效，主要受服药依从性（晚上漏服）和持续诱因（久坐、冷气、停了运动）限制；无危险信号，证候判断仍成立——维持评估，按班次调整服药与自我管理，继续商定的方案并再评估",
+            "en": "A partial response limited mainly by adherence (missed evening doses) and continuing exposure (long sitting in cold air-con, exercises stopped); no danger signs and the pattern still holds — keep the assessment, fit dosing and self-management to his shifts, continue the agreed plan and review again"
           },
           "correct": true,
           "feedback": {
@@ -4489,13 +4675,13 @@
         {
           "id": "stop-acu",
           "text": {
-            "zh-CN": "针刺处出现瘀青，说明服阿司匹林者不宜针灸，应停止针灸",
-            "en": "The bruise at a needle site shows acupuncture is unsafe on aspirin — stop it"
+            "zh-CN": "他在服阿司匹林，针灸不安全，应停止（或不再提供）针灸",
+            "en": "He takes aspirin, so acupuncture is unsafe — stop it, or don't offer it"
           },
           "correct": false,
           "feedback": {
             "zh-CN": "不对。小而无痛的瘀斑是常见轻微不良反应，应记录并在出针时延长按压；服阿司匹林不是针刺的绝对禁忌。",
-            "en": "No. A small, painless bruise is a common minor adverse effect — document it and press a little longer on withdrawal; aspirin is not an absolute contraindication to acupuncture."
+            "en": "No. Aspirin alone is not an absolute contraindication to acupuncture: use clean needle technique, avoid deep needling where bleeding is a concern and press well on withdrawal; a small bruise would be a minor adverse effect to document."
           }
         }
       ]
@@ -4564,11 +4750,11 @@
       "domain": "safety",
       "weight": 2,
       "text": {
-        "zh-CN": "发现并核实他在服阿司匹林（追问或调阅自带用药清单）",
-        "en": "Found and confirmed his aspirin (by asking specifically or reading the medication list he brought)"
+        "zh-CN": "发现并核实他在服阿司匹林（追问本人，并调阅自带用药清单）",
+        "en": "Found and confirmed his aspirin (asking him specifically, and reading the medication list he brought)"
       },
       "met": {
-        "any": [
+        "all": [
           {
             "asked": "h-antithrombotic"
           },
@@ -4707,6 +4893,31 @@
           "acu-insert",
           "acu-remove"
         ]
+      },
+      "scoredWhen": {
+        "intervened": "acu-insert"
+      }
+    },
+    {
+      "id": "r-pre-needling",
+      "domain": "safety",
+      "weight": 2,
+      "text": {
+        "zh-CN": "进针前问清以往针灸时有无晕针，并检查拟针刺部位的皮肤",
+        "en": "Before needling, asked about fainting with needles and inspected the skin at the planned sites"
+      },
+      "met": {
+        "all": [
+          {
+            "asked": "h-prior-acu"
+          },
+          {
+            "examined": "e-skin-back"
+          }
+        ]
+      },
+      "scoredWhen": {
+        "intervened": "acu-insert"
       }
     },
     {
@@ -4815,6 +5026,28 @@
             "intervened": "double-dose"
           }
         ]
+      }
+    },
+    {
+      "id": "r-count-reconciled",
+      "domain": "history",
+      "weight": 1,
+      "text": {
+        "zh-CN": "复诊时把他口述的漏服次数与药包清点结果核对一致",
+        "en": "At review, reconciled his account of missed doses with the sachet count"
+      },
+      "met": {
+        "all": [
+          {
+            "read": "sachet-count"
+          },
+          {
+            "asked": "h-fu-recount"
+          }
+        ]
+      },
+      "scoredWhen": {
+        "phase": "followup"
       }
     },
     {
@@ -5235,11 +5468,31 @@
       }
     },
     {
+      "id": "g-version-refused",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "在回应审方意见、核实用药之前，或已有一个有效第2版时，尝试签发处方版本（已被拒绝）",
+        "en": "A prescription version attempted before the query was answered and his medicines verified, or while another version 2 was active (refused)"
+      },
+      "when": {
+        "any": [
+          {
+            "intervened": "rx-v2-substitute",
+            "valid": false
+          },
+          {
+            "intervened": "rx-v2-omit",
+            "valid": false
+          }
+        ]
+      }
+    },
+    {
       "id": "g-needling-refused",
       "verdict": "complication",
       "label": {
-        "zh-CN": "在前置条件未满足时尝试进针（已被拦截）",
-        "en": "Needling attempted before its prerequisites were met (intercepted)"
+        "zh-CN": "在前置条件（评估、晕针史、皮肤检查、同意、准备、卧位）未满足时尝试进针（已被拦截）",
+        "en": "Needling attempted before its prerequisites (assessment, fainting history, skin check, consent, preparation, lying position) were met (intercepted)"
       },
       "when": {
         "intervened": "acu-insert",
@@ -5626,6 +5879,10 @@
       "phase": "followup"
     },
     {
+      "type": "ask",
+      "itemId": "h-fu-recount"
+    },
+    {
       "type": "answer",
       "decisionId": "d-followup",
       "optionIds": [
@@ -5920,6 +6177,20 @@
         ]
       },
       {
+        "text": "药包数目跟你说的对不上，我们核对一下？",
+        "locale": "zh-CN",
+        "expect": [
+          "h-fu-recount"
+        ]
+      },
+      {
+        "text": "the count says six left — can we go through the evenings?",
+        "locale": "en",
+        "expect": [
+          "h-fu-recount"
+        ]
+      },
+      {
         "text": "有没有什么副作用？",
         "locale": "zh-CN",
         "expect": [
@@ -5949,6 +6220,12 @@
       }
     ],
     "tcmcraft": {
+      "dates": {
+        "authored": "2026-11-06",
+        "lastRevised": "2026-11-12",
+        "technicalVerification": "every commit: tools/check.sh against the pinned ClinicalCraft (tools/clinicalcraft.rev), in CI",
+        "clinicalSignOff": null
+      },
       "edition": "singapore",
       "caseFamily": "sg-lbp",
       "variant": "review-a-adherence",

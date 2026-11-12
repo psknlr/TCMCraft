@@ -19,6 +19,11 @@ doc contract. None of this is implemented here; a ClinicalCraft change would car
   `tongue-imaging` (standard light and colour card), `moxibustion`, `cupping`, `tuina-couch`, `tcm-dispensing`
   (herb cabinet or granule dispenser) and `decoction`. Then give the case's `acu-insert`, `tuina` and
   `tongue-recapture` their real kit.
+- **Found by the 2026-11-12 audit.** Six of the ten TCM equipment types have `interaction.kind = none` and none
+  has a device `behavior`, so in embodied mode dispensing succeeds at the patient's side without anyone operating
+  the herb cabinet or the granule dispenser. A pharmacy skills station (identify the medicinal, select the active
+  version, dispense, check the label, each error recorded) needs device behaviours wired to the prescription
+  object of §2.
 
 ## 2. Prescriptions as versioned, executable objects
 
@@ -45,6 +50,13 @@ doc contract. None of this is implemented here; a ClinicalCraft change would car
   - The facility's dispensary devices (`behavior` with `clinical: { tool: "dispense" }`) would act through it, and a
     catalog of medicinal products would carry identity, part used, processing, form, the Singapore class
     (CPM / TMM) and synonyms.
+- **What the pack does meanwhile (audit 2026-11-12).** Mutually exclusive versions: each form of version 2 is
+  refused once the other is valid, and signing needs the query answered and the medicines verified. The review then
+  follows the version dispensed through gated actions: tcm-sg-gi-01's version 3 exists only when version 2 kept
+  liquorice. What it cannot do is *say* which version was supplied in a single record. A record's text cannot vary
+  with what was signed, and two version-specific records with one name would not work either: the record lookup
+  (`retrieveReport`) takes the first record whose name matches, available or not. So the dispensing records name the
+  version without listing its ingredients.
 
 ## 3. Evidence with source, time and quality
 
@@ -88,6 +100,16 @@ doc contract. None of this is implemented here; a ClinicalCraft change would car
   - Between-episode processes, such as adherence and exposure, that produce the follow-up evidence from the
     execution record: what was actually dispensed and taken.
   - An explicit label for each outcome source (recorded, authored branch, calibrated model), as DESIGN §5.6 asks.
+
+- **Found by the 2026-11-12 audit.** Facts that depend on what was done. A history answer or an examination
+  finding can vary by phase only, so a follow-up cannot describe the treatment actually received. The back-pain
+  reviews are therefore written to hold whether or not he was needled, and only the session record, gated by
+  `availability.when`, depends on it.
+- **Also found.** Conditions cannot see *when* a refused attempt was made (`intervened` with `valid: false` has no
+  phase or order, and `inOrder` counts valid attempts only). So a tuina refused at the first visit and one refused at
+  the review are the same fact, and "was the transfer delayed?" cannot be measured in minutes on a static clock.
+  - A `phase` (or `after`) qualifier on `intervened` would fix the first.
+  - Simulated time would fix the second.
 
 ## 7. Autonomous outpatient roles
 

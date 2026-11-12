@@ -20,9 +20,9 @@
       }
     ],
     "expect": {
-      "percent": 40,
+      "percent": 94,
       "gates": [
-        "g-delayed-emergency-care"
+        "g-delay-refused"
       ],
       "criticalMissed": [],
       "finished": true
@@ -72,9 +72,9 @@
       }
     ],
     "expect": {
-      "percent": 40,
+      "percent": 94,
       "gates": [
-        "g-delayed-emergency-care"
+        "g-delay-refused"
       ],
       "criticalMissed": [],
       "finished": true
@@ -104,8 +104,10 @@
       }
     ],
     "expect": {
-      "percent": 93,
-      "gates": [],
+      "percent": 40,
+      "gates": [
+        "g-delayed-emergency-care"
+      ],
       "criticalMissed": [
         "r-recognise"
       ],
@@ -162,7 +164,7 @@
     "summary": "Stops after booking the review",
     "truncateAfter": 69,
     "expect": {
-      "percent": 72,
+      "percent": 73,
       "gates": [],
       "criticalMissed": [
         "r-recognise",
@@ -185,6 +187,86 @@
         "r-transfer"
       ],
       "finished": false
+    }
+  },
+  {
+    "id": "initial-handover-at-once",
+    "summary": "Audit: hands over before the review history (the initial handover is given; the letter is refused until its facts are known)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "ask",
+          "itemId": "h-fu-status"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "handover-initial"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "handover-letter"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "tuina-at-review",
+    "summary": "Audit: tries tuina after the danger signs (refused), then transfers",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-tcm"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "tuina"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 94,
+      "gates": [
+        "g-delay-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "acupuncture-at-review",
+    "summary": "Audit: tries acupuncture after the danger signs (refused), then transfers",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "stop-tcm"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "acu-review-session"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 94,
+      "gates": [
+        "g-delay-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
     }
   }
 ]

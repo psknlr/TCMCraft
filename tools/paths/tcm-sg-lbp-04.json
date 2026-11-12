@@ -23,7 +23,7 @@
       }
     ],
     "expect": {
-      "percent": 93,
+      "percent": 94,
       "gates": [],
       "criticalMissed": [
         "r-revise"
@@ -55,7 +55,7 @@
       }
     ],
     "expect": {
-      "percent": 93,
+      "percent": 94,
       "gates": [],
       "criticalMissed": [
         "r-revise"
@@ -169,7 +169,7 @@
     "summary": "Stops after booking the review",
     "truncateAfter": 69,
     "expect": {
-      "percent": 70,
+      "percent": 71,
       "gates": [],
       "criticalMissed": [
         "r-revise"

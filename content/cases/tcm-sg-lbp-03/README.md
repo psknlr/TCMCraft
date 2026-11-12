@@ -38,7 +38,7 @@ The cause of the limited response is in the records.
 - **Sachet count:** 7 of 14 left; one every morning for 7 days, as the label says.
 - **Counselling at supply:** recorded as "as per label". He remembers a mention of the evening, but trusted the print.
 
-His symptoms, tongue and pulse are as at the first visit, with no danger signs and no adverse effects beyond the fading bruise. This is an **execution discrepancy**: he received half the intended dose. The right course:
+His symptoms, tongue and pulse are as at the first visit, with no danger signs and no adverse effects. This is an **execution discrepancy**: he received half the intended dose. The right course:
 
 - report it as a no-blame dispensing incident (the dispensary finds a label template that defaulted to once daily, and adds a second-person label check before supply);
 - have the label corrected and explain to him with an apology (open disclosure);
@@ -94,7 +94,7 @@ The correct option is the **execution discrepancy, with incident report, correct
 | `r-no-blame` | management | 1 | avoided-harm: no `adherence-counsel` |
 | `r-comm-disclosure` | communication | 1 | examiner-judged: open disclosure |
 
-There are 19 deterministic items in all, 42 points.
+There are 20 deterministic items in all, 44 points.
 
 ### Safety gates
 
@@ -109,15 +109,15 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
-| Reference path | 42/42 = 100 % | yes | — | — |
-| Reads it as missed doses and counsels him first | 90 % | yes | — | — |
-| Switches to a damp-heat formula | 93 % | yes | — | — |
-| Two sachets at once each morning | 93 % | yes | — | — |
-| Continues without correcting the label | 93 % | **no** | `r-relabel` | `g-label-left-wrong` |
-| Corrects the label but never reports it | 95 % | **no** | — | — |
-| Tries to relabel before comparing the records (intercepted) | 100 % | yes | — | — |
-| Stops after booking the review | 74 % | no | `r-relabel` | — |
-| Does nothing | 0 % | no | `r-redflags`, `r-rx-version`, `r-relabel` | — |
+| Reference path | 44/44 = 100 % | yes | — | — |
+| Reads it as missed doses and counsels him, then corrects | 91 % | yes | — | — |
+| Switches to a damp-heat formula at the review | 93 % | yes | — | — |
+| Has him take two sachets at once each morning | 93 % | yes | — | — |
+| Continues the course without having the label corrected (the review objective stays open) | 93 % | **no** | `r-relabel` | `g-label-left-wrong` (complication) |
+| Corrects the label but never reports the incident (the review objective stays open) | 95 % | **no** | — | — |
+| Tries to relabel before comparing the records (intercepted), then compares | 100 % | yes | — | — |
+| Stops after booking the review | 75 % | **no** | `r-relabel` | — |
+| Starts the case and does nothing | 0 % | **no** | `r-redflags`, `r-rx-version`, `r-relabel` | — |
 
 ## Reference path (`solution`)
 
@@ -186,6 +186,7 @@ Everything listed for `tcm-sg-lbp-01`, and:
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** The shared first visit's audit revision (tcm-sg-lbp-01 0.2.0): one active version 2, reconciliation before signing, the minimum assessment before needling, an optional deferral of acupuncture. Review facts no longer assume needling. Scores move by the first visit's new item (`r-pre-needling`).
 - **0.1.0 (2026-11-07).** First version: phase 2, case 3 (docs/PHASE2.md).
 
 ## Validation

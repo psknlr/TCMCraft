@@ -1,7 +1,7 @@
 {
   "schema": "clinicalcraft/case@1",
   "id": "tcm-sg-insomnia-01",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "title": {
     "zh-CN": "失眠 · 47岁女性 · 复诊A",
     "en": "Difficulty sleeping · 47-year-old woman · review A"
@@ -66,7 +66,6 @@
     },
     "review": {
       "status": "unreviewed",
-      "reviewedAt": "2026-11-07",
       "reviewers": [],
       "guidelines": [
         "European insomnia guideline 2017",
@@ -2537,12 +2536,22 @@
       ],
       "contraindicatedWhen": {
         "not": {
-          "intervened": "explain-consent"
+          "all": [
+            {
+              "decided": "d-medical"
+            },
+            {
+              "decided": "d-pattern"
+            },
+            {
+              "intervened": "explain-consent"
+            }
+          ]
         }
       },
       "harm": {
-        "zh-CN": "未取得知情同意：先说明针刺、可能的不适并征得同意。",
-        "en": "No consent recorded: explain the needling and possible discomfort and obtain her agreement first."
+        "zh-CN": "前置条件未满足：针刺前要先完成西医层面的判断与辨证，再说明针刺、可能的不适并征得同意。",
+        "en": "Prerequisites not met: needling needs the biomedical assessment and the pattern assessment first, then an explanation of the needling and possible discomfort, and her agreement."
       },
       "response": {
         "zh-CN": "针刺顺利，进针9支、出针9支，核对无误。她说躺着很放松。",
@@ -3869,6 +3878,18 @@
       }
     },
     {
+      "id": "g-needling-refused",
+      "verdict": "complication",
+      "label": {
+        "zh-CN": "在完成评估与知情同意之前尝试针刺（已被拦截）",
+        "en": "Needling attempted before the assessment and consent (intercepted)"
+      },
+      "when": {
+        "intervened": "acupuncture-sleep",
+        "valid": false
+      }
+    },
+    {
       "id": "g-hypnotic-escalation",
       "verdict": "complication",
       "label": {
@@ -4407,6 +4428,12 @@
       }
     ],
     "tcmcraft": {
+      "dates": {
+        "authored": "2026-11-07",
+        "lastRevised": "2026-11-12",
+        "technicalVerification": "every commit: tools/check.sh against the pinned ClinicalCraft (tools/clinicalcraft.rev), in CI",
+        "clinicalSignOff": null
+      },
       "edition": "singapore",
       "caseFamily": "sg-insomnia",
       "variant": "review-a-iron",

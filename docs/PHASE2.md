@@ -105,6 +105,17 @@ The engine has no notion of a colleague's opinion, so case 5 builds the disagree
 - **The review tests the objection.** Potassium falls even on version 2, and the learner must find the hidden source
   (herbal tea, liquorice plums) by asking about it.
 
+## After the audit of 12 November 2026
+
+The audit replayed every path and the authors' counterexamples in standard and embodied mode. Its findings, and what
+changed in content version 0.2.0, are in [AUDIT_2026-11-12.md](AUDIT_2026-11-12.md). Three things now hold for every
+case:
+
+- **Embodied completion.** It is tested in CI.
+- **Stated outcomes.** The audit's counterexamples are paths with stated outcomes.
+- **One rule for intercepted attempts.** A refused attempt is a complication; an unsafe act carried out, or a
+  decision to delay emergency care, is safety-critical.
+
 ## Real-report adaptations (cases 8–12)
 
 These follow ClinicalCraft's CMCR conventions (its docs/CMCR_CASES.md):

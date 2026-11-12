@@ -6,8 +6,8 @@
     "en": "Acupuncture and tuina room"
   },
   "description": {
-    "zh-CN": "两张带面孔的针灸推拿床，以隔帘分隔；针灸治疗车、TDP灯、锐器盒、针数登记板、手套和洗手池。",
-    "en": "Two acupuncture and tuina couches with face holes, separated by a curtain; an acupuncture cart, TDP lamps, a sharps bin, a needle-count board, gloves and a sink."
+    "zh-CN": "两张带面孔的针灸推拿床，以隔帘分隔；针灸治疗车、TDP灯、锐器盒、针数登记板、治疗记录终端、手套和洗手池。",
+    "en": "Two acupuncture and tuina couches with face holes, separated by a curtain; an acupuncture cart, TDP lamps, a sharps bin, a needle-count board, a charting terminal, gloves and a sink."
   },
   "kind": "rehabilitation",
   "size": {
@@ -162,6 +162,17 @@
       }
     },
     {
+      "id": "records",
+      "type": "records-terminal",
+      "x": 4.525,
+      "z": -1.2,
+      "rot": 270,
+      "label": {
+        "zh-CN": "治疗记录终端",
+        "en": "Charting terminal"
+      }
+    },
+    {
       "id": "chart",
       "type": "tcm-acupoint-chart",
       "x": -4.785,
@@ -227,7 +238,9 @@
       }
     }
   ],
-  "capabilities": [],
+  "capabilities": [
+    "records"
+  ],
   "tags": [
     "tcm",
     "acupuncture",

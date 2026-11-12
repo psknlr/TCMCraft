@@ -20,7 +20,7 @@ FAMILY = Family(
     interventions=frozenset({"adherence-plan", "continue-course", "switch-damp-heat", "double-dose"}),
     decisions=frozenset({"d-followup"}),
     objectives=frozenset({"o-followup"}),
-    rubric=frozenset({"r-followup", "r-comm-review"}),
+    rubric=frozenset({"r-followup", "r-comm-review", "r-count-reconciled"}),
 )
 
 

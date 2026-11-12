@@ -22,6 +22,7 @@ Synthetic: no real patient, no source report.
 from __future__ import annotations
 
 from case_lbp import KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt, order_read
+from common import dates
 
 CASE_ID = "tcm-sg-gi-01"
 CONSULT = ["consult"]
@@ -282,8 +283,8 @@ INVESTIGATIONS = [
         "requires": ["records"], "risk": "none", "performedAt": "records", "value": "essential", "availability": {"historical": False},
         "results": {"review": {
             "date": L("两天前（综合诊所，黄医生）", "Two days ago (polyclinic, Dr Wong)"),
-            "text": L("钾3.3 mmol/L（偏低），钠141 mmol/L，肌酐94 µmol/L。诊所血压154/92 mmHg。已按转介信安排胃镜（结果见另页）。中药处方第2版不含甘草，已知悉。请中医诊所留意其他甘草来源。",
-                      "Potassium 3.3 mmol/L (low), sodium 141 mmol/L, creatinine 94 µmol/L. Clinic blood pressure 154/92 mmHg. Endoscopy arranged from your letter (report attached separately). Noted that herbal prescription version 2 contains no liquorice. Please look out for other sources of liquorice."),
+            "text": L("钾3.3 mmol/L（偏低），钠141 mmol/L，肌酐94 µmol/L。诊所血压154/92 mmHg。已按转介信安排胃镜（结果见另页）。随信附来的中药处方第2版已收悉。请中医诊所核查他的全部甘草来源，包括处方以外的。",
+                      "Potassium 3.3 mmol/L (low), sodium 141 mmol/L, creatinine 94 µmol/L. Clinic blood pressure 154/92 mmHg. Endoscopy arranged from your letter (report attached separately). Herbal prescription version 2, as attached to your letter, noted. Please check all his sources of liquorice, including any outside the prescription."),
             "values": [
                 {"analyte": L("钾", "Potassium"), "value": 3.3, "unit": "mmol/L", "refLow": 3.5, "refHigh": 5.1, "flag": "L"},
                 {"analyte": L("钠", "Sodium"), "value": 141, "unit": "mmol/L", "refLow": 135, "refHigh": 145, "flag": "N"},
@@ -315,6 +316,12 @@ INVESTIGATIONS = [
 
 V2 = {"any": [{"intervened": "rx-v2-omit", "valid": True}, {"intervened": "rx-v2-reduce", "valid": True}]}
 IN_REVIEW = {"phase": "review"}
+# A new version answers the query: read and decided first; and only one version 2 can be active.
+QUERY_ANSWERED = {"all": [{"read": "dispensary-query"}, {"decided": "d-rx-query"}]}
+V2_HARM = L("不能签发：先看并回应药房的审方意见；且同一时间只能有一个有效的第2版——已签发的第2版保持有效。",
+            "Not signed: read and answer the dispensary's query first; and only one version 2 can be active — once one is signed, it stands.")
+# At review the prescription he takes must contain no liquorice: version 2 continued if it left it out, version 3 if it kept 3 g.
+NO_LIQUORICE_NOW = {"any": [{"intervened": "continue-v2", "valid": True}, {"intervened": "dispense-v3", "valid": True}]}
 
 FORMULA_ZH = ("香砂六君子汤加减配方颗粒，以饮片当量计（克/日）：党参15、白术12、茯苓15、炙甘草6、陈皮9、法半夏9、木香6、砂仁6。"
               "每日1剂分2包，午饭后及晚饭后各1包，温水冲服，共14天（28包）。")
@@ -342,19 +349,19 @@ INTERVENTIONS = [
        KW(["去掉甘草", "不用甘草", "删去炙甘草", "处方第2版"], ["omit the liquorice", "leave out the liquorice", "no liquorice", "prescription version 2"]),
        dose=L("第2版：去掉炙甘草，其余同第1版；在处方上注明理由（服噻嗪类利尿剂、血压未达标、血钾偏低边缘）；第1版作废；两周后由家庭医生复查血压与血钾。",
               "Version 2: 炙甘草 left out, otherwise as version 1; the reason written on the prescription (on a thiazide, blood pressure above target, low-normal potassium); version 1 cancelled; blood pressure and potassium rechecked by his GP in two weeks."),
-       requires=["records"], scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["rx-v2"],
-       contraindicatedWhen={"not": {"read": "dispensary-query"}},
-       harm=L("还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。", "You have not read the dispensary's query yet: there is nothing to revise against."),
-       response=L("第2版已签发，药房确认收到，第1版标记为作废。", "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled.")),
+       requires=["records"], scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["rx-v2", "rx-v2-no-liquorice"],
+       contraindicatedWhen={"any": [{"not": QUERY_ANSWERED}, {"intervened": "rx-v2-reduce", "valid": True}]},
+       harm=V2_HARM,
+       response=L("第2版（不含甘草）已签发，药房确认收到，第1版标记为作废。", "Version 2 (no liquorice) is signed; the dispensary acknowledges it and marks version 1 cancelled.")),
     iv("rx-v2-reduce", "medication",
        L("开具处方第2版：炙甘草减至3 g，并写明监测计划（处方医师签名）", "Issue prescription version 2 reducing 炙甘草 to 3 g, with the monitoring plan written on it (signed by the prescriber)"),
        KW(["甘草减量", "减到3克", "炙甘草3克", "处方第2版"], ["reduce the liquorice", "liquorice 3 g", "lower the liquorice", "prescription version 2"]),
        dose=L("第2版：炙甘草3 g，其余同第1版；注明理由与监测（两周后由家庭医生复查血压与血钾，出现抽筋、无力、心悸、水肿即停药联系）；第1版作废。",
               "Version 2: 炙甘草 3 g, otherwise as version 1; the reason and the monitoring written on it (blood pressure and potassium rechecked by his GP in two weeks; stop and call for cramps, weakness, palpitations or swelling); version 1 cancelled."),
-       requires=["records"], scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["rx-v2"],
-       contraindicatedWhen={"not": {"read": "dispensary-query"}},
-       harm=L("还没有看药房的审方意见：没有可回应的问题，新版本无从谈起。", "You have not read the dispensary's query yet: there is nothing to revise against."),
-       response=L("第2版已签发，药房确认收到，第1版标记为作废。", "Version 2 is signed; the dispensary acknowledges it and marks version 1 cancelled.")),
+       requires=["records"], scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["rx-v2", "rx-v2-liquorice-3g"],
+       contraindicatedWhen={"any": [{"not": QUERY_ANSWERED}, {"intervened": "rx-v2-omit", "valid": True}]},
+       harm=V2_HARM,
+       response=L("第2版（炙甘草3 g）已签发，药房确认收到，第1版标记为作废。", "Version 2 (炙甘草 3 g) is signed; the dispensary acknowledges it and marks version 1 cancelled.")),
     iv("insist-v1", "medication",
        L("回复药房：6 g在药典剂量范围内，照第1版调剂", "Reply to the dispensary: 6 g is within the Pharmacopoeia range — dispense version 1 as written"),
        KW(["照原方", "在剂量范围内", "坚持原方", "照第1版"], ["dispense as written", "within the range", "keep version 1", "overrule the query"]),
@@ -378,7 +385,7 @@ INTERVENTIONS = [
        contraindicatedWhen={"not": V2},
        harm=L("版本核对未通过：处方第1版仍有未解决的审方意见，药房不会按它发药。先回应审方意见，开具新版本处方。",
               "Version check failed: prescription version 1 still has an open query, and the dispensary will not supply it. Answer the query and issue a new version first."),
-       response=L("药房按第2版调剂了28包配方颗粒，贴好中英文标签。", "The dispensary fills 28 sachets of granules from version 2 and applies a bilingual label.")),
+       response=L("药房按已签发的第2版调剂了28包配方颗粒，贴好中英文标签；调剂记录注明所用版本及炙甘草的剂量（无或3 g）。", "The dispensary fills 28 sachets of granules from the signed version 2 and applies a bilingual label; the dispensing record names the version and its 炙甘草 dose (none, or 3 g).")),
     iv("counsel-herbs", "other",
        L("中药用法与注意事项交代（包括甘草与血钾）", "Counsel him on taking the granules and what to watch for (liquorice and potassium included)"),
        KW(["用药交代", "怎么吃", "服用方法", "注意事项", "用药指导"], ["counsel", "howtotake", "instructions", "medicine advice", "whattowatchfor"]),
@@ -433,9 +440,26 @@ INTERVENTIONS = [
        L("维持处方第2版（不含甘草）两周，饮食建议照旧，两周后复诊", "Keep prescription version 2 (no liquorice) for two more weeks, with the same diet advice; review in two weeks"),
        KW(["继续第2版", "维持处方", "继续中药", "两周后再复诊"], ["continue version 2", "keep the prescription", "carry on with the herbs", "review in two weeks"]),
        risk="none", checklist=True, setFlags=["v2-continued"],
-       contraindicatedWhen={"not": IN_REVIEW},
-       harm=L("还没有方案可以维持。", "There is no plan to continue yet."),
-       response=L("药房按第2版续配两周（28包），标签核对一致。", "The dispensary repeats version 2 for two weeks (28 sachets); the label is checked against it.")),
+       contraindicatedWhen={"not": {"all": [IN_REVIEW, {"intervened": "rx-v2-omit", "valid": True}]}},
+       harm=L("不能照旧续配：要么还没到复诊，要么他现在的第2版仍含炙甘草3 g——血钾已降到3.3，应开具不含甘草的第3版。",
+              "Not continued as it stands: either this is not the review yet, or his current version 2 still contains 3 g of 炙甘草 — with his potassium down to 3.3, issue a version 3 without it."),
+       response=L("药房按第2版（不含甘草）续配两周（28包），标签核对一致。", "The dispensary repeats version 2 (no liquorice) for two weeks (28 sachets); the label is checked against it.")),
+    iv("rx-v3-omit", "medication",
+       L("开具处方第3版：去掉第2版中余下的炙甘草3 g，其余不变；第2版作废（处方医师签名）", "Issue prescription version 3 leaving out the remaining 3 g of 炙甘草, otherwise as version 2; version 2 cancelled (signed by the prescriber)"),
+       KW(["处方第3版", "去掉甘草", "第3版", "甘草全去掉"], ["prescription version 3", "version 3", "remove the liquorice", "noliquorice"]),
+       dose=L("第3版：同第2版，去掉炙甘草；注明理由（复诊时血钾3.3、血压上升、水肿，另有凉茶与甘草梅的甘草摄入）；两周（28包）；第2版作废。",
+              "Version 3: as version 2 without 炙甘草; the reason written on it (potassium 3.3 with rising blood pressure and oedema at review, and liquorice from herbal tea and plums as well); two weeks (28 sachets); version 2 cancelled."),
+       requires=["records"], scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["rx-v3"],
+       contraindicatedWhen={"not": {"all": [IN_REVIEW, {"intervened": "rx-v2-reduce", "valid": True}]}},
+       harm=L("只有当现行处方仍含甘草（第2版保留了炙甘草3 g）时，复诊才需要开第3版。", "A version 3 is needed at review only if the current prescription still contains liquorice (a version 2 that kept 3 g of 炙甘草)."),
+       response=L("第3版已签发，药房确认收到，第2版标记为作废。", "Version 3 is signed; the dispensary acknowledges it and marks version 2 cancelled.")),
+    iv("dispense-v3", "medication",
+       L("将处方第3版交药房调剂并发药", "Release prescription version 3 for dispensing and supply"),
+       KW(["按第3版发药", "第3版调剂", "发第3版"], ["dispense version 3", "supply version 3", "fill version 3"]),
+       requires=["medications"], risk="low", checklist=True, maxDoses=1, setFlags=["v3-dispensed"],
+       contraindicatedWhen={"not": {"intervened": "rx-v3-omit", "valid": True}},
+       harm=L("没有已签发的第3版可以调剂。", "There is no signed version 3 to fill."),
+       response=L("药房按第3版（不含甘草）调剂了28包，收回剩余的第2版药包，标签核对一致。", "The dispensary fills 28 sachets from version 3 (no liquorice), takes back the version 2 sachets he has left, and checks the label against it.")),
 ]
 
 DECISIONS = [
@@ -501,18 +525,18 @@ DECISIONS = [
              L("不完全对。风险来自一味起调和作用的药，去掉或减量即可，不需要放弃整个治疗。", "Not quite. The risk comes from one harmonising herb; leaving it out or reducing it is enough, without abandoning the treatment.")),
      ]},
     {"id": "d-review", "kind": "single",
-     "prompt": L("复诊：胃胀好多了，但血钾降到3.3、血压上升、双踝水肿。第2版不含甘草（或只有3 g）。怎么看？", "At review: the fullness is much better, but his potassium is down to 3.3, his blood pressure is up and his ankles are swollen. Version 2 has little or no liquorice. What is going on?"),
+     "prompt": L("复诊：胃胀好多了，但血钾降到3.3、血压上升、双踝水肿。第2版去掉了甘草或减到3 g。怎么看？", "At review: the fullness is much better, but his potassium is down to 3.3, his blood pressure is up and his ankles are swollen. Version 2 left the liquorice out or cut it to 3 g. What is going on?"),
      "requires": {"all": [{"read": "gp-results-review", "phase": "review"}, {"asked": "h-rv-drinks"}, {"asked": "h-rv-symptoms"}, {"examined": "e-rv-vitals"}]},
      "need": L("先看家庭医生的结果，量血压，问清抽筋无力等症状，以及这两个星期新喝、新吃的东西。", "First read the GP's results, take his blood pressure, ask about cramps and weakness, and about anything new he has drunk or eaten these two weeks."),
      "options": [
          opt("hidden-liquorice", True,
-             L("隐藏的甘草来源：每天一瓶廿四味凉茶加甘草梅，与噻嗪类利尿剂相加，出现低钾、血压升高、水肿、抽筋。停凉茶与甘草梅，维持第2版，当天告知家庭医生由她处理血钾与降压药；胃镜良性，继续调理",
-               "A hidden source of liquorice: a bottle of 廿四味 herbal tea every day plus liquorice plums, adding to the thiazide, with low potassium, higher blood pressure, swelling and cramps. Stop the tea and the plums, keep version 2, and tell his GP today, who manages the potassium and the antihypertensives; the endoscopy is benign, so carry on treating the digestion"),
-             L("正确。廿四味等凉茶多含甘草，甘草梅也是。处方里去掉了甘草，但总的甘草摄入要把食物、饮料和保健品都算进去——药房担心的正是这个效应。体重增加1公斤、脚肿、血压上升、血钾下降，是典型的假性醛固酮增多症表现。",
-               "Correct. Herbal teas such as 廿四味 usually contain liquorice, and so do liquorice plums. The prescription left the liquorice out, but total intake counts foods, drinks and supplements too — exactly the effect the dispensary feared. A kilogram gained, swollen ankles, rising blood pressure and falling potassium are the picture of pseudo-aldosteronism.")),
+             L("隐藏的甘草来源：每天一瓶廿四味凉茶加甘草梅，与噻嗪类利尿剂相加，出现低钾、血压升高、水肿、抽筋。停凉茶与甘草梅；确保他的处方不含甘草（第2版已去掉则维持，第2版保留3 g则开不含甘草的第3版）；当天告知家庭医生由她处理血钾与降压药；胃镜良性，继续调理",
+               "A hidden source of liquorice: a bottle of 廿四味 herbal tea every day plus liquorice plums, adding to the thiazide, with low potassium, higher blood pressure, swelling and cramps. Stop the tea and the plums; make sure his prescription contains no liquorice (keep version 2 if it left it out; issue a version 3 without it if version 2 kept 3 g); tell his GP today, who manages the potassium and the antihypertensives; the endoscopy is benign, so carry on treating the digestion"),
+             L("正确。廿四味等凉茶多含甘草，甘草梅也是。处方去掉或减少了甘草，但总的甘草摄入要把处方、食物、饮料和保健品都算进去——药房担心的正是这个效应。体重增加1公斤、脚肿、血压上升、血钾下降，是典型的假性醛固酮增多症表现；如第2版仍有3 g，此时也应去掉。",
+               "Correct. Herbal teas such as 廿四味 usually contain liquorice, and so do liquorice plums. The prescription left the liquorice out or cut it, but total intake counts the prescription, foods, drinks and supplements together — exactly the effect the dispensary feared. A kilogram gained, swollen ankles, rising blood pressure and falling potassium are the picture of pseudo-aldosteronism; if version 2 kept 3 g, that goes too now.")),
          opt("formula-cause", False,
              L("一定是中药引起的，全部停掉", "It must be the herbs: stop them all"),
-             L("不对。第2版几乎不含甘草；停掉中药而不找来源，他会继续喝凉茶。", "No. Version 2 has little or no liquorice; stop the herbs without finding the source and he will go on drinking the tea.")),
+             L("不对。第2版没有或只有3 g甘草；停掉中药而不找来源，他会继续喝凉茶。", "No. Version 2 has no liquorice, or 3 g; stop the herbs without finding the source and he will go on drinking the tea.")),
          opt("thiazide", False,
              L("是利尿剂的问题：叫他停氢氯噻嗪", "It's the diuretic: tell him to stop the hydrochlorothiazide"),
              L("不对。那是家庭医生的药，血压已经更高了；找到并去掉甘草来源，再由家庭医生决定是否调整。", "No. It is his GP's medicine, and his blood pressure is already higher; find and remove the liquorice source, and let his GP decide on any change.")),
@@ -560,7 +584,7 @@ OBJECTIVES = [
     {"id": "o-review", "title": L("两周复诊：解释血钾下降并处理", "Two-week review: explain the falling potassium and act on it"),
      "short": L("复诊", "Review"),
      "hint": L("看家庭医生的结果、胃镜报告与血压记录，量血压，问他这两个星期新喝、新吃的东西。", "Read the GP's results, the endoscopy report and the blood-pressure log, take his blood pressure, and ask what new things he has drunk or eaten these two weeks."),
-     "completeWhen": {"all": [{"decided": "d-review"}, {"intervened": "stop-herbal-tea", "valid": True}, {"intervened": "gp-call", "valid": True}, {"intervened": "continue-v2", "valid": True}]},
+     "completeWhen": {"all": [{"decided": "d-review"}, {"intervened": "stop-herbal-tea", "valid": True}, {"intervened": "gp-call", "valid": True}, NO_LIQUORICE_NOW]},
      "waypoints": [{"unless": {"read": "gp-results-review"}, "target": "records"}, {"target": "patient"}]},
 ]
 
@@ -620,6 +644,10 @@ RUBRIC = [
      "text": L("停掉凉茶与甘草梅", "Stopped the herbal tea and the liquorice plums"),
      "met": {"intervened": "stop-herbal-tea", "valid": True},
      "scoredWhen": IN_REVIEW},
+    {"id": "r-no-liquorice-now", "domain": "safety", "weight": 2,
+     "text": L("复诊时确保他的处方不含甘草（第2版已去掉则维持；保留3 g则开第3版）", "At review, made sure his prescription contains no liquorice (version 2 kept if it left it out; a version 3 if it kept 3 g)"),
+     "met": NO_LIQUORICE_NOW,
+     "scoredWhen": IN_REVIEW},
     {"id": "r-gp-today", "domain": "management", "weight": 2,
      "text": L("当天告知家庭医生", "Told his GP the same day"),
      "met": {"intervened": "gp-call", "valid": True},
@@ -641,6 +669,13 @@ SAFETY_GATES = [
     {"id": "g-query-overridden", "verdict": "complication",
      "label": L("以“在药典范围内”驳回针对具体病人的审方意见（药房未放行）", "A patient-specific dispensary query overruled as \"within the Pharmacopoeia range\" (not released by the dispensary)"),
      "when": {"intervened": "insist-v1"}},
+    {"id": "g-version-refused", "verdict": "complication",
+     "label": L("在回应审方意见之前、已有一个有效第2版时，或无需第3版时，尝试签发处方版本（已被拒绝）",
+                "A prescription version attempted before the query was answered, while another version 2 was active, or when no version 3 was needed (refused)"),
+     "when": {"any": [{"intervened": x, "valid": False} for x in ("rx-v2-omit", "rx-v2-reduce", "rx-v3-omit")]}},
+    {"id": "g-liquorice-kept-refused", "verdict": "complication",
+     "label": L("试图照旧续配仍含甘草的第2版（或在复诊前续配）（已被拒绝）", "Version 2 continued unchanged while it still contained liquorice, or before the review (refused)"),
+     "when": {"intervened": "continue-v2", "valid": False}},
     {"id": "g-open-query-intercepted", "verdict": "complication",
      "label": L("试图按有未解决审方意见的处方版本发药（已被版本核对拦截）", "Supply attempted from a prescription version with an open query (intercepted by the version check)"),
      "when": {"intervened": "dispense", "valid": False}},
@@ -766,7 +801,7 @@ def build() -> dict:
     return {
         "schema": "clinicalcraft/case@1",
         "id": CASE_ID,
-        "version": "0.1.0",
+        "version": "0.2.0",
         "title": L("上腹胀满 · 63岁男性", "Epigastric fullness · 63-year-old man"),
         "summary": L("一位服降压药的退休巴士车长来到新加坡的社区中医诊所，饭后胃胀两个月。完成评估与方案，回应药房的审方意见，并在两周后复诊。",
                      "A retired bus captain on blood-pressure tablets comes to a community TCM clinic in Singapore after two months of fullness after meals. Assess him, plan his care, answer the dispensary's query, and see him again in two weeks."),
@@ -795,7 +830,6 @@ def build() -> dict:
             "notes": L("虚构教学病例，不基于任何真实患者；人物为化名，诊所与产品均为虚构。", "A fictional teaching case, not based on any real patient; the person is a pseudonym and the clinic and products are fictional."),
             "review": {
                 "status": "unreviewed",
-                "reviewedAt": "2026-11-07",
                 "reviewers": [],
                 "guidelines": ["ACG/CAG 2017 dyspepsia", "NICE CG184 dyspepsia (2014, updated 2019)", "EU SCF 2003 glycyrrhizinic acid", "Chinese Pharmacopoeia 2020 ed. Vol I"],
                 "notes": L("人工智能辅助编写，对照所引指南撰写，但尚未经编辑审核或执业医师审核；用于教学前请由注册中医师和家庭医生审核。",
@@ -847,6 +881,7 @@ def build() -> dict:
         "extensions": {
             "testUtterances": TEST_UTTERANCES,
             "tcmcraft": {
+                "dates": dates("2026-11-07"),
                 "edition": "singapore",
                 "caseFamily": "sg-gi",
                 "variant": "review-a-hidden-liquorice",

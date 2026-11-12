@@ -16,6 +16,7 @@ from __future__ import annotations
 import case_lbp as base
 import lbp_family
 from case_lbp import AUTHORED, FOLLOWUP, KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt, order_read
+from common import dates
 
 CASE_ID = "tcm-sg-lbp-03"
 
@@ -46,8 +47,8 @@ HISTORY = [
        phases=FOLLOWUP),
     hx("h-fu-adverse", "other",
        L("治疗以后有没有什么不舒服或者副作用？", "Any side effects or problems since the treatment?"),
-       L("只有膝盖后面那个小瘀青，现在快消了。胃没有不舒服，没有出血，大便颜色正常。",
-         "Only that little bruise behind my knee, nearly gone now. No stomach upset, no bleeding, and my stools are a normal colour."),
+       L("没有。胃没有不舒服，没有瘀青或出血，大便颜色正常。",
+         "Nothing. No stomach upset, no bruising or bleeding, and my stools are a normal colour."),
        KW(["副作用", "不良反应", "治疗以后", "胃不舒服", "头晕", "针以后"], ["side effects", "sideeffects", "problems since", "upset stomach", "giddy"]),
        phases=FOLLOWUP, supersedes=["h-bruising"]),
     hx("h-fu-redflags", "ros",
@@ -70,8 +71,8 @@ EXAM = [
        KW(["复查腰部", "腰部压痛", "活动度", "弯腰", "触诊腰部"], ["re-examine the back", "tenderness", "range of movement", "bend forward", "palpate"]),
        abnormal=True, phases=FOLLOWUP),
     ex("e-fu-sites", "skin",
-       L("查看上次针刺部位", "Inspect last week's needling sites"),
-       L("右侧腘窝（委中穴处）淡黄色小瘀斑，几乎消退，无压痛；其余部位正常。", "A faint yellow mark in the right popliteal fossa at the BL40 site, almost gone, non-tender; other sites clear."),
+       L("查看腰背部与腘窝皮肤（上次如有针刺，含针刺部位）", "Inspect the skin of the back and behind the knees (last week's needling sites, if he was needled)"),
+       L("皮肤完整，无瘀斑、红肿、硬结或感染迹象。", "Skin intact: no bruising, redness, swelling, lump or sign of infection."),
        KW(["针刺部位", "针眼", "瘀斑", "膝盖后面", "皮肤"], ["needling sites", "needle sites", "bruise", "behind the knee", "skin"]),
        phases=FOLLOWUP),
     ex("e-fu-neuro", "neurological",
@@ -327,7 +328,7 @@ DEBRIEF = {
 def build() -> dict:
     c = lbp_family.variant(
         case_id=CASE_ID,
-        version="0.1.0",
+        version="0.2.0",
         variant_id="review-c-execution-discrepancy",
         title=L("腰痛反复发作 · 52岁男性 · 复诊C", "Recurrent low back pain · 52-year-old man · review C"),
         outcome=OUTCOME,
@@ -335,6 +336,7 @@ def build() -> dict:
                 "objectives": OBJECTIVES, "rubric": RUBRIC, "safetyGates": SAFETY_GATES, "solution": SOLUTION, "utterances": UTTERANCES},
         debrief=DEBRIEF,
         tcmcraft={
+            "dates": dates("2026-11-07"),
             "unacceptable": ["rx-verbal-swap", "stop-aspirin", "switch-damp-heat", "double-dose"],
             "followUpModel": "authored branch: a dispensing label that differs from the prescription (not a calibrated outcome model)",
         },

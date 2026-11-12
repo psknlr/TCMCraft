@@ -387,8 +387,8 @@ def treatment_room() -> dict:
         "schema": "clinicalcraft/room-template@1",
         "id": "tcm-treatment-room",
         "name": L("针灸推拿治疗室", "Acupuncture and tuina room"),
-        "description": L("两张带面孔的针灸推拿床，以隔帘分隔；针灸治疗车、TDP灯、锐器盒、针数登记板、手套和洗手池。",
-                         "Two acupuncture and tuina couches with face holes, separated by a curtain; an acupuncture cart, TDP lamps, a sharps bin, a needle-count board, gloves and a sink."),
+        "description": L("两张带面孔的针灸推拿床，以隔帘分隔；针灸治疗车、TDP灯、锐器盒、针数登记板、治疗记录终端、手套和洗手池。",
+                         "Two acupuncture and tuina couches with face holes, separated by a curtain; an acupuncture cart, TDP lamps, a sharps bin, a needle-count board, a charting terminal, gloves and a sink."),
         "kind": "rehabilitation",
         "size": {"w": 10, "d": 8},
         "floor": "floor",
@@ -413,6 +413,7 @@ def treatment_room() -> dict:
             P("gloves", "glove-dispenser", 0.0, -3.765),
             P("linen", "cabinet", 4.4, -3.0, 270, L("床单柜", "Linen cabinet")),
             P("count-board", "whiteboard", 4.765, 1.0, 270, L("针数登记板", "Needle-count board")),
+            P("records", "records-terminal", 4.525, -1.2, 270, L("治疗记录终端", "Charting terminal")),
             P("chart", "tcm-acupoint-chart", -4.785, 1.5, 90, L("经络穴位挂图", "Acupoint chart")),
             P("sanitizer", "hand-sanitizer", -4.5, 3.4),
             P("sink", "sink", 3.8, 3.55, 180),
@@ -425,7 +426,7 @@ def treatment_room() -> dict:
             {"id": "assistant", "role": "nurse", "name": L("Siti（诊所助理）", "Siti (clinic assistant)"), "x": 0.0, "z": 0.6, "rot": 180,
              "greeting": L("治疗床和治疗车都准备好了。需要帮忙让病人躺好吗？", "The couches and the cart are ready. Shall I help the patient settle on the couch?")},
         ],
-        "capabilities": [],
+        "capabilities": ["records"],
         "tags": ["tcm", "acupuncture", "tuina", "treatment"],
     }
 

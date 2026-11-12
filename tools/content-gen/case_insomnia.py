@@ -20,6 +20,7 @@ Synthetic: no real patient, no source report.
 from __future__ import annotations
 
 from case_lbp import KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt, order_read
+from common import dates
 
 CASE_ID = "tcm-sg-insomnia-01"
 CONSULT = ["consult"]
@@ -403,8 +404,9 @@ INTERVENTIONS = [
        KW(["针灸助眠", "扎针助眠", "针刺安神", "针灸"], ["acupuncture for sleep", "needle for sleep", "acupuncture", "calm the spirit"]),
        posture="lying", destination={"roomKind": "rehabilitation"},
        scope="medical", risk="low", checklist=True, maxDoses=1, setFlags=["acupuncture-done"],
-       contraindicatedWhen={"not": {"intervened": "explain-consent"}},
-       harm=L("未取得知情同意：先说明针刺、可能的不适并征得同意。", "No consent recorded: explain the needling and possible discomfort and obtain her agreement first."),
+       contraindicatedWhen={"not": {"all": [{"decided": "d-medical"}, {"decided": "d-pattern"}, {"intervened": "explain-consent"}]}},
+       harm=L("前置条件未满足：针刺前要先完成西医层面的判断与辨证，再说明针刺、可能的不适并征得同意。",
+              "Prerequisites not met: needling needs the biomedical assessment and the pattern assessment first, then an explanation of the needling and possible discomfort, and her agreement."),
        response=L("针刺顺利，进针9支、出针9支，核对无误。她说躺着很放松。", "The session goes smoothly: 9 needles in and 9 out, counted. She says she felt relaxed lying there.")),
     iv("sleep-study", "consult",
        L("转介做睡眠呼吸监测", "Refer for a sleep study"),
@@ -655,6 +657,9 @@ SAFETY_GATES = [
     {"id": "g-deferred-against-evidence", "verdict": "complication",
      "label": L("在证据相反时照搬上级的方或拼合两种治法", "Senior's formula adopted, or both strategies combined, against the evidence"),
      "when": {"any": [{"intervened": x} for x in DEFERENCE]}},
+    {"id": "g-needling-refused", "verdict": "complication",
+     "label": L("在完成评估与知情同意之前尝试针刺（已被拦截）", "Needling attempted before the assessment and consent (intercepted)"),
+     "when": {"intervened": "acupuncture-sleep", "valid": False}},
     {"id": "g-hypnotic-escalation", "verdict": "complication",
      "label": L("建议加大或每晚使用安眠药", "Advised escalating to nightly or stronger sleeping tablets"),
      "when": {"intervened": "stronger-sleeper"}},
@@ -789,7 +794,7 @@ def build() -> dict:
     return {
         "schema": "clinicalcraft/case@1",
         "id": CASE_ID,
-        "version": "0.1.1",
+        "version": "0.2.0",
         "title": L("失眠 · 47岁女性 · 复诊A", "Difficulty sleeping · 47-year-old woman · review A"),
         "summary": L("一位四十多岁的上班族来到新加坡的社区中医诊所，睡不好已有好几个月。完成评估与方案，并在两周后复诊。",
                      "A working woman in her forties comes to a community TCM clinic in Singapore after months of poor sleep. Assess her, plan her care, and see her again in two weeks."),
@@ -819,7 +824,6 @@ def build() -> dict:
             "notes": L("虚构教学病例，不基于任何真实患者；人物为化名，诊所与产品均为虚构。", "A fictional teaching case, not based on any real patient; the person is a pseudonym and the clinic and products are fictional."),
             "review": {
                 "status": "unreviewed",
-                "reviewedAt": "2026-11-07",
                 "reviewers": [],
                 "guidelines": ["European insomnia guideline 2017", "ACP 2016 chronic insomnia", "AASM 2021 behavioural treatments for insomnia",
                                "NICE NG88 heavy menstrual bleeding (2018, updated 2021)", "Chinese Pharmacopoeia 2020 ed. Vol I"],
@@ -873,6 +877,7 @@ def build() -> dict:
         "extensions": {
             "testUtterances": TEST_UTTERANCES,
             "tcmcraft": {
+                "dates": dates("2026-11-07"),
                 "edition": "singapore",
                 "caseFamily": "sg-insomnia",
                 "variant": "review-a-iron",

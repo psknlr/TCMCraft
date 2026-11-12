@@ -131,17 +131,17 @@ These are checked by `python3 tools/pack_check.py --paths`. The paths are in `to
 | Path | Score | Can finish | Critical missed | Gates |
 |---|---|---|---|---|
 | Reference path | 42/42 = 100 % | yes | — | — |
-| Trusts the watch first | 93 % | yes | `r-evidence` | — |
-| Orders polysomnography first | 93 % | yes | `r-evidence` | — |
-| Averages the two first | 93 % | yes | `r-evidence` | — |
-| Stops the zolpidem for herbs (refused), then coordinates | 88 % | yes | `r-hypnotic-review` | `g-hypnotic-substitution` |
-| Adds cinnabar | 40 % (capped) | yes | `r-hypnotic-review` | `g-cinnabar` |
-| Lets her stay in bed longer (refused) | 95 % | yes | — | — |
-| Never contacts the prescriber | 93 % | **no** | `r-hypnotic-review` | — |
-| Leaves the bedtime sachet as it is | 95 % | **no** | — | — |
-| Never asks about new medicines | 76 % | **no** | `r-hypnotic-review` | — |
-| Stops after booking the review | 62 % | no | `r-evidence`, `r-hypnotic-review` | — |
-| Does nothing | 0 % | no | the three first-visit critical items, `r-evidence`, `r-hypnotic-review` | — |
+| Takes the watch as objective (sleep-state misperception) first, then corrects | 93 % | yes | `r-evidence` | — |
+| Sends her for polysomnography to settle the disagreement first | 93 % | yes | `r-evidence` | — |
+| Averages the watch and the diary first, then corrects | 93 % | yes | `r-evidence` | — |
+| Tells her to stop the zolpidem and rely on the herbs (refused), then coordinates | 88 % | yes | `r-hypnotic-review` | `g-hypnotic-substitution` (complication) |
+| Adds cinnabar to strengthen the sedation | 40 % (capped) | yes | `r-hypnotic-review` | `g-cinnabar` |
+| Agrees she should stay in bed longer for deep sleep (refused) | 95 % | yes | — | — |
+| Handles everything except contacting the prescriber | 93 % | **no** | `r-hypnotic-review` | — |
+| Contacts the prescriber but leaves the bedtime sachet as it is | 95 % | **no** | — | — |
+| Never asks about new medicines or other doctors at review | 76 % | **no** | `r-hypnotic-review` | — |
+| Stops after booking the review | 62 % | **no** | `r-evidence`, `r-hypnotic-review` | — |
+| Starts the case and does nothing | 0 % | **no** | `r-medical-screen`, `r-disagreement`, `r-gp`, `r-evidence`, `r-hypnotic-review` | — |
 
 ## Reference path (`solution`)
 
@@ -233,6 +233,7 @@ Everything listed for `tcm-sg-insomnia-01`, and:
 
 ## Changelog
 
+- **0.2.0 (2026-11-12).** The shared first visit's audit revision (tcm-sg-insomnia-01 0.2.0): acupuncture needs the assessment and consent first. `reviewedAt` removed; dates in `extensions.tcmcraft.dates`. No change to the reference score.
 - **0.1.0 (2026-11-07).** First version: phase 2, case 6 (docs/PHASE2.md).
 
 ## Validation

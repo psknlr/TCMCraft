@@ -1,7 +1,7 @@
 [
   {
     "id": "reduces-to-3g",
-    "summary": "Version 2 keeps 炙甘草 at 3 g with monitoring (the other acceptable pathway)",
+    "summary": "Version 2 keeps 炙甘草 at 3 g with monitoring (the other acceptable pathway); at review, version 3 without it",
     "replace": [
       {
         "step": {
@@ -12,6 +12,22 @@
           "type": "intervene",
           "interventionId": "rx-v2-reduce"
         }
+      },
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "continue-v2"
+        },
+        "with": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v3-omit"
+          },
+          {
+            "type": "intervene",
+            "interventionId": "dispense-v3"
+          }
+        ]
       }
     ],
     "expect": {
@@ -49,7 +65,7 @@
       }
     ],
     "expect": {
-      "percent": 85,
+      "percent": 86,
       "gates": [
         "g-query-overridden"
       ],
@@ -204,7 +220,9 @@
     ],
     "expect": {
       "percent": 91,
-      "gates": [],
+      "gates": [
+        "g-liquorice-kept-refused"
+      ],
       "criticalMissed": [
         "r-referral"
       ],
@@ -288,7 +306,7 @@
       }
     ],
     "expect": {
-      "percent": 79,
+      "percent": 80,
       "gates": [],
       "criticalMissed": [
         "r-review"
@@ -301,7 +319,7 @@
     "summary": "Stops after booking the review",
     "truncateAfter": 45,
     "expect": {
-      "percent": 70,
+      "percent": 66,
       "gates": [],
       "criticalMissed": [
         "r-review"
@@ -322,6 +340,85 @@
         "r-referral"
       ],
       "finished": false
+    }
+  },
+  {
+    "id": "reduced-and-continued",
+    "summary": "Audit: version 2 keeps 3 g of liquorice, and at review tries to continue it unchanged (refused: version 3 needed)",
+    "replace": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "rx-v2-omit"
+        },
+        "with": {
+          "type": "intervene",
+          "interventionId": "rx-v2-reduce"
+        }
+      }
+    ],
+    "expect": {
+      "percent": 94,
+      "gates": [
+        "g-liquorice-kept-refused"
+      ],
+      "criticalMissed": [],
+      "finished": false
+    }
+  },
+  {
+    "id": "two-version-2s",
+    "summary": "Signs a second version 2 (3 g) after the first (refused: one active version)",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "intervene",
+          "interventionId": "dispense"
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v2-reduce"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-version-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
+    }
+  },
+  {
+    "id": "signs-before-answering",
+    "summary": "Signs version 2 before answering the query (refused), then answers and signs",
+    "insertBefore": [
+      {
+        "step": {
+          "type": "answer",
+          "decisionId": "d-rx-query",
+          "optionIds": [
+            "revise"
+          ]
+        },
+        "actions": [
+          {
+            "type": "intervene",
+            "interventionId": "rx-v2-omit"
+          }
+        ]
+      }
+    ],
+    "expect": {
+      "percent": 100,
+      "gates": [
+        "g-version-refused"
+      ],
+      "criticalMissed": [],
+      "finished": true
     }
   }
 ]

@@ -25,6 +25,7 @@ import copy
 import case_insomnia as base
 import insomnia_family
 from case_lbp import KW, L, U, answer, ask, ex, examine, hx, intervene, iv, opt, order_read
+from common import dates
 
 CASE_ID = "tcm-sg-insomnia-02"
 REVIEW = ["review"]
@@ -388,7 +389,7 @@ DEBRIEF = {
 def build() -> dict:
     c = insomnia_family.variant(
         case_id=CASE_ID,
-        version="0.1.0",
+        version="0.2.0",
         variant_id="review-b-conflicting-evidence",
         title=L("失眠 · 47岁女性 · 复诊B", "Difficulty sleeping · 47-year-old woman · review B"),
         outcome=OUTCOME,
@@ -396,6 +397,7 @@ def build() -> dict:
                 "objectives": OBJECTIVES, "rubric": RUBRIC, "safetyGates": SAFETY_GATES, "solution": SOLUTION, "utterances": UTTERANCES},
         debrief=DEBRIEF,
         tcmcraft={
+            "dates": dates("2026-11-07"),
             "modules": base.build()["extensions"]["tcmcraft"]["modules"] + ["evidence-quality", "herb-drug-review"],
             "unacceptable": ["defer-to-senior", "combine-formulas", "stronger-sleeper", *HARMS],
             "evidenceConflict": {
